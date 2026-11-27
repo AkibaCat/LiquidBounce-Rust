@@ -1,0 +1,58 @@
+{
+  "frozenDate": "2026-11-26",
+  "revision": 1,
+  "pinnedSources": {
+    "LiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "Horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "Horizon-Mixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/target_lock.rs": "36e388c23060632467578413911c63cda379b030f6b1c2d701613b654131f125",
+    "native/liquidbounce-horizon/engine/src/config/target_lock.rs": "ed060f29b5b9c5eff947607003250f3eb5121a7075fe1bcb99d2b28edd3f15f8",
+    "native/liquidbounce-horizon/engine/src/target_lock_runtime.rs": "24b7a76398a383bf3e508a783618aac182a87fe3d348cbfd5f6134966131d099",
+    "native/liquidbounce-horizon/target-lock-host.rs": "a74ac954ccde625ea55ee6af395f154359c13d627a98dd75faa74077b2f5bc27",
+    "native/liquidbounce-horizon/target-lock-patch.py": "0592e316a7eba55257e3b0646f91cb2f467cc1ae9f984473eb0d88361c8620b4"
+  },
+  "supportingFiles": {
+    "native/liquidbounce-horizon/collect-target-lock-original.py": "dcce7db13d26f77005d6be7ba06ca419adea0e96f269895cd0afbf25b74183f6",
+    "native/liquidbounce-horizon/generate-target-lock-freeze.py": "9ed9eee72fb7b674d04eacaa46dc103c55a1b1d9b28399c288f3ece46c812992",
+    "native/liquidbounce-horizon/target-lock-freeze.json": "c47f75a876c3243fa383c308c711217512dae8edccbac4cd143233a5ad9726e0",
+    "native/liquidbounce-horizon/target-lock-integration.md": "70e70cce45ee73a5533ebe777cff5b3c2177d0f6425262e7dbb4f5ca91e44ad7",
+    "native/liquidbounce-horizon/target-lock-native-fixture.rs": "a1e7608f206b60bdaf1e645af4608f218679d3bc1b0815f4fc126bedd9a0166f",
+    "native/liquidbounce-horizon/target-lock-runtime-fixture.rs": "e411fb9a2717aca051a923dd06377192749a3c2cf1786fa37404b2454d1a3eef",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Events.kt": "ca755d93f715019741bd3a22f50b4c55605a4e969d938b836bf5add2f5482dd6",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Exclude.kt": "f2b00cc743deff3f64d4e9e622213d53c55d038f4f54287a6a6e310d61e5f845",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Group.kt": "5916ccd8ed1ab3d055654c68ca16a0e4d25b8b1cecdeb1926c65c6c25bf5048a",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Handler.kt": "69fcfb3d7b052553a5ce446946a8f08b2591458c217e07f3a7aee74497f71eb4",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Main.kt": "11725d7742ea684865b1885ceb1dd4160ba21478ef27ae2fa094055c24263455",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Module.kt": "621a833d349086a67c8c60d4b9e4c82dc03ecfa858a90af44b1fd4233b04ca28",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Notification.kt": "4716520a9aec72e92af0a5838ef1908bfc7858ca6836c7ae61e475f9e7d788bb",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Player.kt": "c078036925e133af5b2bec4ea54412436ac68ada6c7ea6d7efc70d36dd55cca7",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Support.kt": "b2840aacd1ef4e8a4d8a7461da7eeed17c33509541ecd815a50209170ca09378",
+    "native/liquidbounce-horizon/target-lock-source-fixture/Values.kt": "f55471f211df1adf59e3c55a835412f3e80b28eadbdf7c2e8f1becc76685304f",
+    "native/liquidbounce-horizon/target-lock-tests.rs": "4367d1984dbd12f44d805bdc7bc2026152f7daf0b5baba2ad8e1684a32e50924",
+    "native/liquidbounce-horizon/test-target-lock.py": "048906e5afc22d0004b80dc05ab7e33e336c7d7fe5c3c9b76768877fbcd08fcd",
+    "native/liquidbounce-horizon/update-target-lock-locales.py": "8c69fc48d1895f7c7d86598c9fa77752c360411c83c82a66c94aa343e7da4d8e"
+  },
+  "reports": [
+    {
+      "path": "build/target-lock-source-01/report.json",
+      "sha256": "47716028a6b9070b92c5f2382b548a5c1f88a97391e7d7cdb82c6666d2ead701",
+      "scope": "Byte-identical original TargetLock and ListValue, actual fastutil linked map/Gson String adapter and JDK25; explicit mode/event/player/world/notification/settings providers. Only System class constant replaced. Short usability oracle, no complete original client or actual game proof."
+    },
+    {
+      "path": "build/target-lock-tests-01/report.json",
+      "sha256": "31b3afa9bedb6e5fcc261fdd0f99e8a22308275bab58d1ecc9c579f6f25448c6",
+      "scope": "Owned behavior/config/runtime/native helper bodies with actual shared Tree/parser/targeting bodies; explicit config/Host/State/Game scalar providers. Short per-step untouched Kotlin/ListValue oracle. Owned patch tested with actual Hitbox helper copy. Locale updater on copies. Concrete Game and complete engine deferred to final cumulative validation."
+    }
+  ],
+  "vectors": {
+    "scenarios": 8,
+    "steps": 72
+  },
+  "scope": "Owned implementation frozen before shared registration. One focused compile and 10 smoke tests, short untouched original Kotlin/ListValue oracle. State/Host/Game/mode/events are explicit providers. No complete engine/concrete Game or actual game proof. Shared files and localization dictionaries unchanged.",
+  "pendingChecks": [
+    "Root shared registration/config/actor/cache and original event-order integration.",
+    "Root complete cumulative concrete Game/engine/package build and final full game validation."
+  ]
+}

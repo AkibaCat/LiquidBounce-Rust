@@ -1,0 +1,44 @@
+[package]
+name = "liquidbounce-webview"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+description = "CEF 152.0.6 offscreen Chromium and independent Horizon GUI compositing"
+
+[workspace]
+
+[features]
+default = []
+cef-runtime = ["dep:cef", "dep:cef-dll-sys"]
+# Type checking only: the upstream dox feature skips the native CEF download/link.
+cef-typecheck = ["cef-runtime", "cef/dox", "cef-dll-sys/dox"]
+cef-smoke = ["cef-runtime", "dep:png", "dep:serde_json"]
+horizon-gpu = ["dep:horizon-hooks"]
+gpu-tests = ["wgpu/dx12", "wgpu/vulkan", "dep:pollster"]
+
+[dependencies]
+wgpu = { version = "=30.0.1", default-features = false, features = ["std", "parking_lot", "wgsl"] }
+bytemuck = { version = "1.24", features = ["derive"] }
+# Metadata +152.0.6 is informational to Cargo; =152.3.0 fixes the published package.
+cef = { version = "=152.3.0", default-features = false, features = ["resources"], optional = true }
+# Also pin sys: cef's caret dependency otherwise permits a different native CEF minor.
+cef-dll-sys = { version = "=152.3.0", default-features = false, optional = true }
+# The source is an isolated staging copy with horizon-ui-render-hook.patch applied.
+horizon-hooks = { path = "../../build/staging/horizon/crates/horizon-hooks", features = ["gpu-ui"], optional = true }
+pollster = { version = "0.4", optional = true }
+png = { version = "0.18", optional = true }
+serde_json = { version = "1", optional = true }
+
+[patch.crates-io]
+wgpu-hal = { path = "../../build/staging/horizon/third_party/wgpu-hal" }
+naga = { path = "../../build/staging/horizon/third_party/naga" }
+
+[[bin]]
+name = "liquidbounce-cef-helper"
+path = "src/bin/cef_helper.rs"
+required-features = ["cef-runtime"]
+
+[[bin]]
+name = "liquidbounce-cef-smoke"
+path = "src/bin/cef_smoke.rs"
+required-features = ["cef-smoke"]

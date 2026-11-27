@@ -1,0 +1,9 @@
+# FlagCheck
+
+Pinned source: LiquidBounce ae0eb396 / MC 26.3. Complete settings include chat, notification, invalid attributes, ResetFlags.After, and Render's first-person gate, hold/fade durations, all seven easing choices, fill and outline colors. Alias FlagDetect is registered; there is no tagBy.
+
+The ordinary incoming packet listener observes position packets even when cancelled, preserves raw relative fields, ignores the first 25 player ticks, uses the original one-step angle normalization and roundToLong, and retains lastYaw/lastPitch over toggles. It queues messages to the game actor. Native snapshots use the real player health tick count, head yaw, pitch, health/alive and food. ResetFlags resets immediately on enable and checks its elapsed wall-clock deadline before every observation. The current engine resumes elapsed background work at the next actor/packet observation, so delayed scheduling cannot emit an extra count. Native player snapshots are refreshed at GameTick HEAD; a packet between ticks sees the last tick's snapshot.
+
+Same-reason chat alerts replace their old message by exact metadata id, preserving all unrelated entries. Notifications and chat follow the active game language, including simple/traditional Chinese reasons and invalid attribute names. The standing WireframePlayer uses the previously frozen six-part Blink ESP geometry and existing renderer. It displays the raw correction position/rotation and the original hold/fade behavior; no new shader is added.
+
+One focused test passed: `build/flag-check-smoke-01.exe correction_count_and_fade --exact`. It checks the 25-tick gate, single wrapping, force/lagback classification, count/reset/disconnect, first-person hide, fade and invalid hunger. Formal batch compilation, fresh game and the final full test remain separate and pending. Simplified/traditional labels and 15 help entries per language are provided by the owned locale updater.

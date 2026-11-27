@@ -1,0 +1,56 @@
+{
+  "feature": "LogoffSpot",
+  "date": "2026-11-26",
+  "moduleCountDelta": 1,
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "horizonMixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_logoff_spot"
+      ],
+      "helper_names": [
+        "client_logoff_spot_clear"
+      ]
+    },
+    "patchedFiles": 5,
+    "localeKeys": {
+      "zh_cn": 7,
+      "zh_tw": 7
+    },
+    "scope": "One focused usability test compiling production config, packet listener, runtime, native Game/Host bridge, and actual locale resolver. Declaration-only entity/world/Host/packet providers exercise fresh native player snapshot, visual gear/skin, scoreboard health, duplicate capture exclusion, Blink/fake exclusion, random entity UUID, signed local IDs, unload-before-reappearance, cleanup, settings and messages. Native patch/shared integration composed in memory only. No official build, no game-parity claim; aggregate game check remains root-owned."
+  },
+  "files": {
+    "native/liquidbounce-horizon/logoff-spot-game.rs": "567a169df115551d380c61783f48666224c6a68854928dad24d55b2dcdf67351",
+    "native/liquidbounce-horizon/logoff-spot-host.rs": "b7b8021988e1332cfbebe9b1bbcbc556951ae6e6284280e784673e940dc97fb2",
+    "native/liquidbounce-horizon/logoff-spot-remote.rs": "75084336cacde62a421a04ff7b09a9153fe88e846ee007aa9218226f516aa501",
+    "native/liquidbounce-horizon/logoff-spot-patch.py": "3d83795e946db1a6424bd1b0b221a7d92e0c199458be33b1ec7bbfa7e4139351",
+    "native/liquidbounce-horizon/integrate-logoff-spot.py": "01a3005ebb534e55ffc55f3c3979f922fc2f589167378cf1840a8efbfb4c9d50",
+    "native/liquidbounce-horizon/update-logoff-spot-locales.py": "e6c7a70ff605198d73e6061f87c055082d1b296d5df729f339aa3b88502461bb",
+    "native/liquidbounce-horizon/logoff-spot-smoke.rs": "8c037de1927ea9446b65d455e2ef01d4551d910e656ce74b57bd1e477905b159",
+    "native/liquidbounce-horizon/logoff-spot-native-fixture.rs": "d7a5b3d8fac2a8d8c8b13f8343cb9de25a1750e707fffe5490ad318823c828d9",
+    "native/liquidbounce-horizon/test-logoff-spot.py": "a3e7b088d875c7c2a881efa901925aa515ab4d1e8fb68669a38e6c08fa928433",
+    "native/liquidbounce-horizon/logoff-spot-integration.md": "281f1cbe861ff09e50230120357cf3fc76359e57fdb47e2b3f21cceb88d8fd93",
+    "native/liquidbounce-horizon/generate-logoff-spot-freeze.py": "7527ba24d8890997030510fd7827e68989b466a101e6d730b3df22b3f5259498",
+    "native/liquidbounce-horizon/engine/src/config/logoff_spot.rs": "5f88b9017ea8fa7e09ee78fbaed8829362d1f003db18c3dfa2d11639e3515948",
+    "native/liquidbounce-horizon/engine/src/logoff_spot_runtime.rs": "ce80e8ea1ade17436e20d943f979503df1ce2a0c1be099948c0e7fddb9c26ee0",
+    "build/logoff-spot-smoke-01/report.json": "7b48880bf640ad79d8df40e5d9d90b84c61f637089ee745e8a99a8ff7bc9d7a5",
+    "build/logoff-spot-smoke-01/test.log": "2c0e3902d88e2ce5fd9fa68ed038b786e9bd38072569a6fbdb1441241b418d7b",
+    "build/logoff-spot-smoke-02/report.json": "7b48880bf640ad79d8df40e5d9d90b84c61f637089ee745e8a99a8ff7bc9d7a5",
+    "build/logoff-spot-smoke-02/test.log": "1840df7bbfd17e92bf91a4f1388c4a4e0a4005e5465e47080610765f1c229975",
+    "build/logoff-spot-smoke-03/report.json": "0b8f5e47c831ca8e989eeced7fb1c5a18df4888d5011a60e9b6bc76b1e8965ae",
+    "build/logoff-spot-smoke-03/test.log": "7592d5bc7a62cffc1665da73988ce64e9cf49878e517bb38f5385cb2b1718894",
+    "build/logoff-spot-smoke-04/report.json": "0b8f5e47c831ca8e989eeced7fb1c5a18df4888d5011a60e9b6bc76b1e8965ae",
+    "build/logoff-spot-smoke-04/test.log": "c935b1381e4d501ba17e6b6b9a2288e3fd316a13ab4820dc9085c28f55f79976",
+    "build/logoff-spot-smoke-04/shared-plan.json": "4de114cacbd01108c2ca506d7076403d6a510a53432a166fb0b2968cd82b82c6",
+    "build/logoff-spot-smoke-04/interop/resources/localization/display_zh_cn.json": "ab0b8d4b4f6dda73889ce8e40771ea5075ad1de27320d86a4dd9085e60d5e7c2",
+    "build/logoff-spot-smoke-04/interop/resources/localization/display_zh_tw.json": "8f5645c3bf7bb1ae832269be528e653e3a59243008bbb0c503626fc5735e93d7"
+  },
+  "limits": "No official build/stage or real-game parity claim. Root applies 20 edits across seven shared files and copied dictionary updater serially. AutoBreak and ItemScroller untouched."
+}

@@ -1,0 +1,30 @@
+{
+  "compiled": false,
+  "rustExecuted": false,
+  "generatedRustSourcesParsed": 9,
+  "preparedRustSmokeParsed": true,
+  "checks": [
+    "physical mapping versus transformed input including auto-jump",
+    "actual move-vector moving predicate",
+    "direct virtual getPlacementState",
+    "GameMaster override retained; canPlace and scaffolding context update skipped",
+    "ordinary placement collision context versus standing-wall empty context",
+    "effective main-hand collision state and real entity obstruction",
+    "synchronous success callback before swing",
+    "scoped inside survives packet/local/preview contexts and unwind",
+    "source SameY and attempt branches",
+    "source silent-slot cancellation quirk and main-hand priority"
+  ],
+  "sha256": {
+    "scaffold_lifecycle.rs": "9c1c345903e346dc2abe8be8f66e4c8ee4e172d765e6e45466858b112c73c30e",
+    "scaffold-action-native.rs": "29bcd0465a4cec10a9e44880e93fa49e879a61247215f95e7ba36bac82990c59",
+    "scaffold-action-host.rs": "585dff4f111da9f3ec93b1d30b179fd9b39e901e21d96d4383c2c7b35c57799b",
+    "scaffold-action-patch.py": "25dae3fa0e726ece5737a11f7a5f4dbd94693b218831a5c9abfe904bb38a09ce",
+    "scaffold-placement-state.rs": "83fedd204e21b932225bd41c72e7f64d893ff091c881e7ffaed561a8651f02df",
+    "scaffold-lifecycle-smoke.rs": "08475f92524c6ca7cb49eeaa9432abaed6ff643d69ee3d70c6ad63245f816fbe",
+    "scaffold-BlockItem.javap.txt": "4f3414aaf6ba233ed87d80161172e9e72991dfa5db6893f2b157b066f122c224",
+    "scaffold-SpecialBlockItem.javap.txt": "fa4beb5582ec280f9a9c95717f2f9854a1db71c36e4d62b898347a691297a9f5",
+    "scaffold-click-inside-native.rs": "8a03db6b183a38d3499360fd8fcdbc84b6c621c84caabb47a0d11eff3fc7daa8",
+    "scaffold-click-inside-patch.py": "cb31ec6ff84953e6bb4266bfadfdd1a98bd2539f62306b10f7d2c0166c8d9a69"
+  }
+}

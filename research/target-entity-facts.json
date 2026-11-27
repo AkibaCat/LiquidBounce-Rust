@@ -1,0 +1,1193 @@
+{
+  "entities": [
+    {
+      "type": "minecraft:acacia_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:acacia_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:allay",
+      "class": "net.minecraft.world.entity.animal.allay.Allay",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:area_effect_cloud",
+      "class": "net.minecraft.world.entity.AreaEffectCloud",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:armadillo",
+      "class": "net.minecraft.world.entity.animal.armadillo.Armadillo",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:armor_stand",
+      "class": "net.minecraft.world.entity.decoration.ArmorStand",
+      "living": true,
+      "attackable": true,
+      "category": "ArmorStand"
+    },
+    {
+      "type": "minecraft:arrow",
+      "class": "net.minecraft.world.entity.projectile.arrow.Arrow",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:axolotl",
+      "class": "net.minecraft.world.entity.animal.axolotl.Axolotl",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:bamboo_chest_raft",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestRaft",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:bamboo_raft",
+      "class": "net.minecraft.world.entity.vehicle.boat.Raft",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:bat",
+      "class": "net.minecraft.world.entity.ambient.Bat",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:bee",
+      "class": "net.minecraft.world.entity.animal.bee.Bee",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:birch_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:birch_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:blaze",
+      "class": "net.minecraft.world.entity.monster.Blaze",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:block_display",
+      "class": "net.minecraft.world.entity.Display$BlockDisplay",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:bogged",
+      "class": "net.minecraft.world.entity.monster.skeleton.Bogged",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:breeze",
+      "class": "net.minecraft.world.entity.monster.breeze.Breeze",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:breeze_wind_charge",
+      "class": "net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.BreezeWindCharge",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:camel",
+      "class": "net.minecraft.world.entity.animal.camel.Camel",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:camel_husk",
+      "class": "net.minecraft.world.entity.animal.camel.CamelHusk",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:cat",
+      "class": "net.minecraft.world.entity.animal.feline.Cat",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:cave_spider",
+      "class": "net.minecraft.world.entity.monster.spider.CaveSpider",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:cherry_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:cherry_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:chest_minecart",
+      "class": "net.minecraft.world.entity.vehicle.minecart.MinecartChest",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:chicken",
+      "class": "net.minecraft.world.entity.animal.chicken.Chicken",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:cod",
+      "class": "net.minecraft.world.entity.animal.fish.Cod",
+      "living": true,
+      "attackable": true,
+      "category": "WaterCreature"
+    },
+    {
+      "type": "minecraft:command_block_minecart",
+      "class": "net.minecraft.world.entity.vehicle.minecart.MinecartCommandBlock",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:copper_golem",
+      "class": "net.minecraft.world.entity.animal.golem.CopperGolem",
+      "living": true,
+      "attackable": true,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:cow",
+      "class": "net.minecraft.world.entity.animal.cow.Cow",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:creaking",
+      "class": "net.minecraft.world.entity.monster.creaking.Creaking",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:creeper",
+      "class": "net.minecraft.world.entity.monster.Creeper",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:cushion",
+      "class": "net.minecraft.world.entity.decoration.Cushion",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:dark_oak_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:dark_oak_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:dolphin",
+      "class": "net.minecraft.world.entity.animal.dolphin.Dolphin",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:donkey",
+      "class": "net.minecraft.world.entity.animal.equine.Donkey",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:dragon_fireball",
+      "class": "net.minecraft.world.entity.projectile.hurtingprojectile.DragonFireball",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:drowned",
+      "class": "net.minecraft.world.entity.monster.zombie.Drowned",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:egg",
+      "class": "net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEgg",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:elder_guardian",
+      "class": "net.minecraft.world.entity.monster.ElderGuardian",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:end_crystal",
+      "class": "net.minecraft.world.entity.boss.enderdragon.EndCrystal",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:ender_dragon",
+      "class": "net.minecraft.world.entity.boss.enderdragon.EnderDragon",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:ender_pearl",
+      "class": "net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:enderman",
+      "class": "net.minecraft.world.entity.monster.Enderman",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:endermite",
+      "class": "net.minecraft.world.entity.monster.Endermite",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:evoker",
+      "class": "net.minecraft.world.entity.monster.illager.Evoker",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:evoker_fangs",
+      "class": "net.minecraft.world.entity.projectile.EvokerFangs",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:experience_bottle",
+      "class": "net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownExperienceBottle",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:experience_orb",
+      "class": "net.minecraft.world.entity.ExperienceOrb",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:eye_of_ender",
+      "class": "net.minecraft.world.entity.projectile.EyeOfEnder",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:falling_block",
+      "class": "net.minecraft.world.entity.item.FallingBlockEntity",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:fireball",
+      "class": "net.minecraft.world.entity.projectile.hurtingprojectile.LargeFireball",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:firework_rocket",
+      "class": "net.minecraft.world.entity.projectile.FireworkRocketEntity",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:fishing_bobber",
+      "class": "net.minecraft.world.entity.projectile.FishingHook",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:fox",
+      "class": "net.minecraft.world.entity.animal.fox.Fox",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:frog",
+      "class": "net.minecraft.world.entity.animal.frog.Frog",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:furnace_minecart",
+      "class": "net.minecraft.world.entity.vehicle.minecart.MinecartFurnace",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:ghast",
+      "class": "net.minecraft.world.entity.monster.Ghast",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:giant",
+      "class": "net.minecraft.world.entity.monster.Giant",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:glow_item_frame",
+      "class": "net.minecraft.world.entity.decoration.GlowItemFrame",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:glow_squid",
+      "class": "net.minecraft.world.entity.animal.squid.GlowSquid",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:goat",
+      "class": "net.minecraft.world.entity.animal.goat.Goat",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:guardian",
+      "class": "net.minecraft.world.entity.monster.Guardian",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:happy_ghast",
+      "class": "net.minecraft.world.entity.animal.happyghast.HappyGhast",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:hoglin",
+      "class": "net.minecraft.world.entity.monster.hoglin.Hoglin",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:hopper_minecart",
+      "class": "net.minecraft.world.entity.vehicle.minecart.MinecartHopper",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:horse",
+      "class": "net.minecraft.world.entity.animal.equine.Horse",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:husk",
+      "class": "net.minecraft.world.entity.monster.zombie.Husk",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:illusioner",
+      "class": "net.minecraft.world.entity.monster.illager.Illusioner",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:interaction",
+      "class": "net.minecraft.world.entity.Interaction",
+      "living": false,
+      "attackable": true,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:iron_golem",
+      "class": "net.minecraft.world.entity.animal.golem.IronGolem",
+      "living": true,
+      "attackable": true,
+      "category": "Angerable"
+    },
+    {
+      "type": "minecraft:item",
+      "class": "net.minecraft.world.entity.item.ItemEntity",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:item_display",
+      "class": "net.minecraft.world.entity.Display$ItemDisplay",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:item_frame",
+      "class": "net.minecraft.world.entity.decoration.ItemFrame",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:jungle_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:jungle_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:leash_knot",
+      "class": "net.minecraft.world.entity.decoration.LeashFenceKnotEntity",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:lightning_bolt",
+      "class": "net.minecraft.world.entity.LightningBolt",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:lingering_potion",
+      "class": "net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownLingeringPotion",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:llama",
+      "class": "net.minecraft.world.entity.animal.equine.Llama",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:llama_spit",
+      "class": "net.minecraft.world.entity.projectile.LlamaSpit",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:magma_cube",
+      "class": "net.minecraft.world.entity.monster.cubemob.MagmaCube",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:mangrove_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:mangrove_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:mannequin",
+      "class": "net.minecraft.world.entity.decoration.Mannequin",
+      "living": true,
+      "attackable": true,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:marker",
+      "class": "net.minecraft.world.entity.Marker",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:minecart",
+      "class": "net.minecraft.world.entity.vehicle.minecart.Minecart",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:mooshroom",
+      "class": "net.minecraft.world.entity.animal.cow.MushroomCow",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:mule",
+      "class": "net.minecraft.world.entity.animal.equine.Mule",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:nautilus",
+      "class": "net.minecraft.world.entity.animal.nautilus.Nautilus",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:oak_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:oak_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:ocelot",
+      "class": "net.minecraft.world.entity.animal.feline.Ocelot",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:ominous_item_spawner",
+      "class": "net.minecraft.world.entity.OminousItemSpawner",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:painting",
+      "class": "net.minecraft.world.entity.decoration.painting.Painting",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:pale_oak_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:pale_oak_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:panda",
+      "class": "net.minecraft.world.entity.animal.panda.Panda",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:parched",
+      "class": "net.minecraft.world.entity.monster.skeleton.Parched",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:parrot",
+      "class": "net.minecraft.world.entity.animal.parrot.Parrot",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:phantom",
+      "class": "net.minecraft.world.entity.monster.Phantom",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:pig",
+      "class": "net.minecraft.world.entity.animal.pig.Pig",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:piglin",
+      "class": "net.minecraft.world.entity.monster.piglin.Piglin",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:piglin_brute",
+      "class": "net.minecraft.world.entity.monster.piglin.PiglinBrute",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:pillager",
+      "class": "net.minecraft.world.entity.monster.illager.Pillager",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:player",
+      "class": "net.minecraft.world.entity.player.Player",
+      "living": true,
+      "attackable": true,
+      "category": "Players"
+    },
+    {
+      "type": "minecraft:polar_bear",
+      "class": "net.minecraft.world.entity.animal.polarbear.PolarBear",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:poplar_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:poplar_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:pufferfish",
+      "class": "net.minecraft.world.entity.animal.fish.Pufferfish",
+      "living": true,
+      "attackable": true,
+      "category": "WaterCreature"
+    },
+    {
+      "type": "minecraft:rabbit",
+      "class": "net.minecraft.world.entity.animal.rabbit.Rabbit",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:ravager",
+      "class": "net.minecraft.world.entity.monster.Ravager",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:salmon",
+      "class": "net.minecraft.world.entity.animal.fish.Salmon",
+      "living": true,
+      "attackable": true,
+      "category": "WaterCreature"
+    },
+    {
+      "type": "minecraft:sheep",
+      "class": "net.minecraft.world.entity.animal.sheep.Sheep",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:shulker",
+      "class": "net.minecraft.world.entity.monster.Shulker",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:shulker_bullet",
+      "class": "net.minecraft.world.entity.projectile.ShulkerBullet",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:silverfish",
+      "class": "net.minecraft.world.entity.monster.Silverfish",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:skeleton",
+      "class": "net.minecraft.world.entity.monster.skeleton.Skeleton",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:skeleton_horse",
+      "class": "net.minecraft.world.entity.animal.equine.SkeletonHorse",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:slime",
+      "class": "net.minecraft.world.entity.monster.cubemob.Slime",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:small_fireball",
+      "class": "net.minecraft.world.entity.projectile.hurtingprojectile.SmallFireball",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:sniffer",
+      "class": "net.minecraft.world.entity.animal.sniffer.Sniffer",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:snow_golem",
+      "class": "net.minecraft.world.entity.animal.golem.SnowGolem",
+      "living": true,
+      "attackable": true,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:snowball",
+      "class": "net.minecraft.world.entity.projectile.throwableitemprojectile.Snowball",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:spawner_minecart",
+      "class": "net.minecraft.world.entity.vehicle.minecart.MinecartSpawner",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:spectral_arrow",
+      "class": "net.minecraft.world.entity.projectile.arrow.SpectralArrow",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:spider",
+      "class": "net.minecraft.world.entity.monster.spider.Spider",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:splash_potion",
+      "class": "net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownSplashPotion",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:spruce_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.Boat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:spruce_chest_boat",
+      "class": "net.minecraft.world.entity.vehicle.boat.ChestBoat",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:squid",
+      "class": "net.minecraft.world.entity.animal.squid.Squid",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:stray",
+      "class": "net.minecraft.world.entity.monster.skeleton.Stray",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:strider",
+      "class": "net.minecraft.world.entity.monster.Strider",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:sulfur_cube",
+      "class": "net.minecraft.world.entity.monster.cubemob.SulfurCube",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:tadpole",
+      "class": "net.minecraft.world.entity.animal.frog.Tadpole",
+      "living": true,
+      "attackable": true,
+      "category": "WaterCreature"
+    },
+    {
+      "type": "minecraft:text_display",
+      "class": "net.minecraft.world.entity.Display$TextDisplay",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:tnt",
+      "class": "net.minecraft.world.entity.item.PrimedTnt",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:tnt_minecart",
+      "class": "net.minecraft.world.entity.vehicle.minecart.MinecartTNT",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:trader_llama",
+      "class": "net.minecraft.world.entity.animal.equine.TraderLlama",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:trident",
+      "class": "net.minecraft.world.entity.projectile.arrow.ThrownTrident",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:tropical_fish",
+      "class": "net.minecraft.world.entity.animal.fish.TropicalFish",
+      "living": true,
+      "attackable": true,
+      "category": "WaterCreature"
+    },
+    {
+      "type": "minecraft:turtle",
+      "class": "net.minecraft.world.entity.animal.turtle.Turtle",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:vex",
+      "class": "net.minecraft.world.entity.monster.Vex",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:villager",
+      "class": "net.minecraft.world.entity.npc.villager.Villager",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:vindicator",
+      "class": "net.minecraft.world.entity.monster.illager.Vindicator",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:wandering_trader",
+      "class": "net.minecraft.world.entity.npc.wanderingtrader.WanderingTrader",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:warden",
+      "class": "net.minecraft.world.entity.monster.warden.Warden",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:wind_charge",
+      "class": "net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.WindCharge",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:witch",
+      "class": "net.minecraft.world.entity.monster.Witch",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:wither",
+      "class": "net.minecraft.world.entity.boss.wither.WitherBoss",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:wither_skeleton",
+      "class": "net.minecraft.world.entity.monster.skeleton.WitherSkeleton",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:wither_skull",
+      "class": "net.minecraft.world.entity.projectile.hurtingprojectile.WitherSkull",
+      "living": false,
+      "attackable": false,
+      "category": "None"
+    },
+    {
+      "type": "minecraft:wolf",
+      "class": "net.minecraft.world.entity.animal.wolf.Wolf",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:zoglin",
+      "class": "net.minecraft.world.entity.monster.Zoglin",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:zombie",
+      "class": "net.minecraft.world.entity.monster.zombie.Zombie",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:zombie_horse",
+      "class": "net.minecraft.world.entity.animal.equine.ZombieHorse",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:zombie_nautilus",
+      "class": "net.minecraft.world.entity.animal.nautilus.ZombieNautilus",
+      "living": true,
+      "attackable": true,
+      "category": "Passive"
+    },
+    {
+      "type": "minecraft:zombie_villager",
+      "class": "net.minecraft.world.entity.monster.zombie.ZombieVillager",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    },
+    {
+      "type": "minecraft:zombified_piglin",
+      "class": "net.minecraft.world.entity.monster.zombie.ZombifiedPiglin",
+      "living": true,
+      "attackable": true,
+      "category": "Hostile"
+    }
+  ],
+  "margins": [
+    {
+      "size": 0.0,
+      "inflatedBits": [
+        "13822447976325526323",
+        "4634204016564240384",
+        "13822447976325526323",
+        "4599075939470750515",
+        "4634330680303760179",
+        "4599075939470750515"
+      ],
+      "componentMarginBits": 1040187392
+    },
+    {
+      "size": 0.1,
+      "inflatedBits": [
+        "13824249416203318067",
+        "4634189942815195136",
+        "13824249416203318067",
+        "4600877379348542259",
+        "4634337717178282803",
+        "4600877379348542259"
+      ],
+      "componentMarginBits": 1046898278
+    },
+    {
+      "size": 1.0,
+      "inflatedBits": [
+        "13831905535543004365",
+        "4634063279075885056",
+        "13831905535543004365",
+        "4608533498688228557",
+        "4634401049047937843",
+        "4608533498688228557"
+      ],
+      "componentMarginBits": 1066401792
+    },
+    {
+      "size": -0.2,
+      "inflatedBits": [
+        "13815242216706985164",
+        "4634218090313285632",
+        "13815242216706985164",
+        "4591870179852209356",
+        "4634316606554714931",
+        "4591870179852209356"
+      ],
+      "componentMarginBits": 3180960154
+    },
+    {
+      "size": 12.75,
+      "inflatedBits": [
+        "13846908151801682330",
+        "4632409613587709952",
+        "13846908151801682330",
+        "4623536114946906522",
+        "4635227881792025395",
+        "4623536114946906522"
+      ],
+      "componentMarginBits": 1095630848
+    }
+  ]
+}

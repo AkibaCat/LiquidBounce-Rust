@@ -1,0 +1,62 @@
+{
+  "commit": "0abf69ac35157f33348310326017f4e3fea6b95f",
+  "commitDate": "2026-11-20T10:26:53Z",
+  "liquidBounceCommit": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "commonSnapshot": "1.0.0-20261120.103027-24",
+  "snapshotSourceComparison": {
+    "sameFiles": 336,
+    "different": [],
+    "missing": []
+  },
+  "commonPackages": {
+    "ExperimentalAgentApi.kt": {
+      "files": 1,
+      "lines": 40
+    },
+    "InternalAgentApi.kt": {
+      "files": 1,
+      "lines": 39
+    },
+    "bukkit": {
+      "files": 15,
+      "lines": 1921
+    },
+    "math": {
+      "files": 11,
+      "lines": 1520
+    },
+    "navigation": {
+      "files": 68,
+      "lines": 10950
+    },
+    "pathfinder": {
+      "files": 52,
+      "lines": 7940
+    },
+    "simulation": {
+      "files": 14,
+      "lines": 1963
+    },
+    "skills": {
+      "files": 155,
+      "lines": 23458
+    },
+    "tick": {
+      "files": 3,
+      "lines": 389
+    },
+    "world": {
+      "files": 16,
+      "lines": 3006
+    }
+  },
+  "sha256": {
+    "research\\Minecraft-Agent-0abf69ac-source.zip": "1db649fb084bb2ab87c1659aef3953e2556d2cca08e49a66206e111c2a08f1c7",
+    "research\\minecraft-agent-common-1.0.0-20261120.103027-24-sources.jar": "5c816eef9c071df5b15e8dbd029798007d2bf27c43cc7cab89e5afecfa5e54bb",
+    "research\\minecraft-agent-common-1.0.0-20261120.103027-24.jar": "a5d2b3fc400d97301e44312a929ec4e6a15ab2a47d57f269a88a0678c5fbb7d6",
+    "research\\minecraft-agent-common-metadata.xml": "4884ad2f2b8b3a227a4e141af939ab68bd7cf69d9328411a65b464c2faed0e80",
+    "research\\minecraft-agent-baseline-commit.json": "85a3330950a1289080a60e39a9cf4516f8fa57360cbc2229b0f63209d133cfa4"
+  },
+  "runtimeRule": "All player-facing implementation remains Rust; the original JVM artifact is development-oracle input only.",
+  "coverage": "Dependency source provenance only; not an AutoWalk implementation or gameplay validation."
+}

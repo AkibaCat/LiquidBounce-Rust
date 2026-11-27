@@ -1,0 +1,48 @@
+{
+  "upstreamCommit": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "resources": {
+    "en_us": {
+      "source": "src/main/resources/resources/liquidbounce/lang/en_us.json",
+      "sha256": "c4ca3c8944d336e3b06e05d4eec4decdd600217a761a76b5a69214f8b142dec2"
+    },
+    "zh_cn": {
+      "source": "src/main/resources/resources/liquidbounce/lang/zh_cn.json",
+      "sha256": "28a5d2aefa56ee112951dd6c830f66ba21004877f6a04d938fc24f24bc93f6ea"
+    },
+    "zh_tw": {
+      "source": "src/main/resources/resources/liquidbounce/lang/zh_tw.json",
+      "sha256": "db1e9d6280f2aa3e5020144b8851bfd823751266366ef3eca0df0b28777e7a0d"
+    }
+  },
+  "registeredUpstreamModuleNames": 236,
+  "displayOnly": true,
+  "ownedDisplayResources": {
+    "zh_cn": {
+      "sha256": "d49e32baf4a5bacf3547075f8a6051328d022ce13e042fbea5d6cff23fdf6c07",
+      "independentModuleNames": 236,
+      "independentLabels": 3514,
+      "ownedSettingDescriptions": 5347
+    },
+    "zh_tw": {
+      "sha256": "94340caba28ba52643a4d880653899efb7809230e5d173b601eed0ed53dffc80",
+      "independentModuleNames": 203,
+      "independentLabels": 3093,
+      "ownedSettingDescriptions": 5347
+    }
+  },
+  "settingDescriptionPolicy": "The pinned language files contain module descriptions but none of the implemented setting descriptions; explicitly owned English/Chinese help entries fill those missing keys. Upstream entries take priority.",
+  "fallback": {
+    "zh_cn": [
+      "zh_cn",
+      "en_us"
+    ],
+    "zh_tw": [
+      "zh_tw",
+      "zh_cn",
+      "en_us"
+    ],
+    "other": [
+      "en_us"
+    ]
+  }
+}

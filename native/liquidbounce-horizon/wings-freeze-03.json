@@ -1,0 +1,13 @@
+{
+  "module": "Wings",
+  "revision": 3,
+  "date": "2026-11-26",
+  "reason": "Check139-02: true read-only computed scale from actual LiveAttributes",
+  "repeatedSmoke": false,
+  "files": {
+    "native/liquidbounce-horizon/wings-game.rs": "038163d7202c3d077a47f4beb2d036067b476d8bcfccd65ed8417caceec114f6",
+    "native/liquidbounce-horizon/wings-native-fixture.rs": "bc1e0067167064e142b9d44e6f4a78cdd31b1b34a40cc706a64aa1af0d195aa8",
+    "native/liquidbounce-horizon/wings-freeze-02.json": "7d6d88f403209c3512d3f47341c8cd10f8e65e1e90ee419fe355bdc01fb8b68b",
+    "native/liquidbounce-horizon/wings-attributes-fix-03.md": "fa21ab6a654e339ff204f03ba747e72c29ced9dc1d841087779c2763e2c27977"
+  }
+}

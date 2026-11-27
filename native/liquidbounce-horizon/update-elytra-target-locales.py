@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+"""Complete ElytraTarget Simplified/Traditional display resources; stable identifiers."""
+from pathlib import Path
+import argparse,json,runpy
+from display_locale_schema import put_module
+HERE=Path(__file__).resolve().parent
+PREFIX='liquidbounce.module.elytraTarget'
+TEXTS=json.loads(r'''[["","Follow visible combat targets while gliding with an elytra, with managed rotation and optional fireworks.","使用鞘翅滑翔时追踪可见战斗目标，并控制转向及烟花加速。","使用鞘翅滑翔時追蹤可見戰鬥目標，並控制轉向及煙火加速。"],["Target","Choose the first globally eligible living target with line of sight.","选择符合全局筛选条件且视线可达的首个生物目标。","選取符合全域篩選條件且視線可達的第一個生物目標。"],["Target.FOV","Maximum target angle from the current view direction.","目标与当前视角方向之间允许的最大夹角。","目標與目前視角方向之間允許的最大夾角。"],["Target.HurtTime","Maximum remaining hurt time of a candidate target.","候选目标允许的最大剩余受伤时间。","候選目標允許的最大剩餘受傷時間。"],["Target.Priority","Compare candidates using these priorities in the selected order.","按选定顺序比较各项优先级，选择目标。","依選定順序比較各項優先順序，選取目標。"],["Rotations","Configure the flight-specific rotation processor, target point and movement prediction.","配置滑翔专用转向处理、瞄准位置与移动预测。","設定滑翔專用轉向處理、瞄準位置與移動預測。"],["Rotations.Sharp","Multiply the base horizontal and vertical turn speeds by 1.5.","将基础水平与垂直转向速度提高为一点五倍。","將基礎水平與垂直轉向速度提高為一點五倍。"],["Rotations.IgnoreKillAuraRotation","Allow ElytraTarget rotation to take precedence over KillAura while tracking.","追踪期间优先使用鞘翅追踪朝向，忽略杀戮光环的转向。","追蹤期間優先使用鞘翅追蹤朝向，忽略殺戮光環的轉向。"],["Rotations.Look","Apply managed rotation to the visible camera view.","将管理的转向同步到可见游戏视角。","將管理的轉向同步至可見遊戲視角。"],["Rotations.AutoDistance","Adjust the predicted aim point using the source automatic-distance calculation.","按自动距离计算调整预测瞄准点。","依自動距離計算調整預測瞄準點。"],["Rotations.Prediction","Predict the target position from its current movement before calculating rotation.","根据目标当前移动预测位置，再计算朝向。","依目標目前移動預測位置，再計算朝向。"],["Rotations.Prediction.Enabled","Enable target movement prediction.","启用目标移动预测。","啟用目標移動預測。"],["Rotations.Prediction.Mode","Choose linear velocity prediction or prediction with a downward gravity term.","选择线性速度预测，或加入向下重力项的预测。","選擇線性速度預測，或加入向下重力項的預測。"],["Rotations.Prediction.GlidingOnly","Apply movement prediction only while the target is gliding with an elytra.","仅在目标正在使用鞘翅滑翔时应用移动预测。","僅在目標正在使用鞘翅滑翔時套用移動預測。"],["Rotations.Prediction.Multiplier","Random multiplier applied to target velocity for each predicted aim point.","计算每个预测瞄准点时，随机抽取的目标速度乘数。","計算每個預測瞄準點時，隨機抽取的目標速度乘數。"],["Rotations.RotateAt","Use the target eye position or the vertical center of its body.","使用目标眼部位置或身体的垂直中心。","使用目標眼部位置或身體的垂直中心。"],["AutoFirework","Use rockets from the offhand or hotbar to accelerate toward the current target.","使用副手或快捷栏中的烟花火箭，向当前目标加速。","使用副手或快捷列中的煙火火箭，朝目前目標加速。"],["AutoFirework.Enabled","Enable automatic firework use while tracking a target.","追踪目标时自动使用烟花火箭。","追蹤目標時自動使用煙火火箭。"],["AutoFirework.UseMode","Use normal item interaction or a use-item packet with immediate hotbar restoration.","选择普通物品交互，或发送使用物品数据包后立即恢复快捷栏。","選擇一般物品互動，或傳送使用物品封包後立即恢復快捷列。"],["AutoFirework.ExtraDistance","Distance threshold that selects the upper instead of the lower cooldown value.","超过此距离时使用冷却范围的上限，否则使用下限。","超過此距離時使用冷卻範圍的上限，否則使用下限。"],["AutoFirework.SlotResetDelay","Random game ticks before restoring the previous hotbar slot after normal use.","普通使用后，恢复先前快捷栏槽位之前随机等待的游戏刻数。","一般使用後，恢復先前快捷列欄位之前隨機等待的遊戲刻數。"],["AutoFirework.SyncCooldownWithKillAura","Coordinate rocket use with KillAura click timing, deferring one tick when needed.","配合杀戮光环的点击时机使用烟花，必要时延后一游戏刻。","配合殺戮光環的點擊時機使用煙火，必要時延後一遊戲刻。"],["AutoFirework.Cooldown","Lower and upper firework cooldowns in game ticks, chosen by target distance.","按目标距离选择的烟花冷却下限与上限，单位为游戏刻。","依目標距離選擇的煙火冷卻下限與上限，單位為遊戲刻。"],["Safe","Add a small upward push when the next player movement would collide.","玩家下一次移动将发生碰撞时，施加轻微的向上推力。","玩家下一次移動將發生碰撞時，施加輕微的向上推力。"],["AlwaysGlide","Keep gliding while a target exists and the player is not using creative flight.","存在追踪目标且玩家没有使用创造飞行时，保持滑翔。","存在追蹤目標且玩家未使用創造飛行時，保持滑翔。"],["Rotations.Prediction.Mode.Simple","Predict position by adding target velocity multiplied by the sampled multiplier.","将目标速度乘以抽取的倍率后加入当前位置。","將目標速度乘以抽取的倍率後加入目前位置。"],["Rotations.Prediction.Mode.WithGravity","Apply velocity prediction and subtract a downward gravity displacement.","在速度预测的基础上减去向下的重力位移。","在速度預測的基礎上減去向下的重力位移。"],["Rotations.RotateAt.Eyes","Aim at the target eye position before prediction and point adjustments.","在预测与位置调整前，使用目标眼部位置作为瞄准点。","在預測與位置調整前，使用目標眼部位置作為瞄準點。"],["Rotations.RotateAt.Center","Aim at half of the target body height before prediction and point adjustments.","在预测与位置调整前，使用目标身体高度的一半作为瞄准点。","在預測與位置調整前，使用目標身體高度的一半作為瞄準點。"],["AutoFirework.UseMode.Normal","Use the ordinary item-interaction path and the configured slot restoration delay.","使用普通物品交互流程，并应用设定的槽位复原延迟。","使用一般物品互動流程，並套用設定的欄位復原延遲。"],["AutoFirework.UseMode.Packet","Send the item-use packet and immediately restore a temporarily selected hotbar slot.","发送使用物品数据包，并立即恢复临时选择的快捷栏槽位。","傳送使用物品封包，並立即恢復暫時選取的快捷列欄位。"],["Target.Priority.Type","Compare targets by entity type.","按实体类型比较目标。","依實體類型比較目標。"],["Target.Priority.Health","Compare targets by health.","按生命值比较目标。","依生命值比較目標。"],["Target.Priority.Distance","Compare targets by distance.","按距离比较目标。","依距離比較目標。"],["Target.Priority.Direction","Compare targets by crosshair direction.","按准星方向比较目标。","依準星方向比較目標。"],["Target.Priority.HurtTime","Compare targets by remaining hurt time.","按剩余受伤时间比较目标。","依剩餘受傷時間比較目標。"],["Target.Priority.Age","Compare targets by entity age.","按实体存在时间比较目标。","依實體存在時間比較目標。"]]''')
+LABELS=json.loads(r'''{"ElytraTarget":["鞘翅追踪","鞘翅追蹤"],"Enabled":["启用","啟用"],"Target":["目标选择","目標選取"],"FOV":["视角范围","視角範圍"],"HurtTime":["受伤时间","受傷時間"],"Priority":["目标优先级","目標優先順序"],"Type":["实体类型","實體類型"],"Health":["生命值","生命值"],"Distance":["距离","距離"],"Direction":["准星方向","準星方向"],"Age":["存在时间","存在時間"],"Rotations":["转向设置","轉向設定"],"Sharp":["快速转向","快速轉向"],"IgnoreKillAuraRotation":["忽略杀戮光环转向","忽略殺戮光環轉向"],"Look":["同步视角","同步視角"],"AutoDistance":["自动调整距离","自動調整距離"],"Prediction":["移动预测","移動預測"],"Mode":["模式","模式"],"Simple":["线性预测","線性預測"],"WithGravity":["计入重力","計入重力"],"GlidingOnly":["仅预测滑翔目标","僅預測滑翔目標"],"Multiplier":["预测倍率","預測倍率"],"RotateAt":["瞄准部位","瞄準部位"],"Eyes":["眼部","眼部"],"Center":["中心","中心"],"AutoFirework":["自动烟花","自動煙火"],"UseMode":["使用模式","使用模式"],"Normal":["普通交互","一般互動"],"Packet":["数据包","封包"],"ExtraDistance":["远距离阈值","遠距離門檻"],"SlotResetDelay":["槽位复原延迟","欄位復原延遲"],"SyncCooldownWithKillAura":["与杀戮光环同步","與殺戮光環同步"],"Cooldown":["烟花冷却","煙火冷卻"],"Safe":["碰撞避让","碰撞迴避"],"AlwaysGlide":["保持滑翔","保持滑翔"]}''')
+RENDER_EXTRA={
+ 'Enabled':('启用','啟用'),'Mode':('模式','模式'),'Size':('尺寸','尺寸'),'Height':('高度','高度'),'Color':('颜色','色彩'),'Radius':('半径','半徑'),'File':('图片文件','圖片檔案'),'Scale':('缩放','縮放'),'Offset':('偏移','偏移'),'Length':('长度','長度'),'Text':('文字','文字'),'Shadow':('阴影','陰影'),'YOffset':('垂直偏移','垂直偏移'),'Speed':('速度','速度'),
+}
+CHOICES={'target.priority':['Type','Health','Distance','Direction','HurtTime','Age'],'rotations.prediction.mode':['Simple','WithGravity'],'rotations.rotateAt':['Eyes','Center'],'autoFirework.useMode':['Normal','Packet']}
+def camel(path):return '.'.join('fov'if p=='FOV'else p[:1].lower()+p[1:]for p in path.split('.'))
+def update(folder):
+ renderer=runpy.run_path(str(HERE/'update-target-renderer-locales.py'))
+ for code,index in [('zh_cn',1),('zh_tw',2)]:
+  path=folder/f'display_{code}.json';data=json.loads(path.read_text(encoding='utf8'))
+  entries={'':LABELS['ElytraTarget'][index-1]};english={}
+  for p,en,cn,tw in TEXTS:
+   suffix=camel(p)+'.description'if p else'description';entries[suffix]=(en,cn,tw)[index];english[suffix]=en
+  put_module(data,PREFIX,'ElytraTarget',entries,english)
+  labels=data.setdefault('labels',{})
+  for p,*_ in TEXTS:
+   if p:labels[PREFIX+'.'+camel(p)]=LABELS[p.rsplit('.',1)[-1]][index-1]
+  for p,options in CHOICES.items():
+   for n in options:labels[PREFIX+'.'+p+'.'+n]=LABELS[n][index-1]
+  for n,v in LABELS.items():labels.setdefault(n,v[index-1])
+  # Retain a compatibility alias for the earlier first-letter-only FOV key.
+  labels[PREFIX+'.target.fOV']=labels[PREFIX+'.target.fov']
+  for field in ['descriptions','englishDescriptions']:
+   if field in data:data[field][PREFIX+'.target.fOV.description']=data[field][PREFIX+'.target.fov.description']
+  render_prefix=PREFIX+'.targetRendering';render_labels=renderer['LABELS_TW']if code=='zh_tw'else renderer['LABELS']
+  for p in renderer['paths']():
+   name=p.rsplit('.',1)[-1]if p else'TargetRendering'
+   label=RENDER_EXTRA[name][index-1]if name in RENDER_EXTRA else render_labels[name]
+   key=render_prefix+('.'+camel(p)if p else'');labels[key]=label
+   if p:
+    parent=p.rsplit('.',1)[0]if'.'in p else''
+    labels[render_prefix+('.'+camel(parent)if parent else'')+'.'+name]=label
+  for n in ['Marker1','Marker2']:labels[render_prefix+'.mode.image.source.builtin.preset.'+n]=render_labels[n]
+  data.setdefault('descriptions',{}).update(renderer['descriptions'](code,render_prefix))
+  if 'englishDescriptions'in data:data['englishDescriptions'].update(renderer['descriptions']('en_us',render_prefix))
+  path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+if __name__=='__main__':
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--folder',type=Path,default=HERE.parent/'liquidbounce-interop/resources/localization');update(p.parse_args().folder)

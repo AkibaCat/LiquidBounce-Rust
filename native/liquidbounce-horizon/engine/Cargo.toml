@@ -1,0 +1,27 @@
+[package]
+name = "liquidbounce-horizon"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+description = "Pinned Horizon native adapter for the LiquidBounce Rust port"
+
+[lib]
+path = "src/lib.rs"
+
+[features]
+# Requires patches/horizon-behavior-hooks.patch on the exact Horizon source.
+behavior-hooks = ["dep:liquidbounce-behaviors", "dep:liquidbounce-interop"]
+webview = ["behavior-hooks", "dep:liquidbounce-interop", "dep:liquidbounce-webview"]
+
+[dependencies]
+ureq = { version = "2", default-features = false, features = ["tls"] }
+url = "2"
+# The 9f42064 launcher rewrites this dependency to its staged game source.
+horizon-client = { version = "0.1.0", default-features = false }
+# package.py copies the independently verified core into the sibling core/.
+liquidbounce-core = { path = "../core" }
+liquidbounce-behaviors = { path = "../behaviors", optional = true }
+serde_json = { version = "1", features = ["arbitrary_precision"] }
+serde = "1"
+liquidbounce-interop = { path = "../interop", optional = true }
+liquidbounce-webview = { path = "../webview", features = ["cef-runtime", "horizon-gpu"], optional = true }

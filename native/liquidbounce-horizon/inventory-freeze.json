@@ -1,0 +1,65 @@
+{
+  "frozenDate": "2026-11-26",
+  "scope": "Owned production files frozen for parent integration. Canonical full-engine and actual game smoke pending.",
+  "files": {
+    "native/liquidbounce-behaviors/src/inventory_manager.rs": "805137bb3dae8e00f8f5c324f1ad837eb344600689bc313193e092b8f08d2860",
+    "native/liquidbounce-behaviors/src/vomit.rs": "9a1453756ce9a7c78def3db3d4f9715fa1b73ec70d6c1c5ed47bc435a512bdaa",
+    "native/liquidbounce-horizon/engine/src/inventory.rs": "2c274b4b783fa185a45df771bf1b140709c2e37ebfbc0b703d9fd013fc8f0a7b",
+    "native/liquidbounce-horizon/engine/src/inventory_runtime.rs": "29e983f2726eef41350e3bf09df0b3708629fe15d71068eafd9db17fb4a58c7c",
+    "native/liquidbounce-horizon/engine/src/inventory_packets.rs": "af8aebd4738081131ba24ff508350820bd0acbf849d836d6e729ae9c17068b3e",
+    "native/liquidbounce-horizon/engine/src/config/inventory_manager.rs": "c51f21fe88372fd249c7e08a93b5abf124f49a2185f16f7f20b40bbcc0f3a7b8",
+    "native/liquidbounce-horizon/engine/src/config/vomit.rs": "f78c8f092a6f5be6c7a979bf482b4d81095803e16c145d3414b0d8f606af7704",
+    "native/liquidbounce-horizon/inventory-manager-host.rs": "c7eb08a267b121a88cd8797818fa018050215a17e73950057aa3d57ff91d03c0",
+    "native/liquidbounce-horizon/inventory-manager-patch.py": "d4cdabdb07b2cfe06c47dc1a46e10e056c00556ad83f4ef139cb84feb1ecfd8a",
+    "native/liquidbounce-horizon/vomit-block-registry.rs": "a5a65530227751a54df67e84bc914a99f55092cf5a167c2b47fa986b9524b1b5",
+    "native/liquidbounce-horizon/export-vomit-blocks.py": "142cb432037b11bb9d9527ac6dda36c2ca6f70e298dcfb6b75da8d036cafa98d",
+    "native/liquidbounce-horizon/inventory-integration.md": "0bb394e6f50675ef73fa38054611eb0b6b5c17ab6fcf295f75aeb718f0036394"
+  },
+  "reports": [
+    {
+      "path": "build/vomit-source-03/report.json",
+      "passed": true,
+      "sha256": "1f87af96e419a5f7da1ce2cc1600cc11a0bacc28b1de3b3b03268baa418cf5d6"
+    },
+    {
+      "path": "build/vomit-config-03/report.json",
+      "passed": true,
+      "sha256": "9102a80dae41a4dd9ba9b4469a89195ed31a096edd847a9c2034da3aeb081faf"
+    },
+    {
+      "path": "build/vomit-registry-02/report.json",
+      "passed": true,
+      "sha256": "2d11ad3c022dfeb95fddf5f320cefb91210f4d476e7ac02f9472997d93404c5a"
+    },
+    {
+      "path": "build/inventory-manager-source-05/report.json",
+      "passed": true,
+      "sha256": "559fb7086324717727cec7936bcde4223a13a96bb79defd094460cb25e084447"
+    },
+    {
+      "path": "build/inventory-manager-13/report.json",
+      "passed": true,
+      "sha256": "c5dad97c042a3575a0aaf3e3b82f41d9ce605704226ef1037912ae8b6dfeef2a"
+    },
+    {
+      "path": "build/inventory-actor-03/report.json",
+      "passed": true,
+      "sha256": "5ac6b0ea27e22879ad57e4f2febac1900ba1556579ab7093c7a612d673a48d8c"
+    },
+    {
+      "path": "build/inventory-config-01/report.json",
+      "passed": true,
+      "sha256": "bbaa9df753482a41ddb508351a2f56483a15c6fb4804ad048fdd0da406c7f890"
+    },
+    {
+      "path": "build/inventory-manager-native-05/report.json",
+      "passed": true,
+      "sha256": "1e0fa3a57363d4fbf4275f21b3d266160d4ad56ca83aadeb01cd38b8bfa3c1b9"
+    },
+    {
+      "path": "build/inventory-runtime-03/report.json",
+      "passed": true,
+      "sha256": "87b7d1f74e782c7cd7137c5f313162e5e7628771b867819dfc4e7b47234f2668"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# SuperKnockback owned delivery
+
+ModuleSuperKnockback.kt at ae0eb396; Combat, alias WTap, key superKnockback. Settings and all three modes ported.
+
+Root owns shared wiring:
+
+- export behaviors super_knockback; engine super_knockback_runtime; config module/re-exports/ModuleKind/SettingChange/actor apply, register default `SuperKnockback`.
+- BehaviorModules `super_knockback: SuperKnockback`, `combat_cooldown: Arc<super_knockback_runtime::CombatCooldown>`. Construct the existing TimerService Arc once and clone it into CombatCooldown::new(timer.clone()) (same actual Timer.real_ticks).
+- Always install combat_cooldown as PacketListener at default priority 0, irrespective of SuperKnockback enabled. Watches outgoing Attack/Punch/SetCarriedItem before acceptance, including cancelled events, matching CombatManager. SetTime 15-sample TPS and queued Respawn reset are observed on incoming PacketEvent. This service should eventually be shared by other consumers of CombatManager.attackCooldownProgress.
+- Drain CombatCooldown's queued actor work once at the outer `client_smart_eat_wait` tick before FIFO callbacks. The native tick dispatches this event before GameTick work, so Respawn resets at the next tick rather than waiting until a later attack.
+- WorldChange calls combat_cooldown.world_change; Disconnect calls .disconnect. CancelSequences for SuperKnockback calls .cancel() immediately.
+- Add WaitOwner::SuperKnockback. Dispatch callback to self.super_knockback_callback(host,in_game,id). Every distinct waitTicks/tickUntil registers a fresh shared FIFO waiter; no new callback is consumed in the batch that registered it.
+- In actual client_attack_entity, call `self.super_knockback_attack(host,event.target)` regardless event.cancel. Attack listeners still run on a cancelled attack. Default-priority source ordering SuperKnockback comes before AutoWeapon, so call before weapon selection and carried synchronization (host snapshot of attack speed is fresh and may dispatch attribute hooks).
+- MovementInputEvent original module order SuperKnockback precedes SnapTap/AntiAFK/Twerk. Before those modules process event, if b.super_knockback.block_movement(query_running), clear forward/backward/left/right only. Keep jump/shift/sprint untouched there.
+- Source CRITICAL_MODIFICATION sprint handler runs after normal Sprint and AntiHunger INPUT: at the end of client_directional_input set event.sprint=false if b.super_knockback.stop_sprint(running). For MOVEMENT_TICK at end client_sprint_queries, set event.movement_override=0 on the same guard. Do not apply this override to client_sprint_network. The native per-input movement override stops both starting and retaining sprint.
+- Compose super-knockback-patch.py after sprint, slot, auto-weapon and Spider. Three helper names. It exposes actual Remote.was_sprinting for read/update, adds corresponding PlayerMotion bookkeeping for Horizon's resident singleplayer path, updates it after real post-player tick with the NETWORK event outcome. Packet mode uses ordinary PacketEvent-visible PlayerCommand sends and marks actual avatar plus wasSprinting true.
+
+Critical helper reads current input, actual target look direction/hurtTime/living classification, water/bubble at feet, lava, actual onClimbable, full inclusive bounding-block cobweb scan, potion effects, boat handsBusy, abilities flying, onGround, fall distance, attack speed and level tick rate. Current local PlayerMotion.no_gravity is actually false. Fly/LiquidWalk are not registered in this port yet; when either is ported its ModuleCriticals blocker must be added to this shared predicate. ArmorStand's hurtTime stays its inherited zero (it uses its dedicated last_hit wobble, not the living hurt animation); native mobs/dragon/guests/local read their real counters.
+
+One concentrated smoke covers Packet/SprintTap/WTap, separate waiter IDs, cancellation, critical skip, directional conditions and server cooldown/TPS/reset logic. Native generation/compilation remains root's official check. Full-client differential not run.
+
+`integrate-super-knockback.py --check` validates all shared-file anchors in memory without writing. The integration owner can use `--apply` after reviewing it; all source snapshots are checked again before any writes, and each replacement uses an atomic file rename. `update-super-knockback-locales.py --check` likewise leaves locale files unchanged; omit `--check` only when the integration owner merges the help text.

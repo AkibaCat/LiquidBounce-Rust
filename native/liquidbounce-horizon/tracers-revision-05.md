@@ -1,0 +1,3 @@
+# Tracers revision 05
+
+After revision 04 corrected production SettingsPatch construction, the focused smoke generator is aligned for the eventual complete validation: it extracts the actual production SettingsPatch declaration, including module and absence of Default, and its test constructs that declaration explicitly. The earlier declaration-only fixture had supplied Default and omitted module, hiding the engine integration mismatch. Production behavior/config/runtime/native code remain revision 04. No smoke was repeated per root's request; previous smoke and aggregate evidence remain historical.

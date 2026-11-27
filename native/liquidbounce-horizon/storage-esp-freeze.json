@@ -1,0 +1,53 @@
+{
+  "feature": "StorageESP",
+  "date": "2026-11-26",
+  "moduleCountDelta": 1,
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "horizonMixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "focused": {
+    "passed": true,
+    "compileEvidence": "build/storage-esp-smoke-02/report.json",
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_storage_esp"
+      ],
+      "helper_names": []
+    },
+    "patchedFiles": 12,
+    "sharedSteps": 18,
+    "sharedFiles": 8,
+    "scope": "Final native patch composition after completing both native effect-invisibility guards for selected storage silhouettes. Passing production config/runtime/geometry and GPU usability evidence retained from smoke-02. No successful test or matrix repeated."
+  },
+  "files": {
+    "native/liquidbounce-horizon/storage-esp-game.rs": "7adc0c044c47b8702b44b457d449b74d075298630614404ce27e543e19f27e71",
+    "native/liquidbounce-horizon/storage-esp-model.wgsl": "aca37a386745978653f8517b38061b6475b8cfca7fbd7faa11c149a3daf3aa37",
+    "native/liquidbounce-horizon/storage-esp-sobel.frag": "cc27960c6cdd84809dfec99e00133934e58777f51651f4fad496ed28b8ee05cd",
+    "native/liquidbounce-horizon/storage-esp-render.py": "5aebfc660f5f806f5de86f58dbd10902388afe048b105b1ed7c5bd4f9a40544e",
+    "native/liquidbounce-horizon/storage-esp-patch.py": "3805d0929f5477f84cc1e34103bda39594ca6fc9a4275a41b38e0adfc9e1f217",
+    "native/liquidbounce-horizon/integrate-storage-esp.py": "713312fd141e73856e4a04ad4fd1406fb29e06274d37fb44ad18ec7b4bffc78e",
+    "native/liquidbounce-horizon/update-storage-esp-locales.py": "4becdc3956608945b45846c6181f5f4904b2289c255d6081cc29d4b539c4007c",
+    "native/liquidbounce-horizon/test-storage-esp.py": "393dd49381ce926aca16df08594197915ecd6062d8cc26e2424c5820003ab59d",
+    "native/liquidbounce-horizon/storage-esp-smoke.rs": "be3aff3e0b299f628ffc9dab151226b4137cb7416e8883997cd05b62222bcf47",
+    "native/liquidbounce-horizon/storage-esp-integration.md": "fa5d7d753f93cf828c4ccafe79ab9dd16cc293465b86d6dfbbec422c44cdd9ae",
+    "native/liquidbounce-horizon/generate-storage-esp-freeze.py": "b16814c4a4a3eb601a2ba492e38efdd60a4933d9059923f14974453158113ce7",
+    "native/liquidbounce-horizon/engine/src/config/storage_esp.rs": "0a579ed6125c02a43520903c9b4f492318db548e19789cf562a5e4943af25689",
+    "native/liquidbounce-horizon/engine/src/storage_esp_runtime.rs": "89b7555abda63e83d75e6773111bf24163e293ae191c56eca7bebeb02e6cfd33",
+    "native/liquidbounce-behaviors/src/storage_esp.rs": "4363b06a57ba5d57e5d6f589891821a923e571b34d64379498f0010667314504",
+    "native/liquidbounce-behaviors/src/storage_esp_surface.rs": "58d0a92a6f13dfa30a935a5296e8f1bd279b2c2e738f293bfd71629e524511ba",
+    "build/storage-esp-smoke-01/report.json": "992b83079be7d6ea70492cf1cad16bef515978b4c907706aff452d025302848c",
+    "build/storage-esp-smoke-01/test.log": "228a481627ec0d5f98fb8cf6f03f0b268cf825d09953e4f53d7b4f813f6ccef1",
+    "build/storage-esp-smoke-02/report.json": "649436482b28504690e6df6a01a75b6371e58ac920c23213a71629df5beaf626",
+    "build/storage-esp-smoke-02/test.log": "af8c1f1d3596803b80843eff9a3ff0cfe1523024a43247b166b88f301099af92",
+    "build/storage-esp-smoke-03/report.json": "0a5c478fa86379a04fc4b9aa92adf17fcafebdd5b83f000223dc292a3730e0bb",
+    "build/storage-esp-smoke-04/report.json": "081b5d6de673b38cdd609699ca2655f2b70d1e04a977e50e158f9ef0cc004725",
+    "build/storage-esp-smoke-05/report.json": "6873a59df739c783590c3f4517297018973a2eb1dd5437dbbdcf0b570cd0706e",
+    "build/storage-esp-smoke-02/localization/display_zh_cn.json": "1b9238a74efa6b34773a7b1a3c611c688b22754e37c427f6de3ea0cbf2768873",
+    "build/storage-esp-smoke-02/localization/display_zh_tw.json": "8d71a10c99e3b94bca230ea3dc540bbe148f16408823c193a41c942c403d9172"
+  },
+  "limits": "No shared/stage/upstream writes. Native Game compilation, actual game parity and performance remain root aggregate verification. Current native map snapshot refreshes per frame instead of source scanner caching. AutoBreak/ItemScroller untouched."
+}

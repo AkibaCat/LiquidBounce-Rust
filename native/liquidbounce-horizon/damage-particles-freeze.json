@@ -1,0 +1,39 @@
+{
+  "module": "DamageParticles",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_damage_particles"
+      ],
+      "helper_names": []
+    },
+    "patchedFiles": 30,
+    "scope": "Production behavior, engine runtime/config and native capture compiled with declaration-only Host/registry/native entity providers; actual shared Tree/parsers and patched living_health setter. One focused Cargo smoke, native patch composed in memory, copied Chinese dictionaries. Actual game build and visual validation remain aggregate."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/damage_particles.rs": "57dd8338ea42ee368b2c549183b5312647d96a8b228868024062969ec963d892",
+    "native/liquidbounce-horizon/engine/src/config/damage_particles.rs": "75dd2ba3d77a4b91468394728a0656b918cd08cc507fee99696c2bab4a77b3fe",
+    "native/liquidbounce-horizon/engine/src/damage_particles_runtime.rs": "17cdbe8089c325156a870ea32b433d6d778514956e143b1eb17d64e52f9fbe0e",
+    "native/liquidbounce-horizon/damage-particles-host.rs": "2638b61145720eed45c27a1311ba4b1d10b7ad55738f5fd12b569ffaf70b3982",
+    "native/liquidbounce-horizon/damage-particles-game.rs": "34884db49d967e1d5967864cf529988946baf7be6e62726e27f5d5d9a0d9d0fa",
+    "native/liquidbounce-horizon/damage-particles-capture.rs": "e41aaf5de6670788797003bf47ee003bcc18e395fa5c100dc0da230abfcf0d4c",
+    "native/liquidbounce-horizon/damage-particles-dragon.rs": "a251f1803e1f81be892177bfc7bc38d27a37384208f52f71fa5b427a90882cc7",
+    "native/liquidbounce-horizon/damage-particles-patch.py": "a9a42c4b3ef4a2a03fc9bd6ef92f90ddb642628960a9becf1b7a4933d7d9b474",
+    "native/liquidbounce-horizon/damage-particles-smoke.rs": "2281ccee1b6a6a903343bce7a6c3a900450debdd10412b559e3b8657dc125fdd",
+    "native/liquidbounce-horizon/test-damage-particles.py": "ab423a9487cd4f610f3ff5f4f59f779bd0b72c8dbd92bd67f806140dc6f03dde",
+    "native/liquidbounce-horizon/integrate-damage-particles.py": "77b32574ef2eb8ef3c57b98306d56350173a99307a383bed13662586b4e3a8cc",
+    "native/liquidbounce-horizon/update-damage-particles-locales.py": "9e841b33a50bf7166da75320f564961bec7cd715724f0dab260a428054927e0b",
+    "native/liquidbounce-horizon/damage-particles-integration.md": "57bbfc24328c79e9fe86aed5c9469ebf8a4f87cf550a4db0e96f5d518a731673",
+    "native/liquidbounce-horizon/generate-damage-particles-freeze.py": "8ef6b7108edea15e69cf5683ef31006ff375152527672e2e39e74359b2d80641",
+    "build/damage-particles-smoke-02/report.json": "d971cf4fd57dd54e94dbdb31a29b5c849c06528fec3eeab82c74b539bb9f101e",
+    "build/damage-particles-smoke-02/test.log": "1774c472f6fd413a3496df660134204f9aed2ff33357be8026cb795910dddb01"
+  }
+}

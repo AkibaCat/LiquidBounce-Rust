@@ -1,0 +1,22 @@
+{
+  "compiled": false,
+  "rustExecuted": false,
+  "generatedRustSourcesParsed": 4,
+  "preparedRustSmokeParsed": true,
+  "checks": [
+    "original comparator directions and stable tie",
+    "strict threshold with all-valid fallback",
+    "real BlockItem/default state",
+    "actual player/held/boots collision context at ZERO",
+    "dynamic empty-context full cube",
+    "raw-selected blockCount and offhand",
+    "full native patch composition"
+  ],
+  "sha256": {
+    "scaffold_block_selection.rs": "44faa4ba6b1d49991ab01f324e706a51d05f09e0a5a314d1a1a111f1ff0e4fa1",
+    "scaffold-selection-native.rs": "af276618b039a0c675b4ff23cf19b56e36b86f6cea9c84c3c0351b81f729bafe",
+    "scaffold-selection-host.rs": "e774cecdc903b981c04ac1b8fa501c83813cbc1df64527a6cc36370447c126d2",
+    "scaffold-selection-patch.py": "0ff433226dd3b492ba4ebae57ca70824e77f317a3f6a921784a6306a88979257",
+    "scaffold-selection-smoke.rs": "9a95416c7460e68dd0675739b5097279ed64b15131358257154ce814445f76f7"
+  }
+}

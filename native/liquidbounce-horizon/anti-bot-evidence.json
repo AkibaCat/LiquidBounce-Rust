@@ -1,0 +1,62 @@
+{
+  "module": "AntiBot",
+  "date": "2026-11-26",
+  "liquidbounce_commit": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "horizon_commit": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "minecraft": "26.3",
+  "modes": [
+    "Custom",
+    "Matrix-2021-10-18",
+    "Intave-2022-07-28",
+    "Horizon-2021-10-18"
+  ],
+  "active_primitive_settings": 23,
+  "custom_primitive_settings": 19,
+  "localized_descriptions": 61,
+  "verification": {
+    "command": "python native/liquidbounce-horizon/test-anti-bot.py",
+    "planned_smoke_runs": 1,
+    "result": "passed",
+    "tests_passed": 11,
+    "tests_failed": 0,
+    "native_files_in_memory": 7,
+    "shared_edits_in_memory": 27,
+    "shared_files_in_memory": 9,
+    "shared_or_staging_writes": false,
+    "official_compile": "not_run_by_owner",
+    "kotlin_differential": "not_run"
+  },
+  "minecraft_bytecode": {
+    "merged_jar_sha256": "d8f6aba2cba5af1c2b71c6959aae7b6dcf9029ea7ce5c023a8cff0ba0097df65",
+    "entity_pitch": "finite guard, modulo 360, clamp [-90,90]",
+    "player_info_game_mode": "DEFAULT_MODE at construction; missing PlayerInfo is distinct from missing raw Entry mode"
+  },
+  "owned_files": {
+    "native/liquidbounce-behaviors/src/anti_bot.rs": "691d986cc124c2cfc7d723a03af398df98eeb23668e7be11d8d4aa625c11b5a5",
+    "native/liquidbounce-horizon/engine/src/anti_bot_runtime.rs": "142a2a26db6df43f89e371e6c099ae463965f4ebf9cdf8241a9dec0189a49a95",
+    "native/liquidbounce-horizon/engine/src/config/anti_bot.rs": "0e162bd26da4c3383bd9d254ec6e1f77d92a4cbbd45a18d57f3cb7c992230641",
+    "native/liquidbounce-horizon/anti-bot-native.rs": "fb164f91fdc0099fd6e536e3c4dd622d74c75a3b7b3d611569b4a5c182fca68e",
+    "native/liquidbounce-horizon/anti-bot-remote.rs": "8b487952f7f41b07ed01d1f138b93d0cbb4d5de699bbf1fb31a353e820530540",
+    "native/liquidbounce-horizon/anti-bot-host.rs": "dd5d9e2c546c15c03c01b3759aa93d53310023f498c091ec8fa27d742f892937",
+    "native/liquidbounce-horizon/anti-bot-patch.py": "183add3915bddde1fd2d39a2bf7064e92dfc7c83b0621b66903e9926ac1f43e2",
+    "native/liquidbounce-horizon/integrate-anti-bot.py": "658a29e293039784b370044f11a40effb994970157ca628b392786c1712888df",
+    "native/liquidbounce-horizon/anti-bot-smoke.rs": "736528e5b7b312a9a705635a801a28f974d6d441e7dc48e83790889ca511e792",
+    "native/liquidbounce-horizon/anti-bot-config-smoke.rs": "f7c04de4525ba861aadb2e14429d40a9511b4893f3d8cd124f08f1368c506a65",
+    "native/liquidbounce-horizon/test-anti-bot.py": "20257dcfc99a6ea195719010481c2808ad2147bec9e9fdcef0084fbbfaca9256",
+    "scripts/update-anti-bot-localization.py": "b4acfa58043efe96aba1be71adcdbac6e18b04dc9637f7ec7d79b2740242e459",
+    "native/liquidbounce-horizon/anti-bot-java-facts.txt": "f57b92dfd5797fe4055fdb5697b5232237f771ecfadb8ab3635be2f1dc1be086",
+    "native/liquidbounce-horizon/anti-bot-integration.md": "020a8644449a1a56a5747f2706305f356f2d18e7e2a42f820d4427cbe556f86b"
+  },
+  "compile_followups": [
+    {
+      "batch": "164-01",
+      "fix": "remote_player_name &str converted to owned String at shared closure call",
+      "retested_by_owner": false
+    },
+    {
+      "batch": "164-02",
+      "fix": "String kind.id uses as_str() rather than ambiguous AsRef",
+      "retested_by_owner": false
+    }
+  ]
+}

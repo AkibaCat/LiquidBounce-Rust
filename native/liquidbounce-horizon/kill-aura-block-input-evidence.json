@@ -1,0 +1,55 @@
+{
+  "feature": "KillAura AutoBlocking native release suppression and local main-hand pose",
+  "minecraft": "26.3",
+  "upstreamLiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "upstreamHorizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "status": "owned-patch-static-passed; awaiting serial integration and combined official native check",
+  "callback": "existing client_kill_aura_state(&self,enforced:&mut i32,pose:&mut bool), owned by kill-aura-host.rs/kill-aura-patch.py",
+  "integrationOrder": [
+    "smart-eat-patch.py",
+    "auto-bow-patch.py",
+    "kill-aura-patch.py",
+    "kill-aura-block-input-patch.py"
+  ],
+  "staticVerification": {
+    "command": "python native/liquidbounce-horizon/test-kill-aura-block-input.py",
+    "result": "passed",
+    "nativeFilesComposedInMemory": 7,
+    "temporaryRustfmt": true,
+    "rustExecution": false,
+    "sharedStagingWrites": false,
+    "autoWalkBothOrders": true,
+    "releaseBaselines": [
+      "vanilla",
+      "SmartEat",
+      "AutoBow",
+      "current full staged source"
+    ]
+  },
+  "parity": [
+    "MixinMinecraft release-only enforced hand protection; original SmartEat logical use starts/repeats unchanged; AutoBow updating and screen guards retained",
+    "Integrated use keeps hand/screen guards; remote mod use keeps actual in-hand guard",
+    "Real minecraft:swords tag; existing engine pose gate includes BLOCK animation or running SwordBlock",
+    "First-person render expressions use true / MAIN_HAND / 7200; item model owner stays real",
+    "Modern BLOCK uses native ItemPose::Using; legacy 1.8 look remains independent",
+    "Only local main-hand ArmPose is overridden; actual using/blocking and offhand pose remain unchanged"
+  ],
+  "sourceEvidence": [
+    "LiquidBounce/MixinMinecraft.java handleKeybinds releaseUsingItem",
+    "LiquidBounce/MixinFirstPersonHandsAndItems.java hookUseAction/hookIsUseItem/hookActiveHand/hookItemUseItem",
+    "LiquidBounce/MixinAvatarRenderer.java injectArmPose",
+    "LiquidBounce/ModuleSwordBlock.kt shouldAnimateSwordBlock/shouldHideOffhand/ApplyToThirdPersonView",
+    "Horizon/game/item_use.rs use_pose maps BLOCK to Using"
+  ],
+  "ownedFiles": {
+    "kill-aura-block-input-host.rs": "de0ed0f0dad126502a907d1f9b26ea5eb427bc226fb6dc9c15a98fe0ed03db5a",
+    "kill-aura-block-input-patch.py": "21e7edd03f07d205c08457b58ea5293345c8b0c94c73d50ae9d21c3ad1033219",
+    "test-kill-aura-block-input.py": "8f1d17159c1219a9af2faeaf40886e0ab7133f587e40e90a3c80466c8a996371"
+  },
+  "remaining": [
+    "Root official native/engine batch check",
+    "Root full SwordBlock adapter must gate third-person flag with actual ApplyToThirdPersonView setting; frozen default true is used here",
+    "Full SwordBlock visual condition and offhand hiding must extend these seams independently",
+    "Game visual parity verification"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "feature": "StorageESP",
+  "revision": 2,
+  "parent": "storage-esp-freeze.json",
+  "cause": "Official Check159-01 native API generator signature source",
+  "validation": "Only changed hook placement composed against official stage in memory; one native_hooks signature and zero sibling signatures. Successful prior GPU/config checks not rerun.",
+  "files": {
+    "native/liquidbounce-horizon/storage-esp-game.rs": "09a349d858155e291fcf6977a8ebdbc11ef70cb00664c202cbc328819b00f5cd",
+    "native/liquidbounce-horizon/storage-esp-patch.py": "3d13e9ed7c60205eff3012b688d603676ad6fd9f6da90742b0e35b60fe37eb81",
+    "native/liquidbounce-horizon/storage-esp-generator-fix-02.md": "4919f47e880a29a9bd9225b86a4d6cfc8447bf4e68a1d48664ee5cc1667af493"
+  }
+}

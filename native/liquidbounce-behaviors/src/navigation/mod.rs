@@ -1,0 +1,41 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+//! Minecraft Agent 0abf69ac navigation primitives. AutoWalk remains unregistered
+//! until the complete navigator, terrain, movement and native body are wired.
+pub mod astar;
+pub mod aabb;
+pub mod auto_walk;
+pub mod background;
+pub mod destination;
+pub mod geometry;
+pub mod glide;
+pub mod flight;
+pub mod flight_body;
+pub mod flight_follower;
+pub mod flight_handling;
+mod flight_math;
+pub mod flying;
+pub mod input;
+pub mod java_case;
+pub mod owned_search;
+pub mod progress;
+pub mod replanner;
+pub mod route_storage;
+pub mod ride;
+pub mod reach;
+pub mod search;
+pub mod staged_search;
+pub mod simulation;
+pub mod terrain;
+pub mod voxel_shape;
+pub mod walk;
+pub mod walk_jump;
+pub mod walk_control;
+pub mod walking_runtime;
+pub mod route_report;
+pub mod snacking;
+pub mod options;
+pub mod look_ahead;
+pub mod heading;
+pub mod navigation_context;
+pub mod course;
+pub mod navigator;

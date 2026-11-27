@@ -1,0 +1,126 @@
+{
+  "frozenDate": "2026-11-26",
+  "revision": 1,
+  "pinnedSources": {
+    "LiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "Horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "Horizon-Mixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "scope": "Owned ResetVL files frozen before shared registration. Exact original Kotlin/full coroutine/Timer oracle, per-step behavior/Timer/FIFO differential, shared config parser extraction, exact runtime/native helper focused consumers. Explicit providers remain and no actual game proof is claimed.",
+  "files": {
+    "native/liquidbounce-behaviors/src/reset_vl.rs": "5fe06c347e7efc72b3dfa613e3814846c3ab438fa5c0380e57433439a5615664",
+    "native/liquidbounce-horizon/engine/src/config/reset_vl.rs": "129d64fe40c94b5efea629f7f653be871e684ebd7bfc9e99bb327e8426fa685d",
+    "native/liquidbounce-horizon/engine/src/reset_vl_runtime.rs": "a647438619edbe9f4ea5b268bc3917294c434b06983edb73a442a26e829d2c25",
+    "native/liquidbounce-horizon/reset-vl-host.rs": "da6955a7d7f8fea8cf7b79549ba7a9c4624732c0eba450080d04534caa64cc87",
+    "native/liquidbounce-horizon/reset-vl-patch.py": "d7b002ac66c9ec3edb53d9997945f40b813dce6bfeb7dc7480dbeabaacfd7bb0"
+  },
+  "supportingFiles": {
+    "native/liquidbounce-horizon/collect-reset-vl-original.py": "52ff5527248104bd31b0cf1e41bcba6ceb2e2213abd1bc37da4e04235084f627",
+    "native/liquidbounce-horizon/generate-reset-vl-freeze.py": "40b5680dafdf7c8db00040b243f224e05474cc17c8548994365645f3de570040",
+    "native/liquidbounce-horizon/reset-vl-config-tests.rs": "8e9c87e64b8209fab787e85ffabe430c0d69c9b1be5df3442e14bffbe16aad06",
+    "native/liquidbounce-horizon/reset-vl-integration.md": "d8a7fdcd8814a6aa07a3d97da029e8205252a0037728e566bed4688f7aa2ba3d",
+    "native/liquidbounce-horizon/reset-vl-native-fixture.rs": "2ce7598449682bbccb00b8a4c9fc3867966d123d8b2dfe9072865674bcdde7c4",
+    "native/liquidbounce-horizon/reset-vl-runtime-fixture.rs": "93c169141c93eee1927199f2d59c0879779570bbe15bd80cf72ee3c359ff3204",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/AddonProvider.kt": "b2205562f242b66c0d3ba036c3cbea0e744740a0fbf041213bd3cbd5cb7730c7",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/AtomicProvider.kt": "02ffcdcc00dadb3363c200779326182857072de2c03461e016e4039ad061f0a2",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/ClientProvider.kt": "aa9c62453bf6a7c3ef7b9ac3350d679dcc8a5e56f6706b186e65f94d5dcf01e8",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/DebugProvider.kt": "dacdefd9ebd5cc07f89060418f22274744f9a2b550046e988f32c2289f9429db",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/ErrorProvider.kt": "5d7ef3be2a5f35e681e849ede8facf1039275ec4f248a83def2fee8991cd7d89",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/EventProvider.kt": "e011a10e0ce41e8b4d35a547ef386a88582875b0ae2a0700722024b6e754f054",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/Events.kt": "df2d3c8a965268724cf66a326cb723f0e5c9b5f7d7e04a48de32e7c338862314",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/Fixture.kt": "a1ecdf4fdf7622052d935bb1eab6d9accf37b7f54487a8fcaadeec1572517309",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/LiquidBounceProvider.kt": "70dbc77ce8331b23ca19892ff2293b122d97fb29efc3fc6bb7be5711ff2e968a",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/MainDispatcherProvider.kt": "d0b5130a517b67d098c9f66479ff5dcc853c59e349075d1457441f6130edfeba",
+    "native/liquidbounce-horizon/reset-vl-source-fixture/ModuleProvider.kt": "126a022cdf96da60c1796d7682f40c74deafabfa82c77cb498e403db0649851d",
+    "native/liquidbounce-horizon/reset-vl-tests.rs": "a89d3fabffe9b612204c5709014c1166202ed4aca12ae211b90461c1b6b1f6ca",
+    "native/liquidbounce-horizon/test-reset-vl-consumption.py": "e8b9b48baddc03fee26f45e33575a58ec5daa04ef5b181e2201cebf46bb33c04",
+    "native/liquidbounce-horizon/test-reset-vl.py": "64de48b44a5bf5a304a2c97c217fb5f14adb43133b6953b033332c4c8174f8fd",
+    "native/liquidbounce-horizon/update-reset-vl-locales.py": "687d431b3092b79d9de37620313ef4b4cea43ffdb8c3d8548179be55c855f694"
+  },
+  "originalSources": {
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/exploit/ModuleResetVL.kt": "a5cd577973c8dcadb36a6a0a9eeaee9c700625462cc2358205df01ecc2e0a740",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/event/CoroutineTicker.kt": "d4dc3b9c58c3e1ed5557a1b3a2bcc238546581ca94c8d1cde87973be893f591a",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/event/SuspendHandlers.kt": "24e7d3b179ac0f76f8963c9c968b8253dc3b081ce730041e9c2d8f4a6bd80ede",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/event/SuspendHandlerBehavior.kt": "06392b012c08e26fa732b837cb5ab83d144d51a7f5105c15b4c42d4398a90817",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/event/EventListenerScope.kt": "c23f89a0ec78a9538cfe8144c19b925493f16912bd7c56887dd265e76b1f34c2",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/event/Guards.kt": "2f3a3efdd8d91a8c786508f8c5898eb153088762cb6155eaf516591a3647f91d",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/client/Timer.kt": "dd4cdbebbd4bc53ec035e095d379f60ac22016042e323020e8e9d2ff3789a86f",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/client/RequestHandler.kt": "08578caa4c2158747ff9f73cbc944ec96b5a3ebfb32b290b108eeab9387268ab",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/kotlin/Priority.kt": "326bf22fa20ddee02b1a6465e06ccd985b27e2fb27706e873c64c09ba2ea81d0"
+  },
+  "reports": [
+    {
+      "path": "build/reset-vl-consumption-02/report.json",
+      "passed": true,
+      "sha256": "1c38e874d17e6715f752c845a0205a4090104a75cc6c78d4ff61ff7a1c087ec8",
+      "scope": "Exact ResetVL runtime and native helper bodies; actual core registry and CancelSequences, TimerService implementation, shared CoroutineTicker body and actual glam DVec3. Explicit State/registration, Host, Game/player providers. Webview/no-webview and localization copies only; no complete concrete Game/engine or game claim."
+    },
+    {
+      "path": "build/reset-vl-source-03/report.json",
+      "passed": true,
+      "sha256": "48c40657495b4b849bfbcf6b2bac9b756d3ca61c832fc69d42e4087f0451f171",
+      "scope": "Byte-identical original ResetVL, complete CoroutineTicker/SuspendHandlers/SuspendHandlerBehavior/EventListenerScope/Guards and Timer/RequestHandler/Priority. Actual Kotlin coroutine runtime and JDK25. Explicit settings/module/player/events, immediate Main render dispatcher and JDK AtomicReference-backed atomicfu API providers. No original complete-client or game claim."
+    },
+    {
+      "path": "build/reset-vl-tests-03/report.json",
+      "passed": true,
+      "sha256": "10071442b606c538e66954da36e27a9a49f3fb3562a460b1daa8d4865f8d0bda",
+      "scope": "Exact production ResetVL and Timer bodies with shared CoroutineTicker body; declaration-only ResetVl WaitOwner/config registration providers. Per-step differential against byte-identical original Kotlin/full coroutine runtime/Timer. File+Interop config extraction with actual shared parsers. No complete engine or game claim."
+    }
+  ],
+  "preservedHistoricalReports": [
+    {
+      "path": "build/reset-vl-consumption-01/report.json",
+      "passed": false,
+      "sha256": "04d47edb8cf48246d2a788c5e36c9312b0874df073527d99afc7c1188fd7aa23",
+      "scope": "Exact ResetVL runtime and native helper bodies; actual core registry and CancelSequences, TimerService implementation, shared CoroutineTicker body and actual glam DVec3. Explicit State/registration, Host, Game/player providers. Webview/no-webview and localization copies only; no complete concrete Game/engine or game claim."
+    },
+    {
+      "path": "build/reset-vl-source-01/report.json",
+      "passed": false,
+      "sha256": "271e2b14f430fe2e5f9d253fa70c47efdacc1f7c8b1949d8810ddd26d39b543c",
+      "scope": "Byte-identical original ResetVL, complete CoroutineTicker/SuspendHandlers/SuspendHandlerBehavior/EventListenerScope/Guards and Timer/RequestHandler/Priority. Actual Kotlin coroutine runtime and JDK25. Explicit settings/module/player/events, immediate Main render dispatcher and JDK AtomicReference-backed atomicfu API providers. No original complete-client or game claim."
+    },
+    {
+      "path": "build/reset-vl-source-02/report.json",
+      "passed": true,
+      "sha256": "fca856119af3c1fae97800777442aa9eef64fc21e3fa0a08d3b9456b18a62dd2",
+      "scope": "Byte-identical original ResetVL, complete CoroutineTicker/SuspendHandlers/SuspendHandlerBehavior/EventListenerScope/Guards and Timer/RequestHandler/Priority. Actual Kotlin coroutine runtime and JDK25. Explicit settings/module/player/events, immediate Main render dispatcher and JDK AtomicReference-backed atomicfu API providers. No original complete-client or game claim."
+    },
+    {
+      "path": "build/reset-vl-tests-01/report.json",
+      "passed": false,
+      "sha256": "f59f2b4c5f99f5b45b45daffe84e4e768ff1150ab416936750d69e2bf155cadb",
+      "scope": "Exact production ResetVL and Timer bodies with shared CoroutineTicker body; declaration-only ResetVl WaitOwner/config registration providers. Per-step differential against byte-identical original Kotlin/full coroutine runtime/Timer. File+Interop config extraction with actual shared parsers. No complete engine or game claim."
+    },
+    {
+      "path": "build/reset-vl-tests-02/report.json",
+      "passed": true,
+      "sha256": "652e04d885ecbfbb2652447582094e6917c47bc1626ae58ff9ef9ec92f812799",
+      "scope": "Exact production ResetVL and Timer bodies with shared CoroutineTicker body; declaration-only ResetVl WaitOwner/config registration providers. Per-step differential against byte-identical original Kotlin/full coroutine runtime/Timer. File+Interop config extraction with actual shared parsers. No complete engine or game claim."
+    }
+  ],
+  "vectors": {
+    "scenarios": 154,
+    "steps": 3699,
+    "oracleSha256": "b098713baf43cb60c14c5533d1a4703bda2eb504a6e99958b59b01ea179e6df3"
+  },
+  "sharedFilesAtHandoff": {
+    "native/liquidbounce-core/src/module/synchronous.rs": "944e79050c0532742ec1f52a91a2affb3e52812700753a18ac37eec23d50b859",
+    "native/liquidbounce-horizon/engine/src/config.rs": "fa9d14c681e582dda137c035bb411331595a26817e70760cc6cb9bd958a9483e",
+    "native/liquidbounce-horizon/engine/src/coroutine_ticker.rs": "3d55fa76725afd219edd6f6d7555867524b1aaa23240750ce311378d9b84a631",
+    "native/liquidbounce-horizon/engine/src/timer_runtime.rs": "0c795f17d435c2d40fab4e4289c002de8728871e4ef5869d30c0aec30286c27c"
+  },
+  "sharedScope": "Handoff hashes only. Shared behavior/lib/config/actor/runtime and aggregate patch/production staging/package files remain root-owned; none changed by ResetVL work. Locale updater was run on copies only.",
+  "fixtureBoundaries": [
+    "Original Kotlin source byte-identical. Settings/module/player/events and immediate Main dispatcher are explicit providers; atomicfu API uses actual JDK AtomicReference rather than atomicfu implementation.",
+    "Differential uses unchanged shared FIFO body with declaration-only ResetVl WaitOwner variant when absent; config uses actual extracted Tree/parser bodies with pending declaration providers.",
+    "Runtime consumption uses exact runtime/Host bodies, actual core registry/TimerService/FIFO/glam with explicit State/Host/Game/registration providers. TimerService PacketListener is excluded and its otherwise-unused Mode import removed only from fixture.",
+    "Source03 includes raw denormal/max/infinity/NaN float payload requests as well as defaults/ranges/out-of-range, count boundary/overflow, nested tick/exclusive behavior, lifecycle/settings changes, FIFO external mutations and Timer competition/off-thread queries."
+  ],
+  "pendingChecks": [
+    "Root shared registration/config actor integration and publishing actual provider.running on every relevant state change.",
+    "Root aggregate patch/API generation, complete cumulative concrete Game/engine build and source package validation.",
+    "Root TestEngine/actual game verification, including complete-client shared event ordering and Chinese display."
+  ]
+}

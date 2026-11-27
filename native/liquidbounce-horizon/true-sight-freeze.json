@@ -1,0 +1,35 @@
+{
+  "module": "true_sight",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_true_sight_entity",
+        "client_true_sight_markers"
+      ],
+      "helper_names": []
+    },
+    "scope": "Exact owned behavior/config files with shared Tree/parser bodies; short behavior smoke; owned patch applied to current staged actual sources in memory; locale updater on copies. Runtime/native full Game compilation remains final aggregate validation."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/true_sight.rs": "36f2295d5a04d55a173857c9baf6669ba309eed63bcc6469ab1f1195ec8ce48a",
+    "native/liquidbounce-horizon/engine/src/config/true_sight.rs": "aedfc09f2bddcfee590a54e122717c8d33b3cb21e569c049cb4f0b61eb3c359b",
+    "native/liquidbounce-horizon/engine/src/true_sight_runtime.rs": "c78bdb6b04ffc3fbf60c9d93a439ef385502f52223742c14c3e9bfa656ffcfb2",
+    "native/liquidbounce-horizon/true-sight-host.rs": "ccbb15953a401ee6361bf92e26b1066c5fe3e35f92bda88e0e809ccf8e51f34b",
+    "native/liquidbounce-horizon/true-sight-patch.py": "2c887554d07b690a4f0228f73acb665f917009cc83f6570f441918662ff0dc53",
+    "native/liquidbounce-horizon/true-sight-smoke.rs": "43de69940e3a479796bee25b7da0d0a34ac630a681eb74769cc57072f04ba6f1",
+    "native/liquidbounce-horizon/test-sight-potion-clip.py": "a3a0608af751b50fc9a0c1256e35aa0a32cfbc19892da38e056a40f09a7dd5b1",
+    "native/liquidbounce-horizon/update-sight-potion-clip-locales.py": "7003dc3e8d754fcb1f2658980b4841b66baef38c14dd1d6f162a8e5975114b1c",
+    "native/liquidbounce-horizon/sight-potion-clip-integration.md": "5000461302a3d95b9c8bfc301c1fe0865bf09f9acd0c5f2a47e685c96d005d3a",
+    "build/true-sight-smoke-01/report.json": "911c9b2c6ca4729247d2b371a822e2145bca1d600a7ec658d9007721156ada95",
+    "build/true-sight-smoke-01/test.log": "6e3173d18f7e46d9a7dad5497ce7aa9e2a46f6f1aa19d97adc581dbbeaafe73e",
+    "native/liquidbounce-horizon/true-sight-render.rs": "2e3189a8f319d87245477f1497e60cc4cbf66877877be856b21dcd8297d49ce5"
+  }
+}

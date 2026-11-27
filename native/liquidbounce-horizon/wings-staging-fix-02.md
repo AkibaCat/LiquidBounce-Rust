@@ -1,0 +1,1 @@
+Wings revision 02 (2026-11-26): official Check139-01 found one extra queue argument in the renderer preparation call. The owned patch now calls the actual five-argument prepare signature. Renderer logic and prior smoke03 evidence are unchanged; no GPU/smoke repeated. Root regenerates staging and performs the next official compile.

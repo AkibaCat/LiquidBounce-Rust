@@ -1,0 +1,66 @@
+{
+  "feature": "Clutch complete native canCatch and predictFall dependency",
+  "minecraft": "26.3",
+  "upstreamLiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "upstreamHorizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "status": "owned-native-prediction-static-passed; Clutch NOT registered until Scaffold dependency complete",
+  "integrationOrder": [
+    "block-placement-patch.py",
+    "crosshair-clicker-patch.py",
+    "falling-forecast-patch.py",
+    "clutch-prediction-patch.py",
+    "future complete Scaffold and Clutch engine integration"
+  ],
+  "host": "client_clutch_query(&mut self,request:&str)->String",
+  "request": {
+    "scaffoldEnabled": "required actual Scaffold.enabled Boolean",
+    "blockCount": "required actual Scaffold.blockCount integer",
+    "minFallDistance": "required actual Clutch setting"
+  },
+  "returns": [
+    "passenger",
+    "fallFlying",
+    "flying",
+    "scaffoldEnabled",
+    "blockCount",
+    "steered",
+    "horizontalVelocitySquared",
+    "onGround",
+    "inReach",
+    "landing",
+    "guarding",
+    "path"
+  ],
+  "parity": [
+    "Disallowed passenger/fall flying/flying/Scaffold.enabled/empty block-count; ground short circuit",
+    "Actual attribute block_interaction_range as f32; cuboid radius f32(range+1); range square computed as f32",
+    "Only loaded chunks and world-height blocks; nonreplaceable state; actual player outline shape distance; empty shape infinity",
+    "No reach invokes full cloned FallingPlayer.findCollision60; no ghost shapes",
+    "predictFall rereads actual player after first forecast source callbacks, preserves real input and unsteered momentum",
+    "Post-movement positions; strictly greater fall threshold before grounded safety; 60 tick cap; full FallingPlayer hooks and timed effects"
+  ],
+  "verification": {
+    "command": "python native/liquidbounce-horizon/test-clutch-prediction.py",
+    "result": "passed",
+    "nativeFilesInMemory": 3,
+    "rustfmt": "owned native and temporary generated sources passed",
+    "rustExecution": false,
+    "sharedStagingWrites": false,
+    "pendingModelTests": "3 clutch_smoke tests, root batch only"
+  },
+  "ownedFiles": {
+    "clutch-prediction-native.rs": "03c60916d1b2ecc50ff71c0e4943ef03e956f55e8bf4f9c450422939c24212b9",
+    "clutch-prediction-host.rs": "11d2960abdf67e6da77c5686fee999e5d9e62693545cb787f9cf48eef4f6d20c",
+    "clutch-prediction-patch.py": "090493a8390bb74081f3587c8d3d166b75c0873ef5c92966e5fc53234af60693",
+    "test-clutch-prediction.py": "a65873dcb772d91831e69f016058f1e5f564492ee9df46b09e368ab834cd4fe7",
+    "clutch-smoke.rs": "c51142f7b1993578e91254fdc97ea7702df5cbeb91b2089fdd208ab303ca9edc"
+  },
+  "remaining": [
+    "Complete actual Scaffold block selector, placement, reset, all source technique/feature settings",
+    "Clutch engine config/runtime/Chinese integration only with full Scaffold dependency",
+    "Move AntiVoid tick after Clutch FIRST RotationUpdate and rotation reset, before AI/GameTick",
+    "Call host only after dropping engine Actor/RefCell borrows; forecast invokes real simulation callbacks",
+    "Official native and model checks in root combined batch",
+    "Game behavior parity"
+  ]
+}

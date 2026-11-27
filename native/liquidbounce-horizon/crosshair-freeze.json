@@ -1,0 +1,71 @@
+{
+  "module": "Crosshair",
+  "modes": [
+    "Circle",
+    "CS2"
+  ],
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "horizonMixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_crosshair"
+      ],
+      "helper_names": []
+    },
+    "patchedFiles": 4,
+    "localeKeys": {
+      "zh_cn": 40,
+      "zh_tw": 40
+    },
+    "scope": "One focused usability smoke. Exact production behavior, full File/Interop both-mode settings and production Runtime/native HUD bridge with declaration-only Game providers; native AttackStrength and Crossbow charge function bodies; actual localization source over copied dictionaries. Circle evaluates pinned 256-angle LUT, quantized inner radius and physical-pixel derivative AA, using existing native HudBatch alpha pipeline. No additional GPU/shader matrix. Official native/engine aggregate and actual in-game parity remain root-owned."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/crosshair.rs": "61fad7796000a33a1ea94d017997cb5fac961c82c7a51e0db9bdb0fe95bb2db3",
+    "native/liquidbounce-behaviors/vendor/minecraft-math/sine-table.bin": "cdfaec6870788e193dff3f1ddfa3ca7d3f1a897042d78365a1fe3a433be3627d",
+    "native/liquidbounce-horizon/engine/src/config/crosshair.rs": "8442950e0fc412d015e1290a61bdfcc77cf891235e9619ddd79b3e556798eacb",
+    "native/liquidbounce-horizon/engine/src/crosshair_runtime.rs": "863a67b7a576b89da6d9dfe431273daa37567ca0630079904764ccffdbef9480",
+    "native/liquidbounce-horizon/crosshair-game.rs": "1774caa91596dde2bef04f583e152d56ce852d02b1a226a7eb35fee72ec64dac",
+    "native/liquidbounce-horizon/crosshair-host.rs": "76b1e2b3c4d300ccb3d2ae515aa9ea2d6e66f971761d6ccfc04ea1c7979d39b5",
+    "native/liquidbounce-horizon/crosshair-raster.rs": "f7bb138869a3e40f0c2bd3872b160282dd4f2a4967fefcdfc06913fe5e8610fe",
+    "native/liquidbounce-horizon/crosshair-patch.py": "14a992971fdb427258c890e84788e63f394b0102490b61eef38122d1d730eefc",
+    "native/liquidbounce-horizon/crosshair-native-fixture.rs": "21db7bf9de002066355211dd3b6b7b0362dfe55b948f2da5c074dc13a6828c36",
+    "native/liquidbounce-horizon/crosshair-smoke.rs": "273ead29f60068b5c5a085dad3d91fc7d28b7f5ef03f6369fa61aba799316d93",
+    "native/liquidbounce-horizon/test-crosshair.py": "0fd31170a3788a3a35ba1cc1689c8cfe50887d31678efb03db0ae80bbdf095e6",
+    "native/liquidbounce-horizon/integrate-crosshair.py": "c1725ef18154b8f6e3561be2b28b8ee35ea1150b2a0308ecd722d0470926b125",
+    "native/liquidbounce-horizon/update-crosshair-locales.py": "67d6cf013422130bfcc47e3a72bb98a6675cfcf3286759ee992c31630ce2df19",
+    "native/liquidbounce-horizon/crosshair-integration.md": "c3371cb81371e18b1fc2840d1192ddc7781ce5fe7d39e0ced7860443a4c9efd0",
+    "native/liquidbounce-horizon/generate-crosshair-freeze.py": "284706184cf7904335d008bab8086b77ed4f85b9d5bbd98d89ab5aeb3ee5cce2",
+    "build/crosshair-smoke-01/report.json": "dda5f0cd12c2cbeb3d5a4cf1c0dff0fe624ca9e32979a67a31a07688a0f4e7b6",
+    "build/crosshair-smoke-01/test.log": "8af0aa792dfa7d3f7aced1b60ccf2e7a9d0464b0020a384628db6166cc40465d",
+    "build/crosshair-smoke-02/report.json": "dda5f0cd12c2cbeb3d5a4cf1c0dff0fe624ca9e32979a67a31a07688a0f4e7b6",
+    "build/crosshair-smoke-02/test.log": "8fb3a52a2085446a7aef97b725c0e47292402461e36a96e129aee3bc4545112e",
+    "build/crosshair-smoke-03/report.json": "dda5f0cd12c2cbeb3d5a4cf1c0dff0fe624ca9e32979a67a31a07688a0f4e7b6",
+    "build/crosshair-smoke-03/test.log": "63f81db7bc879e67e42c34ed758b621aa24deee354e268c71951d7ff4148fa1a",
+    "build/crosshair-smoke-03/attack_strength.rs": "f78b1ed4d58be965db6878f8baec45ad4b8948a6d381cd6bec2ba0b6d5541f09",
+    "build/crosshair-smoke-03/config.rs": "1dbe859e2f8bba50bd4f4580aadd169c2a3719d2e061aa2d3a8eace17bd9ffdd",
+    "build/crosshair-smoke-03/crosshair.rs": "1774caa91596dde2bef04f583e152d56ce852d02b1a226a7eb35fee72ec64dac",
+    "build/crosshair-smoke-03/crosshair_raster.rs": "f7bb138869a3e40f0c2bd3872b160282dd4f2a4967fefcdfc06913fe5e8610fe",
+    "build/crosshair-smoke-03/lib.rs": "d036575b35891d0185e4b20464116f9a1401a8f3a4c878f6204168e6af9dc637",
+    "build/crosshair-smoke-03/localization.rs": "f6224d1dc880032a4e3fb66c1d3d09b68482eb59b252b3b861b2bd03a06e2782",
+    "build/crosshair-smoke-03/Cargo.toml": "5745ac1b55f1883875d27b9ad7b6af2b0e6471dde936810e4b9fecd0efa996ce",
+    "build/crosshair-smoke-03/localization/display_zh_cn.json": "0440f9e6c816039fcb0d5b1c25fdaa0ca64cb1df8fa3e41c345c0a0138bd9de6",
+    "build/crosshair-smoke-03/localization/display_zh_tw.json": "a97c8661cb55980dbbd0b148aeb87c09c663b034a61b1792a143273ebbd95e92",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/crosshair/CrosshairColorSettings.kt": "d2e842045697dc641cafed15d7531d846c2962f56eb080ea4b4169068e014616",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/crosshair/CrosshairMode.kt": "87419812955ffb66052dbbe4819d28593dba20f19a097166da64b93242608d38",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/crosshair/ModuleCrosshair.kt": "b3bdbca4e5741cde0cef44371b11efa02fdcfdbf10fbdddd83a0cd19593b2723",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/crosshair/modes/CrosshairCircle.kt": "b9480248b17dc65450b7a2237c2d6af9535731d5b6a0eb0de8c9cd57ea8d71c3",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/crosshair/modes/CrosshairCS2.kt": "cc4e0b7b0df931a91c789d166d908b2e623085c008b929ee0339fb1ec8c48d50",
+    "upstream/LiquidBounce/src/main/resources/resources/liquidbounce/shaders/circle/gui_circle_lut.fsh": "8638d6c8acd005a13d1548f20688bf093b4823bf552a076aaa5537f96de6e021",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/render/gui/GuiCircleLutAtlas.kt": "2cfd30c6e127140675cd64625c3080dc5dc18b9f38a402ced781ee92e62a271c",
+    "upstream/LiquidBounce/src/main/java/net/ccbluex/liquidbounce/render/gui/element/CircleGuiElementRenderState.java": "e26679f24400a10661c33435a9b8335a27ec3dbe98f35391f43c8d520bbd21fe",
+    "native/liquidbounce-interop/src/localization.rs": "fd28c2a9d9fcf0aa83660aacb70681533193e10e7982287ff00e2054f8e2e142"
+  }
+}

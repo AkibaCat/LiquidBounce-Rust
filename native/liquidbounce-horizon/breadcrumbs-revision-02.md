@@ -1,0 +1,3 @@
+# Breadcrumbs revision 02
+
+Root's first actual native aggregate (105-01) found the draw call's local `view` was a `Frustum`, shadowing an earlier camera matrix. The owned patch now passes `views.primary().view`, the actual camera `Mat4` used by Horizon's projection and world-frame globals. Aura's camera axes thus come directly from the active camera matrix. The frame size uses the actual prepared world-post target; camera, shader game time and FOV are actual `Frame` members. No staging files or renderer logic changed. Existing GPU smoke is unchanged and was not repeated; root owns the next aggregate compilation.

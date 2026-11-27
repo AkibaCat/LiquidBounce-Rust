@@ -1,0 +1,36 @@
+{
+  "module": "combine_mobs",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_combine_mobs_frame",
+        "client_combine_mobs"
+      ],
+      "helper_names": []
+    },
+    "scope": "Actual owned behavior/config and shared Tree/parser; short behavioral smoke; BetterTab compiles actual render policy against declaration-only text/player types; MobOwners compiles actual ureq cache without network requests. Actual patches applied in memory to staged source; dictionaries tested on copies. Full Game/native compilation remains aggregate validation."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/combine_mobs.rs": "af9db50decd9cab2633fa7c2ab68a01df1447c39c0f4e6e262960f802a38b2d6",
+    "native/liquidbounce-horizon/engine/src/config/combine_mobs.rs": "ae8df85b027365b1ac8e9c416821201f81ebc0ca98b0c5f4ffc0116c66641d58",
+    "native/liquidbounce-horizon/engine/src/combine_mobs_runtime.rs": "51799d2526b3f5697f9fea08b263104dbeb0f0f43e35d62b9af6b22a874472ef",
+    "native/liquidbounce-horizon/combine-mobs-host.rs": "6a6f0ee9481de8049a3d0230671a5cb7c9ddca5e67e831ff7bcb87ed7c6f1048",
+    "native/liquidbounce-horizon/combine-mobs-patch.py": "c22f926b6782fc0a17fd3251cdaf23e2ecf941a55b7331d008a807f31598daf1",
+    "native/liquidbounce-horizon/combine-mobs-smoke.rs": "278f6ad0318cd8b03be07e3ba8c3bf80af31035673cd3f10093bef98d284ae13",
+    "native/liquidbounce-horizon/test-owner-combine-tab.py": "d270c392020ab2aafb523369323d5f2feb6ec53aa4878925936912ee0ec5947e",
+    "native/liquidbounce-horizon/update-owner-combine-tab-locales.py": "89a4fb3436ed668042f80c3b3457a7155cd0c8c7f155f1065e7219d530eb74cb",
+    "native/liquidbounce-horizon/verify-owner-combine-tab-anchors.py": "40e0751d0a4df26df6349a2bb1db920d96135530b08a99436e1d32f9882a5adf",
+    "native/liquidbounce-horizon/owner-combine-tab-integration.md": "ae74fcc47cf2d41e91ad1bdd02eb7aabeb73d80f7f7d3598d2ac719a9180bed6",
+    "build/combine-mobs-smoke-01/report.json": "d0649b610d45a99ee57a300b64c6c98e6ab1638a04e38079173acc70b5d76256",
+    "build/combine-mobs-smoke-01/test.log": "1181f17c130da9c3753d08e8ab973337367ca2620852679f4aeccaf5e3a2f932",
+    "build/owner-combine-tab-final-anchors/report.json": "44b7b1437f3b7a64d0d5ee7759196c029b81983f304940f35d6606bcb4c1a5a9"
+  }
+}

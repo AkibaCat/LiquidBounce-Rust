@@ -1,0 +1,32 @@
+{
+  "formatVersion": 1,
+  "baselines": [
+    {
+      "name": "Horizon",
+      "commit": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+      "archiveUrl": "https://codeload.github.com/Jijjy/mc-horizon/zip/9f42064",
+      "archiveSha256": "4a9798eaf7b5dce1f711307efe638f4f9eed8eafc3d58cb0415ef63a38f1c95e",
+      "archive": "research/Horizon-source.zip",
+      "archiveRoot": "mc-horizon-9f42064",
+      "destination": "upstream/Horizon"
+    },
+    {
+      "name": "LiquidBounce",
+      "commit": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+      "archiveUrl": "https://codeload.github.com/CCBlueX/LiquidBounce/zip/ae0eb396c07f22383789b28d5912d714c6ca0a86",
+      "archiveSha256": "98aa5c9007b80b78bae8edf85ca80d87fa65bebea41cc662ab8c2221016eb0cb",
+      "archive": "research/LiquidBounce-source.zip",
+      "archiveRoot": "LiquidBounce-ae0eb396c07f22383789b28d5912d714c6ca0a86",
+      "destination": "upstream/LiquidBounce"
+    },
+    {
+      "name": "Horizon-Mixins",
+      "commit": "5a64af938ec86b00d53d16a408aabc0038fb3e57",
+      "archiveUrl": "https://codeload.github.com/WahhaWood/horizon-mixins/zip/5a64af938ec86b00d53d16a408aabc0038fb3e57",
+      "archiveSha256": "0db3d966f742fa5eeb94df3456df4cf9820abb58106cede0617f5c6ec92ca8a3",
+      "archive": "research/Horizon-Mixins-source.zip",
+      "archiveRoot": "horizon-mixins-5a64af938ec86b00d53d16a408aabc0038fb3e57",
+      "destination": "upstream/Horizon-Mixins"
+    }
+  ]
+}

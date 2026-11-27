@@ -1,0 +1,36 @@
+{
+  "module": "potion_spoof",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [],
+      "helper_names": [
+        "client_potion_spoof_duration",
+        "client_potion_spoof_apply"
+      ]
+    },
+    "scope": "Exact owned behavior/config files with shared Tree/parser bodies; short behavior smoke; owned patch applied to current staged actual sources in memory; locale updater on copies. Runtime/native full Game compilation remains final aggregate validation."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/potion_spoof.rs": "8da0602f9bfd92dc52be9aebe6c699b14b6d7a83fb243b00a05042c23453a12f",
+    "native/liquidbounce-horizon/engine/src/config/potion_spoof.rs": "b15e7c93bf82b58833df60ad16876a1c197f1e964568f36923ef19110630f99d",
+    "native/liquidbounce-horizon/engine/src/potion_spoof_runtime.rs": "9c33e3b230421c2a8bfd501e5a1f504131b21fd4241752959f8264bf034ebe86",
+    "native/liquidbounce-horizon/potion-spoof-host.rs": "ca27cb8db233488fb7e14dd00f94da2316d941e4078a8fd904518bae16adc5cd",
+    "native/liquidbounce-horizon/potion-spoof-patch.py": "028ea4fffc2b851f8aca8c2cb8e86e015d6a95735e745962dfe56331a34d2cd9",
+    "native/liquidbounce-horizon/potion-spoof-smoke.rs": "00f975ef5caa9c99561bc7f951f565b8385071723c9569d655a049f4683b11eb",
+    "native/liquidbounce-horizon/test-sight-potion-clip.py": "a3a0608af751b50fc9a0c1256e35aa0a32cfbc19892da38e056a40f09a7dd5b1",
+    "native/liquidbounce-horizon/update-sight-potion-clip-locales.py": "7003dc3e8d754fcb1f2658980b4841b66baef38c14dd1d6f162a8e5975114b1c",
+    "native/liquidbounce-horizon/sight-potion-clip-integration.md": "5000461302a3d95b9c8bfc301c1fe0865bf09f9acd0c5f2a47e685c96d005d3a",
+    "build/potion-spoof-smoke-01/report.json": "511e86727bb371a7b07102f98b66be1dd44b0ac921c420c9df35bd2a0f60d0e1",
+    "build/potion-spoof-smoke-01/test.log": "3a5d06fa84488cc135e3970187be7f45ffe644f2e1ffb492eadffde7760229fb",
+    "native/liquidbounce-behaviors/src/potion_spoof_effects.rs": "81d9ae473073795d83791488dad664770bd53ec34e8a0f28be69aee760991830",
+    "native/liquidbounce-horizon/generate-potion-spoof.py": "f80718cd093c1091d27644897b69652d8c0e502f55223a8e5fd45e2e406847d9"
+  }
+}

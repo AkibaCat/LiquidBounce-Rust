@@ -1,0 +1,42 @@
+use crate::navigation::{walk::{WalkState,abilities::WalkAbilities,route::{Move,Step}},walk_jump::{jump::Jump,jumps::Jumps,jump_targets::JumpTargets,leap::{Leap,LeapInput},assisted_jump::{AssistedJump,Landing}},simulation::{Mechanics,motion_traits::MotionTraits,block_grid::SimulationState,player_motion::PlayerMotion}};
+use std::sync::Arc;
+impl WalkState for S {
+ fn is_air(&self)->bool{self.air()} fn can_be_replaced(&self)->bool{self.registry.borrow().walk_facts[&self.def().block].3}
+ fn is_falling(&self)->bool{self.facts().0&64!=0} fn is_slime(&self)->bool{self.facts().0&128!=0}
+ fn friction(&self)->f32{self.registry.borrow().walk_facts[&self.def().block].0} fn speed_factor(&self)->f32{self.registry.borrow().walk_facts[&self.def().block].1} fn jump_factor(&self)->f32{self.registry.borrow().walk_facts[&self.def().block].2}
+}
+impl SimulationState for S {
+ fn is_fence(&self)->bool{self.facts().0&256!=0} fn is_wall(&self)->bool{self.facts().0&512!=0} fn is_fence_gate(&self)->bool{self.facts().0&4!=0} fn is_cobweb(&self)->bool{self.def().block=="cobweb"} fn is_step_air(&self)->bool{self.air()} fn fall_distance_reduction(&self)->f32{self.registry.borrow().walk_fall[&self.def().block]}
+}
+#[derive(Default)]struct JumpFixture{abilities:Option<WalkAbilities<S>>,jumps:Option<Jumps<S>>,targets:Option<JumpTargets>,motion:Option<PlayerMotion>,chosen:Option<Jump>,leap:Leap,assist:AssistedJump}
+fn f(raw:&str)->f32{f32::from_bits(raw.parse().unwrap())}
+fn jump_raw(j:&Jump)->String{format!("{}^{}^{}^{}^{}^{}^{}",vector(j.run_up),j.takeoff,j.jumps,j.air_ticks,j.margin.to_bits(),j.hops,vector(j.aim))}
+fn input_raw(i:LeapInput)->String{format!("{},{},{},{},{}",i.forward,i.strafe,i.jump,i.sprint,i.shift)}
+fn motion_raw(m:&PlayerMotion)->String{format!("{};{};{};{};{};{};{};{};{},{},{},{};{};{};{};{};{};{};{}",vector(m.position()),vector(m.delta_movement()),m.on_ground,m.horizontal_collision,m.is_sprinting,m.landing_fall.to_bits(),m.peak_y.to_bits(),m.jump_delay,m.support.exists,m.support.x,m.support.y,m.support.z,m.crouching,m.sneaking,m.air_sprint,m.walked.to_bits(),m.next_step,position(m.block_position()),m.horizontal_speed().to_bits())}
+fn landing_raw(l:&Landing)->String{format!("{}#{}#{}#{}#{}#{}#{}",position(l.pos),l.feet.to_bits(),jump_raw(&l.jump),l.step.as_ref().map_or_else(||"-".into(),|s|format!("{}:{}:{}:PARKOUR:{}:{}:{}:{}",position(s.from),position(s.to),vector(s.feet),s.cost.to_bits(),s.shift,s.edge,s.is_under_water)),l.bounces,l.takes_off,l.settles)}
+fn assist_raw(a:&AssistedJump)->String{format!("{}%{}",a.target.as_ref().map_or_else(||"-".into(),|l|landing_raw(l)),a.arcs.iter().map(|arc|format!("{}${}${}",landing_raw(&arc.target),arc.takeoff,arc.path.iter().copied().map(vector).collect::<Vec<_>>().join(";"))).collect::<Vec<_>>().join("@"))}
+fn step(a:&[&str],offset:usize,chosen:Option<Jump>)->Step{let to=p(a[offset+1]);Step{from:p(a[offset]),to,movement:Move::Parkour,feet:Vec3::new(f64::from(to.x)+0.5,d(a[offset+2]),f64::from(to.z)+0.5),breaks:Vec::new(),places:Vec::new(),opens:Vec::new(),cost:0.0,shift:false,edge:false,is_under_water:false,jump:chosen}}
+fn extra(a:&[&str],t:&mut Terrain<S,World>,w:&mut JumpFixture)->String{match a[0]{
+ "jnew"=>{let mut ab=WalkAbilities::new(false,false,0,true,a[2].parse().unwrap(),a[3].parse().unwrap(),16,Arc::new(|_:&S|1.0),Arc::new(HashSet::new()));ab.risky_jumps=a[1].parse().unwrap();ab.motion=MotionTraits::new(f(a[4]),f(a[5]),f(a[6]),if t.level().data.borrow().legacy{Mechanics::V1_8}else{Mechanics::Modern});w.jumps=Some(Jumps::new_with_holds_y_rot(ab.clone(),a[7].parse().unwrap()));w.targets=Some(JumpTargets::new(ab.motion));w.motion=Some(PlayerMotion::new(ab.motion));w.abilities=Some(ab);w.chosen=None;w.leap=Leap::default();w.assist=AssistedJump::default();"-".into()}
+ "motion"=>{let m=w.motion.as_mut().unwrap();m.reset(t,v(a[1]),v(a[2]),a[3].parse().unwrap(),a[4].parse().unwrap(),a[5].parse().unwrap());m.crouching=a[6].parse().unwrap();m.sneaking=a[7].parse().unwrap();motion_raw(m)}
+ "tickMotion"=>{let m=w.motion.as_mut().unwrap();m.tick(t,f(a[1]),a[2].parse().unwrap(),a[3].parse().unwrap(),a[4].parse().unwrap(),a[5].parse().unwrap(),a[6].parse().unwrap());motion_raw(m)}
+ "jdef"=>{w.chosen=Some(Jump{run_up:v(a[1]),takeoff:a[2].parse().unwrap(),jumps:a[3].parse().unwrap(),air_ticks:a[4].parse().unwrap(),margin:d(a[5]),hops:a[6].parse().unwrap(),aim:v(a[7])});jump_raw(w.chosen.as_ref().unwrap())}
+ "plan"=>{w.chosen=w.jumps.as_mut().unwrap().plan(t,p(a[1]),d(a[2]),p(a[3]),d(a[4]),a[5].parse().unwrap());w.chosen.as_ref().map_or_else(||"-".into(),jump_raw)}
+ "refine"=>{w.chosen=w.jumps.as_mut().unwrap().refine(t,p(a[1]),d(a[2]),p(a[3]),d(a[4]));w.chosen.as_ref().map_or_else(||"-".into(),jump_raw)}
+ "here"=>{w.chosen=w.jumps.as_mut().unwrap().from_here(t,w.motion.as_ref().unwrap(),f(a[1]),p(a[2]),d(a[3]),if a[4]=="-"{None}else{Some(v(a[4]))});w.chosen.as_ref().map_or_else(||"-".into(),jump_raw)}
+ "now"=>{w.chosen=w.jumps.as_mut().unwrap().taking_off_now(t,w.motion.as_ref().unwrap(),f(a[1]),p(a[2]),d(a[3]));w.chosen.as_ref().map_or_else(||"-".into(),jump_raw)}
+ "last"=>{w.chosen=w.jumps.as_mut().unwrap().last_from_here(t,w.motion.as_ref().unwrap(),f(a[1]),p(a[2]),d(a[3]));w.chosen.as_ref().map_or_else(||"-".into(),jump_raw)}
+ "air"=>w.jumps.as_mut().unwrap().air_keys(t,w.motion.as_ref().unwrap(),f(a[1]),p(a[2]),d(a[3]),a[4].parse().unwrap()).map_or_else(||"-".into(),|k|format!("{},{},{}",k.forward,k.strafe,k.margin.to_bits())),
+ "takeOff"=>{let mut path=vec![Vec3::new(9.0,8.0,7.0)];let success=w.chosen.as_ref().map(|j|w.jumps.as_mut().unwrap().take_off(t,w.motion.as_mut().unwrap(),if a[1]=="-"{None}else{Some(f(a[1]))},p(a[2]),d(a[3]),j,&mut path));format!("{}~{}~{}",success.map_or_else(||"-".into(),|s|s.to_string()),path.into_iter().map(vector).collect::<Vec<_>>().join(";"),motion_raw(w.motion.as_ref().unwrap()))}
+ "duration"=>w.chosen.as_ref().map_or_else(||"-".into(),|j|j.ticks(v(a[1])).to_bits().to_string()),
+ "lift"=>w.targets.as_ref().unwrap().lift(d(a[1])).to_bits().to_string(),
+ "targets"=>{let mut found=Vec::new();let mut count=0;w.targets.as_mut().unwrap().for_each_options(t,p(a[1]),d(a[2]),a[3].parse().unwrap(),a[4].parse().unwrap(),d(a[5]),a[6].parse().unwrap(),&mut |t,x,y,z,top|{let pos=BlockPos::new(x,y,z);let mut candidate=format!("{}:{}",position(pos),top.to_bits());if a[8]=="true"{candidate.push(':');candidate.push_str(&w.jumps.as_mut().unwrap().plan(t,p(a[1]),d(a[2]),pos,top,a[6].parse().unwrap()).as_ref().map_or_else(||"-".into(),jump_raw));}found.push(candidate);count+=1;count<a[7].parse().unwrap()});found.join("@")}
+ "leap"=>{let s=step(a,2,w.chosen.clone());let input=w.chosen.as_ref().map(|j|w.leap.decide(t,w.motion.as_ref().unwrap(),f(a[1]),&s,j,w.jumps.as_mut().unwrap()));format!("{}~{}~{}~{}",input.map_or_else(||"-".into(),input_raw),w.leap.target.map_or_else(||"-".into(),vector),w.leap.sprint,w.leap.hopeless)}
+ "assist"=>{let before=w.assist.target.clone();let keys=LeapInput::new(a[4].parse().unwrap(),a[5].parse().unwrap(),a[6].parse().unwrap(),a[7].parse().unwrap(),a[8].parse().unwrap());let m=w.motion.as_ref().unwrap();let input=w.assist.tick(t,m,f(a[1]),f(a[2]),keys,f(a[3]),w.jumps.as_mut().unwrap(),w.targets.as_mut().unwrap());let same=match(&before,&w.assist.target){(None,None)=>true,(Some(a),Some(b))=>Arc::ptr_eq(a,b),_=>false};format!("{}~{}~{}~{}",input.map_or_else(||"-".into(),input_raw),assist_raw(&w.assist),same,w.assist.aim_y_rot(m.position(),m.delta_movement(),m.on_ground).to_bits())}
+ "trace"=>{w.assist.trace(t,w.motion.as_ref().unwrap(),f(a[1]),f(a[2]),f(a[3]),w.jumps.as_mut().unwrap(),w.targets.as_mut().unwrap());assist_raw(&w.assist)}
+ "release"=>{w.assist.release();assist_raw(&w.assist)}
+ "resetAssist"=>{w.assist.reset();assist_raw(&w.assist)}
+ "landing"=>{let l=Landing{pos:p(a[1]),feet:d(a[2]),jump:w.chosen.clone().unwrap(),step:None,bounces:a[3].parse().unwrap(),takes_off:a[4].parse().unwrap(),settles:a[5].parse().unwrap()};let m=w.motion.as_ref().unwrap();format!("{}~{}~{}",l.is_landed(m.position(),m.on_ground),l.aim_y_rot(m.position(),m.delta_movement(),m.on_ground,if a[6]=="-"{None}else{Some(v(a[6]))}).to_bits(),l.steer(t,m,f(a[7]),w.jumps.as_mut().unwrap()).map_or_else(||"-".into(),input_raw))}
+ "math"=>{let angle=crate::navigation::walk_jump::java_math::fdlibm_atan2(d(a[1]),d(a[2]));format!("{},{},{}",angle.to_bits(),crate::navigation::walk_jump::yaw(d(a[2]),d(a[1])).to_bits(),crate::navigation::walk_jump::vector_yaw(d(a[2]),d(a[1])).to_bits())}
+ _=>panic!("extra command")
+}}

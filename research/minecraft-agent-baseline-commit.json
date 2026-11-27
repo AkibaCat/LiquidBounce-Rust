@@ -1,0 +1,84 @@
+[
+  {
+    "sha": "0abf69ac35157f33348310326017f4e3fea6b95f",
+    "node_id": "C_kwDOV0LcHtoAKDBhYmY2OWFjMzUxNTdmMzMzNDgzMTAzMjYwMTdmNGUzZmVhNmI5NWY",
+    "commit": {
+      "author": {
+        "name": "Izuna Seikatsu",
+        "email": "izuna.seikatsu@ccbluex.net",
+        "date": "2026-11-20T10:26:53Z"
+      },
+      "committer": {
+        "name": "Izuna Seikatsu",
+        "email": "izuna.seikatsu@ccbluex.net",
+        "date": "2026-11-20T10:26:53Z"
+      },
+      "message": "fix(navigation): fly modes that answer late\n\nLiquidBounce's Vanilla mode of Fly moves a tick on the keys of the tick before. The tick after jump was let go still rose at full speed, which Handling took for a vertical drag of 0.95: the vertical speed came out at 8 blocks a tick, the route's end counted as reached 4 blocks away, and the player hovered beside the pillar it was flying onto until the walk gave up. Vertical moves are now measured only with the keys of the tick before held as well.",
+      "tree": {
+        "sha": "9b5989761ec7a1af6bb8034c20ec246a88ae3614",
+        "url": "https://api.github.com/repos/CCBlueX/Minecraft-Agent/git/trees/9b5989761ec7a1af6bb8034c20ec246a88ae3614"
+      },
+      "url": "https://api.github.com/repos/CCBlueX/Minecraft-Agent/git/commits/0abf69ac35157f33348310326017f4e3fea6b95f",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/CCBlueX/Minecraft-Agent/commits/0abf69ac35157f33348310326017f4e3fea6b95f",
+    "html_url": "https://github.com/CCBlueX/Minecraft-Agent/commit/0abf69ac35157f33348310326017f4e3fea6b95f",
+    "comments_url": "https://api.github.com/repos/CCBlueX/Minecraft-Agent/commits/0abf69ac35157f33348310326017f4e3fea6b95f/comments",
+    "author": {
+      "login": "1zun4",
+      "id": 12410754,
+      "node_id": "MDQ6VXNlcjEyNDEwNzU0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12410754?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/1zun4",
+      "html_url": "https://github.com/1zun4",
+      "followers_url": "https://api.github.com/users/1zun4/followers",
+      "following_url": "https://api.github.com/users/1zun4/following{/other_user}",
+      "gists_url": "https://api.github.com/users/1zun4/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/1zun4/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/1zun4/subscriptions",
+      "organizations_url": "https://api.github.com/users/1zun4/orgs",
+      "repos_url": "https://api.github.com/users/1zun4/repos",
+      "events_url": "https://api.github.com/users/1zun4/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/1zun4/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "1zun4",
+      "id": 12410754,
+      "node_id": "MDQ6VXNlcjEyNDEwNzU0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12410754?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/1zun4",
+      "html_url": "https://github.com/1zun4",
+      "followers_url": "https://api.github.com/users/1zun4/followers",
+      "following_url": "https://api.github.com/users/1zun4/following{/other_user}",
+      "gists_url": "https://api.github.com/users/1zun4/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/1zun4/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/1zun4/subscriptions",
+      "organizations_url": "https://api.github.com/users/1zun4/orgs",
+      "repos_url": "https://api.github.com/users/1zun4/repos",
+      "events_url": "https://api.github.com/users/1zun4/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/1zun4/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "945f3eb8930ac55b7ed09d1b745b2cd97f3e542a",
+        "url": "https://api.github.com/repos/CCBlueX/Minecraft-Agent/commits/945f3eb8930ac55b7ed09d1b745b2cd97f3e542a",
+        "html_url": "https://github.com/CCBlueX/Minecraft-Agent/commit/945f3eb8930ac55b7ed09d1b745b2cd97f3e542a"
+      }
+    ]
+  }
+]

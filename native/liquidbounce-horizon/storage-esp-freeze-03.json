@@ -1,0 +1,14 @@
+{
+  "feature": "StorageESP",
+  "revision": 3,
+  "parent": "storage-esp-freeze-02.json",
+  "cause": "Official Check160-01 native typed API diagnostics",
+  "changes": [
+    "Serialize actual block name through Arc<str>.as_ref()",
+    "Pass BlockStateId.0 to block entity renders and render iterator"
+  ],
+  "validation": "Directed source fixes and rustfmt only; official native check remains root-owned. Successful smoke/GPU not repeated.",
+  "files": {
+    "native/liquidbounce-horizon/storage-esp-game.rs": "64740aad3ff769c6e4bc1120c0b79cb63c635f667d12e815d44b2b1e772d201e"
+  }
+}

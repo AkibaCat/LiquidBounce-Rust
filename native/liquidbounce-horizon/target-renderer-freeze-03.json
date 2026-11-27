@@ -1,0 +1,36 @@
+{
+  "feature": "TargetRenderer / ThemeFont bridge",
+  "revision": 3,
+  "upstream": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "status": "static-passed-compile-and-focused-smoke-deferred-to-batch",
+  "validation": [
+    "build/theme-font-static-01/report.json",
+    "build/target-renderer-smoke-02/report.json",
+    "build/target-renderer-custom-smoke-01/report.json"
+  ],
+  "scope": [
+    "Active browser theme root metadata.json and listed fonts",
+    "SFNT FULL_NAME registration with case-sensitive nativeFont selection",
+    "Included Inter Medium/Bold preservation and platform fallbacks",
+    "Frame-start glyph cache invalidation on theme generation changes",
+    "Ctrl+R and periodic metadata/font-file reload bridge"
+  ],
+  "remaining": [
+    "Official grouped native+engine compilation",
+    "Focused Cargo smoke at build/theme-font-static-01/Cargo.toml",
+    "Actual game visual parity",
+    "Full original marketplace/theme selection manager",
+    "ab_glyph rasterization is not pixel-identical to AWT/FreeType"
+  ],
+  "files": {
+    "native/liquidbounce-horizon/target-renderer-font.rs": "BD7D809A4FB6A9F103F16ED85864520D617762717CACDBA2D6F22F8253C17B89",
+    "native/liquidbounce-horizon/target-renderer-font-registry.rs": "65017E5B06EF6D65C5F79EC0106619D947D21F81EFDAF531BBE7CE8FAD244D57",
+    "native/liquidbounce-horizon/target-renderer-patch.py": "50F9843A7BFB7EE6494B8ADE1B98BEAAD1AF3B6F90E5932E9C1808AFE67FB5AE",
+    "native/liquidbounce-horizon/engine/src/theme_font_runtime.rs": "9E5AAD6D014F07D0CB14C9CBDA0D1E28014F9A659EF4629DB28C563CC1C100DF",
+    "native/liquidbounce-horizon/integrate-theme-font.py": "7FC51853FA190CE58BD67DE9242EBED4976D5C6DFAD9FD4E12B74AC4BF65A888",
+    "native/liquidbounce-horizon/theme-font-smoke.rs": "A48669FE2DAEEE94092EEE64CF9BF4636EBF773D82291DE64E559253D4FE5C20",
+    "native/liquidbounce-horizon/check-theme-font-static.py": "3467B083A8F7385A53CC711D5E6DE5525621F453AF260CBB9F8C844E9CAA0F22"
+  },
+  "supersedes": "target-renderer-freeze-02.json",
+  "officialDiagnostic": "17002 E0753 caused by inner-doc comment in generated include registry; fixed target-renderer-font-registry.rs line 2 from //! to // before official rerun."
+}

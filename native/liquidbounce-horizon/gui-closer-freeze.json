@@ -1,0 +1,438 @@
+{
+  "frozenDate": "2026-11-26",
+  "pinnedSources": {
+    "LiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "Horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "Horizon-Mixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "scope": "Owned GUICloser source frozen after exact-body context/title/consumption tests. Final retained-view concrete Game/engine compilation, canonical integration and actual game remain root checks. Native05 is historical before retained-view isolation; native09 failed render generation before concrete Game compile.",
+  "files": {
+    "native/liquidbounce-behaviors/src/gui_closer.rs": "2396aa60f113fce28bc5ceffb9e3ebdc2e9d8172c05f42d2a2a8db39a44407ab",
+    "native/liquidbounce-horizon/engine/src/config/gui_closer.rs": "e86d3a1472150a8b1f14c1f9d6c64560863ac9e0132270bc0aa723242da49989",
+    "native/liquidbounce-horizon/engine/src/gui_closer_runtime.rs": "0513dce722092ec536d3731746b67ba53a9cde810ca817700ae333b8fd48e5d2",
+    "native/liquidbounce-horizon/gui-closer-host.rs": "565143ad8d0547115b9a0fd39b7584cc85607a5d3f2ad171f86335f657dcc9d6",
+    "native/liquidbounce-horizon/gui-closer-patch.py": "b85c00aebb2dfc0bbbf84a96236dce9a508734c816dfc7e8638e023fe7f352f6",
+    "native/liquidbounce-horizon/gui-closer-view-patch.py": "5b39aad4b012748312f3ff5c6663f4b12740b78316c8ad06f6b4e3d42a57c56e",
+    "native/liquidbounce-horizon/gui-closer-view.rs": "10cbf8029d83cd981a0692538b42f8de93d84b0c2ce545ab15f5aa6a5373a02a"
+  },
+  "vendorFiles": {
+    "native/liquidbounce-behaviors/vendor/java_regex/Cargo.toml": "2cff4ad796b46055c52a27cf436aaf2c6f2be6705cfb9d481ee9f5d15b3c323f",
+    "native/liquidbounce-behaviors/vendor/java_regex/DIFFERENCES.md": "74485e7155377e1ac63ba0754bc84a68b11dcc4a644064656baca40158a1d639",
+    "native/liquidbounce-behaviors/vendor/java_regex/FUZZING.md": "93586871dda41c788dfec1d61d1cf1a5e68a38dc39fff61b4b3feeae720dbc5d",
+    "native/liquidbounce-behaviors/vendor/java_regex/jdk25/case.bin": "01bad6e489f6bea23f854dfd7f5113e6a28950bb13e0c3259a6f7245555c211a",
+    "native/liquidbounce-behaviors/vendor/java_regex/jdk25/characters.bin": "d8ab88e9129c15e199903ea2b6f79e5efcfb98a6e2fe48064f4c1461666b079c",
+    "native/liquidbounce-behaviors/vendor/java_regex/jdk25/manifest.rs": "315d76c777e5abf52931e093fea152b61e4d8d6810c5107eb94d6950cc3057b5",
+    "native/liquidbounce-behaviors/vendor/java_regex/jdk25/names-index.bin": "b1a6036b7a5acd0406facde334c8c4b79962a68c90a08da6c310f0dabfa20b81",
+    "native/liquidbounce-behaviors/vendor/java_regex/jdk25/names.bin": "1faa3926cb7a377e0814a529de53e7f4c2c53fedf218e450b7e01d9e813edddb",
+    "native/liquidbounce-behaviors/vendor/java_regex/jdk25/properties.bin": "a5e3e1cbc3b69a09cdaa54f5315026a405871f589f377a47dfe4115f5710f9d1",
+    "native/liquidbounce-behaviors/vendor/java_regex/LICENSE-APACHE": "99da57a846a9a2a16ca0ef9814fe5049890e38966e9ff85aa91b4726117df83e",
+    "native/liquidbounce-behaviors/vendor/java_regex/LICENSE-MIT": "0c427c0ee10c81f62026ba8a73527ae52487d206792924b6aed96af1df29ebc8",
+    "native/liquidbounce-behaviors/vendor/java_regex/PROVENANCE.json": "9e84b1ecd69d8173f36b95a8305a920b431f3bb5681672ed018d27ec1198e035",
+    "native/liquidbounce-behaviors/vendor/java_regex/QUIRKS.md": "d6acba7624f89a21d7d782ceff3d167cd54b59a4f8dddc4f5e83109884bc03ad",
+    "native/liquidbounce-behaviors/vendor/java_regex/README.GUI_CLOSER.md": "5651c976e43865d993c90b3b49ee190013ec644ff4663051547f97251eb56a89",
+    "native/liquidbounce-behaviors/vendor/java_regex/README.md": "bc3f0006317bb178853fc9cd42caf8f10c5fea9fe70fc601980388019258e868",
+    "native/liquidbounce-behaviors/vendor/java_regex/SPEC.md": "f7e5bf3d47b24efd7714055724efd3392cce63a30f48c318d8650ecba9ab5dd1",
+    "native/liquidbounce-behaviors/vendor/java_regex/src/engine.rs": "f2537d938700da722216618452cbb22b8a8ae00256f00e22456da3c0a728ec77",
+    "native/liquidbounce-behaviors/vendor/java_regex/src/gen.rs": "c13719f3b505bc9f4a652a167e1c423e8c8a241b1d0a4e9ec3d33e929f05d8bd",
+    "native/liquidbounce-behaviors/vendor/java_regex/src/gui_api.rs": "d22a6257dd460c7ae1a1dffda2f2d84165da51083c0e193af6d049c00fc1ad3e",
+    "native/liquidbounce-behaviors/vendor/java_regex/src/jdk_unicode.rs": "75f756a82183312f3ec6b26806a436a62d9b110960ddf9959e7d802b34b61b42",
+    "native/liquidbounce-behaviors/vendor/java_regex/src/lib.rs": "7b18271087e2cec3a269646f8f92b89a22aaf41ddca613c0bdec33e01b95af5d",
+    "native/liquidbounce-behaviors/vendor/java_regex/src/parser.rs": "766c8454a7713d52cbb241cb275752b09485e3a990a29ac32e6ada4cc581ed62",
+    "native/liquidbounce-behaviors/vendor/java_regex/src/types.rs": "1af5aebe7bdea48e657ca459973185ae34047057c0b8cd4a8027699292e721cc",
+    "native/liquidbounce-behaviors/vendor/java_regex/src/unicode.rs": "5234b59b0b89bb1edd2bd7d75b4996f3c9527ce9bf3ade64d547046f7e135926"
+  },
+  "supportingFiles": {
+    "native/liquidbounce-horizon/generate-gui-closer-freeze.py": "181b8b05b86ec83f46db66a50f0d2523c417da6f82490474775c2a472b7d7a6b",
+    "native/liquidbounce-horizon/generate-gui-closer-jdk-data.py": "ca7a06c8a89b1ea69d63223231a0f149fce65c1cfd926148392a9633fdbd37b7",
+    "native/liquidbounce-horizon/generate-gui-closer-provenance.py": "a5fa5bc420ebab5f35cc6e495d03673387c0685331ab651b94a8a197343ae633",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/client.kt": "2a495b5bf58146fd17066f351f9fb628bad270572c10952db987a74828765fe7",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/fastutil.kt": "6e7114d894c73fb3de2c4683d463746c9b3786b4a551bc30ec9e7c4bbcb19260",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/group.kt": "cff51dd975c0198676ad0d9e3a067d33980c75e8d4a9508c9ddee7c06bae71c5",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/Identifier.java": "fb891e07bc65e7d0434628b2b730acb9b085e2f9db4e6ad071622b554fce7ae6",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/input.kt": "c4c035e253418abda480c6ee2a6e6adbdd3f0deb8831a37943d04b823801a52a",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/InputConstants.java": "11541ae34287a4d0afa728976ed6d789bd33b17998789f840c257cca6b27c1ff",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/Main.kt": "034f06f4f16a5ea89437bfd98bf05e48506235a400d87d776a0681c67e2d0793",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/oracle.rs": "733806d45d6945a31e408f89c48e418fde84806c6519817f5e29d1aa43788607",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/render.kt": "19c54980ab8c13443339afad657b1585e7719d45c00618473fc8f64b2d22a4e9",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/text.kt": "3d78812c7c139e84436a20a5f39b5f8a94497386498e44feb2d3bf99eaf100f4",
+    "native/liquidbounce-horizon/gui-closer-config-source-fixture/value.kt": "aaf126689d6a1294741e6761db4a68bbed225be6edec991f94da0fd9017a5218",
+    "native/liquidbounce-horizon/gui-closer-consumption-fixture.rs": "d9d7b73a0bea8c398dc32fcb660e5f33a0a77bc3da28ae4b59bd429ac6d4bc28",
+    "native/liquidbounce-horizon/gui-closer-integration.md": "6c8186755672d4c16c249b95c26f9f38702a5ae5c227d6a77353914ea7776264",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/chat.kt": "ff82776e419e89e76784587e27f8c59fb2c3d7cdc66a4f3a845d949dd75b3942",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/component.kt": "eab460a5fc893cc04f43ad1e8b79c0a0932c085000da01e248f53acfb5c65d28",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/config.kt": "647ddf5b66635785e42464839a7042dd894f0fc80fa0fa816822fb7874255d51",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/container.kt": "f61869f921e0ec14505f851cf2c751aa1db3bd8bdcca7bf487c11271adfc38c6",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/events.kt": "b6a4b619df764c06ac5006115d07d21ca01bb09139fe3c530b384e7a68d4d4a8",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/handler.kt": "90f6ac65e51faf761e57faa5b48321c827f8a9f4afee2adad2fab82648432042",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/JdkRegexFacts.java": "2f18cc406cdc90b49b5fb524f6fcd51ddd6c40506943b3a3fc0da5d9db98c0c0",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/JdkRegexLayout.java": "070e5ccc5d9a150b4fae01b322514b1b0f94f8411c122a451c4dee0f92428dd9",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/Main.kt": "dc381eeaa9f765c879a40c4da674ca55c8263ada85e9bd8570d1717fd92dffde",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/module.kt": "5477d909ab20c8d1f46821c0e10c4313d65c2e141d7d608de6d2766f4cbfc4c0",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/oracle.rs": "14397503c87637166de539fac74aa72ec694379a3e98cb56256f05ce51f8a291",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/screen.kt": "bd1855e8d81b91c28da2a5c56680c7c25931258f651a62056d8d7ae48bff2728",
+    "native/liquidbounce-horizon/gui-closer-source-fixture/tagged.kt": "8673094d54e1d3fb9b1908a8a00e67c05a18ab5429b39b44fc2ee9b7d3171321",
+    "native/liquidbounce-horizon/gui-closer-view-fixture.rs": "de2b2b84cf6a17f293dccc1e5ea45eb8f834805566ef9d63837c1561b3c977db",
+    "native/liquidbounce-horizon/prepare-gui-closer-current.py": "3e9309c006a80e8f1afca61539e7b6ff7ef81801face70270236655e9cb9afa5",
+    "native/liquidbounce-horizon/test-gui-closer-config-source.py": "9cd975da2df97ab5ee26dc3f28068dd54e5085252d477083db764ea823f2f7da",
+    "native/liquidbounce-horizon/test-gui-closer-config.py": "878ee4226e69e95f4adda4ab30ab3c3a8886f8ba0e66a539ceec22f1f28b7878",
+    "native/liquidbounce-horizon/test-gui-closer-consumption.py": "77681648fa242e56a9cf39995a35f42249ed8d58fe79ffdc666e821cbbfede8f",
+    "native/liquidbounce-horizon/test-gui-closer-native.py": "2736c75bc1f46d685c9147b6a04f5c3b915d2926cd7fc12691e5c26c90c3b8f5",
+    "native/liquidbounce-horizon/test-gui-closer-packaging.py": "8609b2a3f342d507321aa1372d102854a7350abe7a24de0ea015f0e6883b1d48",
+    "native/liquidbounce-horizon/test-gui-closer-source.py": "c5d56ceafafea8302a211e2709127a57eabc10f24593c6ae16919476fcf3646b",
+    "native/liquidbounce-horizon/test-gui-closer-titles.py": "2856eb482201c8d80ab981cbb4e224ec7e37cf91f9fba0c46fa44650358ff1e0",
+    "native/liquidbounce-horizon/test-gui-closer-view.py": "6e4d13fe63dd078beb6b1e915a55aed32858c6196128b5d3f9cf31529c190414",
+    "native/liquidbounce-horizon/update-gui-closer-locales.py": "9477cc85b6293faebbc849c6dc30de08515e86f7a8b07680adc60598dcbbbb9e"
+  },
+  "sharedIntegrationFilesAtHandoff": {
+    "native/liquidbounce-horizon/package.py": "96b309987e32205920d4eace343bb82fabae707aed2b2fb826fbdb7b5ecd0505",
+    "scripts/stage-horizon-build.py": "02d7ad5a7418edb925a78c45b1a5154f940ed1d55b05ad025216828e9fd6fb77"
+  },
+  "sharedIntegrationScope": "Records packaging support at handoff, not exclusive ownership of shared files. Shared behavior/config/lib/actor/runtime registration and make-behavior-patch.py remain root-owned.",
+  "localeSubset": {
+    "native/liquidbounce-interop/resources/localization/display_zh_cn.json": {
+      "scope": "GUICloser descriptions/English descriptions and its three setting labels only",
+      "entries": {
+        "descriptions": {
+          "liquidbounce.module.guiCloser.description": "如果GUI的标题与指定的模式匹配，则将其关闭。",
+          "liquidbounce.module.guiCloser.mode.description": "Matches 匹配完整容器标题；Contains 搜索标题中的匹配部分。两种模式都使用 Java 正则表达式。",
+          "liquidbounce.module.guiCloser.filter.description": "按顺序检查容器标题的 Java 正则表达式。首个匹配项会阻止该界面打开，默认表达式为 ^Vote$。",
+          "liquidbounce.module.guiCloser.printScreenTitle.description": "在聊天中显示未匹配的容器标题，点击高亮标题即可复制。此设置会保存在本地并显示在界面中，但不会包含在公开配置导出中。"
+        },
+        "englishDescriptions": {
+          "liquidbounce.module.guiCloser.description": "Closes GUIs if their title matches specified patterns.",
+          "liquidbounce.module.guiCloser.mode.description": "Matches tests the entire container title; Contains searches for any matching part. Both modes use Java regular expressions.",
+          "liquidbounce.module.guiCloser.filter.description": "Ordered Java regular expressions for container titles. The first matching expression prevents that screen from opening. The default is ^Vote$.",
+          "liquidbounce.module.guiCloser.printScreenTitle.description": "Print unmatched container titles in chat. Click the highlighted title to copy it. This setting is saved locally and shown in the interface, but omitted from public configuration exports."
+        },
+        "labels": {
+          "Mode": "模式",
+          "Filter": "过滤规则",
+          "PrintScreenTitle": "显示界面标题"
+        }
+      },
+      "canonicalSha256": "bea6593e8a3bba138c84e9ba403f2bd2898c024b15e6c2c45089efd43c77aa2b"
+    },
+    "native/liquidbounce-interop/resources/localization/display_zh_tw.json": {
+      "scope": "GUICloser descriptions/English descriptions and its three setting labels only",
+      "entries": {
+        "descriptions": {
+          "liquidbounce.module.guiCloser.description": "如果 GUI 的標題符合指定模式，則關閉它。",
+          "liquidbounce.module.guiCloser.mode.description": "Matches 比對完整容器標題；Contains 搜尋標題中的相符部分。兩種模式都使用 Java 正規表示式。",
+          "liquidbounce.module.guiCloser.filter.description": "依序檢查容器標題的 Java 正規表示式。第一個相符項目會阻止該介面開啟，預設表示式為 ^Vote$。",
+          "liquidbounce.module.guiCloser.printScreenTitle.description": "在聊天中顯示未相符的容器標題，點擊醒目標題即可複製。此設定會儲存在本機並顯示於介面中，但不會包含在公開設定匯出中。"
+        },
+        "labels": {
+          "Mode": "模式",
+          "Filter": "篩選規則",
+          "PrintScreenTitle": "顯示介面標題"
+        }
+      },
+      "canonicalSha256": "77c5d3e44c1e82de806daf721ce0718e870f4e92dff5f6236a7092d943e7dc31"
+    }
+  },
+  "reports": [
+    {
+      "path": "build/gui-closer-source-16/report.json",
+      "passed": true,
+      "sha256": "12f2fc844b2087bd683b897c5a91341f8f261da658b8470f580d7d09f0dec91a",
+      "scope": "Byte-for-byte original ModuleGUICloser.kt, actual JDK25 Kotlin Regex, explicit event/module/Component/chat fixtures. Both modes, Java regex dialect features and compile errors, UTF16 and supplementary search selection, null-filter short circuit, screen/running/print gates, source chat call contents. Native Text styles and actual game integration remain separate checks."
+    },
+    {
+      "path": "build/gui-closer-source-consistency-01/report.json",
+      "passed": true,
+      "sha256": "5ce2a12f10addc146cda3552acf3d3a3d99dad2203cb8c2baa08ab48858c436c",
+      "scope": "Behavior source and all23 pre-provenance vendor files byte-identical to passing45371-vector source16 snapshot; manifest is added provenance only."
+    },
+    {
+      "path": "build/gui-closer-jdk-data-02/report.json",
+      "passed": true,
+      "sha256": "a61153ac78a2bcc7f2583f4481c718eba96ab7ff9a9173a6ee1bdd15c20addde",
+      "scope": "Observable Character/CharPredicates/Grapheme facts from actual JDK25, no JDK source copied."
+    },
+    {
+      "path": "build/gui-closer-config-04/report.json",
+      "passed": true,
+      "sha256": "8abaa228d6c8d8177484e671e0dff55cf0f83acc65a852c6f1e708839156f5d7",
+      "scope": "Complete production config/behavior snapshot with declaration-only absent GuiCloser registration. File/Interop trees, private value inclusion, TEXT inner metadata, Java Regex string/null parsing, atomic list replacement, order/duplicates/null retention, Unicode choice parsing and independent leaf failure. No actual game claim."
+    },
+    {
+      "path": "build/gui-closer-config-source-03/report.json",
+      "passed": true,
+      "sha256": "07eff3c36afed779aefbe4c3f8b5600269bebcf6de42539e04ba66a383d2e9f1",
+      "scope": "Byte-identical original ListValue, SimpleStringTypeAdapter, ValueGroupSerializer and exclusions. Explicit minimal Value/group/input/MC providers. Actual Gson/JDK25, whole production Rust config/behavior snapshot, File/Interop/public inclusion, ordered/nullable/duplicate filters, strict Regex JSON input and atomic failure. No game claim."
+    },
+    {
+      "path": "build/gui-closer-packaging-02/report.json",
+      "passed": true,
+      "sha256": "e55ed2cabe2a2d6dafef281ffe2b51d3b3380d2f332478c05852e7561081195e",
+      "scope": "Actual read_package_source staging inputs include all24 vendor files; actual legacy source bundle preserves every vendor file byte-for-byte under behaviors/data/java_regex and rewrites only behavior manifest dependency path. Complete production package validation passes. Does not claim patched-game loading from the legacy unpatched trait bundle."
+    },
+    {
+      "path": "build/gui-closer-current-02/report.json",
+      "passed": true,
+      "sha256": "58ca34bd1e37497c2c02182570063ce95926b4b0da1c2691b871b8527680acfc",
+      "scope": "Current cumulative canonical transformation snapshot for focused actual-body tests only. No full Horizon copy, API generation, Cargo or game validation."
+    },
+    {
+      "path": "build/gui-closer-view-04/report.json",
+      "passed": true,
+      "sha256": "bf9cc355ba07114d09c82cf7019549ebb2008c6d5147c993c816934849dedde8",
+      "scope": "Exact production ContainerView/exchange/UI and active scopes plus transformed remote_menu accessor. Explicit recording Game/World/menu providers, real Horizon Text type. Source assertions connect actual HUD/input/pad/network/close and inventory Host consumers and active construction-before-cancellation. Tests distinguish old display menu, new packet state, shared player inventory, same reused remote entity key, double chest halves, repeated cancellation, id validation, active close, accepted same-enum replacement, abandoned constructor and nested Host reentrancy. Concrete complete Game compilation and game execution remain separate."
+    },
+    {
+      "path": "build/gui-closer-titles-06/report.json",
+      "passed": true,
+      "sha256": "22ede29c3e75dbe5c6d9836abf754dd3158d0bb0352601baf8317ed9499fb348",
+      "scope": "Exact final native_auto_f5_screen, auto_f5_menu_title, client_container_menu_title, auto_f5_storage_menu and original chest_title, unchanged complete AutoF5 fixture plus prospective title checks before old screen replacement. Actual EN/SC/TC MC26.3 language resources, custom titles, remote titles, mounts, creative inventory, all original title keys; real generated Host API. Explicit Game/title state providers; actual game separate."
+    },
+    {
+      "path": "build/gui-closer-consumption-08/report.json",
+      "passed": true,
+      "sha256": "777b7863eaca50b04aea21b749f88b3d27b4c050765bb3d5f517778da8e2a95c",
+      "scope": "Unchanged Game helper, exact transformed production storage/player/native-keymapping/station/merchant/dynamic return bodies and server acceptance prefix, actual GUICloser and actual Horizon Text. Explicit recording Game/title providers. Tests cancel before old-screen lifecycle/keymapping/init/recipe reset/capture/use release, evaluate dynamic RHS once, retain no cancellation flag, and verify native message spans/copy/hover. Source assertions cover all14 entry points, preserve lectern/unsupported reset behavior and exclude two temporary inventory contexts. Full concrete Game compilation and actual game execution remain separate."
+    }
+  ],
+  "preservedHistoricalReports": [
+    {
+      "path": "build/gui-closer-config-01/report.json",
+      "passed": false,
+      "sha256": "56f7cad0b440c9926533640c82abfcd49d53fe6e59fded6118648cdffe3c2d26"
+    },
+    {
+      "path": "build/gui-closer-config-02/report.json",
+      "passed": false,
+      "sha256": "1d48fabb3536cef4a4cfecdbc60635bfbce3db05d9b1827b194732a73de5933c"
+    },
+    {
+      "path": "build/gui-closer-config-03/report.json",
+      "passed": true,
+      "sha256": "d110244032302b31798a618607cb9d82be4cc8e25f2e99d7d72d7d1757d6c387"
+    },
+    {
+      "path": "build/gui-closer-config-source-01/report.json",
+      "passed": false,
+      "sha256": "bf594d55e59111981d32c31366f0e70a8432f1a46be1e5c68e879e00e204daae"
+    },
+    {
+      "path": "build/gui-closer-config-source-02/report.json",
+      "passed": true,
+      "sha256": "c8dc6d60880830f18eac62e8486ccf07a9a8b0f9e0535b44037118126c906572"
+    },
+    {
+      "path": "build/gui-closer-consumption-01/report.json",
+      "passed": false,
+      "sha256": "348d9df754f6f5d71691811f921db4b9c8cdd2edccdcd7c072faee689edc93f4"
+    },
+    {
+      "path": "build/gui-closer-consumption-02/report.json",
+      "passed": false,
+      "sha256": "62fe75eec035b9461ae057d8804d431c2c35a5ff3300c124b02dd0db0a0a85e1"
+    },
+    {
+      "path": "build/gui-closer-consumption-03/report.json",
+      "passed": true,
+      "sha256": "fa2b2197066039a38d10b57e678eb611c42b373a59d20f43d62866d00fb01621"
+    },
+    {
+      "path": "build/gui-closer-consumption-04/report.json",
+      "passed": false,
+      "sha256": "7da348d247a21fe7c3441f2bda672898b0724bfd4f3cc7a828a79b7c7f2593d5"
+    },
+    {
+      "path": "build/gui-closer-consumption-05/report.json",
+      "passed": true,
+      "sha256": "aec579d37c88e064ac98bfd6b370d25d879128c617175c6215d33f371a1fa92e"
+    },
+    {
+      "path": "build/gui-closer-consumption-06/report.json",
+      "passed": true,
+      "sha256": "d520d9325ab5fd0456fcf4980b14f4fb0dc7392127092cc9b6f3e0e10e8f861c"
+    },
+    {
+      "path": "build/gui-closer-consumption-07/report.json",
+      "passed": true,
+      "sha256": "9b47c5252bfd5fcfe617f8720b5548a6fad08714432f4fec788c29e2ee6aa273"
+    },
+    {
+      "path": "build/gui-closer-current-01/report.json",
+      "passed": true,
+      "sha256": "2118e4c550ba4831a3ded16ce05be16cb08406f973e6d15cc7584ad78e02214a"
+    },
+    {
+      "path": "build/gui-closer-jdk-data-01/report.json",
+      "passed": true,
+      "sha256": "ed3c8a37f3490eaeaa61a690f07aba19dcb8c50c97d99b19a478ec600075589e"
+    },
+    {
+      "path": "build/gui-closer-native-03/report.json",
+      "passed": true,
+      "sha256": "46dbc55e2f59c9103d408bea429a332c0756000426d1652f251414f727bd89e4"
+    },
+    {
+      "path": "build/gui-closer-native-04/report.json",
+      "passed": true,
+      "sha256": "36ad539e3fc63c4ded3a37564f7d312a7fda09d2f7353428bea5ed803eebcb5f"
+    },
+    {
+      "path": "build/gui-closer-native-05/report.json",
+      "passed": true,
+      "sha256": "b210e7d4c4b61013454b9a373a82d032614a7e687baea2d5b271a71c7cc28c53"
+    },
+    {
+      "path": "build/gui-closer-native-06/report.json",
+      "passed": false,
+      "sha256": "f66c450115299dc35f21e6efbdc98a172710919bf829f1a51467c354802ecb52"
+    },
+    {
+      "path": "build/gui-closer-native-07/report.json",
+      "passed": false,
+      "sha256": "82be1d2f1e77f691fc23ced38c0fc1f1ad0240d65b22add0c9b194f30f404557"
+    },
+    {
+      "path": "build/gui-closer-native-08/report.json",
+      "passed": false,
+      "sha256": "6a19cd2677521908e4f1d9a740c1d504af2ccfbd4bad0600b0b0b81d0595dd3b"
+    },
+    {
+      "path": "build/gui-closer-native-09/report.json",
+      "passed": false,
+      "sha256": "fe27006b19a636b78439035b953bea95dbe472051025dbc6be4422e0bfeccf4f"
+    },
+    {
+      "path": "build/gui-closer-packaging-01/report.json",
+      "passed": true,
+      "sha256": "c56cab2b60e613fe82c1acff63927ccc4b707525cc696ec4b8ef723b1bea17ed"
+    },
+    {
+      "path": "build/gui-closer-source-01/report.json",
+      "passed": false,
+      "sha256": "f419ac8867735fba1e3add7fe353996b6d6e9001e40e0dbfe145443a3937a720"
+    },
+    {
+      "path": "build/gui-closer-source-02/report.json",
+      "passed": false,
+      "sha256": "2d6ff608af5de13f2a37ef2726dc9c66a4a871a5566ed0c256450bde4e35540b"
+    },
+    {
+      "path": "build/gui-closer-source-03/report.json",
+      "passed": false,
+      "sha256": "6ec896e1e2e71fb8744b765bb5f09acd63cbb5f9b09466ec9f790745caa49a1e"
+    },
+    {
+      "path": "build/gui-closer-source-04/report.json",
+      "passed": false,
+      "sha256": "b5eaaa8f1b4e69fc2cd8703255711d53b2dd90bb7227f6e22e1eb0ec4b7b43e8"
+    },
+    {
+      "path": "build/gui-closer-source-05/report.json",
+      "passed": false,
+      "sha256": "d408a9a359c82001ff70cb91ef288176b4976f12315f2c48b32c51beb0a65877"
+    },
+    {
+      "path": "build/gui-closer-source-06/report.json",
+      "passed": false,
+      "sha256": "3094beab9193a4b594775c62ac176ce2114a0c1959b22e66a4b156fe8ae32949"
+    },
+    {
+      "path": "build/gui-closer-source-07/report.json",
+      "passed": false,
+      "sha256": "5a04553ae41279a15d94fe480129197a571858ec734fda1c87826c614463fb4d"
+    },
+    {
+      "path": "build/gui-closer-source-08/report.json",
+      "passed": false,
+      "sha256": "5e186bc3add5dd79a7da73855730297cae7d09f73cd8bd6943b0e53fde7b85c4"
+    },
+    {
+      "path": "build/gui-closer-source-09/report.json",
+      "passed": false,
+      "sha256": "495ec8a624d26c8a8e5dbd2f7ee7a409bafff72b9e3c6a470a33f8bf64fa0ecf"
+    },
+    {
+      "path": "build/gui-closer-source-10/report.json",
+      "passed": true,
+      "sha256": "3721cb02b2137edaff52de7c688374750ff1c054b7c0dc474017c31765528b2b"
+    },
+    {
+      "path": "build/gui-closer-source-11/report.json",
+      "passed": true,
+      "sha256": "07fc5094c5628628f85c088df80b4b6bba0251d1bf75c31f3b6d3540ab0633e4"
+    },
+    {
+      "path": "build/gui-closer-source-12/report.json",
+      "passed": false,
+      "sha256": "e5dd3a188641c29968593141979706bda37119d3c8a80e22861157cf71a6571f"
+    },
+    {
+      "path": "build/gui-closer-source-13/report.json",
+      "passed": false,
+      "sha256": "52aba3cd04a86044f1eba20f83ed3c3ff8a9686d1ccb71343982627965b9a518"
+    },
+    {
+      "path": "build/gui-closer-source-14/report.json",
+      "passed": false,
+      "sha256": "47adf66627a6ce57a7ed2a81769e7b8859f92e0d607a63f80ea930a4842a3cc4"
+    },
+    {
+      "path": "build/gui-closer-source-15/report.json",
+      "passed": false,
+      "sha256": "a62b79a876c7cc839dd4e012a9c6f89f7d1462606ce52a38e02f3e0b59b477f5"
+    },
+    {
+      "path": "build/gui-closer-titles-01/report.json",
+      "passed": true,
+      "sha256": "88f1186a46b0be3969ab046645fe8f8421888ffb9501feeeb17c0ab54e52238d"
+    },
+    {
+      "path": "build/gui-closer-titles-02/report.json",
+      "passed": false,
+      "sha256": "7da348d247a21fe7c3441f2bda672898b0724bfd4f3cc7a828a79b7c7f2593d5"
+    },
+    {
+      "path": "build/gui-closer-titles-03/report.json",
+      "passed": true,
+      "sha256": "dc906d5f162906ef41c45f6a202cbcc305dc7f9dd770543294e8660adc6ee5c1"
+    },
+    {
+      "path": "build/gui-closer-titles-04/report.json",
+      "passed": true,
+      "sha256": "23cc76452d448707479f06d823c3f57a4fcef98737d70af01a182f6cac6efc5f"
+    },
+    {
+      "path": "build/gui-closer-titles-05/report.json",
+      "passed": true,
+      "sha256": "7befdb343ee8dcf6a131468fa9e25307d0895e79ceb1ccca03ce01347218ffa7"
+    },
+    {
+      "path": "build/gui-closer-view-01/report.json",
+      "passed": false,
+      "sha256": "c752abe86208905e8b366778a6e7f6555498ebf4df8e456d7a97e92eb5c133f3"
+    },
+    {
+      "path": "build/gui-closer-view-02/report.json",
+      "passed": true,
+      "sha256": "c1e1759c468f90bb4187a4d0a4dbc9905d85f48e8eb6dcd0ac865e5d109cb036"
+    },
+    {
+      "path": "build/gui-closer-view-03/report.json",
+      "passed": false,
+      "sha256": "f3d20366291a328ffe95928a112ec3b0c8cd6dc7ee62231bb95c330ddf0f743a"
+    }
+  ],
+  "bytecodeEvidence": {
+    "path": "build/gui-closer-client-packet-listener.txt",
+    "sha256": "9a166ed726990df1957a5a10fd04b1b8399743597ad140170a0f4c9db8c8bf1b",
+    "scope": "Actual MC26.3 ClientPacketListener.handlePlaceRecipe active container validation then current Screen RecipeUpdateListener"
+  },
+  "preservedEvidenceDirectoriesWithoutReport": [
+    "build/gui-closer-layout-01",
+    "build/gui-closer-layout-02",
+    "build/gui-closer-native-01",
+    "build/gui-closer-native-02"
+  ],
+  "pendingChecks": [
+    "Root production76 cumulative concrete Game and native engine build.",
+    "Root actual config actor test gui_closer_aliases_atomic_nullable_filter_and_file_interop_roundtrip.",
+    "Root clientGuiCloserScreen TestEngine/runtime scenario and actual game/GPU verification."
+  ]
+}

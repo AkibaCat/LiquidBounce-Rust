@@ -1,0 +1,62 @@
+{
+  "frozenDate": "2026-11-26",
+  "pinnedSources": {
+    "LiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "Horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "Horizon-Mixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "scope": "Complete AutoBreak unit frozen with final independent native ABI/client check. Canonical registration and actual game/GPU verification remain root integration checks.",
+  "files": {
+    "native/liquidbounce-behaviors/src/auto_break.rs": "d5855edf84a56f021676a5c453016bf1045559f6037baa9f8a4bdadbbd6846f7",
+    "native/liquidbounce-horizon/engine/src/auto_break_runtime.rs": "a36abc59de755168e13510aa4090b4061895a573d2988b2158c67ad8194402db",
+    "native/liquidbounce-horizon/auto-break-host.rs": "2881eb0b684fa003008a14ad8f559592009a2e784cd7470f057b11ce0d0fba4c",
+    "native/liquidbounce-horizon/keymapping-clicks.rs": "173938f7302edf24d69eb338de77d23fb6b26c14ce0a226b716c1d11b81d18b5",
+    "native/liquidbounce-horizon/auto-break-patch.py": "0b41da78dd7ea1923a4b5a7e4c6d538a44e23380a42f6ea58427c9e5a2c228a1"
+  },
+  "supportingFiles": {
+    "native/liquidbounce-horizon/auto-break-consumption-fixture.rs": "b7bc0a3fb5a5250ed0857dbea65296876e43a8c26986dded2dbb4aea63ede5e7",
+    "native/liquidbounce-horizon/auto-break-integration.md": "ca4b190066f03a9696301fcedb8348319e0e93704a72ff3c626872aab86c7c49",
+    "native/liquidbounce-horizon/auto-break-source-fixture/AccessibleKeyMapping.java": "0e2c01ee086ae144b79224da8fccf7bd942c1e168ba2f35556f78d33c126b41d",
+    "native/liquidbounce-horizon/auto-break-source-fixture/KeyMappingClickOracle.java": "da83b9114857da4416f6b789647ef03b23bb641a49da9df7faab3b6eb2a91aee",
+    "native/liquidbounce-horizon/auto-break-source-fixture/Main.kt": "18b7fb20307393807a479ea85805796592b3030b56985e83b7c2706637fb5a8f",
+    "native/liquidbounce-horizon/auto-break-source-fixture/context.kt": "dfb1ee19a25f38355996dcc8f0eb329a1e2f9c46810b6e462e52cd2d9826b4f5",
+    "native/liquidbounce-horizon/auto-break-source-fixture/events.kt": "242fc07a5173cda520e26f06983a5216b4d302ff5d09922bd951112d48f2f1e5",
+    "native/liquidbounce-horizon/auto-break-source-fixture/handler.kt": "7983d899222c5aa2cb5906e411c8f2f809b94170c89ed0cf5e0269867609bd76",
+    "native/liquidbounce-horizon/auto-break-source-fixture/module.kt": "295590d0f0746b5018d74e500a6e89252c2421ac77866ea0ef9f543d1f814b39",
+    "native/liquidbounce-horizon/auto-break-source-fixture/oracle.rs": "63e7d93a01ab71ffc6646282471d5d00e58baefe6441825942827a6c21b58df8",
+    "native/liquidbounce-horizon/auto-break-source-fixture/state.kt": "b04a1bb06dd45940e381368beb056e68796e7eef4dd43b053b72b5f6543b08c6",
+    "native/liquidbounce-horizon/test-auto-break-consumption.py": "d328b3340e3362e0219a9b389920f292c59ebd31e99b948be1541defc1f8e419",
+    "native/liquidbounce-horizon/test-auto-break-native.py": "b270c513107114e3b9e05da459b5dde399019bc935a58aed26a9d1540a759f74",
+    "native/liquidbounce-horizon/test-auto-break-source.py": "2abd49aa4b1458fee2dbcc51712e652abe1a9b54d91ef7b2c26b40e2149cc7c8"
+  },
+  "reports": [
+    {
+      "path": "build/auto-break-source-03/report.json",
+      "passed": true,
+      "sha256": "8230772edda31ab20b714a2ec08925537a3f663304078256359690a67c74c1cd",
+      "scope": "Unchanged Kotlin module, 960 behavior vectors, 52 real official MC26.3 KeyMapping lifecycle operations, four tests and Clippy."
+    },
+    {
+      "path": "build/auto-break-consumption-03/report.json",
+      "passed": true,
+      "sha256": "7a3d22fd95c2ef33dab75c23a7461f93ef1364a634d1fb9b1def3e451209386e",
+      "scope": "Complete production InteractionInput and Hand/Clicks methods, unchanged KeyBinds/ClickQueues; 19 tests and Clippy."
+    },
+    {
+      "path": "build/auto-break-native-02/report.json",
+      "passed": true,
+      "sha256": "b3e40aee8ac1719474aafcb004eaf04966d6ca793e3afba208e24b0f3384090f",
+      "scope": "Real fill_hooks and complete independent horizon-client --lib including final pointer release and remote field visibility."
+    }
+  ],
+  "preservedHistoricalFailures": [
+    "build/auto-break-source-02/report.json",
+    "build/auto-break-consumption-01/report.json",
+    "build/auto-break-consumption-02/report.json",
+    "build/auto-break-native-01/report.json"
+  ],
+  "pendingChecks": [
+    "Root canonical registry/config/runtime integration.",
+    "Actual game execution and GPU smoke."
+  ]
+}

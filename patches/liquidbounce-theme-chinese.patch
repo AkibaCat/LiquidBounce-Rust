@@ -1,0 +1,2428 @@
+diff --git a/src/app.scss b/src/app.scss
+--- a/src/app.scss
++++ b/src/app.scss
+@@ -39,7 +39,7 @@
+ }
+ 
+ body {
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     user-select: none;
+     overflow: hidden;
+ }
+diff --git a/src/App.svelte b/src/App.svelte
+--- a/src/App.svelte
++++ b/src/App.svelte
+@@ -42,6 +42,8 @@
+         "/basicmenu": BasicMenu,
+         "/browser": Browser
+     };
++
++    let persistentReady = false;
+ 
+     const SURFACE_TINT_MIX = 18;
+ 
+@@ -89,6 +91,7 @@
+         applyTintColor(defaultSurfaceColor, theme.colors.tint);
+ 
+         await insertPersistentData();
++        persistentReady = true;
+ 
+         listenAlways("themeColorChange", async (event: ThemeColorChangeEvent) => {
+             if (event.themeId !== metadata?.id) {
+@@ -142,6 +145,7 @@
+ </script>
+ 
+ <main>
++    {#if persistentReady}
+     {#if isMenuRoute($location)}
+         <Menu>
+             {#key $location}
+@@ -153,4 +157,5 @@
+     {:else}
+         <Router {routes}/>
+     {/if}
++    {/if}
+ </main>
+diff --git a/src/integration/events.ts b/src/integration/events.ts
+--- a/src/integration/events.ts
++++ b/src/integration/events.ts
+@@ -26,6 +26,7 @@
+     clickGuiValueChange: ClickGuiValueChangeEvent;
+     spaceSeperatedNamesChange: SpaceSeperatedNamesChangeEvent;
+     clientLanguageChanged: void;
++    languageChange: {gameLanguage: string; locale: string; generation: number};
+     valueChanged: ValueChangedEvent;
+     moduleActivation: ModuleActivationEvent;
+     moduleToggle: ModuleToggleEvent;
+diff --git a/src/routes/browser/Browser.svelte b/src/routes/browser/Browser.svelte
+--- a/src/routes/browser/Browser.svelte
++++ b/src/routes/browser/Browser.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../integration/localization";
+     import type {Browser} from "../../integration/types.js";
+     import {onMount} from "svelte";
+     import {
+@@ -111,9 +112,9 @@
+         <button on:click={handleForward}>&rarr;</button>
+         <button on:click={handleReload}>&#x21bb;</button>
+         <div class="address-bar">
+-            <input id="url" bind:value={browser.url} on:keypress={onKeyPress} placeholder="Enter URL" />
++            <input id="url" bind:value={browser.url} on:keypress={onKeyPress} placeholder={$translate("Enter URL")} />
+         </div>
+-        <button on:click={handleGo}>Go</button>
+-        <button on:click={handleForceReload}>Force Reload</button>
++        <button on:click={handleGo}>{$translate("Go")}</button>
++        <button on:click={handleForceReload}>{$translate("Force Reload")}</button>
+     </div>
+ {/if}
+diff --git a/src/routes/clickgui/clickgui_store.ts b/src/routes/clickgui/clickgui_store.ts
+--- a/src/routes/clickgui/clickgui_store.ts
++++ b/src/routes/clickgui/clickgui_store.ts
+@@ -2,6 +2,8 @@
+ 
+ export interface TDescription {
+     description: string;
++    moduleName?: string;
++    aliases?: string[];
+     anchor: "left" | "right",
+     x: number;
+     y: number;
+diff --git a/src/routes/clickgui/Description.svelte b/src/routes/clickgui/Description.svelte
+--- a/src/routes/clickgui/Description.svelte
++++ b/src/routes/clickgui/Description.svelte
+@@ -1,4 +1,6 @@
+ <script lang="ts">
++    import {translate, translateDescription} from "../../integration/localization";
++    import {convertToSpacedString, spaceSeperatedNames} from "../../theme/theme_config";
+     import {fly} from "svelte/transition";
+     import {description, type TDescription} from "./clickgui_store";
+ 
+@@ -29,7 +31,9 @@
+         <div transition:fly|global={{duration: 140, x: anchor === "right" ? -10 : 10}} class="description-wrapper"
+              style="top: {data.y}px; left: {left}px;" bind:this={element}>
+             <div class="description" class:right={anchor === "left"}>
+-                <div class="text">{data.description}</div>
++                <div class="text">{$translateDescription(data.description, data.moduleName)}{#if data.aliases?.length}
++                    ({$translate("aka")} {data.aliases.map(name => $spaceSeperatedNames ? convertToSpacedString(name) : name).join(", ")})
++                {/if}</div>
+             </div>
+         </div>
+     {/if}
+diff --git a/src/routes/clickgui/Module.svelte b/src/routes/clickgui/Module.svelte
+--- a/src/routes/clickgui/Module.svelte
++++ b/src/routes/clickgui/Module.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate, translateModule} from "../../integration/localization";
+     import {onMount} from "svelte";
+     import {
+         getModuleSettings,
+@@ -10,7 +11,7 @@
+     import {slide} from "svelte/transition";
+     import {description as descriptionStore, highlightModuleName} from "./clickgui_store";
+     import {setItem} from "../../integration/persistent_storage";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../theme/theme_config";
+     import {scaleFactor} from "./clickgui_store";
+ 
+     export let name: string;
+@@ -65,10 +66,6 @@
+         const boundingRect = moduleNameElement.getBoundingClientRect();
+         const y = (boundingRect.top + (moduleNameElement.clientHeight / 2)) * (2 / $scaleFactor);
+ 
+-        let moduleDescription = description;
+-        if (aliases.length > 0) {
+-            moduleDescription += ` (aka ${aliases.map(name => $spaceSeperatedNames ? convertToSpacedString(name) : name).join(", ")})`;
+-        }
+ 
+         // If element is less than 300px from the right, display description on the left
+         if (window.innerWidth - boundingRect.right > 300) {
+@@ -77,7 +74,7 @@
+                 x,
+                 y,
+                 anchor: "right",
+-                description: moduleDescription
++                description, moduleName: name, aliases
+             });
+         } else {
+             const x = boundingRect.left * (2 / $scaleFactor);
+@@ -86,7 +83,7 @@
+                 x,
+                 y,
+                 anchor: "left",
+-                description: moduleDescription
++                description, moduleName: name, aliases
+             });
+         }
+     }
+@@ -115,12 +112,12 @@
+             class:enabled
+             class:highlight={name === $highlightModuleName}
+     >
+-        {$spaceSeperatedNames ? convertToSpacedString(name) : name}
++        {$translateModule(name, $spaceSeperatedNames)}
+ 
+         {#if hasSettings}
+             <button
+                     class="expand-arrow"
+-                    aria-label="Expand settings"
++                    aria-label={$translate("Expand settings")}
+                     aria-expanded={expanded}
+                     on:click={toggleExpanded}
+             >
+diff --git a/src/routes/clickgui/Panel.svelte b/src/routes/clickgui/Panel.svelte
+--- a/src/routes/clickgui/Panel.svelte
++++ b/src/routes/clickgui/Panel.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../integration/localization";
+     import {onMount} from "svelte";
+     import type {Module as TModule} from "../../integration/types";
+     import {listen} from "../../integration/ws";
+@@ -221,7 +222,7 @@
+                 alt="icon"
+                 on:error={showFallbackIcon}
+         />
+-        <span class="category">{category}</span>
++        <span class="category">{$translate(category)}</span>
+ 
+         <!-- svelte-ignore a11y_consider_explicit_label -->
+         <button class="expand-toggle" on:click={toggleExpanded} bind:this={expandButtonElement}>
+diff --git a/src/routes/clickgui/Search.svelte b/src/routes/clickgui/Search.svelte
+--- a/src/routes/clickgui/Search.svelte
++++ b/src/routes/clickgui/Search.svelte
+@@ -1,11 +1,12 @@
+ <script lang="ts">
++    import {searchableModuleNames, translate, translateModule} from "../../integration/localization";
+     import type {ConfigurableSetting, Module} from "../../integration/types";
+     import {getModuleSettings, setModuleEnabled} from "../../integration/rest";
+     import {listen} from "../../integration/ws";
+     import type {ClickGuiValueChangeEvent, KeyboardKeyEvent, ModuleToggleEvent} from "../../integration/events";
+     import {highlightModuleName} from "./clickgui_store";
+     import {onMount} from "svelte";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../theme/theme_config";
+     import {isClickGuiScreen} from "../../util/utils";
+     import {escapeLayer} from "../../integration/escape";
+ 
+@@ -22,17 +23,20 @@
+ 
+     type SearchableModule = {
+         raw: Module;
+-        lowerName: string;
+-        lowerAliases: string[];
++        names: string[];
+     };
+ 
+-    // Cache lowercase names/aliases to avoid repeated toLowerCase() per keystroke.
++    // Rebuild display search names when the actual game language changes.
+     let searchableModules: SearchableModule[] = [];
+     $: searchableModules = modules.map(m => ({
+         raw: m,
+-        lowerName: m.name.toLowerCase(),
+-        lowerAliases: m.aliases.map(a => a.toLowerCase()),
++        names: $searchableModuleNames(m.name, m.aliases),
+     }));
++
++    $: {
++        searchableModules;
++        if (query) filterModules(false);
++    }
+ 
+     function reset() {
+         filteredModules = [];
+@@ -53,12 +57,11 @@
+             selectedIndex = 0;
+         }
+ 
+-        const pureQuery = query.toLowerCase().replaceAll(" ", "");
+-
+-        filteredModules = searchableModules.filter(({ raw, lowerName, lowerAliases }) => {
+-            return lowerName.includes(pureQuery)
+-                || lowerAliases.some(a => a.includes(pureQuery));
+-        }).map(it => it.raw);
++        const pureQuery = query.toLocaleLowerCase().replace(/\s+/g, "");
++
++        filteredModules = searchableModules.filter(({names}) =>
++            names.some(name => name.includes(pureQuery))
++        ).map(it => it.raw);
+     }
+ 
+     async function handleKeyDown(e: KeyboardKeyEvent) {
+@@ -175,7 +178,7 @@
+     <input
+             type="text"
+             class="search-input"
+-            placeholder="Search"
++            placeholder={$translate("Search")}
+             spellcheck="false"
+             bind:value={query}
+             bind:this={searchInputElement}
+@@ -198,17 +201,17 @@
+                             bind:this={resultElements[index]}
+                     >
+                         <div class="module-name">
+-                            {$spaceSeperatedNames ? convertToSpacedString(name) : name}
++                            {$translateModule(name, $spaceSeperatedNames)}
+                         </div>
+                         <div class="aliases">
+                             {#if aliases.length > 0}
+-                                (aka {aliases.map(name => $spaceSeperatedNames ? convertToSpacedString(name) : name).join(", ")})
++                                ({$translate("aka")} {aliases.map(name => $translateModule(name, $spaceSeperatedNames)).join(", ")})
+                             {/if}
+                         </div>
+                     </div>
+                 {/each}
+             {:else}
+-                <div class="placeholder">No modules found</div>
++                <div class="placeholder">{$translate("No modules found")}</div>
+             {/if}
+         </div>
+     {/if}
+@@ -298,7 +301,7 @@
+     padding: 15px 25px;
+     background-color: transparent;
+     border: none;
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     font-size: 16px;
+     color: var(--clickgui-text-color);
+     width: 100%;
+diff --git a/src/routes/clickgui/setting/bind/BindDisplay.svelte b/src/routes/clickgui/setting/bind/BindDisplay.svelte
+--- a/src/routes/clickgui/setting/bind/BindDisplay.svelte
++++ b/src/routes/clickgui/setting/bind/BindDisplay.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {localization, translate} from "../../../../integration/localization";
+     import type {BindModifier} from "../../../../integration/types";
+     import {os} from "../../clickgui_store";
+     import {getPrintableKeyName} from "../../../../integration/rest";
+@@ -11,6 +12,7 @@
+     let printableKeyName: string | undefined;
+ 
+     $: {
++        $localization.generation;
+         if (!literal && boundKey !== undefined && boundKey !== UNKNOWN_KEY) {
+             getPrintableKeyName(boundKey)
+                 .then(printableKey => {
+@@ -58,7 +60,7 @@
+         {/each}
+         <span class="boundKey">{printableKeyName}</span>
+     {:else}
+-        <span class="dimmed">None</span>
++        <span class="dimmed">{$translate("None")}</span>
+     {/if}
+ </span>
+ 
+@@ -79,7 +81,7 @@
+     color: var(--clickgui-text-dimmed-color);
+     opacity: 0.8;
+     line-height: 1;
+-    font-family: monospace;
++    font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+     margin-left: 2px;
+   }
+ 
+diff --git a/src/routes/clickgui/setting/bind/BindSetting.svelte b/src/routes/clickgui/setting/bind/BindSetting.svelte
+--- a/src/routes/clickgui/setting/bind/BindSetting.svelte
++++ b/src/routes/clickgui/setting/bind/BindSetting.svelte
+@@ -1,9 +1,10 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {createEventDispatcher, onDestroy} from "svelte";
+     import type {BindModifier, BindSetting, ModuleSetting} from "../../../../integration/types";
+     import {waitMatches} from "../../../../integration/ws";
+     import type {KeyboardKeyEvent, MouseButtonEvent} from "../../../../integration/events";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../../theme/theme_config";
+     import BindDisplay from "./BindDisplay.svelte";
+     import SwitchBindAction from "./SwitchBindAction.svelte";
+     import {isClickGuiScreen, UNKNOWN_KEY} from "../../../../util/utils";
+@@ -154,7 +155,7 @@
+             on:mouseenter={() => isHovered = true}
+             on:mouseleave={() => isHovered = false}
+     >
+-        <span class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</span>
++        <span class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</span>
+ 
+         {#if cSetting.value.boundKey !== UNKNOWN_KEY}
+             <div class="action">
+@@ -179,7 +180,7 @@
+                         literal={true}
+                 />
+             {:else}
+-                <span>Press any key...</span>
++                <span>{$translate("Press any key...")}</span>
+             {/if}
+         </span>
+     </button>
+@@ -216,7 +217,7 @@
+     font-weight: 500;
+     color: var(--clickgui-text-color);
+     font-size: 12px;
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     width: 100%;
+     position: relative;
+   }
+diff --git a/src/routes/clickgui/setting/bind/SwitchBindAction.svelte b/src/routes/clickgui/setting/bind/SwitchBindAction.svelte
+--- a/src/routes/clickgui/setting/bind/SwitchBindAction.svelte
++++ b/src/routes/clickgui/setting/bind/SwitchBindAction.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import type {BindAction} from "../../../../integration/types";
+     import {fly} from "svelte/transition";
+     import {cubicOut} from 'svelte/easing';
+@@ -38,7 +39,7 @@
+                     class="chosen"
+                     in:fly={{ x: 5, duration: 100, delay: 100, easing: cubicOut }}
+                     out:fly={{ x: -5, duration: 100, easing: cubicOut }}
+-            >{chosen}</span>
++            >{$translate(chosen)}</span>
+         {/key}
+     </span>
+ 
+diff --git a/src/routes/clickgui/setting/BooleanSetting.svelte b/src/routes/clickgui/setting/BooleanSetting.svelte
+--- a/src/routes/clickgui/setting/BooleanSetting.svelte
++++ b/src/routes/clickgui/setting/BooleanSetting.svelte
+@@ -1,11 +1,12 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import { createEventDispatcher } from "svelte";
+     import type {
+         ModuleSetting,
+         BooleanSetting,
+     } from "../../../integration/types";
+     import Switch from "./common/Switch.svelte";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+ 
+     export let setting: ModuleSetting;
+ 
+@@ -22,7 +23,7 @@
+ 
+ <div class="setting">
+     <Switch
+-        name={$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}
++        name={$translate(cSetting.name, $spaceSeperatedNames)}
+         bind:value={cSetting.value}
+         on:change={handleChange}
+     />
+diff --git a/src/routes/clickgui/setting/ChoiceSetting.svelte b/src/routes/clickgui/setting/ChoiceSetting.svelte
+--- a/src/routes/clickgui/setting/ChoiceSetting.svelte
++++ b/src/routes/clickgui/setting/ChoiceSetting.svelte
+@@ -1,10 +1,11 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import type {ChoiceSetting, ModuleSetting,} from "../../../integration/types";
+     import ExpandArrow from "./common/ExpandArrow.svelte";
+     import GenericSetting from "./common/GenericSetting.svelte";
+     import {setItem} from "../../../integration/persistent_storage";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import Dropdown from "./common/Dropdown.svelte";
+ 
+     export let setting: ModuleSetting;
+@@ -41,7 +42,7 @@
+             <Dropdown
+                 bind:value={cSetting.active}
+                 {options}
+-                name={$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}
++                name={$translate(cSetting.name, $spaceSeperatedNames)}
+                 on:change={handleChange}
+             />
+             <ExpandArrow bind:expanded />
+@@ -51,7 +52,7 @@
+             <Dropdown
+                 bind:value={cSetting.active}
+                 {options}
+-                name={$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}
++                name={$translate(cSetting.name, $spaceSeperatedNames)}
+                 on:change={handleChange}
+             />
+         </div>
+diff --git a/src/routes/clickgui/setting/ChooseSetting.svelte b/src/routes/clickgui/setting/ChooseSetting.svelte
+--- a/src/routes/clickgui/setting/ChooseSetting.svelte
++++ b/src/routes/clickgui/setting/ChooseSetting.svelte
+@@ -1,7 +1,8 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import type {ChooseSetting, ModuleSetting,} from "../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import Dropdown from "./common/Dropdown.svelte";
+ 
+     export let setting: ModuleSetting;
+@@ -21,7 +22,7 @@
+         on:change={handleChange}
+         bind:value={cSetting.value}
+         options={cSetting.choices}
+-        name={$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}
++        name={$translate(cSetting.name, $spaceSeperatedNames)}
+     />
+ </div>
+ 
+diff --git a/src/routes/clickgui/setting/ColorSetting.svelte b/src/routes/clickgui/setting/ColorSetting.svelte
+--- a/src/routes/clickgui/setting/ColorSetting.svelte
++++ b/src/routes/clickgui/setting/ColorSetting.svelte
+@@ -1,10 +1,11 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import "@simonwep/pickr/dist/themes/classic.min.css";
+     import "./pickr.scss";
+     import {createEventDispatcher, onMount} from "svelte";
+     import type {ColorSetting, ModuleSetting,} from "../../../integration/types.js";
+     import Pickr from "@simonwep/pickr";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import {intToRgba, rgbaToHex, rgbaToInt} from "../../../integration/util";
+     import {escapeLayer} from "../../../integration/escape";
+ 
+@@ -67,7 +68,7 @@
+ </script>
+ 
+ <div class="setting">
+-    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++    <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+     <div class="value-spot">
+         <input
+             class="value"
+@@ -124,7 +125,7 @@
+         margin-right: 15px;
+         margin-left: auto;
+         width: 70px;
+-        font-family: monospace;
++        font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+     }
+ 
+     .value-spot {
+diff --git a/src/routes/clickgui/setting/common/Dropdown.svelte b/src/routes/clickgui/setting/common/Dropdown.svelte
+--- a/src/routes/clickgui/setting/common/Dropdown.svelte
++++ b/src/routes/clickgui/setting/common/Dropdown.svelte
+@@ -1,6 +1,7 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {createEventDispatcher, tick} from "svelte";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../../theme/theme_config";
+     import {escapeLayer} from "../../../../integration/escape";
+ 
+     export let name: string | null;
+@@ -76,10 +77,10 @@
+ <div class="dropdown" class:expanded>
+     <div class="head" bind:this={dropdownHead} on:click={toggleExpanded}>
+         {#if name !== null}
+-            <span class="text">{$spaceSeperatedNames ? convertToSpacedString(name) : name}
+-                &bull; {$spaceSeperatedNames ? convertToSpacedString(value) : value}</span>
++            <span class="text">{$translate(name, $spaceSeperatedNames)}
++                &bull; {$translate(value, $spaceSeperatedNames)}</span>
+         {:else}
+-            <span class="text">{$spaceSeperatedNames ? convertToSpacedString(value) : value}</span>
++            <span class="text">{$translate(value, $spaceSeperatedNames)}</span>
+         {/if}
+     </div>
+ 
+@@ -91,7 +92,7 @@
+                         class:active={o === value}
+                         on:click={() => updateValue(o)}
+                 >
+-                    {$spaceSeperatedNames ? convertToSpacedString(o) : o}
++                    {$translate(o, $spaceSeperatedNames)}
+                 </div>
+             {/each}
+         </div>
+diff --git a/src/routes/clickgui/setting/common/GenericSetting.svelte b/src/routes/clickgui/setting/common/GenericSetting.svelte
+--- a/src/routes/clickgui/setting/common/GenericSetting.svelte
++++ b/src/routes/clickgui/setting/common/GenericSetting.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate, translateSettingDescription} from "../../../../integration/localization";
+     import type {ModuleSetting} from "../../../../integration/types";
+     import BooleanSetting from "../BooleanSetting.svelte";
+     import ChoiceSetting from "../ChoiceSetting.svelte";
+@@ -28,7 +29,7 @@
+ </script>
+ 
+ 
+-<div in:slide|global={{duration: 150, axis: "y"}} out:slide|global={{duration: 120, axis: "y"}}>
++<div title={$translateSettingDescription(setting)} in:slide|global={{duration: 150, axis: "y"}} out:slide|global={{duration: 120, axis: "y"}}>
+     {#if setting.valueType === "BOOLEAN"}
+         <BooleanSetting bind:setting={setting} on:change/>
+     {:else if setting.valueType === "CHOICE"}
+@@ -76,6 +77,6 @@
+     {:else if setting.valueType === "CURVE"}
+         <CurveSetting {path} bind:setting={setting} on:change/>
+     {:else}
+-        <div style="color: var(--clickgui-text-color)">Unsupported setting {setting.valueType}</div>
++        <div style="color: var(--clickgui-text-color)">{$translate("Unsupported setting")} {setting.valueType}</div>
+     {/if}
+ </div>
+diff --git a/src/routes/clickgui/setting/common/RemovableItem.svelte b/src/routes/clickgui/setting/common/RemovableItem.svelte
+--- a/src/routes/clickgui/setting/common/RemovableItem.svelte
++++ b/src/routes/clickgui/setting/common/RemovableItem.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+ 
+     const dispatch = createEventDispatcher();
+@@ -7,7 +8,7 @@
+ <div class="removable-item">
+     <slot/>
+ 
+-    <button class="button-remove" title="Remove" on:click={() => dispatch("remove")}>
++    <button class="button-remove" title={$translate("Remove")} on:click={() => dispatch("remove")}>
+         <img src="img/clickgui/icon-cross.svg" alt="remove">
+     </button>
+ </div>
+diff --git a/src/routes/clickgui/setting/common/SettingButton.svelte b/src/routes/clickgui/setting/common/SettingButton.svelte
+--- a/src/routes/clickgui/setting/common/SettingButton.svelte
++++ b/src/routes/clickgui/setting/common/SettingButton.svelte
+@@ -6,7 +6,7 @@
+ 
+ <style lang="scss">
+   .setting-button {
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     font-weight: 500;
+     font-size: 12px;
+     color: var(--clickgui-text-color);
+diff --git a/src/routes/clickgui/setting/common/ValueInput.svelte b/src/routes/clickgui/setting/common/ValueInput.svelte
+--- a/src/routes/clickgui/setting/common/ValueInput.svelte
++++ b/src/routes/clickgui/setting/common/ValueInput.svelte
+@@ -43,7 +43,7 @@
+ <style lang="scss">
+ 
+   .value {
+-    font-family: monospace;
++    font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+     color: var(--clickgui-text-color);
+     font-weight: 500;
+     font-size: 12px;
+diff --git a/src/routes/clickgui/setting/ConfigurableSetting.svelte b/src/routes/clickgui/setting/ConfigurableSetting.svelte
+--- a/src/routes/clickgui/setting/ConfigurableSetting.svelte
++++ b/src/routes/clickgui/setting/ConfigurableSetting.svelte
+@@ -1,10 +1,11 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import type {ConfigurableSetting, ModuleSetting,} from "../../../integration/types";
+     import GenericSetting from "./common/GenericSetting.svelte";
+     import ExpandArrow from "./common/ExpandArrow.svelte";
+     import {setItem} from "../../../integration/persistent_storage";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+ 
+     export let setting: ModuleSetting;
+     export let path: string;
+@@ -35,7 +36,7 @@
+ <div class="setting">
+     <!-- svelte-ignore a11y-no-static-element-interactions -->
+     <div class="head" class:expanded on:contextmenu|preventDefault={toggleExpanded}>
+-        <div class="title">{$spaceSeperatedNames ? convertToSpacedString(setting.name) : setting.name}</div>
++        <div class="title">{$translate(setting.name, $spaceSeperatedNames)}</div>
+         {#if !hideExpandControl}
+             <ExpandArrow bind:expanded />
+         {/if}
+diff --git a/src/routes/clickgui/setting/CurveSetting.svelte b/src/routes/clickgui/setting/CurveSetting.svelte
+--- a/src/routes/clickgui/setting/CurveSetting.svelte
++++ b/src/routes/clickgui/setting/CurveSetting.svelte
+@@ -1,6 +1,7 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import type {CurveSetting, ModuleSetting, Vec2} from "../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import {createEventDispatcher, onDestroy, onMount} from "svelte";
+     import {
+         Chart,
+@@ -315,7 +316,7 @@
+ <div class="setting">
+     <!-- svelte-ignore a11y-no-static-element-interactions -->
+     <div class="head" class:expanded on:contextmenu|preventDefault={() => expanded = !expanded}>
+-        <div class="title">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++        <div class="title">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+         <ExpandArrow bind:expanded/>
+     </div>
+ 
+diff --git a/src/routes/clickgui/setting/FileSetting.svelte b/src/routes/clickgui/setting/FileSetting.svelte
+--- a/src/routes/clickgui/setting/FileSetting.svelte
++++ b/src/routes/clickgui/setting/FileSetting.svelte
+@@ -1,6 +1,7 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import type {FileSetting, ModuleSetting} from "../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import {browsePath, openFileDialog} from "../../../integration/rest";
+     import {createEventDispatcher} from "svelte";
+ 
+@@ -43,18 +44,18 @@
+ </script>
+ 
+ <div class="setting">
+-    <div class="name">{spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++    <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+ 
+     <div class="body">
+         <button class="button-select" on:click={selectFile}>{cSetting.value === "" ? "<empty>" : cSetting.value}</button>
+ 
+         {#if cSetting.value !== ""}
+             <button class="button-action" on:click={resetFile}>
+-                <img class="icon" src="img/clickgui/icon-reset.svg" alt="reset-file" title="Reset" />
++                <img class="icon" src="img/clickgui/icon-reset.svg" alt="reset-file" title={$translate("Reset")} />
+             </button>
+ 
+             <button class="button-action" on:click={() => browsePath(cSetting.value)}>
+-                <img class="icon" src="img/clickgui/icon-open-file.svg" alt="open-file" title="Open" />
++                <img class="icon" src="img/clickgui/icon-open-file.svg" alt="open-file" title={$translate("Open")} />
+             </button>
+         {/if}
+     </div>
+@@ -93,7 +94,7 @@
+     cursor: pointer;
+     width: 100%;
+     background-color: var(--clickgui-input-background-color);
+-    font-family: monospace;
++    font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+     font-size: 12px;
+     color: var(--clickgui-text-dimmed-color);
+     border: none;
+diff --git a/src/routes/clickgui/setting/FloatRangeSetting.svelte b/src/routes/clickgui/setting/FloatRangeSetting.svelte
+--- a/src/routes/clickgui/setting/FloatRangeSetting.svelte
++++ b/src/routes/clickgui/setting/FloatRangeSetting.svelte
+@@ -1,11 +1,12 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import "nouislider/dist/nouislider.css";
+     import "./nouislider.scss";
+     import {createEventDispatcher, onMount} from "svelte";
+     import noUiSlider, {type API} from "nouislider";
+     import type {FloatRangeSetting, ModuleSetting} from "../../../integration/types";
+     import ValueInput from "./common/ValueInput.svelte";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+ 
+     export let setting: ModuleSetting;
+ 
+@@ -69,7 +70,7 @@
+ </script>
+ 
+ <div class="setting" class:has-suffix={cSetting.suffix !== ""}>
+-    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++    <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+     <div class="value">
+         <ValueInput valueType="float" value={cSetting.value.from}
+                     on:change={(e) => apiSlider.set([e.detail.value, cSetting.value.to])}/>
+diff --git a/src/routes/clickgui/setting/FloatSetting.svelte b/src/routes/clickgui/setting/FloatSetting.svelte
+--- a/src/routes/clickgui/setting/FloatSetting.svelte
++++ b/src/routes/clickgui/setting/FloatSetting.svelte
+@@ -1,11 +1,12 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import "nouislider/dist/nouislider.css";
+     import "./nouislider.scss";
+     import {createEventDispatcher, onMount} from "svelte";
+     import noUiSlider, {type API} from "nouislider";
+     import type {FloatSetting, ModuleSetting,} from "../../../integration/types";
+     import ValueInput from "./common/ValueInput.svelte";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+ 
+     export let setting: ModuleSetting;
+ 
+@@ -66,7 +67,7 @@
+ </script>
+ 
+ <div class="setting" class:has-suffix={cSetting.suffix !== ""}>
+-    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++    <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+     <div class="value">
+         <ValueInput valueType="float" value={cSetting.value}
+                     on:change={(e) => apiSlider.set(e.detail.value)}/>
+diff --git a/src/routes/clickgui/setting/IntRangeSetting.svelte b/src/routes/clickgui/setting/IntRangeSetting.svelte
+--- a/src/routes/clickgui/setting/IntRangeSetting.svelte
++++ b/src/routes/clickgui/setting/IntRangeSetting.svelte
+@@ -1,11 +1,12 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import "nouislider/dist/nouislider.css";
+     import "./nouislider.scss";
+     import {createEventDispatcher, onMount} from "svelte";
+     import noUiSlider, {type API} from "nouislider";
+     import type {IntRangeSetting, ModuleSetting} from "../../../integration/types";
+     import ValueInput from "./common/ValueInput.svelte";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+ 
+     export let setting: ModuleSetting;
+ 
+@@ -50,7 +51,7 @@
+ </script>
+ 
+ <div class="setting" class:has-suffix={cSetting.suffix !== ""}>
+-    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++    <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+     <div class="value">
+         <ValueInput valueType="int" value={cSetting.value.from}
+                     on:change={(e) => apiSlider.set([e.detail.value, cSetting.value.to])}/>
+diff --git a/src/routes/clickgui/setting/IntSetting.svelte b/src/routes/clickgui/setting/IntSetting.svelte
+--- a/src/routes/clickgui/setting/IntSetting.svelte
++++ b/src/routes/clickgui/setting/IntSetting.svelte
+@@ -1,11 +1,12 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import "nouislider/dist/nouislider.css";
+     import "./nouislider.scss";
+     import {createEventDispatcher, onMount} from "svelte";
+     import noUiSlider, {type API} from "nouislider";
+     import type {IntSetting, ModuleSetting} from "../../../integration/types";
+     import ValueInput from "./common/ValueInput.svelte";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+ 
+     export let setting: ModuleSetting;
+ 
+@@ -46,7 +47,7 @@
+ </script>
+ 
+ <div class="setting" class:has-suffix={cSetting.suffix !== ""}>
+-    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++    <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+     <div class="value">
+         <ValueInput valueType="int" value={cSetting.value}
+                     on:change={(e) => apiSlider.set(e.detail.value)}/>
+diff --git a/src/routes/clickgui/setting/KeySetting.svelte b/src/routes/clickgui/setting/KeySetting.svelte
+--- a/src/routes/clickgui/setting/KeySetting.svelte
++++ b/src/routes/clickgui/setting/KeySetting.svelte
+@@ -1,6 +1,7 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import type {KeySetting, ModuleSetting} from "../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import {getPrintableKeyName} from "../../../integration/rest";
+     import {createEventDispatcher} from "svelte";
+     import {listen} from "../../../integration/ws";
+@@ -91,15 +92,15 @@
+             on:mouseleave={() => isHovered = false}
+     >
+         {#if !binding}
+-            <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}:</div>
++            <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}:</div>
+ 
+             {#if cSetting.value === UNKNOWN_KEY}
+-                <span class="none">None</span>
++                <span class="none">{$translate("None")}</span>
+             {:else}
+                 <span>{printableKeyName}</span>
+             {/if}
+         {:else}
+-            <span>Press any key</span>
++            <span>{$translate("Press any key")}</span>
+         {/if}
+     </button>
+ </div>
+@@ -119,7 +120,7 @@
+     font-weight: 500;
+     color: var(--clickgui-text-color);
+     font-size: 12px;
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     width: 100%;
+     display: flex;
+     justify-content: center;
+diff --git a/src/routes/clickgui/setting/list/GenericListSetting.svelte b/src/routes/clickgui/setting/list/GenericListSetting.svelte
+--- a/src/routes/clickgui/setting/list/GenericListSetting.svelte
++++ b/src/routes/clickgui/setting/list/GenericListSetting.svelte
+@@ -1,8 +1,9 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import {slide} from "svelte/transition";
+     import type {ListSetting, ModuleSetting, NamedItem} from "../../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../../theme/theme_config";
+     import ExpandArrow from "../common/ExpandArrow.svelte";
+     import {setItem} from "../../../../integration/persistent_storage";
+     import ListItem from "./ListItem.svelte";
+@@ -35,7 +36,7 @@
+ <div class="setting">
+     <!-- svelte-ignore a11y-no-static-element-interactions -->
+     <div class="head" class:expanded on:contextmenu|preventDefault={() => expanded = !expanded}>
+-        <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++        <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+         <ExpandArrow bind:expanded/>
+     </div>
+     {#if expanded}
+diff --git a/src/routes/clickgui/setting/list/MutableListSetting.svelte b/src/routes/clickgui/setting/list/MutableListSetting.svelte
+--- a/src/routes/clickgui/setting/list/MutableListSetting.svelte
++++ b/src/routes/clickgui/setting/list/MutableListSetting.svelte
+@@ -1,6 +1,7 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import type {ListSetting, ModuleSetting} from "../../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../../theme/theme_config";
+     import {createEventDispatcher} from "svelte";
+     import SettingButton from "../common/SettingButton.svelte";
+     import RemovableItem from "../common/RemovableItem.svelte";
+@@ -29,7 +30,7 @@
+ </script>
+ 
+ <div class="setting">
+-    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++    <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+     <SettingButton value="Add value" on:click={addValueIndex} />
+     {#if cSetting.value.length > 0}
+         <div class="inputs">
+@@ -65,7 +66,7 @@
+   .value {
+     width: 100%;
+     background-color: var(--clickgui-input-background-color);
+-    font-family: monospace;
++    font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+     font-size: 12px;
+     color: var(--clickgui-text-color);
+     border: none;
+diff --git a/src/routes/clickgui/setting/list/RegistryMutableListSetting.svelte b/src/routes/clickgui/setting/list/RegistryMutableListSetting.svelte
+--- a/src/routes/clickgui/setting/list/RegistryMutableListSetting.svelte
++++ b/src/routes/clickgui/setting/list/RegistryMutableListSetting.svelte
+@@ -1,8 +1,9 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {createEventDispatcher, onMount} from "svelte";
+     import {slide} from "svelte/transition";
+     import type {ModuleSetting, NamedItem, RegistryMutableListSetting} from "../../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../../theme/theme_config";
+     import ExpandArrow from "../common/ExpandArrow.svelte";
+     import {getRegistryItems} from "../../../../integration/rest";
+     import SearchableList from "./SearchableList.svelte";
+@@ -117,7 +118,7 @@
+ <div class="setting">
+     <!-- svelte-ignore a11y-no-static-element-interactions -->
+     <div class="head" class:expanded on:contextmenu|preventDefault={() => expanded = !expanded}>
+-        <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++        <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+         <ExpandArrow bind:expanded/>
+     </div>
+     {#if expanded}
+diff --git a/src/routes/clickgui/setting/list/SearchableList.svelte b/src/routes/clickgui/setting/list/SearchableList.svelte
+--- a/src/routes/clickgui/setting/list/SearchableList.svelte
++++ b/src/routes/clickgui/setting/list/SearchableList.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import VirtualList from "./VirtualList.svelte";
+     import type {NamedItem} from "../../../../integration/types.ts";
+     import {escapeLayer} from "../../../../integration/escape";
+@@ -22,7 +23,7 @@
+ </script>
+ 
+ <div class="list-item-list">
+-    <input type="text" placeholder="Search" class="search-input" bind:value={searchQuery} spellcheck="false">
++    <input type="text" placeholder={$translate("Search")} class="search-input" bind:value={searchQuery} spellcheck="false">
+     <div class="results">
+         <VirtualList items={renderedItems} let:item>
+             <slot item={item} />
+@@ -44,7 +45,7 @@
+     width: 100%;
+     border: none;
+     border-bottom: solid 1px var(--accent-color);
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     font-size: 12px;
+     padding: 5px;
+     color: var(--clickgui-text-color);
+diff --git a/src/routes/clickgui/setting/list/VirtualList.svelte b/src/routes/clickgui/setting/list/VirtualList.svelte
+--- a/src/routes/clickgui/setting/list/VirtualList.svelte
++++ b/src/routes/clickgui/setting/list/VirtualList.svelte
+@@ -1,5 +1,6 @@
+ <!-- Adapted from https://github.com/sveltejs/svelte-virtual-list -->
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {onMount, tick} from 'svelte';
+     // props
+     export let items: any[];
+@@ -130,7 +131,7 @@
+     >
+         {#each visible as row (row.index)}
+             <svelte-virtual-list-row>
+-                <slot item={row.data}>Missing template</slot>
++                <slot item={row.data}>{$translate("Missing template")}</slot>
+             </svelte-virtual-list-row>
+         {/each}
+     </svelte-virtual-list-contents>
+diff --git a/src/routes/clickgui/setting/MultiChooseSetting.svelte b/src/routes/clickgui/setting/MultiChooseSetting.svelte
+--- a/src/routes/clickgui/setting/MultiChooseSetting.svelte
++++ b/src/routes/clickgui/setting/MultiChooseSetting.svelte
+@@ -1,8 +1,9 @@
+ <script lang="ts">
++    import {translate, translateChoice} from "../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import type {ModuleSetting, MultiChooseSetting,} from "../../../integration/types";
+     import {slide} from "svelte/transition";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import ExpandArrow from "./common/ExpandArrow.svelte";
+     import {setItem} from "../../../integration/persistent_storage";
+ 
+@@ -53,7 +54,7 @@
+ <!-- svelte-ignore a11y-no-static-element-interactions -->
+ <div class="setting">
+     <div class="head" class:expanded on:contextmenu|preventDefault={toggleExpanded}>
+-        <div class="title">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++        <div class="title">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+         <div class="amount">{cSetting.value.length}/{cSetting.choices.length}</div>
+         <ExpandArrow bind:expanded/>
+     </div>
+@@ -69,7 +70,7 @@
+                             handleChange(choice)
+                         }}
+                 >
+-                    {$spaceSeperatedNames ? convertToSpacedString(choice) : choice}
++                    {$translateChoice(cSetting, choice, $spaceSeperatedNames)}
+                 </div>
+             {/each}
+         </div>
+@@ -118,7 +119,7 @@
+     letter-spacing: 1px;
+     font-weight: 500;
+     font-size: 12px;
+-    font-family: monospace;
++    font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+   }
+ 
+   .head {
+diff --git a/src/routes/clickgui/setting/TextSetting.svelte b/src/routes/clickgui/setting/TextSetting.svelte
+--- a/src/routes/clickgui/setting/TextSetting.svelte
++++ b/src/routes/clickgui/setting/TextSetting.svelte
+@@ -1,7 +1,8 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import type {ModuleSetting, TextSetting,} from "../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+ 
+     export let setting: ModuleSetting;
+ 
+@@ -16,9 +17,9 @@
+ </script>
+ 
+ <div class="setting">
+-    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++    <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+     <input type="text" class="value" spellcheck="false"
+-           placeholder={$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}
++           placeholder={$translate(cSetting.name, $spaceSeperatedNames)}
+            bind:value={cSetting.value}
+            on:input={handleChange}
+     >
+@@ -40,7 +41,7 @@
+   .value {
+     width: 100%;
+     background-color: var(--clickgui-input-background-color);
+-    font-family: monospace;
++    font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+     font-size: 12px;
+     color: var(--clickgui-text-color);
+     border: none;
+diff --git a/src/routes/clickgui/setting/TogglableSetting.svelte b/src/routes/clickgui/setting/TogglableSetting.svelte
+--- a/src/routes/clickgui/setting/TogglableSetting.svelte
++++ b/src/routes/clickgui/setting/TogglableSetting.svelte
+@@ -1,11 +1,12 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import type {BooleanSetting as TBooleanSetting, ModuleSetting, TogglableSetting,} from "../../../integration/types";
+     import ExpandArrow from "./common/ExpandArrow.svelte";
+     import GenericSetting from "./common/GenericSetting.svelte";
+     import Switch from "./common/Switch.svelte";
+     import {setItem} from "../../../integration/persistent_storage";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+ 
+     export let setting: ModuleSetting;
+     export let path: string;
+@@ -50,10 +51,10 @@
+         <slot
+                 name="control"
+                 {disable}
+-                label={$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}
++                label={$translate(cSetting.name, $spaceSeperatedNames)}
+         >
+             <Switch
+-                    name={$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}
++                    name={$translate(cSetting.name, $spaceSeperatedNames)}
+                     bind:value={enabledSetting.value}
+                     on:change={handleChange}
+             />
+diff --git a/src/routes/clickgui/setting/VectorSetting.svelte b/src/routes/clickgui/setting/VectorSetting.svelte
+--- a/src/routes/clickgui/setting/VectorSetting.svelte
++++ b/src/routes/clickgui/setting/VectorSetting.svelte
+@@ -1,7 +1,8 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import type {BlockHitResult, ModuleSetting, Setting, Vec, Vec3Setting, VecAxis} from "../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import {getCrosshairData, getPlayerData} from "../../../integration/rest";
+ 
+     export let setting: ModuleSetting;
+@@ -33,7 +34,7 @@
+ </script>
+ 
+ <div class="setting">
+-    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
++    <div class="name">{$translate(cSetting.name, $spaceSeperatedNames)}</div>
+     <div class="input-group"
+          style="grid-template-columns: repeat({vecAxes.length}, 1fr) {useLocateButton ? '20px' : ''}">
+         {#each vecAxes as axis (axis)}
+@@ -48,7 +49,7 @@
+             />
+         {/each}
+         {#if useLocateButton}
+-            <button class="locate-btn" on:click={locate} title="Locate">&#x2299;</button>
++            <button class="locate-btn" on:click={locate} title={$translate("Locate")}>&#x2299;</button>
+         {/if}
+     </div>
+ </div>
+@@ -73,7 +74,7 @@
+     input.value {
+       width: 100%;
+       background-color: var(--clickgui-input-background-color);
+-      font-family: monospace;
++      font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+       font-size: 12px;
+       color: var(--clickgui-text-color);
+       border: none;
+diff --git a/src/routes/clickgui/tabs/hud_editor/ComponentSettings.svelte b/src/routes/clickgui/tabs/hud_editor/ComponentSettings.svelte
+--- a/src/routes/clickgui/tabs/hud_editor/ComponentSettings.svelte
++++ b/src/routes/clickgui/tabs/hud_editor/ComponentSettings.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {onMount, tick} from "svelte";
+     import {getComponentSettings, setComponentSettings} from "../../../../integration/rest";
+     import type {Alignment, ConfigurableSetting} from "../../../../integration/types";
+@@ -92,7 +93,7 @@
+             <TogglableSetting path="hud.components.{name}.{id}" bind:setting={configurable} on:change={handleSettingChange}>
+                 <div class="remove-component" slot="control" let:disable let:label>
+                     <button
+-                            title="Remove component"
++                            title={$translate("Remove component")}
+                             on:click={disable}
+                     >
+                         <img src="img/clickgui/icon-cross.svg" alt="">
+diff --git a/src/routes/clickgui/tabs/hud_editor/drawer/ComponentDrawer.svelte b/src/routes/clickgui/tabs/hud_editor/drawer/ComponentDrawer.svelte
+--- a/src/routes/clickgui/tabs/hud_editor/drawer/ComponentDrawer.svelte
++++ b/src/routes/clickgui/tabs/hud_editor/drawer/ComponentDrawer.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../../integration/localization";
+     import type {HudComponentCatalogEntry, Metadata} from "../../../../../integration/types";
+     import {onMount, tick} from "svelte";
+     import {addComponent, getComponentCatalog, getMetadata} from "../../../../../integration/rest";
+@@ -67,11 +68,11 @@
+ <svelte:window onclick={handleWindowClick}/>
+ 
+ <div class="component-drawer" bind:this={drawerElement}>
+-    <button class="button-toggle-drawer" onclick={toggleDrawer} transition:fly={{duration: 150, y: -10}}>Add Component</button>
++    <button class="button-toggle-drawer" onclick={toggleDrawer} transition:fly={{duration: 150, y: -10}}>{$translate("Add Component")}</button>
+ 
+     {#if drawerShown}
+         <div class="drawer" transition:fly={{ y: -10, duration: 150 }}>
+-            <input bind:this={searchInput} type="text" class="input-search" placeholder="Search" bind:value={query}
++            <input bind:this={searchInput} type="text" class="input-search" placeholder={$translate("Search")} bind:value={query}
+                    oninput={handleSearch}>
+ 
+             <div class="component-list">
+@@ -80,7 +81,7 @@
+                         <DrawerHudComponent component={c} onselect={handleAddComponent}/>
+                     {/each}
+                 {:else}
+-                    <span class="no-results">No components found</span>
++                    <span class="no-results">{$translate("No components found")}</span>
+                 {/if}
+             </div>
+         </div>
+@@ -99,7 +100,7 @@
+ 
+   .input-search {
+     all: unset;
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     color: var(--text-color);
+     font-size: 16px;
+     background-color: transparent;
+@@ -149,7 +150,7 @@
+     background-color: var(--clickgui-hud-editor-drawer-toggle-button-background-color);
+     color: var(--clickgui-hud-editor-drawer-toggle-button-color);
+     border: none;
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     font-size: 16px;
+     cursor: pointer;
+     font-weight: 500;
+diff --git a/src/routes/clickgui/tabs/hud_editor/drawer/DrawerHudComponent.svelte b/src/routes/clickgui/tabs/hud_editor/drawer/DrawerHudComponent.svelte
+--- a/src/routes/clickgui/tabs/hud_editor/drawer/DrawerHudComponent.svelte
++++ b/src/routes/clickgui/tabs/hud_editor/drawer/DrawerHudComponent.svelte
+@@ -1,7 +1,8 @@
+ <script lang="ts">
++    import {translate, translateDescription} from "../../../../../integration/localization";
+ 
+     import type {HudComponentCatalogEntry} from "../../../../../integration/types";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../../../theme/theme_config";
+ 
+     interface Props {
+         component: HudComponentCatalogEntry,
+@@ -17,8 +18,8 @@
+         disabled={!component.canAdd}
+         onclick={() => onselect(component)}
+ >
+-    <span class="name">{$spaceSeperatedNames ? convertToSpacedString(component.name) : component.name}</span>
+-    <span class="description">{component.description}</span>
++    <span class="name">{$translate(component.name, $spaceSeperatedNames)}</span>
++    <span class="description">{$translateDescription(component.description)}</span>
+ </button>
+ 
+ <style lang="scss">
+diff --git a/src/routes/clickgui/tabs/Tabs.svelte b/src/routes/clickgui/tabs/Tabs.svelte
+--- a/src/routes/clickgui/tabs/Tabs.svelte
++++ b/src/routes/clickgui/tabs/Tabs.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import type {Component} from "svelte";
+     import {fly} from "svelte/transition";
+     import {scaleFactor} from "../clickgui_store";
+@@ -25,7 +26,7 @@
+                     onclick={() => (activeTab = index)}
+                     type="button"
+             >
+-                {tab.title}
++                {$translate(tab.title)}
+             </button>
+         {/each}
+     </div>
+diff --git a/src/routes/hud/elements/ArrayList.svelte b/src/routes/hud/elements/ArrayList.svelte
+--- a/src/routes/hud/elements/ArrayList.svelte
++++ b/src/routes/hud/elements/ArrayList.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translateModule} from "../../../integration/localization";
+     import {onMount, tick} from "svelte";
+     import type {Module} from "../../../integration/types";
+     import {getModules} from "../../../integration/rest";
+@@ -6,7 +7,7 @@
+     import {getTextWidth} from "../../../integration/text_measurement";
+     import {flip} from "svelte/animate";
+     import {fly} from "svelte/transition";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import type {HudArrayListSettings} from "../components";
+ 
+     export let settings: { [name: string]: any };
+@@ -20,7 +21,7 @@
+         const visibleModules = modules.filter(m => m.enabled && !m.hidden);
+ 
+         const modulesWithWidths = visibleModules.map(module => {
+-            const formattedName = $spaceSeperatedNames ? convertToSpacedString(module.name) : module.name;
++            const formattedName = $translateModule(module.name, $spaceSeperatedNames);
+             const fullName = module.tag == null || !cSettings.showTags
+                 ? formattedName
+                 : formattedName + " " + module.tag;
+@@ -42,9 +43,11 @@
+         updateEnabledModules();
+     }
+ 
+-    spaceSeperatedNames.subscribe(async () => {
+-        await updateEnabledModules();
+-    });
++    $: {
++        $translateModule;
++        $spaceSeperatedNames;
++        updateEnabledModules();
++    }
+ 
+     onMount(async () => {
+         await updateEnabledModules();
+@@ -67,7 +70,7 @@
+                 animate:flip={{ duration: 200 }}
+                 transition:fly={{ x: 50, duration: 160 }}
+         >
+-            {$spaceSeperatedNames ? convertToSpacedString(name) : name}
++            {$translateModule(name, $spaceSeperatedNames)}
+             {#if tag && cSettings.showTags}
+                 <span class="tag"> {tag}</span>
+             {/if}
+diff --git a/src/routes/hud/elements/Effects.svelte b/src/routes/hud/elements/Effects.svelte
+--- a/src/routes/hud/elements/Effects.svelte
++++ b/src/routes/hud/elements/Effects.svelte
+@@ -80,7 +80,7 @@
+ 
+     .duration {
+       margin-left: auto;
+-      font-family: monospace;
++      font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+       color: var(--effects-duration-color);
+       font-size: 12px;
+     }
+diff --git a/src/routes/hud/elements/inventory/ItemStackView.svelte b/src/routes/hud/elements/inventory/ItemStackView.svelte
+--- a/src/routes/hud/elements/inventory/ItemStackView.svelte
++++ b/src/routes/hud/elements/inventory/ItemStackView.svelte
+@@ -79,6 +79,6 @@
+     font-size: 14px;
+     font-weight: bold;
+     text-shadow: 1px 1px var(--item-count-shadow-color); // This is inconsistent with other UI elements but it looks better so I will let it pass ~Senk Ju
+-    font-family: monospace;
++    font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+   }
+ </style>
+diff --git a/src/routes/hud/elements/KeyBinds.svelte b/src/routes/hud/elements/KeyBinds.svelte
+--- a/src/routes/hud/elements/KeyBinds.svelte
++++ b/src/routes/hud/elements/KeyBinds.svelte
+@@ -1,8 +1,9 @@
+ <script lang="ts">
++    import {translate, translateModule} from "../../../integration/localization";
+     import {onMount} from "svelte";
+     import {getModules} from "../../../integration/rest";
+     import {listen} from "../../../integration/ws";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../theme/theme_config";
+     import type {Module} from "../../../integration/types";
+     import {UNKNOWN_KEY} from "../../../util/utils";
+     import BindDisplay from "../../clickgui/setting/bind/BindDisplay.svelte";
+@@ -27,19 +28,19 @@
+ 
+ <div class="keybinds">
+     <div class="header">
+-        <span class="title">Binds</span>
++        <span class="title">{$translate("Binds")}</span>
+         <img class="icon" src="img/hud/keybinds/icon-keybinds.svg" alt="keybinds">
+     </div>
+     <div class="entries">
+         {#each modules as m (m.name)}
+             <div class="row" class:enabled={m.enabled}>
+-                <span class="module-name">{$spaceSeperatedNames ? convertToSpacedString(m.name) : m.name}</span>
++                <span class="module-name">{$translateModule(m.name, $spaceSeperatedNames)}</span>
+                 <span class="key-bind" class:muted={!m.enabled}>
+                     [<BindDisplay boundKey={m.keyBind.boundKey} modifiers={m.keyBind.modifiers}/>]
+                 </span>
+             </div>
+         {:else}
+-            <div class="no-binds">No key bindings</div>
++            <div class="no-binds">{$translate("No key bindings")}</div>
+         {/each}
+     </div>
+ </div>
+@@ -116,7 +117,7 @@
+     .key-bind {
+       display: inline-flex;
+       align-items: center;
+-      font-family: monospace;
++      font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+       font-size: 11px;
+       color: var(--keybinds-accent-color);
+       font-weight: 600;
+diff --git a/src/routes/hud/elements/tabgui/Category.svelte b/src/routes/hud/elements/tabgui/Category.svelte
+--- a/src/routes/hud/elements/tabgui/Category.svelte
++++ b/src/routes/hud/elements/tabgui/Category.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {fade} from "svelte/transition";
+ 
+     export let name: string;
+@@ -19,7 +20,7 @@
+         </span>
+     </div>
+     <div class="name">
+-        {name}
++        {$translate(name)}
+     </div>
+ </div>
+ 
+diff --git a/src/routes/hud/elements/tabgui/Module.svelte b/src/routes/hud/elements/tabgui/Module.svelte
+--- a/src/routes/hud/elements/tabgui/Module.svelte
++++ b/src/routes/hud/elements/tabgui/Module.svelte
+@@ -1,7 +1,8 @@
+ <script lang="ts">
++    import {translateModule} from "../../../../integration/localization";
+     import {afterUpdate} from "svelte";
+     import {setModuleEnabled} from "../../../../integration/rest";
+-    import {convertToSpacedString, spaceSeperatedNames} from "../../../../theme/theme_config";
++    import {spaceSeperatedNames} from "../../../../theme/theme_config";
+ 
+     export let name: string;
+     export let enabled: boolean;
+@@ -28,7 +29,7 @@
+ <svelte:window on:keydown={handleKeyDown} />
+ 
+ <div class="module" class:enabled class:selected bind:this={moduleElement}>
+-    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(name) : name}</div>
++    <div class="name">{$translateModule(name, $spaceSeperatedNames)}</div>
+ </div>
+ 
+ <style lang="scss">
+diff --git a/src/routes/menu/altmanager/addaccount/AddAccountModal.svelte b/src/routes/menu/altmanager/addaccount/AddAccountModal.svelte
+--- a/src/routes/menu/altmanager/addaccount/AddAccountModal.svelte
++++ b/src/routes/menu/altmanager/addaccount/AddAccountModal.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import Modal from "../../common/modal/Modal.svelte";
+     import TheAlteningAccountTab from "./TheAlteningAccountTab.svelte";
+     import Tabs from "../../common/modal/Tabs.svelte";
+@@ -55,6 +56,6 @@
+     }
+ </script>
+ 
+-<Modal title="Add Account" bind:visible={visible}>
++<Modal title={$translate("Add Account")} bind:visible={visible}>
+     <Tabs {tabs} {activeTab} onChangeTab={handleChangeTab}/>
+ </Modal>
+diff --git a/src/routes/menu/altmanager/addaccount/CrackedAccountTab.svelte b/src/routes/menu/altmanager/addaccount/CrackedAccountTab.svelte
+--- a/src/routes/menu/altmanager/addaccount/CrackedAccountTab.svelte
++++ b/src/routes/menu/altmanager/addaccount/CrackedAccountTab.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import Tab from "../../common/modal/Tab.svelte";
+     import IconTextInput from "../../common/setting/IconTextInput.svelte";
+     import ButtonSetting from "../../common/setting/ButtonSetting.svelte";
+@@ -19,9 +20,9 @@
+ </script>
+ 
+ <Tab>
+-    <IconTextInput icon="user" title="Username" bind:value={username} maxLength={16}>
+-        <IconButton icon="random" title="Random" on:click={generateRandomUsername}/>
++    <IconTextInput icon="user" title={$translate("Username")} bind:value={username} maxLength={16}>
++        <IconButton icon="random" title={$translate("Random")} on:click={generateRandomUsername}/>
+     </IconTextInput>
+-    <SwitchSetting title="Use online UUID" bind:value={online}/>
+-    <ButtonSetting title="Add Account" on:click={addAccount} listenForEnter={true} inset={true}/>
++    <SwitchSetting title={$translate("Use online UUID")} bind:value={online}/>
++    <ButtonSetting title={$translate("Add Account")} on:click={addAccount} listenForEnter={true} inset={true}/>
+ </Tab>
+diff --git a/src/routes/menu/altmanager/addaccount/microsoft/CredentialsTab.svelte b/src/routes/menu/altmanager/addaccount/microsoft/CredentialsTab.svelte
+--- a/src/routes/menu/altmanager/addaccount/microsoft/CredentialsTab.svelte
++++ b/src/routes/menu/altmanager/addaccount/microsoft/CredentialsTab.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../../integration/localization";
+     import ButtonSetting from "../../../common/setting/ButtonSetting.svelte";
+     import Tab from "../../../common/modal/Tab.svelte";
+     import IconTextInput from "../../../common/setting/IconTextInput.svelte";
+@@ -19,7 +20,7 @@
+ </script>
+ 
+ <Tab>
+-    <IconTextInput title="E-Mail" icon="user" bind:value={email}></IconTextInput>
+-    <IconTextInput title="Password" icon="lock" type="password" bind:value={password}></IconTextInput>
+-    <ButtonSetting {disabled} title="Link Account" on:click={addAccount} listenForEnter={true} inset={true} {loading}/>
++    <IconTextInput title={$translate("E-Mail")} icon="user" bind:value={email}></IconTextInput>
++    <IconTextInput title={$translate("Password")} icon="lock" type="password" bind:value={password}></IconTextInput>
++    <ButtonSetting {disabled} title={$translate("Link Account")} on:click={addAccount} listenForEnter={true} inset={true} {loading}/>
+ </Tab>
+diff --git a/src/routes/menu/altmanager/addaccount/microsoft/DeviceCodeTab.svelte b/src/routes/menu/altmanager/addaccount/microsoft/DeviceCodeTab.svelte
+--- a/src/routes/menu/altmanager/addaccount/microsoft/DeviceCodeTab.svelte
++++ b/src/routes/menu/altmanager/addaccount/microsoft/DeviceCodeTab.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../../integration/localization";
+     import ButtonSetting from "../../../common/setting/ButtonSetting.svelte";
+     import Tab from "../../../common/modal/Tab.svelte";
+     import {addMicrosoftAccountDeviceCode, addMicrosoftAccountDeviceCodeCopyUrl} from "../../../../../integration/rest";
+@@ -17,6 +18,6 @@
+ </script>
+ 
+ <Tab>
+-    <ButtonSetting title="Link Account" on:click={addAccount} {loading}/>
+-    <ButtonSetting title="Copy URL" on:click={copyUrl} secondary={true} />
++    <ButtonSetting title={$translate("Link Account")} on:click={addAccount} {loading}/>
++    <ButtonSetting title={$translate("Copy URL")} on:click={copyUrl} secondary={true} />
+ </Tab>
+diff --git a/src/routes/menu/altmanager/addaccount/microsoft/WebViewTab.svelte b/src/routes/menu/altmanager/addaccount/microsoft/WebViewTab.svelte
+--- a/src/routes/menu/altmanager/addaccount/microsoft/WebViewTab.svelte
++++ b/src/routes/menu/altmanager/addaccount/microsoft/WebViewTab.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../../integration/localization";
+     import ButtonSetting from "../../../common/setting/ButtonSetting.svelte";
+     import Tab from "../../../common/modal/Tab.svelte";
+     import {addMicrosoftAccountWebView} from "../../../../../integration/rest";
+@@ -12,5 +13,5 @@
+ </script>
+ 
+ <Tab>
+-    <ButtonSetting title="Sign in with web view" on:click={addAccount} {loading}/>
++    <ButtonSetting title={$translate("Sign in with web view")} on:click={addAccount} {loading}/>
+ </Tab>
+diff --git a/src/routes/menu/altmanager/addaccount/SessionAccountTab.svelte b/src/routes/menu/altmanager/addaccount/SessionAccountTab.svelte
+--- a/src/routes/menu/altmanager/addaccount/SessionAccountTab.svelte
++++ b/src/routes/menu/altmanager/addaccount/SessionAccountTab.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import Tab from "../../common/modal/Tab.svelte";
+     import IconTextInput from "../../common/setting/IconTextInput.svelte";
+     import ButtonSetting from "../../common/setting/ButtonSetting.svelte";
+@@ -20,6 +21,6 @@
+ </script>
+ 
+ <Tab>
+-    <IconTextInput icon="user" title="Session ID" bind:value={token}/>
+-    <ButtonSetting title="Add Account" {disabled} on:click={addAccount} listenForEnter={true} inset={true} />
++    <IconTextInput icon="user" title={$translate("Session ID")} bind:value={token}/>
++    <ButtonSetting title={$translate("Add Account")} {disabled} on:click={addAccount} listenForEnter={true} inset={true} />
+ </Tab>
+\ No newline at end of file
+diff --git a/src/routes/menu/altmanager/addaccount/TheAlteningAccountTab.svelte b/src/routes/menu/altmanager/addaccount/TheAlteningAccountTab.svelte
+--- a/src/routes/menu/altmanager/addaccount/TheAlteningAccountTab.svelte
++++ b/src/routes/menu/altmanager/addaccount/TheAlteningAccountTab.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import Tab from "../../common/modal/Tab.svelte";
+     import IconTextInput from "../../common/setting/IconTextInput.svelte";
+     import ButtonSetting from "../../common/setting/ButtonSetting.svelte";
+@@ -22,7 +23,7 @@
+ </script>
+ 
+ <Tab>
+-    <IconTextInput icon="user" title="Token" bind:value={token}/>
+-    <ButtonSetting {disabled} title="Add Account" on:click={addAccount} listenForEnter={true} inset={true} {loading}/>
+-    <ButtonSetting title="Get Account Token" on:click={() => openLink("THE_ALTENING")} secondary={true}/>
++    <IconTextInput icon="user" title={$translate("Token")} bind:value={token}/>
++    <ButtonSetting {disabled} title={$translate("Add Account")} on:click={addAccount} listenForEnter={true} inset={true} {loading}/>
++    <ButtonSetting title={$translate("Get Account Token")} on:click={() => openLink("THE_ALTENING")} secondary={true}/>
+ </Tab>
+diff --git a/src/routes/menu/altmanager/AltManager.svelte b/src/routes/menu/altmanager/AltManager.svelte
+--- a/src/routes/menu/altmanager/AltManager.svelte
++++ b/src/routes/menu/altmanager/AltManager.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {
+         deleteScreen,
+         getAccounts,
+@@ -126,9 +127,9 @@
+ 
+ <OptionBar>
+     <Search on:search={handleSearch}/>
+-    <SwitchSetting title="Premium Only" bind:value={premiumOnly}/>
+-    <SwitchSetting title="Favorites Only" bind:value={favoritesOnly}/>
+-    <MultiSelect title="Account Type" options={["Mojang", "TheAltening"]} bind:values={accountTypes}/>
++    <SwitchSetting title={$translate("Premium Only")} bind:value={premiumOnly}/>
++    <SwitchSetting title={$translate("Favorites Only")} bind:value={favoritesOnly}/>
++    <MultiSelect title={$translate("Account Type")} options={["Mojang", "TheAltening"]} bind:values={accountTypes}/>
+ </OptionBar>
+ 
+ <MenuList sortable={accounts.length === renderedAccounts.length} elementCount={accounts.length}
+@@ -148,13 +149,13 @@
+             </svelte:fragment>
+ 
+             <svelte:fragment slot="active-visible">
+-                <MenuListItemButton title="Delete" icon="trash" on:click={() => removeAccount(account.id)}/>
+-                <MenuListItemButton title="Favorite" icon={account.favorite ? "favorite-filled" : "favorite" }
++                <MenuListItemButton title={$translate("Delete")} icon="trash" on:click={() => removeAccount(account.id)}/>
++                <MenuListItemButton title={$translate("Favorite")} icon={account.favorite ? "favorite-filled" : "favorite" }
+                                     on:click={() => toggleFavorite(account.id, !account.favorite)}/>
+             </svelte:fragment>
+ 
+             <svelte:fragment slot="always-visible">
+-                <MenuListItemButton title="Login" icon="play" on:click={() => loginToAccount(account.id)}/>
++                <MenuListItemButton title={$translate("Login")} icon="play" on:click={() => loginToAccount(account.id)}/>
+             </svelte:fragment>
+         </MenuListItem>
+     {/each}
+@@ -162,20 +163,20 @@
+ 
+ <BottomButtonWrapper>
+     <ButtonContainer>
+-        <IconTextButton icon="icon-plus-circle.svg" title="Add" on:click={() => addAccountModalVisible = true}/>
+-        <IconTextButton icon="icon-plane.svg" title="Direct" on:click={() => directLoginModalVisible = true}/>
+-        <IconTextButton icon="icon-random.svg" disabled={renderedAccounts.length === 0} title="Random"
++        <IconTextButton icon="icon-plus-circle.svg" title={$translate("Add")} on:click={() => addAccountModalVisible = true}/>
++        <IconTextButton icon="icon-plane.svg" title={$translate("Direct")} on:click={() => directLoginModalVisible = true}/>
++        <IconTextButton icon="icon-random.svg" disabled={renderedAccounts.length === 0} title={$translate("Random")}
+                         on:click={loginToRandomAccount}/>
+-        <IconTextButton icon="icon-refresh.svg" title="Restore" on:click={restoreSession}/>
++        <IconTextButton icon="icon-refresh.svg" title={$translate("Restore")} on:click={restoreSession}/>
+     </ButtonContainer>
+ 
+     <ButtonContainer>
+-        <IconTextButton icon="icon-back.svg" title="Back" on:click={() => deleteScreen()}/>
++        <IconTextButton icon="icon-back.svg" title={$translate("Back")} on:click={() => deleteScreen()}/>
+     </ButtonContainer>
+ </BottomButtonWrapper>
+ 
+ <style lang="scss">
+   .uuid {
+-    font-family: monospace;
++    font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+   }
+ </style>
+diff --git a/src/routes/menu/altmanager/directLogin/CrackedAccountDirectLoginTab.svelte b/src/routes/menu/altmanager/directLogin/CrackedAccountDirectLoginTab.svelte
+--- a/src/routes/menu/altmanager/directLogin/CrackedAccountDirectLoginTab.svelte
++++ b/src/routes/menu/altmanager/directLogin/CrackedAccountDirectLoginTab.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import Tab from "../../common/modal/Tab.svelte";
+     import IconTextInput from "../../common/setting/IconTextInput.svelte";
+     import ButtonSetting from "../../common/setting/ButtonSetting.svelte";
+@@ -19,9 +20,9 @@
+ </script>
+ 
+ <Tab>
+-    <IconTextInput icon="user" title="Username" pattern={"[a-zA-Z0-9_]{1,16}"} bind:value={username} maxLength={16}>
+-        <IconButton icon="random" title="Random" on:click={generateRandomUsername}/>
++    <IconTextInput icon="user" title={$translate("Username")} pattern={"[a-zA-Z0-9_]{1,16}"} bind:value={username} maxLength={16}>
++        <IconButton icon="random" title={$translate("Random")} on:click={generateRandomUsername}/>
+     </IconTextInput>
+-    <SwitchSetting title="Use online UUID" bind:value={online}/>
+-    <ButtonSetting title="Login" on:click={login} listenForEnter={true} inset={true}/>
++    <SwitchSetting title={$translate("Use online UUID")} bind:value={online}/>
++    <ButtonSetting title={$translate("Login")} on:click={login} listenForEnter={true} inset={true}/>
+ </Tab>
+diff --git a/src/routes/menu/altmanager/directLogin/DirectLoginModal.svelte b/src/routes/menu/altmanager/directLogin/DirectLoginModal.svelte
+--- a/src/routes/menu/altmanager/directLogin/DirectLoginModal.svelte
++++ b/src/routes/menu/altmanager/directLogin/DirectLoginModal.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import Tabs from "../../common/modal/Tabs.svelte";
+     import Modal from "../../common/modal/Modal.svelte";
+     import CrackedAccountDirectLoginTab from "./CrackedAccountDirectLoginTab.svelte";
+@@ -28,6 +29,6 @@
+     }
+ </script>
+ 
+-<Modal title="Direct Login" bind:visible={visible}>
++<Modal title={$translate("Direct Login")} bind:visible={visible}>
+     <Tabs {tabs} {activeTab} onChangeTab={handleChangeTab}/>
+ </Modal>
+diff --git a/src/routes/menu/altmanager/directLogin/SessionAccountDirectLoginTab.svelte b/src/routes/menu/altmanager/directLogin/SessionAccountDirectLoginTab.svelte
+--- a/src/routes/menu/altmanager/directLogin/SessionAccountDirectLoginTab.svelte
++++ b/src/routes/menu/altmanager/directLogin/SessionAccountDirectLoginTab.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import Tab from "../../common/modal/Tab.svelte";
+     import IconTextInput from "../../common/setting/IconTextInput.svelte";
+     import ButtonSetting from "../../common/setting/ButtonSetting.svelte";
+@@ -20,6 +21,6 @@
+ </script>
+ 
+ <Tab>
+-    <IconTextInput icon="user" title="Session ID" bind:value={token}/>
+-    <ButtonSetting title="Login" {disabled} on:click={login} listenForEnter={true} inset={true} />
++    <IconTextInput icon="user" title={$translate("Session ID")} bind:value={token}/>
++    <ButtonSetting title={$translate("Login")} {disabled} on:click={login} listenForEnter={true} inset={true} />
+ </Tab>
+\ No newline at end of file
+diff --git a/src/routes/menu/basicmenu/BasicMenu.svelte b/src/routes/menu/basicmenu/BasicMenu.svelte
+--- a/src/routes/menu/basicmenu/BasicMenu.svelte
++++ b/src/routes/menu/basicmenu/BasicMenu.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import ButtonContainer from "../common/buttons/ButtonContainer.svelte";
+     import IconButton from "../common/buttons/IconButton.svelte";
+     import {openScreen, toggleBasicMode} from "../../../integration/rest";
+@@ -9,10 +10,10 @@
+ <div class="basic-menu" in:fly|global={{duration: 180, x: -24}}>
+     <div class="buttons">
+         <ButtonContainer vertical>
+-            <IconButton title="Full Mode" icon="liquidbounce" on:click={toggleBasicMode}/>
+-            <IconButton title="Click GUI" icon="clickgui" on:click={() => openScreen("clickgui")}/>
+-            <IconButton title="Alt Manager" icon="user" on:click={() => openScreen("altmanager")}/>
+-            <IconButton title="Proxy Manager" icon="proxymanager" on:click={() => openScreen("proxymanager")}/>
++            <IconButton title={$translate("Full Mode")} icon="liquidbounce" on:click={toggleBasicMode}/>
++            <IconButton title={$translate("Click GUI")} icon="clickgui" on:click={() => openScreen("clickgui")}/>
++            <IconButton title={$translate("Alt Manager")} icon="user" on:click={() => openScreen("altmanager")}/>
++            <IconButton title={$translate("Proxy Manager")} icon="proxymanager" on:click={() => openScreen("proxymanager")}/>
+         </ButtonContainer>
+     </div>
+ </div>
+diff --git a/src/routes/menu/common/buttons/IconTextButton.svelte b/src/routes/menu/common/buttons/IconTextButton.svelte
+--- a/src/routes/menu/common/buttons/IconTextButton.svelte
++++ b/src/routes/menu/common/buttons/IconTextButton.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+ 
+     export let title: string;
+@@ -14,7 +15,7 @@
+     <div class="icon">
+         <img src="img/menu/{icon}" alt={title}>
+     </div>
+-    <div class="title">{title}</div>
++    <div class="title">{$translate(title)}</div>
+ </button>
+ 
+ <style lang="scss">
+diff --git a/src/routes/menu/common/header/account/Account.svelte b/src/routes/menu/common/header/account/Account.svelte
+--- a/src/routes/menu/common/header/account/Account.svelte
++++ b/src/routes/menu/common/header/account/Account.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../../integration/localization";
+     import ToolTip from "../../ToolTip.svelte";
+     import {
+         directLoginToCrackedAccount,
+@@ -120,7 +121,7 @@
+             </div>
+         {:else}
+             <div class="avatar-wrapper">
+-                <object data={avatar} type="image/png" class="avatar" aria-label="avatar" in:fade={{ duration: 140 }}>
++                <object data={avatar} type="image/png" class="avatar" aria-label={$translate("avatar")} in:fade={{ duration: 140 }}>
+                     <img src="img/steve.png" alt=avatar class="avatar">
+                 </object>
+ 
+@@ -139,13 +140,13 @@
+         </div>
+         <div class="buttons">
+             <button class="icon-button" type="button" on:click={loginWithRandomUsername}>
+-                <ToolTip text="Random username"/>
++                <ToolTip text={$translate("Random username")}/>
+ 
+                 <img class="icon" src="img/menu/account/icon-random.svg" alt="random username">
+             </button>
+             <button class="icon-button" disabled={inAccountManager} type="button"
+                     on:click={() => openScreen("altmanager")}>
+-                <ToolTip text="Change account"/>
++                <ToolTip text={$translate("Change account")}/>
+ 
+                 <img class="icon" src="img/menu/icon-pen.svg" alt="change account">
+             </button>
+@@ -155,7 +156,7 @@
+     {#if expanded}
+         <div class="quick-switcher" transition:fade|global={{ duration: 140 }}>
+             <!-- svelte-ignore a11y_autofocus -->
+-            <input type="text" autofocus class="account-search" placeholder="Search..." bind:value={searchQuery}>
++            <input type="text" autofocus class="account-search" placeholder={$translate("Search...")} bind:value={searchQuery}>
+ 
+             {#if accounts.length > 0}
+                 {#if renderedAccounts.length > 0}
+@@ -171,10 +172,10 @@
+                         {/each}
+                     </div>
+                 {:else}
+-                    <div class="placeholder">No results</div>
++                    <div class="placeholder">{$translate("No results")}</div>
+                 {/if}
+             {:else}
+-                <div class="placeholder">Account list is empty</div>
++                <div class="placeholder">{$translate("Account list is empty")}</div>
+             {/if}
+         </div>
+     {/if}
+@@ -291,7 +292,7 @@
+       background-color: var(--menu-account-search-background-color);
+       border: none;
+       color: var(--menu-text-color);
+-      font-family: "Inter", sans-serif;
++      font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+       padding: 15px 15px 15px 50px;
+       width: 100%;
+       font-size: 18px;
+diff --git a/src/routes/menu/common/header/AnimatedLogo.svelte b/src/routes/menu/common/header/AnimatedLogo.svelte
+--- a/src/routes/menu/common/header/AnimatedLogo.svelte
++++ b/src/routes/menu/common/header/AnimatedLogo.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import LiquidBounceLogo from "../../../../components/LiquidBounceLogo.svelte";
+ 
+     const idBase = `lb-logo-${Math.random().toString(36).slice(2, 9)}`;
+@@ -52,7 +53,7 @@
+     <div class="divider"></div>
+ 
+     <div class="message">
+-        <div>Thank you for <span>{anniversary} Years</span></div>
++        <div>{$translate("Thank you for")} <span>{anniversary} Years</span></div>
+         <div>of LiquidBounce!</div>
+     </div>
+ </div>
+diff --git a/src/routes/menu/common/menulist/MenuListItem.svelte b/src/routes/menu/common/menulist/MenuListItem.svelte
+--- a/src/routes/menu/common/menulist/MenuListItem.svelte
++++ b/src/routes/menu/common/menulist/MenuListItem.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import RippleLoader from "../RippleLoader.svelte";
+ 
+@@ -30,7 +31,7 @@
+         {/if}
+     </div>
+     <div class="title">
+-        <span class="text">{title}</span>
++        <span class="text">{$translate(title)}</span>
+         <slot name="tag"/>
+     </div>
+     <div class="subtitle">
+diff --git a/src/routes/menu/common/modal/Modal.svelte b/src/routes/menu/common/modal/Modal.svelte
+--- a/src/routes/menu/common/modal/Modal.svelte
++++ b/src/routes/menu/common/modal/Modal.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {fade, fly} from "svelte/transition";
+     import {createEventDispatcher} from "svelte";
+     import {portal} from "../../../../integration/util";
+@@ -25,7 +26,7 @@
+                 <img src="img/menu/icon-close.svg" alt="close">
+             </button>
+ 
+-            <div class="title">{title}</div>
++            <div class="title">{$translate(title)}</div>
+ 
+             <div class="content">
+                 <slot />
+diff --git a/src/routes/menu/common/modal/Tabs.svelte b/src/routes/menu/common/modal/Tabs.svelte
+--- a/src/routes/menu/common/modal/Tabs.svelte
++++ b/src/routes/menu/common/modal/Tabs.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import type {Component, Snippet} from "svelte";
+ 
+     interface Props {
+@@ -62,7 +63,7 @@
+                     type="button"
+             >
+                 <img class="icon" src="img/menu/altmanager/{icon}" alt={title}>
+-                <span>{title}</span>
++                <span>{$translate(title)}</span>
+             </button>
+         {/each}
+     </div>
+@@ -77,7 +78,7 @@
+                             onclick={() => setActiveSubTab(index)}
+                             type="button"
+                     >
+-                        {subTab.title}
++                        {$translate(subTab.title)}
+                     </button>
+                 {/each}
+             </div>
+@@ -99,7 +100,7 @@
+   }
+ 
+   .tab-button {
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     background-color: var(--menu-modal-tab-background-color);
+     color: var(--menu-text-color);
+     padding: 10px;
+@@ -135,7 +136,7 @@
+     all: unset;
+     flex: 1;
+     color: var(--menu-text-color);
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     text-align: center;
+     padding: 10px;
+     border-bottom: solid 3px transparent;
+diff --git a/src/routes/menu/common/Search.svelte b/src/routes/menu/common/Search.svelte
+--- a/src/routes/menu/common/Search.svelte
++++ b/src/routes/menu/common/Search.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import {escapeLayer} from "../../../integration/escape";
+ 
+@@ -15,7 +16,7 @@
+     $: layer.setOpen(value !== "");
+ </script>
+ 
+-<input class="search" type="text" placeholder="Search..." bind:value={value}
++<input class="search" type="text" placeholder={$translate("Search...")} bind:value={value}
+        on:input={() => dispatch("search", {query: value})} spellcheck="false">
+ 
+ <style lang="scss">
+@@ -24,7 +25,7 @@
+     background-color: var(--menu-search-background-color);
+     border: none;
+     color: var(--menu-text-color);
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     font-size: 20px;
+     border-radius: 5px;
+     border-bottom: solid 4px var(--menu-search-border-color);
+diff --git a/src/routes/menu/common/setting/ButtonSetting.svelte b/src/routes/menu/common/setting/ButtonSetting.svelte
+--- a/src/routes/menu/common/setting/ButtonSetting.svelte
++++ b/src/routes/menu/common/setting/ButtonSetting.svelte
+@@ -36,7 +36,7 @@
+     border: none;
+     background-color: var(--menu-button-background-color);
+     color: var(--menu-text-color);
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     padding: 20px;
+     border-radius: 5px;
+     font-size: 20px;
+diff --git a/src/routes/menu/common/setting/IconTextInput.svelte b/src/routes/menu/common/setting/IconTextInput.svelte
+--- a/src/routes/menu/common/setting/IconTextInput.svelte
++++ b/src/routes/menu/common/setting/IconTextInput.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     export let icon: string;
+     export let title: string;
+     export let type = "text";
+@@ -12,9 +13,9 @@
+         <img src="img/menu/icon-{icon}.svg" alt={icon}>
+     </div>
+     {#if type === "text"}
+-        <input {pattern} maxlength={maxLength} class="input" spellcheck="false" type="text" placeholder={title} bind:value={value} autocomplete="off">
++        <input {pattern} maxlength={maxLength} class="input" spellcheck="false" type="text" placeholder={$translate(title)} bind:value={value} autocomplete="off">
+     {:else if type === "password"}
+-        <input {pattern} maxlength={maxLength} class="input" type="password" placeholder={title} bind:value={value} autocomplete="off">
++        <input {pattern} maxlength={maxLength} class="input" type="password" placeholder={$translate(title)} bind:value={value} autocomplete="off">
+     {/if}
+     <div class="button-container">
+         <slot />
+@@ -40,7 +41,7 @@
+ 
+   .input {
+     color: var(--menu-text-color);
+-    font-family: "Inter", sans-serif;
++    font-family: "Inter", "Microsoft YaHei", "Microsoft JhengHei", "PingFang SC", "PingFang TC", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+     font-size: 20px;
+     background-color: var(--menu-input-background-color);
+     border: none;
+diff --git a/src/routes/menu/common/setting/select/MultiSelect.svelte b/src/routes/menu/common/setting/select/MultiSelect.svelte
+--- a/src/routes/menu/common/setting/select/MultiSelect.svelte
++++ b/src/routes/menu/common/setting/select/MultiSelect.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../../integration/localization";
+     import {slide} from "svelte/transition";
+     import {createEventDispatcher} from "svelte";
+     import GenericSelect from "./GenericSelect.svelte";
+@@ -25,7 +26,7 @@
+ <!-- svelte-ignore a11y-no-static-element-interactions -->
+ <GenericSelect closeOnInternalClick={false}>
+     <svelte:fragment slot="title">
+-        {title}
++        {$translate(title)}
+     </svelte:fragment>
+ 
+     <svelte:fragment slot="options">
+diff --git a/src/routes/menu/common/setting/select/SingleSelect.svelte b/src/routes/menu/common/setting/select/SingleSelect.svelte
+--- a/src/routes/menu/common/setting/select/SingleSelect.svelte
++++ b/src/routes/menu/common/setting/select/SingleSelect.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../../integration/localization";
+     import {slide} from "svelte/transition";
+     import {createEventDispatcher} from "svelte";
+     import GenericSelect from "./GenericSelect.svelte";
+@@ -20,7 +21,7 @@
+ <!-- svelte-ignore a11y-click-events-have-key-events -->
+ <!-- svelte-ignore a11y-no-static-element-interactions -->
+ <GenericSelect closeOnInternalClick={true}>
+-    <span slot="title"><span class="title">{title}</span> {value}</span>
++    <span slot="title"><span class="title">{$translate(title)}</span> {value}</span>
+ 
+     <svelte:fragment slot="options">
+         {#each options as o}
+diff --git a/src/routes/menu/common/setting/SwitchSetting.svelte b/src/routes/menu/common/setting/SwitchSetting.svelte
+--- a/src/routes/menu/common/setting/SwitchSetting.svelte
++++ b/src/routes/menu/common/setting/SwitchSetting.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+ 
+     export let value: boolean;
+@@ -13,7 +14,7 @@
+         <span class="slider"></span>
+     </span>
+ 
+-    <span class="title">{title}</span>
++    <span class="title">{$translate(title)}</span>
+ </label>
+ 
+ <style lang="scss">
+diff --git a/src/routes/menu/common/TextComponent.svelte b/src/routes/menu/common/TextComponent.svelte
+--- a/src/routes/menu/common/TextComponent.svelte
++++ b/src/routes/menu/common/TextComponent.svelte
+@@ -156,7 +156,7 @@
+         }
+ 
+         &.monospace {
+-            font-family: monospace;
++            font-family: "Cascadia Mono", "Microsoft YaHei", "Microsoft JhengHei", "Noto Sans Mono CJK SC", monospace;
+         }
+ 
+         &.bold {
+diff --git a/src/routes/menu/connecting/Connecting.svelte b/src/routes/menu/connecting/Connecting.svelte
+--- a/src/routes/menu/connecting/Connecting.svelte
++++ b/src/routes/menu/connecting/Connecting.svelte
+@@ -11,7 +11,7 @@
+     }
+ 
+     let details: ConnectionDetails | null = $state(null);
+-    let gameWindow: GameWindow | null = $state(null);
++    let gameWindow = $state<GameWindow | null>(null);
+     let innerHeight = $state(0);
+ 
+     // One GUI pixel and the GUI row under the status text, which the client draws at height / 2 - 80
+diff --git a/src/routes/menu/disconnected/Disconnected.svelte b/src/routes/menu/disconnected/Disconnected.svelte
+--- a/src/routes/menu/disconnected/Disconnected.svelte
++++ b/src/routes/menu/disconnected/Disconnected.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import Account from "../common/header/account/Account.svelte";
+     import SwitchSetting from "../common/setting/SwitchSetting.svelte";
+     import ButtonSetting from "../common/setting/ButtonSetting.svelte";
+@@ -25,7 +26,7 @@
+ 
+ <div class="reconnect">
+     <ButtonSetting title={reconnectTitle} disabled={$isLoggingIn} on:click={() => auto.reconnect()}/>
+-    <SwitchSetting title="Auto reconnect" value={auto.enabled} on:change={() => auto.toggle()}/>
++    <SwitchSetting title={$translate("Auto reconnect")} value={auto.enabled} on:change={() => auto.toggle()}/>
+ </div>
+ 
+ <style lang="scss">
+diff --git a/src/routes/menu/multiplayer/AddServerModal.svelte b/src/routes/menu/multiplayer/AddServerModal.svelte
+--- a/src/routes/menu/multiplayer/AddServerModal.svelte
++++ b/src/routes/menu/multiplayer/AddServerModal.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import Modal from "../common/modal/Modal.svelte";
+     import SingleSelect from "../common/setting/select/SingleSelect.svelte";
+     import ButtonSetting from "../common/setting/ButtonSetting.svelte";
+@@ -38,9 +39,9 @@
+     }
+ </script>
+ 
+-<Modal bind:visible={visible} title="Add Server" on:close={cleanUp}>
+-    <IconTextInput title="Name" icon="info" bind:value={name}/>
+-    <IconTextInput title="Address" icon="server" bind:value={address}/>
+-    <SingleSelect title="Server Resource Packs" options={["Prompt", "Enabled", "Disabled"]} bind:value={resourcePackPolicy}/>
+-    <ButtonSetting title="Add Server" on:click={addServer} {disabled} listenForEnter={true} inset={true}/>
++<Modal bind:visible={visible} title={$translate("Add Server")} on:close={cleanUp}>
++    <IconTextInput title={$translate("Name")} icon="info" bind:value={name}/>
++    <IconTextInput title={$translate("Address")} icon="server" bind:value={address}/>
++    <SingleSelect title={$translate("Server Resource Packs")} options={["Prompt", "Enabled", "Disabled"]} bind:value={resourcePackPolicy}/>
++    <ButtonSetting title={$translate("Add Server")} on:click={addServer} {disabled} listenForEnter={true} inset={true}/>
+ </Modal>
+diff --git a/src/routes/menu/multiplayer/DirectConnectModal.svelte b/src/routes/menu/multiplayer/DirectConnectModal.svelte
+--- a/src/routes/menu/multiplayer/DirectConnectModal.svelte
++++ b/src/routes/menu/multiplayer/DirectConnectModal.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import Modal from "../common/modal/Modal.svelte";
+     import ButtonSetting from "../common/setting/ButtonSetting.svelte";
+     import IconTextInput from "../common/setting/IconTextInput.svelte";
+@@ -26,7 +27,7 @@
+     }
+ </script>
+ 
+-<Modal bind:visible={visible} title="Direct Connection">
+-    <IconTextInput title="Address" icon="server" bind:value={address}/>
+-    <ButtonSetting title="Join Server" on:click={connect} {disabled} listenForEnter={true} inset={true}/>
++<Modal bind:visible={visible} title={$translate("Direct Connection")}>
++    <IconTextInput title={$translate("Address")} icon="server" bind:value={address}/>
++    <ButtonSetting title={$translate("Join Server")} on:click={connect} {disabled} listenForEnter={true} inset={true}/>
+ </Modal>
+diff --git a/src/routes/menu/multiplayer/EditServerModal.svelte b/src/routes/menu/multiplayer/EditServerModal.svelte
+--- a/src/routes/menu/multiplayer/EditServerModal.svelte
++++ b/src/routes/menu/multiplayer/EditServerModal.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import Modal from "../common/modal/Modal.svelte";
+     import SingleSelect from "../common/setting/select/SingleSelect.svelte";
+     import ButtonSetting from "../common/setting/ButtonSetting.svelte";
+@@ -31,9 +32,9 @@
+     }
+ </script>
+ 
+-<Modal bind:visible={visible} title="Edit Server">
+-    <IconTextInput title="Name" icon="info" bind:value={name}/>
+-    <IconTextInput title="Address" icon="server" bind:value={address}/>
+-    <SingleSelect title="Server Resource Packs" options={["Prompt", "Enabled", "Disabled"]} bind:value={resourcePackPolicy}/>
+-    <ButtonSetting title="Edit Server" on:click={editServer} {disabled} listenForEnter={true} inset={true}/>
++<Modal bind:visible={visible} title={$translate("Edit Server")}>
++    <IconTextInput title={$translate("Name")} icon="info" bind:value={name}/>
++    <IconTextInput title={$translate("Address")} icon="server" bind:value={address}/>
++    <SingleSelect title={$translate("Server Resource Packs")} options={["Prompt", "Enabled", "Disabled"]} bind:value={resourcePackPolicy}/>
++    <ButtonSetting title={$translate("Edit Server")} on:click={editServer} {disabled} listenForEnter={true} inset={true}/>
+ </Modal>
+diff --git a/src/routes/menu/multiplayer/Multiplayer.svelte b/src/routes/menu/multiplayer/Multiplayer.svelte
+--- a/src/routes/menu/multiplayer/Multiplayer.svelte
++++ b/src/routes/menu/multiplayer/Multiplayer.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import OptionBar from "../common/optionbar/OptionBar.svelte";
+     import MenuList from "../common/menulist/MenuList.svelte";
+     import BottomButtonWrapper from "../common/buttons/BottomButtonWrapper.svelte";
+@@ -187,18 +188,18 @@
+ <OptionBar>
+     <Search on:search={handleSearch}/>
+ 
+-    <SwitchSetting title="Online only" bind:value={onlineOnly}/>
++    <SwitchSetting title={$translate("Online only")} bind:value={onlineOnly}/>
+     <Divider/>
+-    <SwitchSetting title="Auto Config" bind:value={autoConfig} on:change={updateAutoConfigState}/>
++    <SwitchSetting title={$translate("Auto Config")} bind:value={autoConfig} on:change={updateAutoConfigState}/>
+     {#if spooferConfigurable}
+         <WrappedSetting bind:value={spooferConfigurable} on:change={updateSpooferSettings} path="multiplayer.spoofer"/>
+     {/if}
+     {#if clientInfo && clientInfo.viaFabricPlus}
+-        <SingleSelect title="Version" value={selectedProtocol.name} options={protocols.map(p => p.name)}
++        <SingleSelect title={$translate("Version")} value={selectedProtocol.name} options={protocols.map(p => p.name)}
+                       on:change={changeProtocolVersion}/>
+         <ButtonSetting title="ViaFabricPlus" on:click={() => openScreen("viafabricplus_protocol_selection")}/>
+     {:else}
+-        <ButtonSetting title="Install ViaFabricPlus" on:click={() => openLink("VIAFABRICPLUS")}/>
++        <ButtonSetting title={$translate("Install ViaFabricPlus")} on:click={() => openLink("VIAFABRICPLUS")}/>
+     {/if}
+ </OptionBar>
+ 
+@@ -208,7 +209,7 @@
+         <MenuListItem imageText={server.ping > 0 ? `${server.ping}ms` : null}
+                       imageTextBackgroundColor={getPingColor(server.ping)}
+                       image={server.ping < 0 || !server.icon
+-                        ? `${REST_BASE}/api/v1/client/resource?id=minecraft:textures/misc/unknown_server.png`
++                        ? "/img/menu/icon-server.svg"
+                         :`data:image/png;base64,${server.icon}`}
+                       title={server.name}
+                       on:dblclick={() => connectToServer(server.address)}>
+@@ -228,13 +229,13 @@
+ 
+             <svelte:fragment slot="active-visible">
+                 {#if !server.lan}
+-                    <MenuListItemButton title="Remove" icon="trash" on:click={() => removeServer(server.id)}/>
+-                    <MenuListItemButton title="Edit" icon="pen-2" on:click={() => editServer(server)}/>
++                    <MenuListItemButton title={$translate("Remove")} icon="trash" on:click={() => removeServer(server.id)}/>
++                    <MenuListItemButton title={$translate("Edit")} icon="pen-2" on:click={() => editServer(server)}/>
+                 {/if}
+             </svelte:fragment>
+ 
+             <svelte:fragment slot="always-visible">
+-                <MenuListItemButton title="Join" icon="play" on:click={() => connectToServer(server.address)}/>
++                <MenuListItemButton title={$translate("Join")} icon="play" on:click={() => connectToServer(server.address)}/>
+             </svelte:fragment>
+         </MenuListItem>
+     {/each}
+@@ -242,12 +243,12 @@
+ 
+ <BottomButtonWrapper>
+     <ButtonContainer>
+-        <IconTextButton icon="icon-plus-circle.svg" title="Add" on:click={() => addServerModalVisible = true}/>
+-        <IconTextButton icon="icon-plane.svg" title="Direct" on:click={() => directConnectModalVisible = true}/>
+-        <IconTextButton icon="icon-refresh.svg" title="Refresh" on:click={refreshServers}/>
++        <IconTextButton icon="icon-plus-circle.svg" title={$translate("Add")} on:click={() => addServerModalVisible = true}/>
++        <IconTextButton icon="icon-plane.svg" title={$translate("Direct")} on:click={() => directConnectModalVisible = true}/>
++        <IconTextButton icon="icon-refresh.svg" title={$translate("Refresh")} on:click={refreshServers}/>
+     </ButtonContainer>
+ 
+     <ButtonContainer>
+-        <IconTextButton icon="icon-back.svg" title="Back" on:click={() => openScreen("title")}/>
++        <IconTextButton icon="icon-back.svg" title={$translate("Back")} on:click={() => openScreen("title")}/>
+     </ButtonContainer>
+ </BottomButtonWrapper>
+diff --git a/src/routes/menu/proxymanager/AddProxyModal.svelte b/src/routes/menu/proxymanager/AddProxyModal.svelte
+--- a/src/routes/menu/proxymanager/AddProxyModal.svelte
++++ b/src/routes/menu/proxymanager/AddProxyModal.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import Modal from "../common/modal/Modal.svelte";
+     import IconTextInput from "../common/setting/IconTextInput.svelte";
+     import SwitchSetting from "../common/setting/SwitchSetting.svelte";
+@@ -65,17 +66,17 @@
+     }
+ </script>
+ 
+-<Modal title="Add Proxy" bind:visible={visible} on:close={cleanup}>
+-    <IconTextInput title="Host:Port" icon="server" pattern=".+:[0-9]+" bind:value={hostPort}/>
+-    <SingleSelect title="Proxy Type" options={["HTTP", "SOCKS5"]} bind:value={proxyType}/>
+-    <SwitchSetting title="Requires Authentication" bind:value={requiresAuthentication}/>
++<Modal title={$translate("Add Proxy")} bind:visible={visible} on:close={cleanup}>
++    <IconTextInput title={$translate("Host:Port")} icon="server" pattern=".+:[0-9]+" bind:value={hostPort}/>
++    <SingleSelect title={$translate("Proxy Type")} options={["HTTP", "SOCKS5"]} bind:value={proxyType}/>
++    <SwitchSetting title={$translate("Requires Authentication")} bind:value={requiresAuthentication}/>
+     {#if requiresAuthentication}
+-        <IconTextInput title="Username" icon="user" bind:value={username}/>
+-        <IconTextInput title="Password" icon="lock" type="password" bind:value={password}/>
++        <IconTextInput title={$translate("Username")} icon="user" bind:value={username}/>
++        <IconTextInput title={$translate("Password")} icon="lock" type="password" bind:value={password}/>
+     {/if}
+-    <SwitchSetting title="Forward Microsoft Authentication" bind:value={forwardAuthentication}/>
+-    <SwitchSetting title="Proxy Resource Packs" bind:value={proxyResourcePacks}/>
+-    <SwitchSetting title="Proxy DNS" bind:value={proxyDns}/>
+-    <ButtonSetting title="Add Proxy" {disabled} on:click={addProxy} listenForEnter={true} {loading}/>
+-    <ButtonSetting title="Get Proxy" on:click={() => openLink("PROXY_WEBSITE")} secondary={true}/>
++    <SwitchSetting title={$translate("Forward Microsoft Authentication")} bind:value={forwardAuthentication}/>
++    <SwitchSetting title={$translate("Proxy Resource Packs")} bind:value={proxyResourcePacks}/>
++    <SwitchSetting title={$translate("Proxy DNS")} bind:value={proxyDns}/>
++    <ButtonSetting title={$translate("Add Proxy")} {disabled} on:click={addProxy} listenForEnter={true} {loading}/>
++    <ButtonSetting title={$translate("Get Proxy")} on:click={() => openLink("PROXY_WEBSITE")} secondary={true}/>
+ </Modal>
+diff --git a/src/routes/menu/proxymanager/EditProxyModal.svelte b/src/routes/menu/proxymanager/EditProxyModal.svelte
+--- a/src/routes/menu/proxymanager/EditProxyModal.svelte
++++ b/src/routes/menu/proxymanager/EditProxyModal.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import Modal from "../common/modal/Modal.svelte";
+     import IconTextInput from "../common/setting/IconTextInput.svelte";
+     import SwitchSetting from "../common/setting/SwitchSetting.svelte";
+@@ -57,16 +58,16 @@
+     });
+ </script>
+ 
+-<Modal title="Edit Proxy" bind:visible={visible}>
+-    <IconTextInput title="Host:Port" icon="server" pattern=".+:[0-9]+" bind:value={hostPort}/>
+-    <SingleSelect title="Proxy Type" options={["HTTP", "SOCKS5"]} bind:value={proxyType}/>
+-    <SwitchSetting title="Requires Authentication" bind:value={requiresAuthentication}/>
++<Modal title={$translate("Edit Proxy")} bind:visible={visible}>
++    <IconTextInput title={$translate("Host:Port")} icon="server" pattern=".+:[0-9]+" bind:value={hostPort}/>
++    <SingleSelect title={$translate("Proxy Type")} options={["HTTP", "SOCKS5"]} bind:value={proxyType}/>
++    <SwitchSetting title={$translate("Requires Authentication")} bind:value={requiresAuthentication}/>
+     {#if requiresAuthentication}
+-        <IconTextInput title="Username" icon="user" bind:value={username}/>
+-        <IconTextInput title="Password" icon="lock" type="password" bind:value={password}/>
++        <IconTextInput title={$translate("Username")} icon="user" bind:value={username}/>
++        <IconTextInput title={$translate("Password")} icon="lock" type="password" bind:value={password}/>
+     {/if}
+-    <SwitchSetting title="Forward Microsoft Authentication" bind:value={forwardAuthentication}/>
+-    <SwitchSetting title="Proxy Resource Packs" bind:value={proxyResourcePacks}/>
+-    <SwitchSetting title="Proxy DNS" bind:value={proxyDns}/>
+-    <ButtonSetting title="Edit Proxy" {disabled} on:click={editProxy} listenForEnter={true} {loading}/>
++    <SwitchSetting title={$translate("Forward Microsoft Authentication")} bind:value={forwardAuthentication}/>
++    <SwitchSetting title={$translate("Proxy Resource Packs")} bind:value={proxyResourcePacks}/>
++    <SwitchSetting title={$translate("Proxy DNS")} bind:value={proxyDns}/>
++    <ButtonSetting title={$translate("Edit Proxy")} {disabled} on:click={editProxy} listenForEnter={true} {loading}/>
+ </Modal>
+diff --git a/src/routes/menu/proxymanager/ProxyManager.svelte b/src/routes/menu/proxymanager/ProxyManager.svelte
+--- a/src/routes/menu/proxymanager/ProxyManager.svelte
++++ b/src/routes/menu/proxymanager/ProxyManager.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {
+         addProxyFromClipboard,
+         checkProxy,
+@@ -194,9 +195,9 @@
+ 
+ <OptionBar>
+     <Search on:search={handleSearch}/>
+-    <SwitchSetting title="Favorites Only" bind:value={favoritesOnly}/>
+-    <MultiSelect title="Country" options={allCountries} bind:values={countries}/>
+-    <MultiSelect title="Type" options={["SOCKS5", "HTTP"]} bind:values={proxyTypes}/>
++    <SwitchSetting title={$translate("Favorites Only")} bind:value={favoritesOnly}/>
++    <MultiSelect title={$translate("Country")} options={allCountries} bind:values={countries}/>
++    <MultiSelect title={$translate("Type")} options={["SOCKS5", "HTTP"]} bind:values={proxyTypes}/>
+ </OptionBar>
+ 
+ <MenuList sortable={false} on:sort={handleProxySort}>
+@@ -216,15 +217,15 @@
+             </svelte:fragment>
+ 
+             <svelte:fragment slot="active-visible">
+-                <MenuListItemButton title="Delete" icon="trash" on:click={() => removeProxy(proxy.id)}/>
+-                <MenuListItemButton title="Check" icon="check" on:click={() => checkProxy(proxy.id)}/>
+-                <MenuListItemButton title="Favorite" icon={proxy.favorite ? "favorite-filled" : "favorite" }
++                <MenuListItemButton title={$translate("Delete")} icon="trash" on:click={() => removeProxy(proxy.id)}/>
++                <MenuListItemButton title={$translate("Check")} icon="check" on:click={() => checkProxy(proxy.id)}/>
++                <MenuListItemButton title={$translate("Favorite")} icon={proxy.favorite ? "favorite-filled" : "favorite" }
+                                     on:click={() => toggleFavorite(proxy.id, !proxy.favorite)}/>
+-                <MenuListItemButton title="Edit" icon="pen-2" on:click={() => editProxy(proxy)}/>
++                <MenuListItemButton title={$translate("Edit")} icon="pen-2" on:click={() => editProxy(proxy)}/>
+             </svelte:fragment>
+ 
+             <svelte:fragment slot="always-visible">
+-                <MenuListItemButton title="Connect" icon="play" on:click={() => connectToProxy(proxy.id)}/>
++                <MenuListItemButton title={$translate("Connect")} icon="play" on:click={() => connectToProxy(proxy.id)}/>
+             </svelte:fragment>
+         </MenuListItem>
+     {/each}
+@@ -232,15 +233,15 @@
+ 
+ <BottomButtonWrapper>
+     <ButtonContainer>
+-        <IconTextButton icon="icon-plus-circle.svg" title="Add" on:click={() => addProxyModalVisible = true}/>
+-        <IconTextButton icon="icon-clipboard.svg" title="Add Clipboard" on:click={() => fromClipboard() }/>
+-        <IconTextButton icon="icon-random.svg" disabled={renderedProxies.length === 0} title="Random"
++        <IconTextButton icon="icon-plus-circle.svg" title={$translate("Add")} on:click={() => addProxyModalVisible = true}/>
++        <IconTextButton icon="icon-clipboard.svg" title={$translate("Add Clipboard")} on:click={() => fromClipboard() }/>
++        <IconTextButton icon="icon-random.svg" disabled={renderedProxies.length === 0} title={$translate("Random")}
+                         on:click={connectToRandomProxy}/>
+-        <IconTextButton icon="icon-disconnect.svg" disabled={!isConnectedToProxy} title="Disconnect"
++        <IconTextButton icon="icon-disconnect.svg" disabled={!isConnectedToProxy} title={$translate("Disconnect")}
+                         on:click={disconnectFromProxy}/>
+     </ButtonContainer>
+ 
+     <ButtonContainer>
+-        <IconTextButton icon="icon-back.svg" title="Back" on:click={() => deleteScreen()}/>
++        <IconTextButton icon="icon-back.svg" title={$translate("Back")} on:click={() => deleteScreen()}/>
+     </ButtonContainer>
+ </BottomButtonWrapper>
+diff --git a/src/routes/menu/singleplayer/Singleplayer.svelte b/src/routes/menu/singleplayer/Singleplayer.svelte
+--- a/src/routes/menu/singleplayer/Singleplayer.svelte
++++ b/src/routes/menu/singleplayer/Singleplayer.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import {
+         editWorld,
+         getWorlds,
+@@ -68,16 +69,16 @@
+ 
+ <OptionBar>
+     <Search on:search={handleSearch}/>
+-    <MultiSelect title="Game Mode" options={["Survival", "Creative", "Adventure", "Spectator"]}
++    <MultiSelect title={$translate("Game Mode")} options={["Survival", "Creative", "Adventure", "Spectator"]}
+                  bind:values={gameModes}/>
+-    <MultiSelect title="Difficulty" options={["Peaceful", "Easy", "Normal", "Hard"]} bind:values={difficulties}/>
++    <MultiSelect title={$translate("Difficulty")} options={["Peaceful", "Easy", "Normal", "Hard"]} bind:values={difficulties}/>
+ </OptionBar>
+ 
+ <MenuList sortable={false} on:sort={handleWorldSort}>
+     {#each renderedWorlds as world}
+         <MenuListItem
+                 image={!world.icon ?
+-                        `${REST_BASE}/api/v1/client/resource?id=minecraft:textures/misc/unknown_server.png` :
++                        "/img/menu/icon-server.svg" :
+                         `data:image/png;base64,${world.icon}`}
+                 title={world.displayName}
+                 on:dblclick={() => openWorld(world.name)}>
+@@ -93,12 +94,12 @@
+             </svelte:fragment>
+ 
+             <svelte:fragment slot="active-visible">
+-                <MenuListItemButton title="Delete" icon="trash" on:click={() => removeWorld(world.name)}/>
+-                <MenuListItemButton title="Edit" icon="pen-2" on:click={() => editWorld(world.name)}/>
++                <MenuListItemButton title={$translate("Delete")} icon="trash" on:click={() => removeWorld(world.name)}/>
++                <MenuListItemButton title={$translate("Edit")} icon="pen-2" on:click={() => editWorld(world.name)}/>
+             </svelte:fragment>
+ 
+             <svelte:fragment slot="always-visible">
+-                <MenuListItemButton title="Open" icon="play" on:click={() => openWorld(world.name)}/>
++                <MenuListItemButton title={$translate("Open")} icon="play" on:click={() => openWorld(world.name)}/>
+             </svelte:fragment>
+         </MenuListItem>
+     {/each}
+@@ -106,11 +107,11 @@
+ 
+ <BottomButtonWrapper>
+     <ButtonContainer>
+-        <IconTextButton icon="icon-plus-circle.svg" title="Add" on:click={() => openScreen("create_world")}/>
++        <IconTextButton icon="icon-plus-circle.svg" title={$translate("Add")} on:click={() => openScreen("create_world")}/>
+     </ButtonContainer>
+ 
+     <ButtonContainer>
+-        <IconTextButton icon="icon-back.svg" title="Back" on:click={() => openScreen("title")}/>
++        <IconTextButton icon="icon-back.svg" title={$translate("Back")} on:click={() => openScreen("title")}/>
+     </ButtonContainer>
+ </BottomButtonWrapper>
+ 
+diff --git a/src/routes/menu/title/buttons/ChildButton.svelte b/src/routes/menu/title/buttons/ChildButton.svelte
+--- a/src/routes/menu/title/buttons/ChildButton.svelte
++++ b/src/routes/menu/title/buttons/ChildButton.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../../integration/localization";
+     import {createEventDispatcher} from "svelte";
+     import ToolTip from "../../common/ToolTip.svelte";
+     import TitleButtonIcon from "./TitleButtonIcon.svelte";
+@@ -13,13 +14,13 @@
+ <!-- svelte-ignore a11y-no-static-element-interactions -->
+ <!-- svelte-ignore a11y-click-events-have-key-events -->
+ <div class="child-button" on:click|stopPropagation={() => dispatch("click")} class:parent-hovered={parentHovered}>
+-    <ToolTip color="var(--menu-base-color)" text="Join Realms server" />
++    <ToolTip color="var(--menu-base-color)" text={$translate("Join Realms server")} />
+ 
+     <div class="icon">
+         <TitleButtonIcon {icon} />
+     </div>
+ 
+-    <div class="title">{title}</div>
++    <div class="title">{$translate(title)}</div>
+ </div>
+ 
+ <style lang="scss">
+diff --git a/src/routes/menu/title/Title.svelte b/src/routes/menu/title/Title.svelte
+--- a/src/routes/menu/title/Title.svelte
++++ b/src/routes/menu/title/Title.svelte
+@@ -1,4 +1,5 @@
+ <script lang="ts">
++    import {translate} from "../../../integration/localization";
+     import MainButton from "./buttons/MainButton.svelte";
+     import ChildButton from "./buttons/ChildButton.svelte";
+     import ConfettiBackground from "./ConfettiBackground.svelte";
+@@ -60,37 +61,37 @@
+     <div class="content">
+         <div class="main-buttons">
+             {#if regularButtonsShown}
+-                <MainButton title="Singleplayer" icon="singleplayer" index={0}
++                <MainButton title={$translate("Singleplayer")} icon="singleplayer" index={0}
+                             on:click={() => openScreen("singleplayer")}/>
+ 
+-                <MainButton title="Multiplayer" icon="multiplayer" let:parentHovered
++                <MainButton title={$translate("Multiplayer")} icon="multiplayer" let:parentHovered
+                             on:mouseenter={prefetchServers}
+                             on:click={() => openScreen("multiplayer")} index={1}>
+                     <ChildButton title="Realms" icon="realms" {parentHovered}
+                                  on:click={() => openScreen("multiplayer_realms")}/>
+                 </MainButton>
+                 <MainButton title="LiquidBounce" icon="liquidbounce" on:click={toggleButtons} index={2}/>
+-                <MainButton title="Options" icon="options" on:click={() => openScreen("options")} index={3}/>
++                <MainButton title={$translate("Options")} icon="options" on:click={() => openScreen("options")} index={3}/>
+             {:else if clientButtonsShown}
+-                <MainButton title="Proxy Manager" icon="proxymanager" on:click={() => openScreen("proxymanager")}
++                <MainButton title={$translate("Proxy Manager")} icon="proxymanager" on:click={() => openScreen("proxymanager")}
+                             index={0}/>
+-                <MainButton title="Click GUI" icon="clickgui" on:click={() => openScreen("clickgui")} index={1}/>
+-                <!-- <MainButton title="Scripts" icon="scripts" index={2}/> -->
+-                <MainButton title="Back" icon="back-large" on:click={toggleButtons} index={2}/>
++                <MainButton title={$translate("Click GUI")} icon="clickgui" on:click={() => openScreen("clickgui")} index={1}/>
++                <!-- <MainButton title={$translate("Scripts")} icon="scripts" index={2}/> -->
++                <MainButton title={$translate("Back")} icon="back-large" on:click={toggleButtons} index={2}/>
+             {/if}
+         </div>
+ 
+         <div class="additional-buttons" in:fly|global={{duration: 180, y: 20}}>
+             <ButtonContainer>
+-                <IconTextButton icon="icon-exit.svg" title="Exit" on:click={exitClient}/>
+-                <IconTextButton icon="icon-eye.svg" title="Basic Mode" on:click={toggleBasicMode}/>
+-                <IconButton icon="change-background" title="Toggle Shader" on:click={toggleBackgroundShaderEnabled}/>
++                <IconTextButton icon="icon-exit.svg" title={$translate("Exit")} on:click={exitClient}/>
++                <IconTextButton icon="icon-eye.svg" title={$translate("Basic Mode")} on:click={toggleBasicMode}/>
++                <IconButton icon="change-background" title={$translate("Toggle Shader")} on:click={toggleBackgroundShaderEnabled}/>
+             </ButtonContainer>
+         </div>
+ 
+         <div class="social-buttons" in:fly|global={{duration: 180, y: 20}}>
+             <ButtonContainer>
+-                <IconButton title="Forum" icon="nodebb" on:click={() => openLink("MAINTAINER_FORUM")}/>
++                <IconButton title={$translate("Forum")} icon="nodebb" on:click={() => openLink("MAINTAINER_FORUM")}/>
+                 <IconButton title="GitHub" icon="github" on:click={() => openLink("MAINTAINER_GITHUB")}/>
+                 <IconButton title="Discord" icon="discord" on:click={() => openLink("MAINTAINER_DISCORD")}/>
+                 <IconButton title="Twitter" icon="twitter" on:click={() => openLink("MAINTAINER_TWITTER")}/>

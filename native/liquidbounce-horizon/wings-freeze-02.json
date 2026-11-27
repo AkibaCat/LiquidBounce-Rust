@@ -1,0 +1,17 @@
+{
+  "module": "Wings",
+  "revision": 2,
+  "date": "2026-11-26",
+  "reason": "Check139-01 actual native compile: remove extra queue argument from renderer prepare call",
+  "verification": {
+    "actualPrepareSignature": "pub fn prepare(\n        &mut self,\n        device: &wgpu::Device,\n        projection: Mat4,\n        camera: DVec3,\n        size: [u32; 2],\n        title: bool,\n    )",
+    "ownedCallMatches": true,
+    "repeatedSmoke": false
+  },
+  "files": {
+    "native/liquidbounce-horizon/wings-patch.py": "77a98ace42d63b8e202ebc31a27896d289701e13fa832fbe784f9a0102db3fcd",
+    "native/liquidbounce-horizon/wings-render.py": "ae634e8dbc0e5fb1e2c0983e351ece7389d148a748aa5097d23cbc20f92c3eff",
+    "native/liquidbounce-horizon/wings-freeze.json": "0057ee5f9c13a4ff1a1853cf631d39ebb128c063fa1d2cad0c4c5a4b67fa82cd",
+    "native/liquidbounce-horizon/wings-staging-fix-02.md": "822a8932e9d02cfaa0a8aa960345039722107e43f1c7b2bc3749f4675c65086b"
+  }
+}

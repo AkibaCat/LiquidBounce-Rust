@@ -1,0 +1,9 @@
+[package]
+name="bed-defender-focused"
+version="0.0.0"
+edition="2024"
+[workspace]
+[lib]
+path="lib.rs"
+[dependencies]
+behavior_core={package="liquidbounce-behaviors",path="../../liquidbounce-behaviors"}

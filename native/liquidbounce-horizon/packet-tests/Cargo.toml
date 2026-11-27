@@ -1,0 +1,10 @@
+[package]
+name = "liquidbounce-horizon-packet-tests"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+horizon-protocol = { path = "../../../upstream/Horizon/crates/horizon-protocol" }
+liquidbounce-behaviors = { path = "../../liquidbounce-behaviors" }
+serde_json = "1"

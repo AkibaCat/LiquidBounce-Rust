@@ -1,0 +1,32 @@
+{
+  "feature": "Shared full FallingPlayer replay",
+  "minecraft": "26.3",
+  "upstreamLiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "upstreamHorizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "status": "owned-patch-static-passed; awaiting root serial generator integration and combined official check",
+  "staticVerification": {
+    "command": "python native/liquidbounce-horizon/test-falling-forecast.py",
+    "result": "passed",
+    "nativeFilesComposedInMemory": 3,
+    "proof": "rustfmt-normalized exact original Crosshair replay extraction; the original FallingPlayer key wrapper delegates to the same body through visit_with_keys, permitting Scaffold fixed jump=false/sneak=false inputs",
+    "productionSharedStagingWrites": false,
+    "rustExecution": false
+  },
+  "productionCrosshairSha256": "dfc51c0fd97ed38b8f86bf43cf4c2cc878c9e3563b5f8be2d7bb090f09a5d926",
+  "ownedFiles": {
+    "falling-forecast-native.rs": "c2ae62a489eea65b9a96b78be6abfdfb3a63bb77f5ec0c5974670e206d27c375",
+    "falling-forecast-crosshair.rs": "f4d2f01794d8c3d60a030d6be1d100786171f833b9ed9ae54d41abb6208154a1",
+    "falling-forecast-patch.py": "ab0439dd5c11978461b98f1d81982dc49d832a7bf72f705ad21fd79afbc17953",
+    "test-falling-forecast.py": "6222aa4401ffa7cbb36cff20a175774d9b7ba2ffc8fe01eba82b4fc21f64f7af"
+  },
+  "integrationOrder": [
+    "crosshair-clicker-patch.py",
+    "falling-forecast-patch.py",
+    "future complete Clutch consumer"
+  ],
+  "remaining": [
+    "Root serial generator integration",
+    "Official native and engine check in combined module batch",
+    "Complete Clutch/Scaffold consumer and actual game parity"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "feature": "EasyPearl",
+  "revision": 1,
+  "upstream": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "status": "static-passed-compile-and-focused-smoke-deferred-to-batch",
+  "validation": "build/easy-pearl-static-01/report.json",
+  "remaining": [
+    "Official grouped native+engine compilation and focused smoke",
+    "Active custom-theme font bridge switching, shared with TargetRenderer",
+    "Actual game parity"
+  ],
+  "files": {
+    "native/liquidbounce-behaviors/src/easy_pearl.rs": "ce476fd74abbb7671c48f4a5ed4d99d9c352064e5a1a48cf695f30f9e129f486",
+    "native/liquidbounce-horizon/engine/src/easy_pearl_runtime.rs": "ea07dd7d64282c6a29a87fc5b02ff3dffa5cbc581f30401ba9ae824933cca1c2",
+    "native/liquidbounce-horizon/engine/src/config/easy_pearl.rs": "e01947e3e728800d85156ff9bfed00e679b2b38adf88ff48dbb0e734eebe460f",
+    "native/liquidbounce-horizon/easy-pearl-game.rs": "7a4f6427c0127f62537d445a0f786a7a3a2036ab23c74aeb5f01e66999780c63",
+    "native/liquidbounce-horizon/easy-pearl-host.rs": "4bd78ecb9e1bbf605ffe350511ccf1675e229486e3ce9eb2a318479add6e4d01",
+    "native/liquidbounce-horizon/easy-pearl-patch.py": "1a1ab5e766e0480422554c6a47b8d9ce8209d8d1ab7fbcd723a45e958e4c1555",
+    "native/liquidbounce-horizon/integrate-easy-pearl.py": "4cacba29610a077eee34dfdc3f88bf22c0a49d2cdce27f26fd87f0855825b39b",
+    "native/liquidbounce-horizon/update-easy-pearl-locales.py": "9dafbe8966a060cb31876c86ac808400eee116617ce90d0dd0c071b895ea1166",
+    "native/liquidbounce-horizon/check-easy-pearl-static.py": "d93c2d2d60e03172c1bb3a50845d901099129a5207237b5b7be381936b0ecf84",
+    "native/liquidbounce-horizon/easy-pearl-smoke.rs": "b1787da47d97d98609774463811a45d39f9bf4cdf46a398b0d8bcac6aae5f9c7",
+    "native/liquidbounce-horizon/easy-pearl-handoff.md": "e1d24392637c8c1ad690b361491f5c4a6ff2d0d38aad5ee2bc3ef751710152f5"
+  }
+}

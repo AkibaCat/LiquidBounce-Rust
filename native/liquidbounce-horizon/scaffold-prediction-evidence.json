@@ -1,0 +1,26 @@
+{
+  "compiled": false,
+  "rustExecuted": false,
+  "generatedRustSourcesParsed": 9,
+  "preparedRustSmokeParsed": true,
+  "checks": [
+    "source edge support scan with actual standing dimensions",
+    "empty collision context and real moving block geometry",
+    "reverse clip edge walk returns point",
+    "one full native body replay with jump/sneak false",
+    "two-tick fall checks include collidable entities",
+    "four offset history in native float yRot coordinates",
+    "Math atan2 and float angle",
+    "bootstrap backoff and initial lateral offset",
+    "source warmup lerp and cutoff distance"
+  ],
+  "sha256": {
+    "scaffold_prediction.rs": "5bd80e18162a0c2b486f5206821beab13048ae5f90b2e2ddf9edb7d4a1fe3057",
+    "scaffold-prediction-native.rs": "08b5de050bea902f77098b399148c8d80273f787ab20aba6f3841d7a82ae1d27",
+    "scaffold-prediction-host.rs": "636975b7ed060df2de7e9707eb148aad67056bf567c1cc7f4ea12eba468806f4",
+    "scaffold-prediction-patch.py": "2ae1d94dfd09bebb5bee5f12f6a0259d713758e37dff32e00e231baf009d6eb9",
+    "scaffold-prediction-smoke.rs": "59ae245b47b9d805a2e969b5f341a411215473a4d6b41c964854f2eedbdde7b4",
+    "scaffold-edge-native.rs": "9ecce3acb1517de0df697803ecb6869f7d6059233306c4d2ce5fc1ca38ef7eaf",
+    "falling-forecast-native.rs": "c2ae62a489eea65b9a96b78be6abfdfb3a63bb77f5ec0c5974670e206d27c375"
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "bonk": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:bonk"
+    ]
+  },
+  "boykisser-1": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:boykisser-1"
+    ]
+  },
+  "boykisser-2": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:boykisser-2"
+    ]
+  },
+  "boykisser-3": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:boykisser-3"
+    ]
+  },
+  "boykisser-4": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:boykisser-4"
+    ]
+  },
+  "boykisser-5": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:boykisser-5"
+    ]
+  },
+  "boykisser-6": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:boykisser-6"
+    ]
+  },
+  "applepay": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:applepay"
+    ]
+  },
+  "aimbooster": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:aimbooster"
+    ]
+  },
+  "bring": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:bring"
+    ]
+  },
+  "brick": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:brick"
+    ]
+  },
+  "bump": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:bump"
+    ]
+  },
+  "glass-1": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:glass-1"
+    ]
+  },
+  "glass-2": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:glass-2"
+    ]
+  },
+  "glass-3": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:glass-3"
+    ]
+  },
+  "click-1": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:click-1"
+    ]
+  },
+  "click-2": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:click-2"
+    ]
+  },
+  "click-3": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:click-3"
+    ]
+  },
+  "coin": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:coin"
+    ]
+  },
+  "meow": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:meow"
+    ]
+  },
+  "moan-1": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:moan-1"
+    ]
+  },
+  "moan-2": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:moan-2"
+    ]
+  },
+  "moan-3": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:moan-3"
+    ]
+  },
+  "moan-4": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:moan-4"
+    ]
+  },
+  "magic_squash": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:magic_squash"
+    ]
+  },
+  "nya": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:nya"
+    ]
+  },
+  "osu": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:osu"
+    ]
+  },
+  "pop": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:pop"
+    ]
+  },
+  "soft": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:soft"
+    ]
+  },
+  "schoolboy": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:schoolboy"
+    ]
+  },
+  "skeet": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:skeet"
+    ]
+  },
+  "slap": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:slap"
+    ]
+  },
+  "squash": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:squash"
+    ]
+  },
+  "tung": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:tung"
+    ]
+  },
+  "tf2-crit": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:tf2-crit"
+    ]
+  },
+  "uwu": {
+    "replace": true,
+    "sounds": [
+      "liquidbounce:uwu"
+    ]
+  }
+}

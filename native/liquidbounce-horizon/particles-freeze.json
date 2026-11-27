@@ -1,0 +1,68 @@
+{
+  "feature": "Particles",
+  "date": "2026-11-26",
+  "moduleCountDelta": 1,
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "horizonMixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_particles"
+      ],
+      "helper_names": [
+        "client_particles_context",
+        "client_particles_direction"
+      ]
+    },
+    "patchedFiles": 8,
+    "localeKeys": {
+      "zh_cn": 15,
+      "zh_tw": 15
+    },
+    "textureHashes": {
+      "glow": "5469f554e07590aca5a89ffec1d8f88fd02eacf7d2edc6d6b09a8f7a0bdd5a01",
+      "star": "12c696c1a82670b9db4b18276cd32b16cff315fd46b51d45f3d74e1abf5ffc22",
+      "dollar": "8a15505f1eb5a158eae9ddca338d79f554125d004051f04aeb9a381c8d8677bd",
+      "crown": "b11436486aac894bcd058a7870f1c575ed4f491876cad7ed360089272933c72e",
+      "heart": "998ab02f656ebd63142d7e4cfe52d00ec067c983f321c7c988f41e92255ab0b4",
+      "lightning": "2a75cf0b015207c26a5be886e05fa856bc5a3dacbb8be25f158803e35815be71",
+      "line": "9eb373304a50ce6aa87ba05d4bcbef37b4eeac54723efc273c563f6edbeb831e",
+      "point": "4b4b9b51b22a64c4c162e5bb1d597a2aa42b9481f144e0dbc7f194655cde7458",
+      "rhombus": "84fd23117ed0b5484f45460794cbd627287db6ae9168b3c9d64eaca494a21986",
+      "snowflake": "02c0fb40f554db8576b9a4f18d7658e2a8049b16adb3779ddaa81106972cd217",
+      "spark": "239fd301ae682d31f14548d241f44fd72af9755f05417fa99e6360d71a7c7fa4"
+    },
+    "scope": "One focused usability invocation compiling production particles behavior, full settings serializer/parser, visual target decoder/selection, engine runtime, native Game/Host attack/camera/tick bridge and image renderer. Actual Horizon PNG decoder and quantized rotation direction. Declaration-only world/entity/actor providers. One GPU check of all eleven immutable PNG uploads and real scene depth occlusion, no effect matrix. Shared/native integration composed in memory. Actual game validation remains aggregate/root-owned."
+  },
+  "files": {
+    "native/liquidbounce-horizon/particles-game.rs": "a0e6ca9c11af8fbb162c85987989a84f35ed872e91524c1e0e380b7a183ae738",
+    "native/liquidbounce-horizon/particles-host.rs": "7a605c739d2330c5bcfece921b645fe474abcb9da9be7dccf384a7c01eaac71e",
+    "native/liquidbounce-horizon/particles-render.rs": "c0ff7793a3df56e65d26b6c0a08fd169a339fcdbc2c64159d5fbf8e28baf7973",
+    "native/liquidbounce-horizon/particles.wgsl": "d2dcea31abce2da9c6b16a9f68bc3aab1ada0c51772b4201a5ef383518cb50d8",
+    "native/liquidbounce-horizon/particles-patch.py": "f0e6098037159b96a64b5e917ba07507a30ccf829c9a6f4d32b810767fc621b6",
+    "native/liquidbounce-horizon/integrate-particles.py": "93c848f8922706264900178819823106324f7113abba3aadb02c7d9a03332b95",
+    "native/liquidbounce-horizon/update-particles-locales.py": "d4940a04c9209f08ef89a9a0afd34087307411f20402c81bae0a996ead17e208",
+    "native/liquidbounce-horizon/particles-smoke.rs": "ef5ba21dafd37bd7a7a3a9c30eb89d90fe44d6e2887dd8d944a3242c7625d248",
+    "native/liquidbounce-horizon/particles-native-fixture.rs": "0bb6488dcd7f70f2d1e1fd8e79c0e5aeea402280c2b3180e908f2cd8e2b3de00",
+    "native/liquidbounce-horizon/test-particles.py": "d086ae9f4131c3091dba4988cda794e3164b7e04f6b2057f5f6328406e7a1cd3",
+    "native/liquidbounce-horizon/particles-integration.md": "33015632f4ee85bdd834fb6d005dd610dfef6c11f98ae62c29dd7fb7cc57c038",
+    "native/liquidbounce-horizon/generate-particles-freeze.py": "d836419f59e1ce6562e2f3e68cebb1046eae51c4502bfae42a55983a6c66d7e1",
+    "native/liquidbounce-horizon/engine/src/config/particles.rs": "ba4a39d3cce99e60f7bd8bce24a4f12bd13eba8ac7d065665b6bac8e2f0180c6",
+    "native/liquidbounce-horizon/engine/src/particles_runtime.rs": "ffe9708236ce2759de4baaf952f354039755e09b606d664983c8994a764d685d",
+    "native/liquidbounce-behaviors/src/particles.rs": "4f87e4fae070d6513cb27f112846d286e84ff2ff6684e7288966fa40def8a8fe",
+    "build/particles-smoke-01/report.json": "81facdb02ae2e62f72aaf27a2a8566758006f9540d6684fd455ad4b2f5bf27da",
+    "build/particles-smoke-01/test.log": "83f2c640e0c4799c2e3191c2fe24cf166601fc08d302a0b2fb4c149b60577e1c",
+    "build/particles-smoke-02/report.json": "4b02ffc7f2f5490aac90d9e6ef201a25a4a7c2b8c1454384c92b667b7711efaf",
+    "build/particles-smoke-02/test.log": "ce0c8e36c78e52b51dfc9088c326dcfc972878f124cecbc6d9f9d4fd56de4695",
+    "build/particles-smoke-02/shared-plan.json": "50fd9cc82c62930ef8bf6ae333cbf8d373a44f301aa4644c4309bbe48a171220",
+    "build/particles-smoke-02/localization/display_zh_cn.json": "2e467a195df89b3dd897a9003b3efb9516d75b67907f4faa4f17f0a632414a95",
+    "build/particles-smoke-02/localization/display_zh_tw.json": "1ec3868934c1679d693cde431eb195fc399ece0ccc035256e5ea7f08ff22c927"
+  },
+  "limits": "No official stage/build or real-game parity claim. Root applies 18 edits across 7 shared files and copied-dictionary updater serially. Frozen AutoBreak and ItemScroller untouched."
+}

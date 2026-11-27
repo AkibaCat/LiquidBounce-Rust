@@ -1,0 +1,53 @@
+{
+  "module": "mob_owners",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_mob_owners"
+      ],
+      "helper_names": []
+    },
+    "scope": "Actual owned behavior/config and shared Tree/parser; short behavioral smoke; BetterTab compiles actual render policy against declaration-only text/player types; MobOwners compiles actual ureq cache without network requests. Actual patches applied in memory to staged source; dictionaries tested on copies. Full Game/native compilation remains aggregate validation."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/mob_owners.rs": "6fbe3f1ca7f51b891a5eb84f68b6b8540f91f7b0b508663bf9460fb6a1c163ea",
+    "native/liquidbounce-horizon/engine/src/config/mob_owners.rs": "96c09da85ee8bada00f0d34e50b19a975e0ecd273d3c28b797761820e7ef00a1",
+    "native/liquidbounce-horizon/engine/src/mob_owners_runtime.rs": "4b42a85b7c26a90a778bdb948f0bb09070520382d7bf1ea44bfe0c3387ef2c32",
+    "native/liquidbounce-horizon/mob-owners-host.rs": "79ebc415f7460ce713290fdf9e922383ea242d671ffaabd969a4f6e0fde11c1f",
+    "native/liquidbounce-horizon/mob-owners-patch.py": "7f760fba3322734948ec670d03948fed5bbc29fc8656a3a944cc2219b9033326",
+    "native/liquidbounce-horizon/mob-owners-smoke.rs": "3914aa3c28d812cf9618f04484800c3dcd9ec867a90cd71e4897ff30cd9905d1",
+    "native/liquidbounce-horizon/test-owner-combine-tab.py": "d270c392020ab2aafb523369323d5f2feb6ec53aa4878925936912ee0ec5947e",
+    "native/liquidbounce-horizon/update-owner-combine-tab-locales.py": "89a4fb3436ed668042f80c3b3457a7155cd0c8c7f155f1065e7219d530eb74cb",
+    "native/liquidbounce-horizon/verify-owner-combine-tab-anchors.py": "40e0751d0a4df26df6349a2bb1db920d96135530b08a99436e1d32f9882a5adf",
+    "native/liquidbounce-horizon/owner-combine-tab-integration.md": "ae74fcc47cf2d41e91ad1bdd02eb7aabeb73d80f7f7d3598d2ac719a9180bed6",
+    "build/mob-owners-smoke-01/report.json": "ce239def3a44beedc15a30a484b55dada8b803ccbd4aff1383edf1023036cada",
+    "build/mob-owners-smoke-01/test.log": "981e5be11e13afef9f70aec23a5e7b29499a32d36f21fef4c433db489dd4ecea",
+    "build/owner-combine-tab-final-anchors/report.json": "44b7b1437f3b7a64d0d5ee7759196c029b81983f304940f35d6606bcb4c1a5a9",
+    "native/liquidbounce-horizon/mob-owners-cache.rs": "b221443541b6658dff6b83a734f723f10023e53fc7ca88df03540b5c95d8a5b4",
+    "native/liquidbounce-horizon/mob-owners-game.rs": "83264069ad02cb43e19f7075a633f85f7eef93172832c28ec28bf0424c2bcc5b",
+    "native/liquidbounce-horizon/mob-owners-types.rs": "713b4ddf52f67b269fbc463c6253dc8e01f104ee6ba8e2db57d771d226559905",
+    "native/liquidbounce-horizon/generate-owner-types.py": "b48ab31f845141f0f39af8f039e848fccbc109c2f337e8378827ce838b68d493",
+    "native/liquidbounce-horizon/mob-owners-revision-02.md": "95df697a5215d949341f0e7e81b02bc459d0132138183c1b1d5bbd627e12c129"
+  },
+  "revision": 2,
+  "previousFreezeSha256": "b62b8c826670aea9d5923bff070f839d0826d547e0d6545b8813b26df8b9bb58",
+  "reason": "Actual native Game type correction: LAN guest entity_id i32 bitcast to u32, preserving all signed protocol ID bits",
+  "protocolBitcastProbe": {
+    "passed": true,
+    "values": [
+      -2147483648,
+      -1,
+      0,
+      1,
+      2147483647
+    ]
+  }
+}

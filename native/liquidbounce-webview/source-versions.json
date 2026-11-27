@@ -1,0 +1,25 @@
+{
+  "addon": {
+    "repository": "https://github.com/CCBlueX/LiquidBounce-Addon-CEF",
+    "tag": "v1.1.0+26.3",
+    "commit": "184ea67d95467790fb5de74189ead87c4a75cbcc"
+  },
+  "jcef": {
+    "repository": "https://github.com/CCBlueX/java-cef",
+    "commit": "5f76004a4e7c63342e958c5727587af4bbb62f64",
+    "cef_cmake_version": "152.0.6+g708dc14+chromium-152.0.7977.83"
+  },
+  "rust_cef": {
+    "repository": "https://github.com/tauri-apps/cef-rs",
+    "commit": "4e566e628a361f3ade6f9a211cb33ea3c7a9153f",
+    "cef_crate": "152.3.0+152.0.6",
+    "cef_dll_sys_crate": "152.3.0+152.0.6",
+    "accelerated_osr": false
+  },
+  "build_tools": {
+    "cmake": "3.31.6",
+    "cmake_wheel_sha256": "bbaed969cef3c427f4f17591feb28db4ae595e3a4bbd45cb35522cee14df6a32",
+    "ninja": "1.13.2",
+    "ninja_win_zip_sha256": "07fc8261b42b20e71d1720b39068c2e14ffcee6396b76fb7a795fb460b78dc65"
+  }
+}

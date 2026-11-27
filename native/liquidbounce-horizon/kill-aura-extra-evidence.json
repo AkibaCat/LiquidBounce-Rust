@@ -1,0 +1,50 @@
+{
+  "feature": "KillAura LAN guest and EnderDragon parent authoritative attack routes",
+  "minecraft": "26.3",
+  "upstreamLiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "upstreamHorizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "status": "owned helper static checks passed; awaiting serial inclusion and root combined native verification",
+  "integration": [
+    "Append both Rust fragments to generated game/kill_aura.rs",
+    "At the end of kill_aura_candidates, call self.kill_aura_extra_candidates(&mut candidates)",
+    "Resolve chosen attacks with self.kill_aura_attack_candidate(id), instead of searching raw ray candidates",
+    "Inside existing local attack KeepSprint/implicit-swing/cache scope, call self.kill_aura_extra_local_attack(c); only None falls through to self.attack()",
+    "Apply kill-aura-extra-patch.py once after base kill-aura patch to expose three existing native tail methods",
+    "Both extra helpers own one native_client_attack notification and one authoritative native_attack_entity hook; caller owns client_weapon_before_attack exactly once",
+    "A guest selected for Interact is a player PASS, not a mob index; crystals and dragon parts also do not inherit remote object's default consuming answer",
+    "The dragon parent never enters a natural ray: kill_aura_hit must honor parent isPickable=false; TraceOnlyEnemy must not alias a part's eligibility to its living parent"
+  ],
+  "categories": {
+    "12": "LAN guest; entity id resolved afresh to guest connection, no mobs index dereference",
+    "13": "dragon parent attack-only alias; network parent id retained, local SPECIAL+2 BODY, living critical predicate",
+    "11": "existing actual dragon part; network dragon.id+1+index, local SPECIAL+index, non-living predicate retained"
+  },
+  "sourceEvidence": [
+    "LiquidBounce CombatExtensions.attackEntity: direct target identity, AttackEntityEvent, held-item sync, server attack, scoped KeepSprint, cooldown and swing",
+    "LiquidBounce EntityRaytracing.findEntityInCrosshair: EntitySelector.CAN_BE_PICKED",
+    "Horizon lan_actions::guest_attack -> pvp_strike -> pvp_land -> pvp_hit_after",
+    "Horizon dragon::BODY=2; hit_special routes to hurt_dragon_part and retains phase/hurt/knockback hooks",
+    "Horizon melee_damage_with_admission, attack_effects, mace and weapon-wear native tails"
+  ],
+  "officialClassRead": {
+    "method": "javap -p -c, read-only existing official local client jar",
+    "clientJarSha256": "4508d006323f24fa02876310c192d739af56516eb259000ac50f0909a68c9a2d",
+    "EnderDragon.isPickable": false,
+    "EnderDragonPart.isPickable": true,
+    "EnderDragon.hurtServer": "delegates to body EnderDragonPart"
+  },
+  "staticVerification": {
+    "command": "python native/liquidbounce-horizon/test-kill-aura-extra.py",
+    "result": "passed",
+    "nativeVisibilityFilesComposedInMemory": 2,
+    "temporaryRustfmt": true,
+    "rustExecution": false,
+    "sharedStagingWrites": false
+  },
+  "ownedFiles": {
+    "kill-aura-extra-candidates.rs": "e8122970c29fb755fd118ed2d46f50a3cded7aa2645b38c321717c8d10d3432e",
+    "kill-aura-extra-attack.rs": "27363e327a95ee7ae4fcfdebf1d1f3b67210a25ef38ec059753cec97cd1a164d",
+    "kill-aura-extra-patch.py": "3eda42ccee15c05c8b5871836ad70b883fa1d975c9650d757d529a99466a4015",
+    "test-kill-aura-extra.py": "2b5a757115d4455368eceb9bb6844ced1445be35573a29e96066e079d7c1bcde"
+  }
+}

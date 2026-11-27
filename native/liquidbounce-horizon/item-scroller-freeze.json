@@ -1,0 +1,68 @@
+{
+  "frozenDate": "2026-11-26",
+  "pinnedSources": {
+    "LiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "Horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "Horizon-Mixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "scope": "Complete ItemScroller functional unit frozen after final native ABI/client check. Canonical registry/config/runtime and actual game verification remain root integration.",
+  "files": {
+    "native/liquidbounce-behaviors/src/item_scroller.rs": "064338e62d675626143cf1e0e37757f2f7c33cf8de8a2427c022ce15363016f6",
+    "native/liquidbounce-horizon/engine/src/config/item_scroller.rs": "24de3e3e2991c74131337eb5c0b9c87112e8e85ac292bdacb970f47911b96001",
+    "native/liquidbounce-horizon/engine/src/item_scroller_runtime.rs": "7b191adcb12be4bdc8297adcf0ead8f563462cc5d420dddb28444a3c0665db6f",
+    "native/liquidbounce-horizon/item-scroller-host.rs": "8f14c6d4de3808af6ed4587fd6db31a1891dfed1e8443989acc0935d490eb5d1",
+    "native/liquidbounce-horizon/item-scroller-patch.py": "88fd990267dc0fb4a731f0401e85fb1b6098dfbc1589f6d585dc77acdc5e2a0a"
+  },
+  "supportingFiles": {
+    "native/liquidbounce-horizon/item-scroller-consumption-fixture.rs": "d6651abda8a685c89504680371c88ab3385d954e4a82e2ffec0338d9ea17de45",
+    "native/liquidbounce-horizon/item-scroller-integration.md": "9f07b397ed29338e2e2f86b77acf6737b740a20a45253c450dd6df829dad997d",
+    "native/liquidbounce-horizon/item-scroller-source-fixture/Main.kt": "fe754a1e45cb78f21ab9f0f991f6549f46d431f8d86695dd61e517b444aeb5d4",
+    "native/liquidbounce-horizon/item-scroller-source-fixture/addon.kt": "b2205562f242b66c0d3ba036c3cbea0e744740a0fbf041213bd3cbd5cb7730c7",
+    "native/liquidbounce-horizon/item-scroller-source-fixture/input.kt": "e72706aeb923c942b461fbaaa7367af6fa98990a1aa4076c29fad3bf87db547d",
+    "native/liquidbounce-horizon/item-scroller-source-fixture/menu.kt": "d7ebb3178eb09c56df2fcac7cee069914a2b03d4aa5232c176ceafc1e4fa623c",
+    "native/liquidbounce-horizon/item-scroller-source-fixture/module.kt": "1589d04b4d5f5759590924288cca8577cb342a625eb716eb28aed1eb05756302",
+    "native/liquidbounce-horizon/item-scroller-source-fixture/oracle.rs": "a70752bc1b0efbd60fb6bc6562bc0fc8c44c5721c7cd99b11a4a353e3d20fd80",
+    "native/liquidbounce-horizon/item-scroller-source-fixture/tagged.kt": "8673094d54e1d3fb9b1908a8a00e67c05a18ab5429b39b44fc2ee9b7d3171321",
+    "native/liquidbounce-horizon/test-item-scroller-config.py": "c71765407f5b8c102897c3d7ec32137a083066d325661a2e1f72681fbc14f2e2",
+    "native/liquidbounce-horizon/test-item-scroller-consumption.py": "6450da68fad1b77fd1cc855cce6da1e8cdfc43aec347e5631512310e0bd45ac2",
+    "native/liquidbounce-horizon/test-item-scroller-native.py": "9e7a4e7e5540dd8820500ed23733351e2df8357de24775b954308bbae61c9a84",
+    "native/liquidbounce-horizon/test-item-scroller-source.py": "10d4f874588ba65ffa56a1d3468aa5759081d16d3e59ef3250492fde01996d01"
+  },
+  "reports": [
+    {
+      "path": "build/item-scroller-source-01/report.json",
+      "passed": true,
+      "sha256": "6970bbd9b2d48633d62e6ac211f0d26e6aac9185a8b3555d69ad3fb3bd3d9cc2",
+      "scope": "Unchanged Kotlin module and complete Chronometer; 72 focused vectors using real JDK25 ThreadLocalRandom and wall clock, three Rust tests and Clippy."
+    },
+    {
+      "path": "build/item-scroller-config-02/report.json",
+      "passed": true,
+      "sha256": "1402a6d11887eb38dce8824702dee1462a5f3420242a37be4ea034ce431d974f",
+      "scope": "Complete unchanged production config/behavior snapshot with declaration-only registration shims; 74 tests and Clippy."
+    },
+    {
+      "path": "build/item-scroller-consumption-02/report.json",
+      "passed": true,
+      "sha256": "b7329a6c0c56e3ad0032cb60feda149b298bedc19bdf1a103b67f307783de464",
+      "scope": "Unchanged final helper with recording Game/menu/network fixture, complete production container_screen.rs, actual behavior; 18 tests and Clippy; final five render/global input source seam assertions."
+    },
+    {
+      "path": "build/item-scroller-native-02/report.json",
+      "passed": true,
+      "sha256": "46c1fec906ca55ea079e2e0b5bc4ce0a18ae38ae14b2f979d25afa1d02df8bde",
+      "scope": "Real fill_hooks and complete independent horizon-client --lib with final global all-button cancellation before hotbar mouse binding."
+    }
+  ],
+  "preservedHistoricalFailures": [
+    "build/item-scroller-config-01/report.json",
+    "build/item-scroller-consumption-01/report.json"
+  ],
+  "historicalPassingReports": [
+    "build/item-scroller-native-01/report.json"
+  ],
+  "pendingChecks": [
+    "Root canonical registry/config/runtime integration.",
+    "Actual game execution and GPU smoke."
+  ]
+}

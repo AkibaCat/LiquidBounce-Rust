@@ -1,0 +1,25 @@
+{
+  "compiled": false,
+  "rustExecuted": false,
+  "generatedRustSourcesParsed": 4,
+  "preparedRustSmokeParsed": true,
+  "checks": [
+    "actual empty-context support shapes at floor(minY)-1",
+    "native box iteration and support ranking",
+    "first candidate on exact tie",
+    "last placement then previous support hysteresis",
+    "preserved in-block offset",
+    "four placement history and consecutive deduplication",
+    "30-degree direction hysteresis and ties-to-even quantization",
+    "history-line projection with FMA and 60-degree divergence cutoff",
+    "real native float-table direction",
+    "no-input preserves planner state"
+  ],
+  "sha256": {
+    "scaffold_movement_planner.rs": "928e6a1eb2e9cf222de56e8e28011d3abb6da4c58280b7780cd7935ae09bc7c1",
+    "scaffold-planner-native.rs": "024c2da3bc862972c416b5497aae7127dc77eb7ee781db4410b2a319de220b58",
+    "scaffold-planner-host.rs": "2e294a410fd12b615cfcad778f0550cf7b4541bfdcbde2c358d254ab0b7f4cac",
+    "scaffold-planner-patch.py": "d810e72718ff10c4ea6d2850c3f3e414cc66318487b7dd422fb3a17466be10cf",
+    "scaffold-planner-smoke.rs": "eaa900c36fd94ac39bbaf219e519bbd5ccdaf5d106f81110a284c438b017d7e5"
+  }
+}

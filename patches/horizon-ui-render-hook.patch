@@ -1,0 +1,211 @@
+diff --git a/crates/horizon-hooks/Cargo.toml b/crates/horizon-hooks/Cargo.toml
+--- a/crates/horizon-hooks/Cargo.toml
++++ b/crates/horizon-hooks/Cargo.toml
+@@ -6,5 +6,12 @@
+ rust-version.workspace = true
+ description = "The game's extension points for crates above the engine: hooks and the platform registries (docs/layers.md)"
+ 
++[features]
++# The renderer's final GUI layer, without giving crates above the engine gameplay types.
++gpu-ui = ["dep:wgpu"]
++
++[dependencies]
++wgpu = { version = "30.0.1", default-features = false, features = ["std"], optional = true }
++
+ [lints]
+ workspace = true
+diff --git a/crates/horizon-hooks/src/lib.rs b/crates/horizon-hooks/src/lib.rs
+--- a/crates/horizon-hooks/src/lib.rs
++++ b/crates/horizon-hooks/src/lib.rs
+@@ -17,6 +17,8 @@
+ //! pages, [`hud`] for what it draws on the HUD, [`lang`] for the lang files with its text.
+ #![forbid(unsafe_code)]
+ 
++#[cfg(feature = "gpu-ui")]
++pub mod gpu_ui;
+ pub mod hud;
+ pub mod lang;
+ pub mod pages;
+diff --git a/crates/horizon-client-render/Cargo.toml b/crates/horizon-client-render/Cargo.toml
+--- a/crates/horizon-client-render/Cargo.toml
++++ b/crates/horizon-client-render/Cargo.toml
+@@ -8,7 +8,7 @@
+ 
+ [dependencies]
+ # The settings stores of the crates above the engine (docs/layers.md, "Platform registries").
+-horizon-hooks = { path = "../horizon-hooks" }
++horizon-hooks = { path = "../horizon-hooks", features = ["gpu-ui"] }
+ # The GUI atlas's pixels, kept compressed once uploaded (hud.rs `pack_pixels`).
+ lz4_flex = { version = "0.14", default-features = false, features = ["std", "safe-encode", "safe-decode", "checked-decode"] }
+ horizon-assets = { path = "../horizon-assets" }
+diff --git a/crates/horizon-platform/Cargo.toml b/crates/horizon-platform/Cargo.toml
+--- a/crates/horizon-platform/Cargo.toml
++++ b/crates/horizon-platform/Cargo.toml
+@@ -7,6 +7,8 @@
+ description = "The platform's public API: what the Horizon layer and mods may use of the engine (docs/layers.md#platform)"
+ 
+ [features]
++# Independent GPU GUI layers, exposed through hooks::gpu_ui.
++gpu-ui = ["horizon-hooks/gpu-ui"]
+ # Each part of the engine a Horizon crate may reach, so a crate builds only the engine it uses.
+ # level.dat, servers.dat and region files: NBT, compression, region read and write.
+ world = ["dep:horizon-world"]
+diff --git a/crates/horizon-platform/src/lib.rs b/crates/horizon-platform/src/lib.rs
+--- a/crates/horizon-platform/src/lib.rs
++++ b/crates/horizon-platform/src/lib.rs
+@@ -52,6 +52,9 @@
+ /// [`hooks::register`] it before the game starts (docs/layers.md, "How a Horizon crate plugs
+ /// in"). The engine's dispatch side is not part of the API.
+ pub mod hooks {
++    /// GPU overlays after the HUD and menus, before display encoding.
++    #[cfg(feature = "gpu-ui")]
++    pub use horizon_hooks::gpu_ui;
+     /// The players the game shows (`horizon_hooks::players`): the views [`Hooks::frame`] and
+     /// [`Hooks::tick`] get, the pose a crate lays over a player's body, what goes by their names,
+     /// the crate's sprites, the camera, and what a crate draws on them.
+diff --git a/Cargo.lock b/Cargo.lock
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1796,6 +1796,9 @@
+ [[package]]
+ name = "horizon-hooks"
+ version = "0.1.0"
++dependencies = [
++ "wgpu",
++]
+ 
+ [[package]]
+ name = "horizon-items"
+diff --git a/crates/horizon-client-render/src/gfx.rs b/crates/horizon-client-render/src/gfx.rs
+--- a/crates/horizon-client-render/src/gfx.rs
++++ b/crates/horizon-client-render/src/gfx.rs
+@@ -12276,6 +12276,35 @@
+             blur_at..frame.hud.vertices.len() as u32,
+             timing.as_mut(),
+         );
++        // The final GUI extension point: after all HUD/screens, on the same target and HDR
++        // coverage layer. Its independent textures never enter the shared GUI atlas.
++        if horizon_hooks::gpu_ui::engine::any() {
++            let color = self
++                .hdr
++                .as_ref()
++                .and_then(|h| h.hud())
++                .unwrap_or(target_texture);
++            let window_size = self.window.inner_size();
++            horizon_hooks::gpu_ui::engine::draw(&mut horizon_hooks::gpu_ui::Frame {
++                device: &self.device,
++                queue: &self.queue,
++                encoder: &mut *encoder,
++                color,
++                color_view: hud_target,
++                color_format: color.format().remove_srgb_suffix(),
++                coverage_view: coverage.as_ref(),
++                size: [self.config.width, self.config.height],
++                window_size: [window_size.width, window_size.height],
++                window_id: self.window.id().into(),
++                window_scale: self.window.scale_factor(),
++                gui_scale: frame.hud.scale,
++                seat: horizon_hooks::seat(),
++                title: frame.title,
++                generated: !overlay.real,
++                offscreen: self.surface.is_none(),
++                hdr: self.hdr.is_some(),
++            });
++        }
+         if overlay.real {
+             self.own_timing = timing;
+         }
+diff --git a/crates/horizon-hooks/src/gpu_ui.rs b/crates/horizon-hooks/src/gpu_ui.rs
+new file mode 100644
+--- /dev/null
++++ b/crates/horizon-hooks/src/gpu_ui.rs
+@@ -0,0 +1,89 @@
++//! GPU GUI layers after the HUD and menus, before screenshots and HDR display encoding.
++//!
++//! A layer owns its textures, pipelines and browser state. Nothing is packed into the GUI atlas,
++//! so an offscreen browser can paint at the full viewport resolution. Register before running
++//! the game. The engine calls the layers in registration order on the game's render thread.
++//! No layer registered means no extra GPU pass and no change to the original picture.
++use crate::TooLate;
++use crate::registry::Registry;
++
++/// The same wgpu version as the renderer; consumers need no separate GPU dependency.
++pub use wgpu;
++
++/// The extra attachment on the float HDR lane. See [`Frame::coverage_view`].
++pub const COVERAGE_FORMAT: wgpu::TextureFormat = wgpu::TextureFormat::R8Unorm;
++
++/// The final GUI target, borrowed only for this callback. GPU resources must belong to `device`.
++/// A recreated renderer can supply a new device; drop textures/pipelines from its old device.
++pub struct Frame<'a> {
++    pub device: &'a wgpu::Device,
++    pub queue: &'a wgpu::Queue,
++    /// Encode into this buffer; do not submit it or acquire/present another surface frame.
++    pub encoder: &'a mut wgpu::CommandEncoder,
++    /// The HUD's independent target with layered HDR, otherwise the current frame target.
++    /// Do not overwrite it or read it back as HDR output. It need not support TEXTURE_BINDING.
++    pub color: &'a wgpu::Texture,
++    pub color_view: &'a wgpu::TextureView,
++    /// The format of `color_view`, which can differ from the swapchain's sRGB view.
++    pub color_format: wgpu::TextureFormat,
++    /// With layered HDR, attach this as colour attachment 1, Load/Store, and output the GUI
++    /// sample's opacity at location 1. Blend RED as One + OneMinusSrc, Add, preserving the
++    /// existing coverage. Otherwise omit attachment/output 1. Never clear either target.
++    pub coverage_view: Option<&'a wgpu::TextureView>,
++    /// Physical pixels of this target. Fullscreen viewport/scissor: (0, 0, size[0], size[1]).
++    /// This can differ from `window_size` for splitscreen/offscreen rendering or captures.
++    pub size: [u32; 2],
++    pub window_size: [u32; 2],
++    /// Opaque window identity for per-window state, valid only for this process.
++    pub window_id: u64,
++    /// OS device pixel ratio; independent of Minecraft's GUI scale.
++    pub window_scale: f64,
++    /// Physical pixels per Minecraft GUI pixel for this frame.
++    pub gui_scale: f32,
++    /// The local splitscreen player (`crate::seat`) whose frame is being drawn.
++    pub seat: usize,
++    pub title: bool,
++    /// A frame-generation image: draw the latest GUI, but don't advance its simulation twice.
++    pub generated: bool,
++    pub offscreen: bool,
++    pub hdr: bool,
++}
++
++/// Draw an independent GUI texture over the existing picture, including title/menu frames.
++/// Return quickly, never panic, and use Load/Store on every supplied attachment. Upload browser
++/// pixels through `queue` and sample that texture, rather than sampling the world target.
++///
++/// Colour is vanilla's stored gamma here, before PQ/scRGB encoding (docs/hdr-passes.md). CEF
++/// BGRA8 is premultiplied: use a non-sRGB Bgra8Unorm texture and blend colour/alpha as One +
++/// OneMinusSrcAlpha, Add. On the layered HDR lane also update coverage as documented above;
++/// otherwise HDR would keep the world's light over opaque GUI. Do not filter or clamp the
++/// world's picture or change HDR's retained world texture. Keep finite nonnegative output.
++///
++/// Resources are per device/window/seat. Respect `device.limits().max_texture_dimension_2d`
++/// when resizing, release old surfaces, and do not hold a browser mutex while it paints.
++pub trait Layer: Sync {
++    fn draw(&self, frame: &mut Frame<'_>);
++}
++
++static LAYERS: Registry<dyn Layer> = Registry::new();
++
++/// Adds a layer above those registered before it. Call before the game starts.
++pub fn register(layer: &'static dyn Layer) -> Result<(), TooLate> {
++    LAYERS.register(layer)
++}
++
++/// The engine's dispatch side. Only the engine calls it.
++pub mod engine {
++    use super::*;
++
++    /// Seals registration on first use. With no layers, no render context is built.
++    pub fn any() -> bool {
++        !LAYERS.all().is_empty()
++    }
++
++    pub fn draw(frame: &mut Frame<'_>) {
++        for layer in LAYERS.all() {
++            layer.draw(frame);
++        }
++    }
++}

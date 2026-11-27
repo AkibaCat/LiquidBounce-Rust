@@ -1,0 +1,13 @@
+[package]
+name = "liquidbounce-behaviors"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+description = "Source-derived LiquidBounce render behavior for native runtime integration"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+serde_json = "1"
+java_regex = { path = "vendor/java_regex" }

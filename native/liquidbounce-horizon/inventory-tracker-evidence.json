@@ -1,0 +1,41 @@
+{
+  "module": "InventoryTracker",
+  "commands": [
+    "invsee"
+  ],
+  "sourceCommits": {
+    "LiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "Horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "status": "static-passed-awaiting-root-batch",
+  "compiled": false,
+  "static": {
+    "transactionalSharedFiles": 9,
+    "completeCombinationParsedRustSources": 11,
+    "nativeOwnedStaticEvidence": "inventory-tracker-native-evidence.json",
+    "locales": [
+      "zh_cn",
+      "zh_tw"
+    ],
+    "localeUpdaterIdempotent": true,
+    "productionOrStagingWrites": false
+  },
+  "focusedTestsPrepared": {
+    "behavior": 10,
+    "config": 2,
+    "executed": false
+  },
+  "limits": [
+    "Static source composition and parsing do not establish actual-game parity.",
+    "No Cargo/Rust compiler/Clippy/game test was run by this handoff."
+  ],
+  "ownedSha256": {
+    "native/liquidbounce-behaviors/src/inventory_tracker.rs": "86c2bab0426c29a8b7265e8e6a27505909fa296c6f5afd200e4124d350413475",
+    "native/liquidbounce-horizon/engine/src/inventory_tracker_runtime.rs": "3d5159503e738740dd04d2880919fc9e002640509229eddc58a4d07a99930a16",
+    "native/liquidbounce-horizon/engine/src/config/inventory_tracker.rs": "bcb80968feb68962a22aaaf72326c64bf8596144f9a225d0fa3e383f314f0ef2",
+    "native/liquidbounce-horizon/integrate-inventory-tracker.py": "2e59281a0363dce18cd35a453c1cb02224c75267c3fea45aec4b2f1b99f346c3",
+    "native/liquidbounce-horizon/update-inventory-tracker-locales.py": "59ad9b22b29f98413b6c6113ddc871bfd657d2bddb739173be0f5845cb9883b7",
+    "native/liquidbounce-horizon/test-inventory-tracker.py": "fd7af19409416d7431dd1459f996f27daddc292846e1aeba6c7731add16b314d",
+    "native/liquidbounce-horizon/inventory-tracker-integration.md": "63858bd7a50cc699611809bc7dc3570c196f739b78d92edd537c0685b43b432e"
+  }
+}

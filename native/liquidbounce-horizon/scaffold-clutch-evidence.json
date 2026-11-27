@@ -1,0 +1,23 @@
+{
+  "compiled": false,
+  "rustExecuted": false,
+  "generatedRustSourcesParsed": 7,
+  "preparedRustSmokeParsed": true,
+  "checks": [
+    "fall layer crossing before query",
+    "fixed source xz and ground cancellation",
+    "FULL support filtering and priority",
+    "Normal current-click then next-position aim",
+    "OnTick current-position aim",
+    "max-range full-world verification",
+    "block-range target-only different-face fallback",
+    "actual slot stack or source sandstone planning fallback"
+  ],
+  "sha256": {
+    "scaffold_clutch.rs": "23345835fdc03089f4a0d90dde9fb52fb0f75b9047ca264837d9a58f2bfedbb4",
+    "scaffold-clutch-native.rs": "42cb897a2bd5db0e207d685705b54ae34dafcbf9e7274564c33c3a1cef11f3e3",
+    "scaffold-clutch-host.rs": "9eff33959bc8101734f5eb8bf3f89dd86dcebb1bdb19e34baf64af6ba99c5bea",
+    "scaffold-clutch-patch.py": "98384b3444445cc9fdf9fb2ac7133c995e74f278a9e66db3da0bfad975a36a35",
+    "scaffold-clutch-smoke.rs": "ea00c72272991690a8f111333c759a91e8b0e717b9a1e31145dd9d345f7f1c40"
+  }
+}

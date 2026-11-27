@@ -1,0 +1,36 @@
+{
+  "module": "better_tab",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_better_tab"
+      ],
+      "helper_names": []
+    },
+    "scope": "Actual owned behavior/config and shared Tree/parser; short behavioral smoke; BetterTab compiles actual render policy against declaration-only text/player types; MobOwners compiles actual ureq cache without network requests. Actual patches applied in memory to staged source; dictionaries tested on copies. Full Game/native compilation remains aggregate validation."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/better_tab.rs": "e6ae22eac4ba26f633981c772baf57b8e7b62fb4182f1ede24e008cc1580a6af",
+    "native/liquidbounce-horizon/engine/src/config/better_tab.rs": "8a98e999d52024aa5056bea9aba19c2d2b3d1c6bccc8f8b6357d7064242a59e0",
+    "native/liquidbounce-horizon/engine/src/better_tab_runtime.rs": "2792c979ff6c217469c82cea88de9fba2e85cd84cbbfcd9092bf9f69ef0bca7c",
+    "native/liquidbounce-horizon/better-tab-host.rs": "418edb315591940df3c7487cbe38e39af8eaa3dca1e4fe4ab35717e0519b41a3",
+    "native/liquidbounce-horizon/better-tab-patch.py": "ba55e310163c3fc71351ce00cc16ea743602d7325e9d86a8ad182da803fabde5",
+    "native/liquidbounce-horizon/better-tab-smoke.rs": "290c748a37ba980c58574cf8f8de24b1c23cd0dcc3c7e4653af912fa32a9d913",
+    "native/liquidbounce-horizon/test-owner-combine-tab.py": "d270c392020ab2aafb523369323d5f2feb6ec53aa4878925936912ee0ec5947e",
+    "native/liquidbounce-horizon/update-owner-combine-tab-locales.py": "89a4fb3436ed668042f80c3b3457a7155cd0c8c7f155f1065e7219d530eb74cb",
+    "native/liquidbounce-horizon/verify-owner-combine-tab-anchors.py": "40e0751d0a4df26df6349a2bb1db920d96135530b08a99436e1d32f9882a5adf",
+    "native/liquidbounce-horizon/owner-combine-tab-integration.md": "ae74fcc47cf2d41e91ad1bdd02eb7aabeb73d80f7f7d3598d2ac719a9180bed6",
+    "build/better-tab-smoke-01/report.json": "67292b3c41eff64002b556ec74392a816a07e60dfaef82c64195e4a2e92cc5d8",
+    "build/better-tab-smoke-01/test.log": "5369567472ee4a986c8abff39e75898d7fd43d1b22405d05b08023d97b071227",
+    "build/owner-combine-tab-final-anchors/report.json": "44b7b1437f3b7a64d0d5ee7759196c029b81983f304940f35d6606bcb4c1a5a9",
+    "native/liquidbounce-horizon/better-tab-render.rs": "74974fb7a7baed01915f9ec5da5f80ce9a63c8e19fa852bf54f5d794154ec98c"
+  }
+}

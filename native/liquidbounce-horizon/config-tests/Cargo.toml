@@ -1,0 +1,12 @@
+[package]
+name = "liquidbounce-config-tests"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "../engine/src/config.rs"
+
+[dependencies]
+liquidbounce-behaviors = { path = "../../liquidbounce-behaviors" }
+serde_json = { version = "1", features = ["arbitrary_precision"] }

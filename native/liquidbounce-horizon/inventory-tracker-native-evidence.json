@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "scope": "Frozen Horizon source anchors; real per-slot equipment HEAD order; actual ItemStack identity; epoch timestamps; world invalidation; read-only 46-slot inventory and native tooltip/model pipeline; byte-range pending chat suggestions; Rust parsing in temporary files only.",
+  "compiled": false,
+  "rustSourcesParsed": 12,
+  "sourceCommits": {
+    "LiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "Horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "ownedSha256": {
+    "inventory-tracker-chat.rs": "049f40223e55acc2fbc555c379e95cd7ef1441dd9140b74fc08a35fb1135a12b",
+    "inventory-tracker-host.rs": "9b3d7edcafde48f1ea33e777d328c6ac2e62981828fe75495aa5280fd545ba13",
+    "inventory-tracker-layers.rs": "7499df45e4f300907616c714bb24758b84b345bb3d4220cd78cbb985810b5f57",
+    "inventory-tracker-native.rs": "b672b1ba514a69d90aaeee226d5f7217abaa30878321e99459bbc0bc5bd610a8",
+    "inventory-tracker-patch.py": "923ad88b1f3b8747e5cf7191a016667525e6d91e42594c3f754116a2db1d6a2c",
+    "inventory-tracker-preview.rs": "bc303264b0e5e6d68871138e09ebf69096cd0937a822b8c3009adcf2050d527e",
+    "inventory-tracker-screen.rs": "7ac0fe07f0872ab8168d8b3b57d9c531e8830d2205709522d8c0804015404b15"
+  }
+}

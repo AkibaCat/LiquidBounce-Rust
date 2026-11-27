@@ -1,0 +1,5 @@
+Spammer is derived from LiquidBounce ae0eb396. Its real client phase starts a cancellable I/O worker, and the main actor drains its output through actual chat/command sends. It preserves Setting/File sources, separate linear counters, random selection, UTF-8 line offsets with file metadata invalidation, MPS/delay ranges, four converters, %f/%i/%s/@a formatting and Java UTF-16 message length limits. Relative files resolve under the real client config root. Disabling or leaving the world cancels the worker and discards unsent output.
+
+The bounded handoff applies backpressure when the worker outruns the game actor. Actual dispatch happens on a client tick; sub-tick delay precision is therefore limited by the client tick. Failed/oversized messages are reported in the loaded game language. Full native compilation and final game tests remain separate from the targeted smoke.
+
+`build/spammer-smoke-01.exe`: one targeted smoke passed for real UTF-8 file reads/reload, empty lines, formatting, converter output and UTF-16 length. It has not been rerun. This does not establish multiplayer delivery.

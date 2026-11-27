@@ -1,0 +1,3 @@
+use crate::elytra_target::ElytraTarget;use crate::target_renderer::{TargetRendererSettings,TargetRendererRuntime};
+pub struct ElytraTargetRuntime{pub behavior:ElytraTarget,pub target_renderer:TargetRendererSettings,pub target_render_runtime:TargetRendererRuntime,pub previous_raw:bool}
+impl Default for ElytraTargetRuntime{fn default()->Self{Self{behavior:ElytraTarget::new(crate::behaviors::current_time_millis()),target_renderer:Default::default(),target_render_runtime:Default::default(),previous_raw:false}}}

@@ -1,0 +1,10 @@
+{
+  "module": "Breadcrumbs",
+  "revision": 2,
+  "previous": "bf52c4a5613759e4b30be0e3594d51c94befd44d3e89be9a4edbe11d2d85dc78",
+  "reason": "105-01 native Frustum/Mat4 shadowed view argument corrected to views.primary().view",
+  "files": {
+    "native/liquidbounce-horizon/breadcrumbs-patch.py": "c5e535df8780fc35a83bcc1a390f8715021caa4007f46afeb955c164accc197a",
+    "native/liquidbounce-horizon/breadcrumbs-revision-02.md": "9fcf937dd74afa5b44643feaebbf70b07f139e29148df7373a0da41e0abb278b"
+  }
+}

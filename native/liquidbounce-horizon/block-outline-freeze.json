@@ -1,0 +1,37 @@
+{
+  "module": "BlockOutline",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_block_outline"
+      ],
+      "helper_names": []
+    },
+    "scope": "Production behavior, surface mesh, engine runtime and config compiled with declaration-only registry/Host event providers; actual shared Tree/parsers extracted. One focused Cargo test, actual native patch applied in memory, copied Chinese dictionaries. Game compilation/visual proof remain aggregate."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/block_outline.rs": "b13022f6630f34ad297422eb36839969cfbccb6f23161ab363ded058f77b1f59",
+    "native/liquidbounce-behaviors/src/block_outline_surface.rs": "aa9258d9ea55444c47ee1737a62244003890320468aa2b9bd0fc2213e928ce19",
+    "native/liquidbounce-horizon/engine/src/config/block_outline.rs": "be320897664ccf55cf18ba35ec0ef0e3802ed4953305f1a1f8f050bb00e52576",
+    "native/liquidbounce-horizon/engine/src/block_outline_runtime.rs": "8e12fa5ecca6beaf249e2ae5ba5c9cb73d66d811368daa88894ec2306a2d1855",
+    "native/liquidbounce-horizon/block-outline-host.rs": "bfd44675531d85635c35ddd378df397871dc3e5583a570953d42177f22cdd880",
+    "native/liquidbounce-horizon/block-outline-game.rs": "d7f01cbe25a63500a17c2fab2f79a856cce7e728be3c23a4545c23c5d8098bb1",
+    "native/liquidbounce-horizon/block-outline-patch.py": "5949dc9f7da4f36581d6de3bdb874600d352e40cc38b538b61e2f7740aeb92cb",
+    "native/liquidbounce-horizon/block-outline-smoke.rs": "ec325a7b2de80650bb2f2bec11db89548644a87922ec923cd2c023405ec0a5ef",
+    "native/liquidbounce-horizon/test-block-outline.py": "9f5f7dca6ced888160c6fa684aa45827066307c20614fe5f581a18ecdb8d9f25",
+    "native/liquidbounce-horizon/integrate-block-outline.py": "5e7a4408eb87ce3c5dfad72708d2327782305247efc439d4bfe3b96f860a75f3",
+    "native/liquidbounce-horizon/update-block-outline-locales.py": "366c8f70fa54c271e63d6872aa7ec1d569edbc5f7a891c432832116deaf6e09e",
+    "native/liquidbounce-horizon/block-outline-integration.md": "3ce7489ba1fce7ecdc69d70fd1bdfad325fdcdd9488c98668667d450ee96a733",
+    "native/liquidbounce-horizon/generate-block-outline-freeze.py": "abb4777d7e453d73c109ec5201bea0b77ec3ce1b7e2a911d66a77a52b487687d",
+    "build/block-outline-smoke-01/report.json": "3bcd08f4336562f8ede2670cc8e8ae055bca7c70c4116b6cbe34c36235c345b2",
+    "build/block-outline-smoke-01/test.log": "558b08bde5b6354e339ff53d9f1661d5608e5564f41079c44bb53be2a1f9c899"
+  }
+}

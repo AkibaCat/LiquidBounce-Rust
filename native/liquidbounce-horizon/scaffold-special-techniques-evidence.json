@@ -1,0 +1,17 @@
+{
+  "compiled": false,
+  "rustExecuted": false,
+  "testsPrepared": 5,
+  "nativeRustSourcesParsed": 6,
+  "sharedWrites": false,
+  "upstreamWrites": false,
+  "scope": "Complete existing generator composed with owned pending patches before Step. Full-tick wrappers retained; explicit first-tick aiStep continuation and independent per-tick sneak backoff callback. Production GodBridge/Breezily rules and five focused tests prepared.",
+  "sourceSha256": {
+    "native/liquidbounce-horizon/scaffold-special-techniques-patch.py": "ba074240d848b2d17520ba872e6c8c309c3af8532d530613c4ad679ce81be32f",
+    "native/liquidbounce-horizon/scaffold-replay-patch.py": "c36abafba512e0cefae89479d87a3d7120d521f15a893bebedf14615ea7dd966",
+    "native/liquidbounce-horizon/scaffold-special-techniques-native.rs": "e2d8c42ba687cb7b7b962e61cd6c80d5e2af1c5bda36356d449025d633224365",
+    "native/liquidbounce-horizon/scaffold-special-techniques-host.rs": "51b527d3b7476b9653c5458a7cd4d9dbb2acebf565273abf4c1c0a1ee29ea75f",
+    "native/liquidbounce-horizon/scaffold-special-techniques-smoke.rs": "639b50050aee35c313667496beff4a60f637462f6072c58ce90bdccfa847537c",
+    "native/liquidbounce-behaviors/src/scaffold_special_techniques.rs": "7077b34def618936d10dd273e63e74fc02075fc625a8e17aa503d0537e66828c"
+  }
+}

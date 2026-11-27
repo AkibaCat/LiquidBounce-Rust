@@ -1,0 +1,7 @@
+/build-tools/
+/vendor/cef-source/
+/target/
+/cef-osr-smoke.png
+/cef-osr-smoke.json
+/original-theme-preview.png
+/unreachable-smoke.png

@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-26",
+  "module": "Offhand",
+  "source_commit": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "target_commit": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "focused_smoke": {
+    "status": "passed",
+    "command": "python native/liquidbounce-horizon/test-offhand.py",
+    "model_tests": 6,
+    "native_files_in_memory": 4,
+    "shared_steps": 24,
+    "shared_files": 8,
+    "source_leaves": 39
+  },
+  "official_compile": "not_run_by_owner",
+  "differential": "not_run",
+  "sha256": {
+    "native/liquidbounce-behaviors/src/offhand.rs": "a3a9f73bfce17c8c459427e867a063175c35e6dd5554aaaf49f9c697c8d3940d",
+    "native/liquidbounce-horizon/engine/src/offhand_runtime.rs": "f917e805a4cf0aeebd0445e5a0e4741aa4a6fe8bbbbe4464227a6e8df655ebb8",
+    "native/liquidbounce-horizon/engine/src/config/offhand.rs": "cf457f7f3db5ab98335f6b11d6a65182eba38ec0d50343f33491414c4f8ff472",
+    "native/liquidbounce-horizon/offhand-host.rs": "cd3d5e224a05520cb4de764add5c56e92a7c7f79171616f611f95c9d9c88ad8d",
+    "native/liquidbounce-horizon/offhand-native.rs": "3e4551c2f58859eb67e55602f24a75d39422513aaa555601f7e8d45693d59522",
+    "native/liquidbounce-horizon/offhand-falling.rs": "c2a4a914000508e6f6591c291a6a1d9cba6f0f515027b5e74c36f548a82c448b",
+    "native/liquidbounce-horizon/offhand-patch.py": "0281a6e67ac6a2083b324a8c9edee8c4c2da5adfe5809f3986e10cbbb0815dc5",
+    "native/liquidbounce-horizon/integrate-offhand.py": "fcee13fbe7cf32ca065955b01a6656a93bd71e10188f1f27216566fbfc21da7a",
+    "scripts/update-offhand-localization.py": "12eab3de1d280750703b1515be015ba6b3b6db358c327a123bad27ff1dfca3e6",
+    "native/liquidbounce-horizon/offhand-smoke.rs": "2185feca52e0c59515c845def742e0f39295c69d89767a58e0dd1c5a4476d7bf",
+    "native/liquidbounce-horizon/test-offhand.py": "8510617594f35fd3340268ac35832705101dd7d410c433cb8a984a60f9e23a85"
+  }
+}

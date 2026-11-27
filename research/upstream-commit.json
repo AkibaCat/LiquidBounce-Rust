@@ -1,0 +1,101 @@
+{
+  "sha": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "node_id": "C_kwDODcZ8RtoAKGFlMGViMzk2YzA3ZjIyMzgzNzg5YjI4ZDU5MTJkNzE0YzZjYTBhODY",
+  "commit": {
+    "author": {
+      "name": "Izuna",
+      "email": "izuna.seikatsu@ccbluex.net",
+      "date": "2026-11-24T13:13:12Z"
+    },
+    "committer": {
+      "name": "GitHub",
+      "email": "noreply@github.com",
+      "date": "2026-11-24T13:13:12Z"
+    },
+    "message": "fix(ClickGUI): scale the tab bar with the gui (#9690)",
+    "tree": {
+      "sha": "1e688884bf32b0f7c79ae6f7defa31beef323fc6",
+      "url": "https://api.github.com/repos/CCBlueX/LiquidBounce/git/trees/1e688884bf32b0f7c79ae6f7defa31beef323fc6"
+    },
+    "url": "https://api.github.com/repos/CCBlueX/LiquidBounce/git/commits/ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJrBY1oCRC1aQ7uu5UhlAAAEQoQAANaOYxhhlW0VibkyCv6tI22\nv/Ri/vhHMOfDPHB8y2WLIGEttfNd09oGpCwW9C9LT8HCzsXTcuT3mVGPUOvHvmWx\nsWO72gwqGfBplw04a5rgbPFqZgk6VULjfCrKbF4+J35ZyUpshvkmBuQv4ky4utxB\nnYeecNmlcG10pHOV4c3AJtCuKibJ68AuzcF445Nz6N1jSVigTgsdnsr5KREMrZ/n\nq08Fl7SddMWmqLcsBaUc6tu2QPbTglAys+YNBifyRniBT/ITIsgE1t4jCzGwU6/J\n+ogyHDO03GSiu97A4GXvWEFBjgEuH3UzlkoOJG7YrKeSHR013jo25quN+Td0TUnN\nYly0IP8EK1Xoniq+Op33Xyf7UlKSoaAiBRungOtas+rfby8Mhxw9wOQgTNWH/o1n\nlHtDTRo0AWj0Ruy/z1dnPsdjr+QC7id378uRs1/e9thANEPtvlwVfP2/Btvee6M8\nc8TdBP+YMT67XJmAcUQ1lo3Cq98SAAqgiZdF4jtAqyMxqq+12muYIU0ABUIxGink\nAbZHm4d5nTwazri4ueS4zVxPbMJqJshnqPJPdk8WJW5nOm+q0WCmL4EIBcsap8VW\nvPn0tDfcSqyh1M2M8Q7ICPQ2cCIr5H9+AImNhmoN1TiTL/npAF42SBgzYfqMtorc\n6atXbm5dEAkVe7YMGi7x\n=XnDG\n-----END PGP SIGNATURE-----\n",
+      "payload": "tree 1e688884bf32b0f7c79ae6f7defa31beef323fc6\nparent 818046ed6906eaba507476bed503b625320cdf40\nauthor Izuna <izuna.seikatsu@ccbluex.net> 1795525992 +0100\ncommitter GitHub <noreply@github.com> 1795525992 +0100\n\nfix(ClickGUI): scale the tab bar with the gui (#9690)",
+      "verified_at": "2026-11-24T13:13:12Z"
+    }
+  },
+  "url": "https://api.github.com/repos/CCBlueX/LiquidBounce/commits/ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "html_url": "https://github.com/CCBlueX/LiquidBounce/commit/ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "comments_url": "https://api.github.com/repos/CCBlueX/LiquidBounce/commits/ae0eb396c07f22383789b28d5912d714c6ca0a86/comments",
+  "author": {
+    "login": "1zun4",
+    "id": 12410754,
+    "node_id": "MDQ6VXNlcjEyNDEwNzU0",
+    "avatar_url": "https://avatars.githubusercontent.com/u/12410754?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/1zun4",
+    "html_url": "https://github.com/1zun4",
+    "followers_url": "https://api.github.com/users/1zun4/followers",
+    "following_url": "https://api.github.com/users/1zun4/following{/other_user}",
+    "gists_url": "https://api.github.com/users/1zun4/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/1zun4/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/1zun4/subscriptions",
+    "organizations_url": "https://api.github.com/users/1zun4/orgs",
+    "repos_url": "https://api.github.com/users/1zun4/repos",
+    "events_url": "https://api.github.com/users/1zun4/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/1zun4/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "web-flow",
+    "id": 19864447,
+    "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/web-flow",
+    "html_url": "https://github.com/web-flow",
+    "followers_url": "https://api.github.com/users/web-flow/followers",
+    "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+    "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+    "organizations_url": "https://api.github.com/users/web-flow/orgs",
+    "repos_url": "https://api.github.com/users/web-flow/repos",
+    "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/web-flow/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "818046ed6906eaba507476bed503b625320cdf40",
+      "url": "https://api.github.com/repos/CCBlueX/LiquidBounce/commits/818046ed6906eaba507476bed503b625320cdf40",
+      "html_url": "https://github.com/CCBlueX/LiquidBounce/commit/818046ed6906eaba507476bed503b625320cdf40"
+    }
+  ],
+  "stats": {
+    "total": 8,
+    "additions": 5,
+    "deletions": 3
+  },
+  "files": [
+    {
+      "sha": "b3d2821805395ce394eff9fd1e6748febeec6c7d",
+      "filename": "src-theme/src/routes/clickgui/tabs/Tabs.svelte",
+      "status": "modified",
+      "additions": 5,
+      "deletions": 3,
+      "changes": 8,
+      "blob_url": "https://github.com/CCBlueX/LiquidBounce/blob/ae0eb396c07f22383789b28d5912d714c6ca0a86/src-theme%2Fsrc%2Froutes%2Fclickgui%2Ftabs%2FTabs.svelte",
+      "raw_url": "https://github.com/CCBlueX/LiquidBounce/raw/ae0eb396c07f22383789b28d5912d714c6ca0a86/src-theme%2Fsrc%2Froutes%2Fclickgui%2Ftabs%2FTabs.svelte",
+      "contents_url": "https://api.github.com/repos/CCBlueX/LiquidBounce/contents/src-theme%2Fsrc%2Froutes%2Fclickgui%2Ftabs%2FTabs.svelte?ref=ae0eb396c07f22383789b28d5912d714c6ca0a86",
+      "patch": "@@ -1,6 +1,7 @@\n <script lang=\"ts\">\n     import type {Component} from \"svelte\";\n     import {fly} from \"svelte/transition\";\n+    import {scaleFactor} from \"../clickgui_store\";\n \n     type Tab = {\n         title: string;\n@@ -16,7 +17,7 @@\n </script>\n \n <div class=\"tabs\" transition:fly={{duration: 150, y: -15}}>\n-    <div class=\"available-tabs\">\n+    <div class=\"available-tabs\" style=\"--scale: {$scaleFactor / 2}\">\n         {#each tabs as tab, index (tab.title)}\n             <button\n                     class=\"tab-button\"\n@@ -40,9 +41,10 @@\n \n   .available-tabs {\n     position: fixed;\n-    top: 15px;\n+    top: calc(15px * var(--scale));\n     left: 50%;\n-    transform: translateX(-50%);\n+    transform: translateX(-50%) scale(var(--scale));\n+    transform-origin: top;\n     display: flex;\n     gap: 5px;\n     padding: 6px;"
+    }
+  ]
+}

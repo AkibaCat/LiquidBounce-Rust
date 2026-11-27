@@ -1,0 +1,22 @@
+{
+  "status": "static-verified-focused-prepared-root-integrated",
+  "compilerInvokedByOwner": false,
+  "static": "complete generator composition; 8 transactional shared files; 13 complete Rust files parsed in temporary files; native helpers unique; asset bytes match original; Chinese locale updater idempotent",
+  "focused": "prepared 530 original-source vectors and 14 focused tests, not executed by owner",
+  "files": {
+    "native/liquidbounce-horizon/name-protect-patch.py": "1b8164936ee8fbbd38eb4d98edaf15717ec13533bfd221e86bafe9348108451e",
+    "native/liquidbounce-horizon/name-protect-host.rs": "fa87e7fa59e2436c3483d569c8fa27a73a41410f12bead6b4c08d3a1b3030ed4",
+    "native/liquidbounce-horizon/name-protect-text-service.rs": "780d01cac222d786b7be531f3f4ac3a0ed0d283bf504364ceeddc9c914508390",
+    "native/liquidbounce-horizon/integrate-name-protect.py": "1f9c5d45def7dbb19af2c1287bfaccb0bfa0215df0ca506e13ec15194614ed19",
+    "native/liquidbounce-horizon/update-name-protect-locales.py": "6ee175da249ffdfd791e8a7f5938bce58b4aedba80faf01cff33120c9f209ead",
+    "native/liquidbounce-horizon/test-name-protect.py": "024445376992ef7ef22381f18029c1be37dd629989dbd1cff0c77ae456208f2b",
+    "native/liquidbounce-horizon/test-name-protect-focused.py": "f2d7f20e7c04eb6e73972406bc0b35239c0e70c1d4d11b0393ead15bb261dc20",
+    "native/liquidbounce-horizon/collect-name-protect-original.py": "390146f0825d1f36f92f6a2907075fb1f2de52f2ebcd3eac02e90e29628c1029",
+    "native/liquidbounce-horizon/engine/src/name_protect_runtime.rs": "4100c8971c6778b3f57658675b1b36c18a1d5449fa7cd8d2837aa05e2e53103f",
+    "native/liquidbounce-horizon/engine/src/config/name_protect.rs": "20437743dac07f26425a33ba4ce2fdb04688f6b21de14e7030dd9dd2435cc2d0",
+    "native/liquidbounce-behaviors/src/name_protect.rs": "b56a311887465e3ae9c5bb5e7247ca314c9bdc9b411712fcaea67d6f01e13c53",
+    "native/liquidbounce-behaviors/src/name_protect_username.rs": "a83882639d6b0d89451cfcd16d18acc83b0c92215e4816f1bda0cdcd74fae692",
+    "native/liquidbounce-behaviors/src/name_protect_assets/adjectives.txt": "939d570f8626a3c0f7e2d2f09d15281bbeb9e2b918bf3b70aaaa2025f2efa007",
+    "native/liquidbounce-behaviors/src/name_protect_assets/animals.txt": "df6d0399d8e8bdec345fc1d362dd652b30b403d94a1df0db6f103bd7ba12c948"
+  }
+}

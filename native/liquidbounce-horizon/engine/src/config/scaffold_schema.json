@@ -1,0 +1,885 @@
+[
+  {
+    "name": "Delay",
+    "kind": "INT_RANGE",
+    "default": [
+      0,
+      0
+    ],
+    "range": {
+      "from": 0,
+      "to": 40
+    },
+    "suffix": "ticks"
+  },
+  {
+    "name": "MinDist",
+    "kind": "FLOAT",
+    "default": 0,
+    "range": {
+      "from": 0,
+      "to": 0.25
+    },
+    "suffix": ""
+  },
+  {
+    "name": "Timer",
+    "kind": "FLOAT",
+    "default": 1,
+    "range": {
+      "from": 0.01,
+      "to": 10
+    },
+    "suffix": ""
+  },
+  {
+    "name": "BlockItemSelection",
+    "kind": "CONFIGURABLE",
+    "children": [
+      {
+        "name": "Disallowed",
+        "kind": "BLOCK",
+        "default": [
+          "minecraft:cobweb",
+          "minecraft:nether_portal",
+          "minecraft:tnt"
+        ]
+      },
+      {
+        "name": "Unfavorable",
+        "kind": "BLOCK",
+        "default": [
+          "minecraft:cauldron",
+          "minecraft:crafting_table",
+          "minecraft:enchanting_table",
+          "minecraft:fletching_table",
+          "minecraft:jigsaw",
+          "minecraft:magma_block",
+          "minecraft:smithing_table"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "AutoBlock",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": true
+      },
+      {
+        "name": "Always",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "SlotResetDelay",
+        "kind": "INT",
+        "default": 5,
+        "range": {
+          "from": 0,
+          "to": 40
+        },
+        "suffix": "ticks"
+      },
+      {
+        "name": "DoNotUseBelowCount",
+        "kind": "INT",
+        "default": 1,
+        "range": {
+          "from": 0,
+          "to": 64
+        },
+        "suffix": ""
+      }
+    ]
+  },
+  {
+    "name": "Prediction",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": true
+      },
+      {
+        "name": "BootstrapBackoff",
+        "kind": "FLOAT",
+        "default": 0.2,
+        "range": {
+          "from": 0,
+          "to": 0.4
+        },
+        "suffix": ""
+      },
+      {
+        "name": "PredictionCutoffDistance",
+        "kind": "FLOAT",
+        "default": 0.05,
+        "range": {
+          "from": 0,
+          "to": 0.3
+        },
+        "suffix": ""
+      },
+      {
+        "name": "WarmupPlacements",
+        "kind": "INT",
+        "default": 2,
+        "range": {
+          "from": 0,
+          "to": 4
+        },
+        "suffix": ""
+      }
+    ]
+  },
+  {
+    "name": "Technique",
+    "kind": "CHOICE",
+    "default": "Normal",
+    "modes": [
+      {
+        "name": "Normal",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "RotationMode",
+            "kind": "CHOOSE",
+            "default": "Stabilized",
+            "options": [
+              "Center",
+              "Random",
+              "Stabilized",
+              "NearestRotation",
+              "ReverseYaw",
+              "DiagonalYaw",
+              "AngleYaw",
+              "EdgePoint"
+            ],
+            "canBeNone": true
+          },
+          {
+            "name": "RequiresSight",
+            "kind": "BOOLEAN",
+            "default": false
+          },
+          {
+            "name": "Eagle",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": false
+              },
+              {
+                "name": "BlocksToEagle",
+                "kind": "INT_RANGE",
+                "default": [
+                  0,
+                  0
+                ],
+                "range": {
+                  "from": 0,
+                  "to": 10
+                },
+                "suffix": ""
+              },
+              {
+                "name": "EdgeDistance",
+                "kind": "FLOAT_RANGE",
+                "default": [
+                  0.01,
+                  0.05
+                ],
+                "range": {
+                  "from": 0.01,
+                  "to": 1.3
+                },
+                "suffix": ""
+              },
+              {
+                "name": "OnlyOnGround",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "Telly",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": false
+              },
+              {
+                "name": "ResetMode",
+                "kind": "CHOOSE",
+                "default": "Reset",
+                "options": [
+                  "Reverse",
+                  "Reset"
+                ],
+                "canBeNone": true
+              },
+              {
+                "name": "Straight",
+                "kind": "INT",
+                "default": 0,
+                "range": {
+                  "from": 0,
+                  "to": 5
+                },
+                "suffix": "ticks"
+              },
+              {
+                "name": "Jump",
+                "kind": "INT_RANGE",
+                "default": [
+                  0,
+                  0
+                ],
+                "range": {
+                  "from": 0,
+                  "to": 10
+                },
+                "suffix": "ticks"
+              },
+              {
+                "name": "AimOnTower",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "Down",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": false
+              }
+            ]
+          },
+          {
+            "name": "StabilizeMovement",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "Ceiling",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": false
+              }
+            ]
+          },
+          {
+            "name": "HeadHitter",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": false
+              },
+              {
+                "name": "JumpDelay",
+                "kind": "INT_RANGE",
+                "default": [
+                  0,
+                  0
+                ],
+                "range": {
+                  "from": 0,
+                  "to": 20
+                },
+                "suffix": "ticks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Expand",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Length",
+            "kind": "INT",
+            "default": 4,
+            "range": {
+              "from": 1,
+              "to": 10
+            },
+            "suffix": "blocks"
+          }
+        ]
+      },
+      {
+        "name": "GodBridge",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Modes",
+            "kind": "MULTI_CHOOSE",
+            "default": [
+              "Jump"
+            ],
+            "options": [
+              "Jump",
+              "Sneak",
+              "StopInput",
+              "Backwards"
+            ],
+            "canBeNone": false
+          },
+          {
+            "name": "ForceSneakBelowCount",
+            "kind": "INT",
+            "default": 3,
+            "range": {
+              "from": 0,
+              "to": 10
+            },
+            "suffix": ""
+          },
+          {
+            "name": "SneakTime",
+            "kind": "INT_RANGE",
+            "default": [
+              1,
+              1
+            ],
+            "range": {
+              "from": 1,
+              "to": 10
+            },
+            "suffix": ""
+          }
+        ]
+      },
+      {
+        "name": "Breezily",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "EdgeDistance",
+            "kind": "FLOAT_RANGE",
+            "default": [
+              0.45,
+              0.5
+            ],
+            "range": {
+              "from": 0.25,
+              "to": 0.5
+            },
+            "suffix": "blocks"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SameY",
+    "kind": "CHOOSE",
+    "default": "Off",
+    "options": [
+      "Off",
+      "On",
+      "JumpKey",
+      "Falling",
+      "Hypixel"
+    ],
+    "canBeNone": true
+  },
+  {
+    "name": "Tower",
+    "kind": "CHOICE",
+    "default": "None",
+    "modes": [
+      {
+        "name": "None",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "Motion",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Motion",
+            "kind": "FLOAT",
+            "default": 0.42,
+            "range": {
+              "from": 0,
+              "to": 1
+            },
+            "suffix": ""
+          },
+          {
+            "name": "TriggerHeight",
+            "kind": "FLOAT",
+            "default": 0.78,
+            "range": {
+              "from": 0.76,
+              "to": 1
+            },
+            "suffix": ""
+          },
+          {
+            "name": "Slow",
+            "kind": "FLOAT",
+            "default": 1,
+            "range": {
+              "from": 0,
+              "to": 3
+            },
+            "suffix": ""
+          }
+        ]
+      },
+      {
+        "name": "Pulldown",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Trigger",
+            "kind": "FLOAT",
+            "default": 0.1,
+            "range": {
+              "from": 0,
+              "to": 0.2
+            },
+            "suffix": "Y/v"
+          }
+        ]
+      },
+      {
+        "name": "Karhu-2024-05-10",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Timer",
+            "kind": "FLOAT",
+            "default": 5,
+            "range": {
+              "from": 0.1,
+              "to": 10
+            },
+            "suffix": ""
+          },
+          {
+            "name": "Trigger",
+            "kind": "FLOAT",
+            "default": 0.06,
+            "range": {
+              "from": 0,
+              "to": 0.2
+            },
+            "suffix": "Y/v"
+          },
+          {
+            "name": "Pulldown",
+            "kind": "BOOLEAN",
+            "default": true
+          }
+        ]
+      },
+      {
+        "name": "Vulcan-2.8.8",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "Hypixel-2026-07-12",
+        "kind": "CONFIGURABLE",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "SafeWalk",
+    "kind": "CHOICE",
+    "default": "Safe",
+    "modes": [
+      {
+        "name": "None",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "Safe",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "OnEdge",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Distance",
+            "kind": "FLOAT_RANGE",
+            "default": [
+              0.1,
+              0.15
+            ],
+            "range": {
+              "from": 0.05,
+              "to": 0.5
+            },
+            "suffix": "blocks"
+          },
+          {
+            "name": "Keep",
+            "kind": "INT_RANGE",
+            "default": [
+              1,
+              2
+            ],
+            "range": {
+              "from": 0,
+              "to": 20
+            },
+            "suffix": "ticks"
+          },
+          {
+            "name": "Mode",
+            "kind": "CHOOSE",
+            "default": "Stop",
+            "options": [
+              "Stop",
+              "Invert",
+              "Center"
+            ],
+            "canBeNone": true
+          },
+          {
+            "name": "Sneak",
+            "kind": "INT_RANGE",
+            "default": [
+              0,
+              0
+            ],
+            "range": {
+              "from": 0,
+              "to": 20
+            },
+            "suffix": "ticks"
+          },
+          {
+            "name": "Jump",
+            "kind": "BOOLEAN",
+            "default": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Rotations",
+    "kind": "ROTATIONS",
+    "children": [
+      {
+        "name": "ConsiderInventory",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "RotationTiming",
+        "kind": "CHOOSE",
+        "default": "Normal",
+        "options": [
+          "Normal",
+          "OnTick",
+          "OnTickSnap"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Swing",
+    "kind": "CHOOSE",
+    "default": "DoNotHide",
+    "options": [
+      "DoNotHide",
+      "HideForClient"
+    ]
+  },
+  {
+    "name": "SprintControl",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "Client",
+        "kind": "CHOOSE",
+        "default": "DoNotChange",
+        "options": [
+          "DoNotChange",
+          "ForceSprint",
+          "ForceNoSprint",
+          "NoSprintOnPlace",
+          "NoSprintOnGround"
+        ],
+        "canBeNone": true
+      },
+      {
+        "name": "Server",
+        "kind": "CHOOSE",
+        "default": "DoNotChange",
+        "options": [
+          "DoNotChange",
+          "ForceSprint",
+          "ForceNoSprint",
+          "NoSprintOnPlace",
+          "NoSprintOnGround"
+        ],
+        "canBeNone": true
+      }
+    ]
+  },
+  {
+    "name": "SimulatePlacementAttempts",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "Clicker",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Technique",
+            "kind": "CHOOSE",
+            "default": "Human",
+            "options": [
+              "Human",
+              "Constant"
+            ],
+            "canBeNone": true
+          },
+          {
+            "name": "CPS",
+            "kind": "INT_RANGE",
+            "default": [
+              11,
+              14
+            ],
+            "range": {
+              "from": 1,
+              "to": 100
+            },
+            "suffix": "cps"
+          },
+          {
+            "name": "MaxPerTick",
+            "kind": "INT",
+            "default": 2,
+            "range": {
+              "from": 1,
+              "to": 5
+            },
+            "suffix": "clicks"
+          }
+        ]
+      },
+      {
+        "name": "FailedAttemptsOnly",
+        "kind": "BOOLEAN",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Acceleration",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "SpeedMultiplier",
+        "kind": "FLOAT",
+        "default": 0.6,
+        "range": {
+          "from": 0.1,
+          "to": 3
+        },
+        "suffix": ""
+      },
+      {
+        "name": "OnlyOnGround",
+        "kind": "BOOLEAN",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Strafe",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "Speed",
+        "kind": "FLOAT",
+        "default": 0.247,
+        "range": {
+          "from": 0,
+          "to": 5
+        },
+        "suffix": ""
+      },
+      {
+        "name": "Hypixel",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "OnlyOnGround",
+        "kind": "BOOLEAN",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "StrafeOnJump",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "StraightSpeed",
+        "kind": "FLOAT_RANGE",
+        "default": [
+          0.48,
+          0.49
+        ],
+        "range": {
+          "from": 0.1,
+          "to": 1
+        },
+        "suffix": ""
+      },
+      {
+        "name": "DiagonalSpeed",
+        "kind": "FLOAT_RANGE",
+        "default": [
+          0.48,
+          0.49
+        ],
+        "range": {
+          "from": 0.1,
+          "to": 1
+        },
+        "suffix": ""
+      }
+    ]
+  },
+  {
+    "name": "SpeedLimiter",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "SpeedLimit",
+        "kind": "FLOAT",
+        "default": 0.11,
+        "range": {
+          "from": 0.01,
+          "to": 0.4
+        },
+        "suffix": ""
+      }
+    ]
+  },
+  {
+    "name": "Blink",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "Time",
+        "kind": "INT_RANGE",
+        "default": [
+          50,
+          250
+        ],
+        "range": {
+          "from": 0,
+          "to": 3000
+        },
+        "suffix": "ms"
+      },
+      {
+        "name": "FlushOn",
+        "kind": "MULTI_CHOOSE",
+        "default": [],
+        "options": [
+          "Place",
+          "Towering",
+          "Sneaking",
+          "NotSneaking",
+          "OnGround",
+          "InAir"
+        ],
+        "canBeNone": true
+      }
+    ]
+  },
+  {
+    "name": "AutoSpeed",
+    "kind": "BOOLEAN",
+    "default": false
+  },
+  {
+    "name": "Ledge",
+    "kind": "BOOLEAN",
+    "default": true
+  },
+  {
+    "name": "Render",
+    "kind": "PLACEMENT"
+  }
+]

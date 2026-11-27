@@ -1,0 +1,50 @@
+{
+  "module": "Breadcrumbs",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_breadcrumbs"
+      ],
+      "helper_names": []
+    },
+    "scope": "Production behavior, complete 9 style settings, engine runtime and original GLSL WGPU renderer compiled; actual shared Tree/parsers extracted. One focused Cargo test with GPU draw/readback across Plain+9 styles, actual native patch in memory, copied Chinese dictionaries. Game module compilation and in-game visual validation remain aggregate."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/breadcrumbs.rs": "11c1c6d77a3c15bdcd25f5ab40afad2e95269197fe088b6470182993ba1a120a",
+    "native/liquidbounce-horizon/engine/src/config/breadcrumbs.rs": "93119746473c14c2bf33bc8932d992cd76a21629d9bfc2a71834c92878357efd",
+    "native/liquidbounce-horizon/engine/src/breadcrumbs_runtime.rs": "0f1b32c8427b487948213d560cda91a95ec1a82e4a82b40b42993c168c817dae",
+    "native/liquidbounce-horizon/breadcrumbs-host.rs": "04d10039ab616835ec2093c7f137bc499a9f4c620473861e9909cfb81fcdecae",
+    "native/liquidbounce-horizon/breadcrumbs-game.rs": "b83934ee7a69f3f8c6b1d4943f91aff862cb3128be65a00943a675ac277aa48f",
+    "native/liquidbounce-horizon/breadcrumbs-render.rs": "7a1c73481bb7a45b1f294f73bcd4c841ae30cc9712c5f2c1f6a2a6d29e189f0d",
+    "native/liquidbounce-horizon/breadcrumbs.wgsl": "05648ea5857f6c34368c9fb07c4c1c289909f7de3ae01e9187538f7c77d24271",
+    "native/liquidbounce-horizon/breadcrumbs-patch.py": "67652f8dfa54ef96139e7c2ec6c0d7b5b41a5e65e3bb7150caaa79e9be5441c8",
+    "native/liquidbounce-horizon/breadcrumbs-smoke.rs": "9dfdc327128b70b7ac565e5e9357b0f256de4d78feb6817a5d4064c6ee6a7c6a",
+    "native/liquidbounce-horizon/test-breadcrumbs.py": "1571437eb5d9b1e152babd9335804705328355ef4a165215a0ea4302d4584913",
+    "native/liquidbounce-horizon/integrate-breadcrumbs.py": "0d78da8d84d28f5510a64d486141eff6fe0b22bd8c94f6f8bde343a243250af5",
+    "native/liquidbounce-horizon/update-breadcrumbs-locales.py": "c2e073890b7763e873adf217e4ec9c90c95475ef3087064896a68903874aaaa6",
+    "native/liquidbounce-horizon/breadcrumbs-integration.md": "13bc0a133ccf2d4f168892d1a26102df9a4f95ce0d330cb6759a90c6785df5da",
+    "native/liquidbounce-horizon/generate-breadcrumbs-freeze.py": "e34903f1c985569b0389b3f07c8aa29bd1c57e0de566d7cb87500357e81e2f1b",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/aura.frag": "f28fd1c1de6c8806c920963322eb47344c362758dfb8a10471d9884c7c0a526b",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/chromatic.frag": "82310e73ed01f2eaeb551bdc31fb04838c01dbf467b095e0c4620d471373c97c",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/effect.glsl": "533220f99d6ef7cccd275ca9e86dbb547f68cdcbec5ca9de23e1eca74ea0c731",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/field_columns.frag": "860685476f77d6a177c5402f672812debdd459dba52ae718dc4faed6f4deae08",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/field_rows.frag": "f8c55f60515eb362c36b28e4ba5e253eec7344f4b7cfeac8bf18ab408a0d1614",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/halftone.frag": "c839d439c31a806023633c34fb192b90d004a7006ef5e07c8d8f03258825a1c9",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/hologram.frag": "4eb71c6cdb0f3691e00dc046475c04c9c3f18d9cee27557716f3d2b86e0c0ee5",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/neon.frag": "db884d89572bad44408fe2c55bd5c029dedc9177ebbd5513a326b7ceffb80bd9",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/outline.frag": "11ef3a2162b4445d3bb12f1b0f5b5e8971a0051caeb20ef583c180534dab862f",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/rainbow.frag": "167c1a9c856f92c623477e0e899d88d36d88e4d430db97494f680ea6bb0ba924",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/ripple.frag": "494e19f077602f6eae42c465efa7536f7f127a4dd6b1f5d954263ce3e0064f87",
+    "native/liquidbounce-horizon/breadcrumbs-shaders/smooth.frag": "6791de11f85f38dcb299af8b3fb60e951d324fd6ad135cf8a5d89dfd00b2aab0",
+    "build/breadcrumbs-smoke-03/report.json": "83d767817e279789e59f96dca3005c2d51fdb25019c69cd2fda5d1c6cd143783",
+    "build/breadcrumbs-smoke-03/test.log": "210366944b210615a6c152c937ae5eee4bdff1ba128b420b785d42d83617dce8"
+  }
+}

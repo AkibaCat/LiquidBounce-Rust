@@ -1,0 +1,19 @@
+[package]
+name = "java_regex"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.78"
+license = "MIT OR Apache-2.0"
+description = "Vendored java_regex 0.1.0 with GUICloser JDK25 differential corrections"
+repository = "https://github.com/MathieuDutSik/java_regex"
+
+[lib]
+path = "src/gui_api.rs"
+
+[features]
+default = []
+fuzz-gen = ["dep:arbitrary"]
+
+[dependencies]
+arbitrary = { version = "1", features = ["derive"], optional = true }
+stacker = "=0.1.25"

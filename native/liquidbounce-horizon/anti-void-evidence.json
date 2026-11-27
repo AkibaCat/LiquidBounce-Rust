@@ -1,0 +1,69 @@
+{
+  "module": "AntiVoid",
+  "date": "2026-11-26",
+  "liquidbounce_commit": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "horizon_commit": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "minecraft": "26.3",
+  "modes": [
+    "GhostBlock",
+    "Flag",
+    "Blink",
+    "UseItem"
+  ],
+  "primitive_settings": 8,
+  "localized_descriptions": 13,
+  "verification": {
+    "static_command": "python native/liquidbounce-horizon/test-anti-void.py --static-only",
+    "static_result": "passed",
+    "native_files_in_memory": 15,
+    "shared_edits_in_memory": 28,
+    "shared_files_in_memory": 9,
+    "shared_or_staging_writes": false,
+    "rustfmt_parse": "passed",
+    "focused_rust_harness": "prepared_not_run_batch_requested",
+    "prepared_test_count": 7,
+    "official_compile": "not_run_by_owner",
+    "kotlin_differential": "not_run",
+    "batch_command": "python native/liquidbounce-horizon/test-anti-void.py --model-only"
+  },
+  "dependency_boundary": {
+    "Clutch.guarding": "shared real-writer interface complete; Clutch unregistered, read false until actual canCatch writer is integrated",
+    "Fly.running": "actual registry query; currently unregistered",
+    "Scaffold.running": "actual registry query; currently unregistered"
+  },
+  "minecraft_bytecode": {
+    "merged_jar_sha256": "d8f6aba2cba5af1c2b71c6959aae7b6dcf9029ea7ce5c023a8cff0ba0097df65",
+    "aabb_set_min_y": "calls sorting six-double constructor; Horizon with_min matches"
+  },
+  "owned_files": {
+    "native/liquidbounce-behaviors/src/anti_void.rs": "71299d0f24ca31c9dd9b9a21d7d5eea75152a31a660abe8b2884702f7d974d33",
+    "native/liquidbounce-horizon/engine/src/anti_void_runtime.rs": "860d04333db5897e66afb1195f2e283fc6d388a195d36d5df2fc7e90afa6b987",
+    "native/liquidbounce-horizon/engine/src/config/anti_void.rs": "c6b6e6c5e0e33082e74c8f536b00edb31902bb58b49b84fe9c71f43cf47fe7eb",
+    "native/liquidbounce-horizon/anti-void-native.rs": "5d3776559c133b2769214ae1ccadf8dea7e783efe335ac06de1f357bc97090b1",
+    "native/liquidbounce-horizon/anti-void-host.rs": "c1a4ec00d1eb57be6cce3c55ed5a6e8756ed981bf8c68df3a5d037ce2bdaf24b",
+    "native/liquidbounce-horizon/anti-void-bridge.rs": "499868d428c23131e4b3a329585c2910f1e1ca2f4bb5b33bab3e2cd5d2507317",
+    "native/liquidbounce-horizon/anti-void-policy.rs": "dfe86ae9c58dcbaf3d22bcd549aa03c01db5d7dedbdd374fed604c1fc660c444",
+    "native/liquidbounce-horizon/anti-void-patch.py": "41c647aa3207ca401ca9cb8847798b2939c16f6a830829f3e9c8ff99afb45a1f",
+    "native/liquidbounce-horizon/integrate-anti-void.py": "d48af83233fbdecddff53f507501da7625fc5d0b62c55563c5cddf355c25a077",
+    "native/liquidbounce-horizon/anti-void-smoke.rs": "bfac6dce80a7f0081331069053ea212d79d1946e9940fbcf10cb8755556451ea",
+    "native/liquidbounce-horizon/anti-void-config-smoke.rs": "ea69cb26ee07f8fc1d0033af319fa9682c115047bb1ddef7e8111ad1586f0158",
+    "native/liquidbounce-horizon/test-anti-void.py": "05a1084e01cf308f089bd310260658c54a09afeea5bc6a69c632a96a035a6485",
+    "native/liquidbounce-horizon/anti-void-java-facts.txt": "94ef30b1a392c74225812e331b1347c522424c41574aaf7239fe7a43ee0102e8",
+    "native/liquidbounce-horizon/anti-void-integration.md": "cf7487276f0305d4a861d587969bacd347904cec1b4e2b39407b5b821fd1a597",
+    "scripts/update-anti-void-localization.py": "a97976b0cb9a8843218f6ff4601cf6db6fc36b651c94f32c74a48fc1d024457e",
+    "native/liquidbounce-horizon/anti-void-late-patch.py": "3ac63fbf9154c306b2f3c88404c05790ca98864de5d6fe98db0030ecdf9709fa"
+  },
+  "source_files": {
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/antivoid/mode/AntiVoidBlinkMode.kt": "39882bbb36ca2cafd798568d6b4906e9bd2c92beeee42f0ba7ca10381c4d96ce",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/antivoid/mode/AntiVoidFlagMode.kt": "aab4a7fc98a08fb15e21c0a407f4937c8d1941753c0a2f851cd1ed2e213572f0",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/antivoid/mode/AntiVoidGhostBlockMode.kt": "6f352129fb4100ee88da64be272322c0c1e18b4b861c6e26fb3eb1e855a1ba57",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/antivoid/mode/AntiVoidMode.kt": "11a45a01f07cfd1fd3e7989841b885a5c2c5bd094d05c6918480263ce6853b94",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/antivoid/mode/AntiVoidUseItemMode.kt": "fdfd6c1e0a107285cf0de5c0bcadad034f441e2eff2ab6ad877122b575c09631",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/player/antivoid/ModuleAntiVoid.kt": "0ab96e11004b50f62c7625427b7fe40c9033c85d7cf4044b197ad2d1cc700a02"
+  },
+  "native_patch_order": {
+    "generic": "immediately before final Step extension",
+    "late": "Step calls owned anti-void-late-patch.py only after final remote sender rewrite",
+    "step_shared_plan_anchor": " edit('crates/horizon-client/src/game/remote.rs',remote)\\n return {"
+  }
+}

@@ -1,0 +1,11 @@
+HoleFiller integration (pinned ModuleHoleFiller.kt)
+
+Run `python native/liquidbounce-horizon/integrate-hole-filler.py --check` to prepare all shared edits. Root owns applying the script and all Cargo/staging/build work. This batch depends on integrated LiquidFiller/BlockPlacer and HoleESP/HoleTracker. Providers 37/38, processors 560/576, requester 0x484f_4c45_4649_4c4c are reserved by root.
+
+The production model implements all five feature tags; simple and smart collection; filtered self-hole detection; inclusive regions; the integer BoundingBox center; original radians >= 0.866 behavior; Java NaN comparison; wrapping item arithmetic; per-hole budgets; creative bypass; and zero-items queue retention. Real BlockItem stacks use effective-hotbar/offhand/nearby preference. Runtime shares the existing native plan/execute/crystal pipeline and global deferred executor. Placing import/export reuses the full LiquidFiller configuration, including inactive rotation modes and both renderers.
+
+Native HoleManager subscriptions now include HoleESP (identity 0) and HoleFiller (identity 1). Turning off HoleESP keeps HoleFiller tracking alive and independently clears ESP geometry. Newly enabled owners subscribe before previous owners unsubscribe. Snapshot acquisition synchronizes the shared manager before reading its tracker.
+
+Validation prepared in this batch: five exact production model tests, two engine config tests, a static full native transformation fixture, and idempotent shared integration. No Rust compiler or game smoke was invoked by the module agent. `test-hole-filler-focused.py --out <directory>` prepares the exact production model test crate; `--run` is reserved for the root's consolidated test batch.
+
+Concrete remaining differences: equal-angle smart targets retain insertion order instead of Java HashSet bucket traversal. Snapshot synchronization can observe world diffs at RotationUpdate in addition to the real player post-tick. Entity rendering order and crystal handling inherit the existing shared adapter boundaries recorded for LiquidFiller: retained crystal identity is an id rather than a persistent original entity object, and entity section crossing order is approximated by existing capture sequence. Do not claim complete edge-case parity or successful runtime execution from this handoff.

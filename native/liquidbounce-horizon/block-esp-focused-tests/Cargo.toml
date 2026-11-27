@@ -1,0 +1,9 @@
+[package]
+name="block-esp-focused"
+version="0.0.0"
+edition="2024"
+[workspace]
+[lib]
+path="lib.rs"
+[dependencies]
+serde_json={version="1",features=["arbitrary_precision"]}

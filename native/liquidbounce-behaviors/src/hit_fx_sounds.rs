@@ -1,0 +1,61 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+pub const SOUNDS: [(&str, &[&str]); 26] = [
+    ("Hit", &["minecraft:entity.arrow.hit"]),
+    ("Orb", &["minecraft:entity.experience_orb.pickup"]),
+    ("Bonk", &["liquidbounce:bonk"]),
+    (
+        "Boykisser",
+        &[
+            "liquidbounce:boykisser-1",
+            "liquidbounce:boykisser-2",
+            "liquidbounce:boykisser-3",
+            "liquidbounce:boykisser-4",
+            "liquidbounce:boykisser-5",
+            "liquidbounce:boykisser-6",
+        ],
+    ),
+    ("ApplePay", &["liquidbounce:applepay"]),
+    ("Aimbooster", &["liquidbounce:aimbooster"]),
+    ("Bring", &["liquidbounce:bring"]),
+    ("Brick", &["liquidbounce:brick"]),
+    ("Bump", &["liquidbounce:bump"]),
+    (
+        "Glass",
+        &[
+            "liquidbounce:glass-1",
+            "liquidbounce:glass-2",
+            "liquidbounce:glass-3",
+        ],
+    ),
+    (
+        "Click",
+        &[
+            "liquidbounce:click-1",
+            "liquidbounce:click-2",
+            "liquidbounce:click-3",
+        ],
+    ),
+    ("Coin", &["liquidbounce:coin"]),
+    ("Meow", &["liquidbounce:meow"]),
+    (
+        "Moan",
+        &[
+            "liquidbounce:moan-1",
+            "liquidbounce:moan-2",
+            "liquidbounce:moan-3",
+            "liquidbounce:moan-4",
+        ],
+    ),
+    ("MagicSquash", &["liquidbounce:magic_squash"]),
+    ("NYA", &["liquidbounce:nya"]),
+    ("OSU", &["liquidbounce:osu"]),
+    ("Pop", &["liquidbounce:pop"]),
+    ("Soft", &["liquidbounce:soft"]),
+    ("Schoolboy", &["liquidbounce:schoolboy"]),
+    ("Skeet", &["liquidbounce:skeet"]),
+    ("Slap", &["liquidbounce:slap"]),
+    ("Squash", &["liquidbounce:squash"]),
+    ("Tung", &["liquidbounce:tung"]),
+    ("TF2 Crit", &["liquidbounce:tf2-crit"]),
+    ("UWU", &["liquidbounce:uwu"]),
+];

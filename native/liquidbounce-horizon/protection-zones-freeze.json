@@ -1,0 +1,38 @@
+{
+  "module": "ProtectionZones",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_protection_zones"
+      ],
+      "helper_names": []
+    },
+    "patchedFiles": 4,
+    "scope": "Production behavior, twelve-setting config, engine runtime and native Game bridge; actual Horizon PalettedContainer/SimpleBitStorage and WorldPrimitives. Game/world/items/facts providers are declaration fixtures. One focused Cargo smoke; patch composed in memory; locale updaters run on copies. Aggregate native and visual validation remain root-owned."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/protection_zones.rs": "43b052e97f574807398895a94399b7a9395cdbda60b0b945fea2c05d5e29bcfb",
+    "native/liquidbounce-horizon/engine/src/config/protection_zones.rs": "6eb9e7b3ff8d1086b48d27e5261705569a5b082fe23859195f0b86c81028fb1d",
+    "native/liquidbounce-horizon/engine/src/protection_zones_runtime.rs": "97b570a6e3111a595949b4f29947785487746bd618d4c04f9e25b98c5fa6d8ad",
+    "native/liquidbounce-horizon/protection-zones-host.rs": "ed8ff7b04a59eb1cab1cdbc59295dce3a7c28d853c4a12e906f56c42fc455c62",
+    "native/liquidbounce-horizon/protection-zones-game.rs": "62c666aeaf91f1c520e454f3b81c5ecb4207279a589936fad7cac2b57b3f7653",
+    "native/liquidbounce-horizon/protection-zones-patch.py": "15b58a5d6ef4d6b37c8aafb17aebe3c0a05208b39098fad413f896b81a4f9ab1",
+    "native/liquidbounce-horizon/protection-zones-smoke.rs": "49fa44d406588546b29d0631e51a53ef837139bcd8aeccb044b9faa7dfb303d1",
+    "native/liquidbounce-horizon/protection-zones-native-fixture.rs": "5049966140060b599ba475dd80b668d062d2f3940c024d76e8d54e83d6a884a9",
+    "native/liquidbounce-horizon/test-protection-zones.py": "4af60a24741d9a8f6bb028d415010ce31037d158a4a8dff764316801fb1983f9",
+    "native/liquidbounce-horizon/integrate-protection-zones.py": "9851de85b5f8bf1f25ac63cfaccebcbcae401de2439a2c7f59f998b19b23ef59",
+    "native/liquidbounce-horizon/update-protection-zones-locales.py": "423aca80e7ca975a807abb14293b473fc65f64eebac19b670a7eaf59f954b3a2",
+    "native/liquidbounce-horizon/protection-zones-integration.md": "65574b9b28a9919c3ea4fbd8fb3551894590323368d7ff09a709df06efac3c4c",
+    "native/liquidbounce-horizon/generate-protection-zones-freeze.py": "6ff8bb8e39891133dc3b2dd5b21904b10ff993206193235df1fb1e8bd37fac4c",
+    "build/protection-zones-smoke-01/report.json": "397607bfe7cb2105350064879d0a7cf0e28e1d3f40a9a15628b6f1eb6af6ad8e",
+    "build/protection-zones-smoke-01/test.log": "c281435379429c13a3ad6d837e613d54c32604aaab7a501ad15d4ef2fcbac5ca"
+  }
+}

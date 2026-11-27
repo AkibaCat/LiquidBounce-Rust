@@ -1,0 +1,15 @@
+# MaceKill owned delivery
+
+Source ae0eb396 ModuleMaceKill.kt and EntityExtensions.kt LocalPlayer.warp. Combat, key maceKill, no aliases. FallHeight defaults22, range1..170, numeric HUD tag. The module has no enable/disable side effects or coroutine.
+
+The shared integration owner can review `integrate-mace-kill.py --check`, then `--apply`; all anchors validate in memory first and every original snapshot is rechecked before atomic file replacements. The script imports only Plan from the SuperKnockback integration tool and never runs that tool's old build_plan. Locale updater defaults to writing when explicitly invoked; `--check` only validates.
+
+Attack must run even for cancelled events, after AutoWeapon slot selection/ensure carried and before VehicleOneHit's attack effects. AutoWeapon's existing Context.mace_kill_enabled must read enabled_without_world for MaceKill at both weapon selection and attack speed queries. It uses enabled, not running, matching ModuleAutoWeapon.canMaceSmash. No target/living/collision-hit eligibility beyond actually holding a mace is added.
+
+Height captures the actual player box and scans the offsets FallHeight down to1, stopping at the highest empty block-collision query; it does not check intermediate heights, entities or the world border. The shared Horizon BlockCollisionScan carries real entity context, held stack, descending, powder-snow state, dynamic blocks and global BlockWalk/AirJump/Spider policy. All blocked returns0, then still emits the source's four warps.
+
+Height>10 emits ceil(abs(height/10)) status warps with groundfalse. Height<=10 emits two status warps re-reading actual player ground. Then it re-reads live player position for height offset and again for the return; ordinary Game::send keeps PacketEvent visible. A rider uses MoveVehicle and moves the actual vehicle position, preserves vehicle ground, rotation, velocity, old position and passenger linkage; status warps still send the mounted vehicle. Display position reads use its actual interpolated position and rotation, rather than its server codec base. Native methods and patch compose against the current staged source in memory without writing it.
+
+One focused smoke passed: highest clear landing selection, >10 and <=10 packet order, all-blocked0, disabled/non-mace guards, live coordinate changes during packet hooks, ground re-reads, empty range and query-error propagation. Native generation/compilation belongs to root. Full-client differential remains not_run.
+
+The vehicle fallback also moves server-mounted hanging entities, leash knots and interactions. Hanging positions follow the local pinned MC26.3 BlockAttachedEntity.setPos and HangingEntity.recalculateBoundingBox bytecode (block floor, then calculated centre); an item frame additionally updates its packet-position codec as ItemFrame.recalculateBoundingBox does. Tracked-only entities now retain finite packet rotations and onGround for MoveVehicle, while display rotations continue to use their actual interpolated state.

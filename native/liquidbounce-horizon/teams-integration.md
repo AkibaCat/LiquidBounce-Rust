@@ -1,0 +1,3 @@
+Teams implements the pinned scoreboard-team, name-color, prefix and dyed-armor matching rules. Native snapshots read actual scoreboard teams, formatted names and dyed components for local/remote players, mobs and armor stands. Source-order color resolution and strictly higher tag priority are preserved in the shared lazy TargetInfo cache. All original settings have simplified/traditional descriptions and armor-slot aliases.
+
+`build/teams-smoke-01.exe` passed the single team/name/prefix/armor/color-order smoke. `build/integrated-check-103-01.json` confirms the native and engine integration compiles. Final game validation remains pending. Name-color/prefix facts for living entities maintained outside Horizon's mob/armor-stand collections still need native coverage review.

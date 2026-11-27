@@ -1,0 +1,90 @@
+{
+  "frozenDate": "2026-11-26",
+  "pinnedSources": {
+    "LiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "Horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "Horizon-Mixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "scope": "Eight owned production files frozen. Canonical cumulative integration is pending root production TestEngine68; actual game/GPU smoke remains a parent check.",
+  "files": {
+    "native/liquidbounce-behaviors/src/better_inventory.rs": "e59e0cbd6251a50bb69fec999d6afe4040dc112caa3770f7714219b4605930f4",
+    "native/liquidbounce-behaviors/src/better_inventory_locale.rs": "0335376d94fc009e79ad69407fe916bb538c9dae810c6592156160f2d297d495",
+    "native/liquidbounce-horizon/engine/src/config/better_inventory.rs": "408b206778163a8aabdb279b8ae75cc84dd430c74a2cd4300130955acb8405ab",
+    "native/liquidbounce-horizon/engine/src/better_inventory_draw.rs": "c762e67ca9d9edfac8ac114c22232e82459d126a32e4eec02073677ecaca137d",
+    "native/liquidbounce-horizon/engine/src/better_inventory_runtime.rs": "f9b8513b4cc68c34397418117c0903913e2ca14237b60f9d1b419dc5663260b0",
+    "native/liquidbounce-horizon/better-inventory-host.rs": "b8b346f879fb05d025655117fa7e9184ae09c4c3d8af7b9bd99bf28316413f91",
+    "native/liquidbounce-horizon/better-inventory-locale-platform.rs": "cc49de3dceb19764002d844069c664faaa11c448b6b331fd9d773267b4c55179",
+    "native/liquidbounce-horizon/better-inventory-patch.py": "c11254f1e536186b565298916774b9c3b64a16166461ec9d8ff1b6e2490e15d7"
+  },
+  "supportingFiles": {
+    "native/liquidbounce-horizon/better-inventory-locale-fixture.java": "fba52710bdd2d491a0f2df48b5563f37535116be59744aa7f2cdad51cb0ac19f",
+    "native/liquidbounce-horizon/generate-better-inventory-locales.py": "2d99e419f8b2a5295bc95907ca1fba5caf7085308da4b6edce2b6e3a9ab7818a",
+    "native/liquidbounce-horizon/better-inventory-locale-oracle.json": "05654ba15913c45cd0021f0934e84cc68676f7a075328ff3430f7f678542e5f9",
+    "native/liquidbounce-horizon/better-inventory-integration.md": "2cbecd4256600c73f0bdfddecff96952b4ab92991435b7cc2a79cc02e6ca077b"
+  },
+  "reports": [
+    {
+      "path": "build/better-inventory-source-05/report.json",
+      "passed": true,
+      "sha256": "41100408129239beda841b96d10e9d31ed52b3c22bac93f4f864642b16656d97",
+      "scope": "Unchanged Kotlin sources, 1033 command vectors, all 1157 JDK25 locales, two tests and Clippy with warnings denied."
+    },
+    {
+      "path": "build/better-inventory-config-04/report.json",
+      "passed": true,
+      "sha256": "a8d976695b3178ad932afccb5d8e03b31a77b48a814ba526674d4070f58ef09d",
+      "scope": "Complete production config, 69 tests and Clippy, 28 unchanged original ColorAdapter/exact fromHex JVM cases; declaration-only registration shim."
+    },
+    {
+      "path": "build/better-inventory-consumption-06/report.json",
+      "passed": true,
+      "sha256": "d0d96b167d2051e92c91c2c11df430d4085a9b04fb5af789be212f31ad5a4be3",
+      "scope": "Five tests and Clippy over unchanged final native helper, actual behavior and vertex scaling, Windows/JVM locale; safe client and unchanged platform wrapper in separate crate."
+    },
+    {
+      "path": "build/better-inventory-locales-03/report.json",
+      "passed": true,
+      "sha256": "15c59bc11c61268b44edfa102c52c201c3fd041e5ba8fca2fb2ddffd0c58e9f6",
+      "scope": "1157 JDK25 locale rows, UTF-8 formatter samples; actual initial locale zh-CN."
+    },
+    {
+      "path": "build/better-inventory-native-04/report.json",
+      "passed": true,
+      "sha256": "3e80069f57a0ccefa6cdaefd7839ac985e80829be972d191ed8ac0a0bd646672",
+      "scope": "Real fill_hooks and full independent horizon-client --lib check including final safe-client/platform locale split."
+    },
+    {
+      "path": "build/better-inventory-component-research-01/report.json",
+      "passed": true,
+      "sha256": "eb37d1c937492ac1bf04be10c6d6b9bd1ad573b9cc7acc9b3af3dffeadce71f6",
+      "scope": "Structural official javap inspection of three component classes; not runtime codec execution."
+    }
+  ],
+  "historicalReports": [
+    {
+      "path": "build/better-inventory-runtime-01/report.json",
+      "passed": true,
+      "sha256": "0e69809a3a8f82c01a29fe0adc0dd9b64dfd9c4b7e060f1cdf9b55bacd1a35e4",
+      "scope": "Full production engine against real native02 ABI with shared inventory actor/executor and lifecycle and declaration-only absent-BI registration shims. Predates final locale implementation; not current-engine proof."
+    }
+  ],
+  "cancelledReports": [
+    {
+      "path": "build/better-inventory-runtime-04/report.json",
+      "passed": false,
+      "status": "cancelled_by_parent_request_while_waiting_for_shared_target_lock",
+      "sha256": "487f174665e4edb26970bce471af1fe53625d082c703f482976c018d1c144f2e",
+      "scope": "Only the verified queued cargo for runtime04 was stopped. No successful compile claimed; all snapshot sources and logs retained."
+    }
+  ],
+  "pendingChecks": [
+    "Root production TestEngine68: canonical cumulative Timer plus BetterInventory integration.",
+    "Actual game execution, GPU rendering and final smoke."
+  ],
+  "preservedHistoricalFailures": [
+    "build/better-inventory-native-03/report.json",
+    "build/better-inventory-runtime-02/report.json",
+    "build/better-inventory-runtime-03/report.json"
+  ],
+  "canonicalRuntimeInstrumentation": "The frozen better_inventory_runtime.rs includes root-added webview probe logging after independent runtime snapshots; production TestEngine68 will cover this canonical source."
+}

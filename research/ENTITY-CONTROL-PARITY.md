@@ -1,0 +1,89 @@
+# EntityControl source parity
+
+Pinned LiquidBounce commit: `ae0eb396c07f22383789b28d5912d714c6ca0a86`.
+The source is `ModuleEntityControl.kt`, the `Mob.isSaddled` return injection
+in `MixinMob.java`, and the `LocalPlayer.getJumpRidingScale` return injection
+in `MixinLocalPlayer.java`.
+
+## Complete module behavior
+
+EntityControl belongs to Movement. Its only setting, Enforce, is a multiselect
+with the original order Saddled, JumpStrength and both selected by default.
+The two independent policies require the ordinary module running predicate.
+There is no module-specific enable, disable or world-change state.
+
+Saddled changes the result of the mob saddle getter to `original || forced`.
+It does not add an equipment stack. The production patch routes the mount
+controller, jump eligibility, mount-use selection and client movement consumers
+through this getter. Saddle models, actual equipment, item insertion and save
+data retain physical equipment checks. The nautilus restriction-radius check
+also retains its physical check: the actual MC method does not call isSaddled.
+
+The original Kotlin singleton is visible to all Mob getter calls in the same
+process, including an integrated server. A process-wide atomic stores the two
+running flags. Only the actual native window refreshes it, after the engine's
+pre-tick lifecycle and configuration work. Server ticks and LAN guest work
+cannot replace this snapshot. The window can clear it when no player remains.
+
+JumpStrength replaces the local player's reported riding jump scale with 1f.
+The patch preserves stored charge and tick counters and applies the getter at
+the release, riding packet and HUD consumers. The full charge/release state
+machine remains in production code. Only the actual local player can query
+this policy: server copies, speculative replay and swapped LAN guests retain
+their original scale.
+
+Vanilla llamas inherit AbstractHorse's saddle controller and jump check even
+though they cannot normally wear saddles. Horizon's ordinary llama exclusion
+is relaxed while Saddled is forced. Nautilus is likewise included in the
+remote movement controller while this policy is active. These changes remove
+baseline assumptions that would otherwise prevent the original mixin from
+having its complete effect; inactive policies preserve the existing baseline.
+
+The config child preserves both File and Interop trees and all four selection
+subsets. Its sequential import follows the pinned Gson MultiChoiceListValue:
+clear first, accept tagged strings case insensitively, ignore unknown primitive
+tags and retain a successfully read prefix when a later array element fails.
+Explicit JSON null clears the selection; a missing value reports an issue.
+
+## Verification
+
+```text
+python native/liquidbounce-horizon/test-entity-control-patch.py --out build/entity-control-04
+```
+
+Six tests and Clippy with `-D warnings` pass. Tests compile the actual
+transformed getter, horse and nautilus controllers, full charge state machine,
+jump/HUD consumers, remote controller and riding packet function. The actual
+`horizon_mod_api_gen` produces Host, event and dispatch code. Tests exercise
+policy copy-out, window/player identity exclusions, global getter scope,
+first-passenger/stick/alive checks, physical equipment preservation and
+unmodified charge storage.
+
+`oracles/EntityControlFacts.java` executes actual methods from the cached
+MC 26.3 JAR. Constructor-free probe subclasses supply only equipment,
+first-passenger, AI and player-held-item inputs and apply the source-derived
+return injections. Actual Mob.isSaddled, horse/llama/pig/strider/nautilus
+getControllingPassenger/canJump consumers provide 320 policy/input cases.
+Forty actual LocalPlayer getter cases compare raw Float bits. This executes
+MC methods with controlled inputs; it does not execute the Kotlin module or
+install a Java mixin.
+
+Evidence is retained in `build/entity-control-04/report.json`, command logs
+and `mc-oracle.json`. Pristine upstream hashes are unchanged. Earlier attempts
+retain minimal Java probe-input and Rust fixture corrections.
+
+Explicit isolated-test boundaries are Mob storage/species/equipment and
+Game/window/player shells, HUD paint and packet enum shells, and camel
+sound/rear delegates. Shared engine registry/config/lifecycle integration and
+full game execution are the parent integration's responsibility. The isolated
+report does not claim full game validation.
+
+## Language support
+
+The complete Enforce help has independent owned English, simplified Chinese
+and traditional Chinese text. Display follows the actual game language, while
+the saved setting and choice identifiers stay unchanged. The theme verifier
+passes with 225 owned setting/group descriptions in each Chinese dictionary;
+this batch also corrects all 11 SmartEat leaves and its three group help texts
+and supplies SkinDerp's three setting descriptions. Final provenance, theme
+build and full game language-switch evidence are generated by the parent.

@@ -1,0 +1,29 @@
+{
+  "feature": "Shared TargetRenderer",
+  "revision": 1,
+  "upstream": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "validation": [
+    "build/target-renderer-smoke-02/report.json",
+    "build/target-renderer-custom-smoke-01/report.json"
+  ],
+  "passedChecks": 6,
+  "localeDescriptionsPerLanguage": 109,
+  "moduleDelta": 0,
+  "remaining": "Official native+engine compile and actual game visual audit; custom active-theme font switching not implemented; ab_glyph rasterization is not pixel-identical to AWT/FreeType.",
+  "files": {
+    "native/liquidbounce-behaviors/src/target_renderer.rs": "1a7f5980cf8fcd948dce1ad2d038599ca55d8315beebcaed1c9581bdbc083a57",
+    "native/liquidbounce-horizon/engine/src/config/target_renderer.rs": "7f5b87d9573ea0fb44fd779fae9b36df39529c5de97a7fe3bbec50361aa997e8",
+    "native/liquidbounce-horizon/engine/src/target_renderer_runtime.rs": "3ee863be0c9d5d3f15beba109054f5f188060f2d27fc49186a7f2c3c478e49cd",
+    "native/liquidbounce-horizon/target-renderer-game.rs": "fe2261e31fccfaf9086f512dac762f41fc65d113194a66f36f49b611922d9291",
+    "native/liquidbounce-horizon/target-renderer-font.rs": "0c00c93a25aeae89190793ce470b64ed0a5fc51bf5d8cd5317aa3426d254c3d3",
+    "native/liquidbounce-horizon/target-renderer.wgsl": "04556809123ba869deaa60bdb48926b8596f878fffb401acb8715126261603e3",
+    "native/liquidbounce-horizon/target-renderer-render.py": "6c4c7c72049d2c6730737c8de71e30323699b849ba52c7f3398d9cbd48f0d8ea",
+    "native/liquidbounce-horizon/target-renderer-patch.py": "a8eeb320f5ae18739033b8e1b03d9c7da3ffa9a21141f75864b9ba6459832b90",
+    "native/liquidbounce-horizon/integrate-target-renderer.py": "64a3ce7700c91432819e98234e023f983c8136dd459180b803a9ff774698cad6",
+    "native/liquidbounce-horizon/update-target-renderer-locales.py": "278f20c74af4419b315667c793ff94211a9cb1c5fb7fa64b81d97aa8c5ee0602",
+    "native/liquidbounce-horizon/test-target-renderer.py": "8d0138ab24d68c6739eb1df51096b07d950d9299a4d6851f15a0479695062c25",
+    "native/liquidbounce-horizon/target-renderer-smoke.rs": "e6fb5bee502d0a66ecb4833ccf8dc358aa8730517723cd926a1f258bd545b718",
+    "native/liquidbounce-horizon/target-renderer-custom-smoke.rs": "0ef102d65441e030dfffc83d8761e288bbd7f9730dbd4b66340d8260e9095836",
+    "native/liquidbounce-horizon/target-renderer-handoff.md": "f6dc3b4610e6a78e4c83c48c155b84473d6f9fde5ec563be91e710ad2efd4a3b"
+  }
+}

@@ -1,0 +1,31 @@
+# Downloaded baselines are restored from source-baselines.json.
+/upstream/
+/research/*.zip
+/research/*.jar
+/research/*.crate
+
+# Build products, prepared Minecraft resources and personal game data.
+/build/
+/artifacts/
+/ReleasesPack/
+/runtime/
+/logs/
+**/target/
+**/dist/
+**/node_modules/
+**/build-tools/
+**/cef-source/
+**/.gradle/
+**/.horizon/
+**/.local/
+**/user-data/
+**/__pycache__/
+*.pyc
+*.log
+*.pdb
+*.exe
+*.dll
+*.jar
+*.class
+*.dupbackup
+.export-clean-source.json

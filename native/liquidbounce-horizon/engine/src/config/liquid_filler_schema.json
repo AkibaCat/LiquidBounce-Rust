@@ -1,0 +1,331 @@
+[
+  {
+    "name": "PlaceIn",
+    "kind": "MULTI_CHOOSE",
+    "default": [
+      "Water",
+      "Lava"
+    ],
+    "options": [
+      "Water",
+      "Lava"
+    ],
+    "canBeNone": false
+  },
+  {
+    "name": "PlaceOrder",
+    "kind": "CHOOSE",
+    "default": "FurtherFirst",
+    "options": [
+      "Random",
+      "CloserFirst",
+      "FurtherFirst",
+      "BottomTop",
+      "TopBottom"
+    ]
+  },
+  {
+    "name": "UseSponge",
+    "kind": "BOOLEAN",
+    "default": false
+  },
+  {
+    "name": "Filter",
+    "kind": "CHOOSE",
+    "default": "Whitelist",
+    "options": [
+      "Whitelist",
+      "Blacklist"
+    ]
+  },
+  {
+    "name": "Blocks",
+    "kind": "BLOCK",
+    "default": [
+      "minecraft:andesite",
+      "minecraft:black_wool",
+      "minecraft:blue_wool",
+      "minecraft:brown_wool",
+      "minecraft:cobblestone",
+      "minecraft:cyan_wool",
+      "minecraft:diorite",
+      "minecraft:dirt",
+      "minecraft:granite",
+      "minecraft:gray_wool",
+      "minecraft:green_wool",
+      "minecraft:light_blue_wool",
+      "minecraft:light_gray_wool",
+      "minecraft:lime_wool",
+      "minecraft:magenta_wool",
+      "minecraft:netherrack",
+      "minecraft:orange_wool",
+      "minecraft:pink_wool",
+      "minecraft:purple_wool",
+      "minecraft:red_wool",
+      "minecraft:stone",
+      "minecraft:white_wool",
+      "minecraft:yellow_wool"
+    ]
+  },
+  {
+    "name": "Placer",
+    "kind": "CONFIGURABLE",
+    "children": [
+      {
+        "name": "Range",
+        "kind": "FLOAT",
+        "default": 4.5,
+        "range": {
+          "from": 1,
+          "to": 6
+        },
+        "suffix": ""
+      },
+      {
+        "name": "WallRange",
+        "kind": "FLOAT",
+        "default": 4.5,
+        "range": {
+          "from": 0,
+          "to": 6
+        },
+        "suffix": ""
+      },
+      {
+        "name": "Cooldown",
+        "kind": "INT_RANGE",
+        "default": [
+          1,
+          2
+        ],
+        "range": {
+          "from": 0,
+          "to": 40
+        },
+        "suffix": "ticks"
+      },
+      {
+        "name": "Swing",
+        "kind": "CHOOSE",
+        "default": "DoNotHide",
+        "options": [
+          "DoNotHide",
+          "HideForClient"
+        ]
+      },
+      {
+        "name": "ConstructFailResult",
+        "kind": "BOOLEAN",
+        "default": true
+      },
+      {
+        "name": "Sneak",
+        "kind": "INT_RANGE",
+        "default": [
+          1,
+          1
+        ],
+        "range": {
+          "from": 0,
+          "to": 10
+        },
+        "suffix": "ticks"
+      },
+      {
+        "name": "Ignore",
+        "kind": "MULTI_CHOOSE",
+        "default": [
+          "OpenInventory",
+          "UsingItem"
+        ],
+        "options": [
+          "OpenInventory",
+          "UsingItem"
+        ],
+        "canBeNone": true
+      },
+      {
+        "name": "SlotResetDelay",
+        "kind": "INT_RANGE",
+        "default": [
+          4,
+          6
+        ],
+        "range": {
+          "from": 0,
+          "to": 40
+        },
+        "suffix": "ticks"
+      },
+      {
+        "name": "RotationMode",
+        "kind": "CHOICE",
+        "default": "Normal",
+        "options": [
+          "Normal",
+          "None"
+        ],
+        "modes": [
+          {
+            "name": "Normal",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "PostMove",
+                "kind": "BOOLEAN",
+                "default": false
+              },
+              {
+                "name": "Rotations",
+                "kind": "ROTATIONS"
+              }
+            ]
+          },
+          {
+            "name": "None",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "PostMove",
+                "kind": "BOOLEAN",
+                "default": false
+              },
+              {
+                "name": "SendRotationPacket",
+                "kind": "BOOLEAN",
+                "default": false
+              },
+              {
+                "name": "Placements",
+                "kind": "INT",
+                "default": 1,
+                "range": {
+                  "from": 1,
+                  "to": 10
+                },
+                "suffix": "b/o"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "DestroyCrystals",
+        "kind": "TOGGLEABLE",
+        "children": [
+          {
+            "name": "Enabled",
+            "kind": "BOOLEAN",
+            "default": true
+          },
+          {
+            "name": "Range",
+            "kind": "FLOAT",
+            "default": 4.5,
+            "range": {
+              "from": 1,
+              "to": 6
+            },
+            "suffix": ""
+          },
+          {
+            "name": "WallRange",
+            "kind": "FLOAT",
+            "default": 4.5,
+            "range": {
+              "from": 0,
+              "to": 6
+            },
+            "suffix": ""
+          },
+          {
+            "name": "Delay",
+            "kind": "INT",
+            "default": 0,
+            "range": {
+              "from": 0,
+              "to": 1000
+            },
+            "suffix": "ms"
+          },
+          {
+            "name": "SwingMode",
+            "kind": "CHOOSE",
+            "default": "DoNotHide",
+            "options": [
+              "DoNotHide",
+              "HideForBoth",
+              "HideForClient",
+              "HideForServer"
+            ]
+          },
+          {
+            "name": "RotationMode",
+            "kind": "CHOICE",
+            "default": "Normal",
+            "options": [
+              "Normal",
+              "None"
+            ],
+            "modes": [
+              {
+                "name": "Normal",
+                "kind": "CONFIGURABLE",
+                "children": [
+                  {
+                    "name": "PostMove",
+                    "kind": "BOOLEAN",
+                    "default": false
+                  },
+                  {
+                    "name": "Instant",
+                    "kind": "BOOLEAN",
+                    "default": false
+                  },
+                  {
+                    "name": "Rotations",
+                    "kind": "ROTATIONS"
+                  },
+                  {
+                    "name": "IgnoreOpenInventory",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "None",
+                "kind": "CONFIGURABLE",
+                "children": [
+                  {
+                    "name": "PostMove",
+                    "kind": "BOOLEAN",
+                    "default": false
+                  },
+                  {
+                    "name": "Instant",
+                    "kind": "BOOLEAN",
+                    "default": false
+                  },
+                  {
+                    "name": "SendRotationPacket",
+                    "kind": "BOOLEAN",
+                    "default": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "TargetRendering",
+        "kind": "PLACEMENT"
+      },
+      {
+        "name": "PlacedRendering",
+        "kind": "PLACEMENT"
+      }
+    ]
+  }
+]

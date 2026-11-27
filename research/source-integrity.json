@@ -1,0 +1,17 @@
+{
+  "repository": "https://github.com/CCBlueX/LiquidBounce",
+  "branch": "main",
+  "commit": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "upstreamCommitTimeUtc": "2026-11-24T13:13:12Z",
+  "acquisition": "GitHub official codeload source archive; no Git history included",
+  "archiveUrl": "https://codeload.github.com/CCBlueX/LiquidBounce/zip/ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "archiveSha256": "98aa5c9007b80b78bae8edf85ca80d87fa65bebea41cc662ab8c2221016eb0cb",
+  "treeSha": "1e688884bf32b0f7c79ae6f7defa31beef323fc6",
+  "verifiedFiles": 2603,
+  "submodules": [],
+  "trackedSourceMatchesUpstream": true,
+  "lineEndingOnlyDifferences": [
+    "gradlew.bat"
+  ],
+  "mismatches": []
+}

@@ -1,0 +1,68 @@
+{
+  "status": "owned-complete-awaiting-root-integration-and-compilation",
+  "module": "BedPlates",
+  "owner": "chinese_localization",
+  "ownedSources": {
+    "native/liquidbounce-behaviors/src/bed_plates.rs": "25cbe22856a2898b6a7dedac3713c9ba4db25ac0589816d9bb9cddc0e91ca2f6",
+    "native/liquidbounce-behaviors/src/bed_plates_scan.rs": "baa63a8c5540eb02f6b03db594b3619a203d42c2ff9ce33cf84c10e9ab3651ba",
+    "native/liquidbounce-horizon/engine/src/bed_plates_runtime.rs": "9e31aebca027ff2e0cadb6439d98c2aebc29d6e6f86793e61fa8bcf9624651a6",
+    "native/liquidbounce-horizon/engine/src/config/bed_plates.rs": "7be1acce73b39a4c6838a4d2c8a0d00e5d254ef5e187b964bbf12275bd4da583",
+    "native/liquidbounce-horizon/bed-plates-game.rs": "5d280b0eda44b983b2f6301bbbf00c82fb80b32b159bf83f12d0a9ca11b1d3ae",
+    "native/liquidbounce-horizon/bed-plates-patch.py": "4259f72404b886a0f9d6b405985705ceda526d614ece39c73af1eba485ae8e49",
+    "native/liquidbounce-horizon/integrate-bed-plates.py": "a96b9eec3ef6c9c1d7ccb50f72fdcd0f207be7386887c7cf0f0edcd7e9f2064d",
+    "native/liquidbounce-horizon/integrate-bed-plates-choice-labels.py": "0ed2827083297857bd50b02a5321599d396eb6aa3551588a82042b53bddcc0e6",
+    "native/liquidbounce-horizon/update-bed-plates-locales.py": "9c82597232764e30c749fabca613ccc8a0f6c4a2f9217d0cad67fadfce095566",
+    "native/liquidbounce-horizon/test-bed-plates.py": "39a8d69566e9cf9255e4ccea78783fd20c0ad8288aa65f029e5f3a758dc54853",
+    "native/liquidbounce-horizon/test-bed-plates-focused.py": "f47179bbda0613481f2d76c335dbd0982c45be5c31b7d9a14b28e3f52adaac95",
+    "native/liquidbounce-horizon/test-bed-plates-choice-labels.mjs": "676ce96426f0b7b91d660796d5aacab1f933a6e74c02351bba971691ae507981",
+    "native/liquidbounce-horizon/bed-plates-integration.md": "5668479421d053a642cb5104ee93d3d366de09c006aaf8ee93d5b259e7ce8aec"
+  },
+  "pinnedInputs": {
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/ModuleBedPlates.kt": "d6fb1ac0bbfb97464bcbe165e8077834d6408dd4ae74353fff48a691651a9f5e",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/block/bed/BedBlockTracker.kt": "923857de71672a7339e4950b55275224e8ecbd9386e0c140ab4945c5630d862c",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/block/bed/BedState.kt": "e988b585a6ef43332dfa90807ff5d10b12e86cc8378721bff1416e64d3487fd7",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/block/bed/SurroundingBlock.kt": "a0577eb2a72dc1c33148acd90230f78b5a1c6484c899da3b6b1dd80943ef4454",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/block/bed/IsSelfBedMode.kt": "6ab0200fe9166195538b5ebdfa59254c0b177e37bddc2b98d9323a84c48b87d8",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/block/BlockExtensions.kt": "9e9da5a18ef0a476069040a20f15b1ab99f37304b087d2af5fc905e53b8ebb46",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/inventory/EquipmentSlotChoice.kt": "e2785e28e6f3681499bc0ac09ef97cdfc547c66c7841b042bc906a70596cab6a",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/config/types/list/MultiChoiceListValue.kt": "417b443a516926a2e8234ae4ad7eea3c3aa55ddb7e2fb1768c50bdc6ddc41153"
+  },
+  "ownerChecks": {
+    "staticCommand": "python native/liquidbounce-horizon/test-bed-plates.py --native",
+    "passed": true,
+    "engineSharedFiles": 7,
+    "scopedLabelSharedFiles": 3,
+    "completeRustSourcesParsedWithTemporaryRustfmt": 13,
+    "actualNativeHookDefinitionAndTargetUnique": true,
+    "nativeAndThemeGeneratorsComposedInMemory": true,
+    "commonItemStackListQueueCoexistenceChecked": true,
+    "ChineseEntriesPerLocale": 41,
+    "ChinesePlaceholderAndContainerCaptionPreservation": true,
+    "ChineseUpdaterByteIdempotent": true
+  },
+  "focused": {
+    "status": "prepared-not-run",
+    "directory": "build/bed-plates-focused-01",
+    "tests": 6,
+    "scope": "Exact production BedPlates behavior/scan tests and exact production config/shared parsers; dependency enum/key implementations extracted verbatim. No native Game/actor/GPU runtime claim."
+  },
+  "choiceLabelTest": {
+    "status": "prepared-not-run",
+    "command": "node native/liquidbounce-horizon/test-bed-plates-choice-labels.mjs"
+  },
+  "notRun": [
+    "Cargo",
+    "Rust/Kotlin compiler",
+    "Clippy",
+    "game/GPU",
+    "smoke/oracle/full suite"
+  ],
+  "notWritten": [
+    "shared source",
+    "upstream",
+    "official locales",
+    "generated patches",
+    "staging"
+  ],
+  "knownSourceOrderDifference": "Upstream compact reference-hash iteration is process-specific; first source order retained."
+}

@@ -1,0 +1,36 @@
+{
+  "feature": "AutoPearl",
+  "revision": 2,
+  "upstream": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "status": "static-passed-compile-and-focused-smoke-deferred-to-batch",
+  "validation": "build/auto-pearl-static-03/report.json",
+  "remaining": [
+    "Actual KillAura target dependency is not yet implemented; aura_target defaults to None",
+    "Official native+engine compilation and focused usability smoke",
+    "Actual game parity"
+  ],
+  "files": {
+    "native\\liquidbounce-behaviors\\src\\auto_pearl.rs": "8f87a827e6ad334711baccaec63d28fc8575b3b882bb9f95a61752265c32b59a",
+    "native\\liquidbounce-horizon\\engine\\src\\auto_pearl_runtime.rs": "ebd7249d6d08170770df7a26dfbb7ecd404bf45ad0a94b4a46a281395bb542fb",
+    "native\\liquidbounce-horizon\\engine\\src\\config\\auto_pearl.rs": "890613e53b1882e4d51c68937a7ddc3755f4029ba3a157e9c7789d2b09daa803",
+    "native\\liquidbounce-horizon\\auto-pearl-native.rs": "b9374966f3d3f1cf00c199184922fd4f38ec5cd5341ce2417b70149b62a37c54",
+    "native\\liquidbounce-horizon\\auto-pearl-ray.rs": "0edc5a101fcc34a849356f52b58e9bdcbfe738d6331c5d6425cd2977de8251d8",
+    "native\\liquidbounce-horizon\\auto-pearl-host.rs": "474dba7e2903067675409ccaebe68bd8db08e32f9a57e75218d67d6a953a3349",
+    "native\\liquidbounce-horizon\\auto-pearl-patch.py": "2587bdb8a6bc6462b8d9e535e1e084e6ba651ce30fdaf645ea685d7b2dd87aec",
+    "native\\liquidbounce-horizon\\integrate-auto-pearl.py": "e7a7acdc54682c321a96aeb080a0b268dee83551a5ca2527badba71bf414f639",
+    "native\\liquidbounce-horizon\\update-auto-pearl-locales.py": "1e3c46fe536cc5992133e502fe85d7c99471cd28ace768937908ca1d08163eba",
+    "native\\liquidbounce-horizon\\check-auto-pearl-static.py": "8755998ef3185dd8740f2f9216c0d6f69061927ffbca8331abbfbf596aaceeb8",
+    "native\\liquidbounce-horizon\\auto-pearl-smoke.rs": "c663f2f9056af9635a5d872e7488237e0a3ac0230fd1f1a2420e01729289b4c2",
+    "native\\liquidbounce-horizon\\auto-pearl-handoff.md": "7869aafa0579d0c3f23c9fb93c1ff989baa77ff5ca6c5e8bf377bf1e49a78d57"
+  },
+  "typecheckRepair": {
+    "source": "build/check-native-170-04.log",
+    "scope": [
+      "PlayerMotion dimensions eye height",
+      "NativeWorldEpoch get identifier in receipt and drain",
+      "String as_str for strider",
+      "AddEntity array to Vec3 conversion"
+    ],
+    "validation": "owned rustfmt parsing and patch Python AST passed; Rust execution deferred to root batch"
+  }
+}

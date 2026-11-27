@@ -1,0 +1,93 @@
+{
+  "feature": "BlinkManager global ESP",
+  "date": "2026-11-26",
+  "moduleCountDelta": 0,
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "horizonMixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_blink_esp"
+      ],
+      "helper_names": [
+        "client_blink_visual"
+      ]
+    },
+    "patchedFiles": 7,
+    "localeKeys": {
+      "zh_cn": 86,
+      "zh_tw": 86
+    },
+    "scope": "One focused usability smoke of production settings, behavior and runtime with declaration-only Host/shared manager providers; actual native player extraction generated from pinned source and checked for clone/skin/equipment/partial-zero/light semantics; single new radial WGSL validation, reused frozen shader styles without another GPU matrix. Native/engine official build and actual in-game parity remain root-owned."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/blink_esp.rs": "5062e6616318477278f9b02599bc1ba23c226a0ee89b360c5abffc309978e6c7",
+    "native/liquidbounce-horizon/engine/src/config/blink_esp.rs": "f85aa260a4a5df1fe7f6dfdcb43129350c33ddf760ef697237bef5bd3f8c2cb7",
+    "native/liquidbounce-horizon/engine/src/blink_esp_runtime.rs": "cf9b81329c4988025b2e225740ac932f407a16ae33a3bbe5a7911da34126154a",
+    "native/liquidbounce-horizon/blink-esp-host.rs": "5710e8c515fc2ccb18acd04c3123a377deb316e69d0f885558bc02399a7c633a",
+    "native/liquidbounce-horizon/blink-esp-game.py": "0cf56a479dde8bcfe7ce83037cbf2ff0484a1e0f52846c0155ac8e615cbd0542",
+    "native/liquidbounce-horizon/blink-esp-render.py": "4747caade88c1e68a8c734153c093de2419ff07b0e30b5a64c80feecd8a5e7a0",
+    "native/liquidbounce-horizon/blink-esp-patch.py": "f416add145ef12e928c3565d59a70dc8a30401711db479e5177914d33e8504ab",
+    "native/liquidbounce-horizon/integrate-blink-esp.py": "f8eed2d0510f4e7d2152cdad1e63ebc614ab2a35bfb01407c5df7f3a0052799d",
+    "native/liquidbounce-horizon/update-blink-esp-locales.py": "27f2970c3c511435dc5607962a1172779e17041805a9cd4757c1c84843e884f7",
+    "native/liquidbounce-horizon/blink-esp-smoke.rs": "d8c6fa1844db338d428ac66e63689d76a9997808df9bf2930b6e33f5f9c5807e",
+    "native/liquidbounce-horizon/test-blink-esp.py": "7643040a716920a70c33c7353fdbbfb3f07b7463eca4da34e607514667abcf5d",
+    "native/liquidbounce-horizon/blink-esp-integration.md": "92a141a0b490f513895a83d51ca3acf39d1b20e6b5891931a3e93b211ea5bdfd",
+    "native/liquidbounce-horizon/generate-blink-esp-freeze.py": "3623ddfaeed649fb133d495b9db11d01894bb0bc781e516b1fd02d70ac4c4952",
+    "native/liquidbounce-horizon/breadcrumbs-render.rs": "7a1c73481bb7a45b1f294f73bcd4c841ae30cc9712c5f2c1f6a2a6d29e189f0d",
+    "native/liquidbounce-horizon/breadcrumbs.wgsl": "05648ea5857f6c34368c9fb07c4c1c289909f7de3ae01e9187538f7c77d24271",
+    "build/blink-esp-smoke-01/report.json": "bf4e55c20ea7d7a1f1fc33d2f9eee3ebf83bbd8eec0cb7ac5aaa6e857da30354",
+    "build/blink-esp-smoke-01/test.log": "aca3776036f7747f45bf7523589b36da14e89a19072a53a24ad2f7c29b165489",
+    "build/blink-esp-smoke-01/Cargo.toml": "80d21e397bb694cded5b3eaaa1c741ab74bc9b284f6de97dae4c31a7e6ca5a1e",
+    "build/blink-esp-smoke-01/blink_native.rs": "8d0f34e67f88d4650bf4f8bece99bddee5e1f90e946c94303183554cc5d9ae43",
+    "build/blink-esp-smoke-01/blink_renderer.rs": "10d2b9ca13280b17c02a36f6e1a4b4ab075a3551eb1b390dcb315c4c19fffd35",
+    "build/blink-esp-smoke-01/config.rs": "3c2d324ab502019789f190343bcda662aed6b1d65c7c9549a94faa8a01dcfeed",
+    "build/blink-esp-smoke-01/lib.rs": "d0fb80c62021b729fe115b71f9d07f719e3b2c58cde4b089bba4b077f457af31",
+    "build/blink-esp-smoke-01/localization/display_zh_cn.json": "42d11b5eb837f5272e26586d021bf447f183fdc39509a4d6fc0582334aecb73a",
+    "build/blink-esp-smoke-01/localization/display_zh_tw.json": "80575aa83b192935fe53ca60d194d21ade69060a5dfeb53017b1720e84d25aa9",
+    "build/blink-esp-smoke-01/blink_esp.wgsl": "8de6c1c5bb57e623dabd6965b2409dbcf3aadb446c54a4d3e582f27ed8cbc272",
+    "build/blink-esp-smoke-01/patched/crates/horizon-client/src/game.rs": "bd794a6b366190dd306009f2038a8ae2c17691f6024b40b164c221aa2eb7c432",
+    "build/blink-esp-smoke-01/patched/crates/horizon-client/src/game/blink_esp.rs": "8d0f34e67f88d4650bf4f8bece99bddee5e1f90e946c94303183554cc5d9ae43",
+    "build/blink-esp-smoke-01/patched/crates/horizon-client/src/game/native_hooks.rs": "5598f65a5607fadd20562bf23d9e7b9670e2f26df2a4d611faaac850f79684bc",
+    "build/blink-esp-smoke-01/patched/crates/horizon-client-render/src/gfx.rs": "8534ef12ac40e220f2866cd31d43d3dcec6a7677b4a577f4dc9391f3260b95f1",
+    "build/blink-esp-smoke-01/patched/crates/horizon-client-render/src/gfx/blink_esp.rs": "10d2b9ca13280b17c02a36f6e1a4b4ab075a3551eb1b390dcb315c4c19fffd35",
+    "build/blink-esp-smoke-01/patched/crates/horizon-client-render/src/gfx/blink_line.rs": "10d2b9ca13280b17c02a36f6e1a4b4ab075a3551eb1b390dcb315c4c19fffd35",
+    "build/blink-esp-smoke-01/patched/crates/horizon-client-render/src/gfx/blink_esp.wgsl": "8de6c1c5bb57e623dabd6965b2409dbcf3aadb446c54a4d3e582f27ed8cbc272",
+    "build/blink-esp-smoke-02/report.json": "bf4e55c20ea7d7a1f1fc33d2f9eee3ebf83bbd8eec0cb7ac5aaa6e857da30354",
+    "build/blink-esp-smoke-02/test.log": "d8879dafdc6c5f492ede8ad80c249253afb31720b85180b42880a25639a30142",
+    "build/blink-esp-smoke-02/Cargo.toml": "80d21e397bb694cded5b3eaaa1c741ab74bc9b284f6de97dae4c31a7e6ca5a1e",
+    "build/blink-esp-smoke-02/blink_native.rs": "8d0f34e67f88d4650bf4f8bece99bddee5e1f90e946c94303183554cc5d9ae43",
+    "build/blink-esp-smoke-02/blink_renderer.rs": "d97dfc7b6d9db093e6fadec2bcef6de52bb72f55a26368889b7d50ae281839c9",
+    "build/blink-esp-smoke-02/config.rs": "3c2d324ab502019789f190343bcda662aed6b1d65c7c9549a94faa8a01dcfeed",
+    "build/blink-esp-smoke-02/lib.rs": "dcbc30d2658e9fdde7985913d1a6d9b9f87dbde64663df0fea1066e45d919798",
+    "build/blink-esp-smoke-02/localization/display_zh_cn.json": "42d11b5eb837f5272e26586d021bf447f183fdc39509a4d6fc0582334aecb73a",
+    "build/blink-esp-smoke-02/localization/display_zh_tw.json": "80575aa83b192935fe53ca60d194d21ade69060a5dfeb53017b1720e84d25aa9",
+    "build/blink-esp-smoke-02/blink_esp.wgsl": "887177f18d33c72db660c113616dd08bb7faf86162be9644a7bedee98c123361",
+    "build/blink-esp-smoke-02/patched/crates/horizon-client/src/game.rs": "bd794a6b366190dd306009f2038a8ae2c17691f6024b40b164c221aa2eb7c432",
+    "build/blink-esp-smoke-02/patched/crates/horizon-client/src/game/blink_esp.rs": "8d0f34e67f88d4650bf4f8bece99bddee5e1f90e946c94303183554cc5d9ae43",
+    "build/blink-esp-smoke-02/patched/crates/horizon-client/src/game/native_hooks.rs": "5598f65a5607fadd20562bf23d9e7b9670e2f26df2a4d611faaac850f79684bc",
+    "build/blink-esp-smoke-02/patched/crates/horizon-client-render/src/gfx.rs": "8534ef12ac40e220f2866cd31d43d3dcec6a7677b4a577f4dc9391f3260b95f1",
+    "build/blink-esp-smoke-02/patched/crates/horizon-client-render/src/gfx/blink_esp.rs": "d97dfc7b6d9db093e6fadec2bcef6de52bb72f55a26368889b7d50ae281839c9",
+    "build/blink-esp-smoke-02/patched/crates/horizon-client-render/src/gfx/blink_line.rs": "d97dfc7b6d9db093e6fadec2bcef6de52bb72f55a26368889b7d50ae281839c9",
+    "build/blink-esp-smoke-02/patched/crates/horizon-client-render/src/gfx/blink_esp.wgsl": "887177f18d33c72db660c113616dd08bb7faf86162be9644a7bedee98c123361",
+    "upstream/Horizon/crates/horizon-client/src/game/perspective.rs": "fbc3edf94869fd44071be00545e5a7ce2b42e35aaac173aa200697d523329f18",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/blink/BlinkManager.kt": "6574711b4cdbe434b5583b09e14e4196ecd9991c02f16833abd872d8417caa4f",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/blink/esp/BlinkEspMode.kt": "08a112c104c0d9cd933920ec0857e4793760786ca1000578e2a5cff740ac4850",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/render/WireframePlayer.kt": "9800ee9862f61b8221ebe297f7bc89d6c4b6f9e716b733befc93ed91e09a39d1",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/utils/render/RenderStateExtensions.kt": "515e0cac5abac684971719b497da6a5b3aba9d91c9e81f335d266053d5d6974f",
+    "upstream/LiquidBounce/src/main/resources/resources/liquidbounce/shaders/circle/gradient_circle.fsh": "0919ec2cfad353d04d90bddcc2619166becccfefacd298e4f86add76d99edb29",
+    "upstream/LiquidBounce/src/main/resources/resources/liquidbounce/shaders/circle/rounded_rect.fsh": "59b15a903bed52d73601d411274536d8a94339320510f8d554252539dc64aca4",
+    "native/liquidbounce-horizon/generate-blink-esp-freeze-02.py": "b1bc6a332fb90feb7a98a6c2dcef0f73fb22052a4d68d599f9e4dc2ef6d93ea7"
+  },
+  "supersedes": {
+    "file": "blink-esp-freeze.json",
+    "sha256": "ef74552bef905972d0f0de2dd7cb5e4217937ed75a77b9372eac13a6c3246e0c"
+  },
+  "correction": "Use the stable generic hand_in_world declaration anchor so the independent Blink renderers compose after HoleESP and future visual adapters. Official Check146-01 caught staging failure; no behavior or shader change and no smoke rerun."
+}

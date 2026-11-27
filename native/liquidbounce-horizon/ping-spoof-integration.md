@@ -1,0 +1,3 @@
+PingSpoof queues actual incoming KeepAlive and Ping packets at the final decision phase, only for a living client player. The actor replays due snapshots through the real packet replay path, preserving their connection generation and avoiding a second ordinary PacketEvent. Disabling flushes pending snapshots on the next client tick; disconnect/world changes discard them. Singleplayer reports the original localized message and disables the module. Delay is the original 500 ms with a 0–25000 ms UI range.
+
+The standalone targeted queue smoke checks the delay boundary, disabled flush and stale-session discard. Final native compilation and actual multiplayer ping timing remain separate checks. Shared BlinkManager coordination with modules still under development is pending.

@@ -1,0 +1,63 @@
+{
+  "feature": "KillAura FightBot independent Navigator",
+  "upstreamLiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "upstreamHorizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "minecraft": "26.3",
+  "status": "owned-patch-static-passed; awaiting full KillAura consumer and combined root batch",
+  "staticVerification": {
+    "command": "python native/liquidbounce-horizon/test-fightbot-navigation.py --static-only",
+    "result": "passed",
+    "nativeFilesComposedInMemory": 6,
+    "pythonAst": "passed",
+    "temporaryGeneratedRuntimeAndHostRustfmt": "passed",
+    "productionSharedStagingWrites": false,
+    "rustExecution": false
+  },
+  "rootBatch": {
+    "command": "python native/liquidbounce-horizon/test-fightbot-navigation.py --model-only",
+    "preparedTests": 5,
+    "executed": false
+  },
+  "productionAutoWalkRuntimeSha256": "6355cbf602363f2ba212165a69aff1f7d8e7ba81620e6bb4f5d333e0a4fe1794",
+  "ownedFiles": {
+    "native\\liquidbounce-horizon\\navigation-owners.rs": "7c200796b54d316415a56906452d3988365ab7b6d78cfdb679869cfbded0c9f7",
+    "native\\liquidbounce-horizon\\fightbot-navigation-state.rs": "5ead49affc1a02f3cde3dea0954fa35422aaf5cce18c54b5a6f23c07f74425f8",
+    "native\\liquidbounce-horizon\\fightbot-navigation-runtime.rs": "4e58bdf2a7b0f542913526caf5db269347e2a51c4b534a13c0dde52c0c0283b6",
+    "native\\liquidbounce-horizon\\fightbot-navigation-patch.py": "965b829e7ef28f459c800b196c4a63a676b902e977c937b4ad2e29afe793fa18",
+    "native\\liquidbounce-horizon\\fightbot-navigation-smoke.rs": "f67f6a3578003de9b959c57423daec674b780592b67bf5e4b17e308e141ffc25",
+    "native\\liquidbounce-horizon\\test-fightbot-navigation.py": "78a0f20e295885ba992cc55a2da61b5713259a84876c9be38cd7ce4937db3691",
+    "native\\liquidbounce-horizon\\fightbot-navigation-integration.md": "efea13fd30c098183429680644a817b4a6ed05fef18d2d40d651bab0f4ee8995",
+    "native\\liquidbounce-horizon\\kill-aura-fight-goal.rs": "48ee688a42ff52b7f852afeee9be7baf7fb5a53776f350e64b95f9226ddc0b3d",
+    "native\\liquidbounce-horizon\\kill-aura-fight-goal-smoke.rs": "d775ab661297e355d5774c567b48c6ef7f552674489ec615b458eb5e8a7f1e1d",
+    "native\\liquidbounce-horizon\\test-kill-aura-fight-goal.py": "403841a25b55fa52c1991f350dff66311ff6086b602f76cff12fd91f2113de85",
+    "native\\liquidbounce-horizon\\update-kill-aura-locales.py": "5bc55ec1d69fe7085780732a0d714acc1fdbfdb181613ef2553d4e59ec9e324f"
+  },
+  "sourceFiles": {
+    "upstream\\LiquidBounce\\src\\main\\kotlin\\net\\ccbluex\\liquidbounce\\features\\module\\modules\\combat\\killaura\\features\\KillAuraFightBot.kt": "de7b55a9b43c1c103ec3963cf81aaefc03cc1455818236d46117f4b7e882b2ce",
+    "upstream\\LiquidBounce\\src\\main\\kotlin\\net\\ccbluex\\liquidbounce\\utils\\navigation\\NavigationBaseValueGroup.kt": "a60dccbe13ac1e5ea0debbf89223fe816563946b58a37b44e618e93211370210",
+    "upstream\\LiquidBounce\\src\\main\\kotlin\\net\\ccbluex\\liquidbounce\\utils\\navigation\\Navigator.kt": "5a398e564154dc27ae1510d47c5ca183fbb3bbd20b565cc5c65ad88494271516"
+  },
+  "remaining": [
+    "KillAura owner serial generator integration after its actual goal adapter",
+    "Five prepared owner lifecycle tests in root combined batch",
+    "Official native and engine compilation with complete KillAura consumer",
+    "Actual in-game parity"
+  ],
+  "goalVerification": {
+    "command": "python native/liquidbounce-horizon/test-kill-aura-fight-goal.py --static-only",
+    "result": "passed",
+    "productionSharedStagingWrites": false,
+    "preparedFocusedTests": 6,
+    "rustExecution": false,
+    "batchCommand": "python native/liquidbounce-horizon/test-kill-aura-fight-goal.py --model-only",
+    "targetGroundQuery": "doesNotCollideBelow fixed -64; actual target id and bounding box with target collision context, equipment and powder-snow subject; no nested world scope"
+  },
+  "localeVerification": {
+    "status": "temporary-only passed",
+    "simplifiedDescriptions": 314,
+    "traditionalDescriptions": 314,
+    "explicitConfigPathsCovered": 69,
+    "idempotent": true,
+    "productionLocaleWrites": false
+  }
+}

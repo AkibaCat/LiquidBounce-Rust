@@ -1,0 +1,128 @@
+{
+  "package": "java_regex",
+  "version": "0.1.0",
+  "registry": "crates.io",
+  "registryVcsRevision": "ed518dc23dacbe1a88d7cb3f26f0cfe31cc91393",
+  "crateArchiveSha256": "1f3b3ff81a66205722b636dae12fc5cb2e77147569e8968f38a1d73b2b05fbe6",
+  "license": "MIT OR Apache-2.0; original notices retained. Local compatibility changes distributed with this GPL-3.0-or-later project.",
+  "compiledEntryPoint": "src/gui_api.rs",
+  "scope": "Narrow internal GUICloser Regex new/pattern/matches/contains_match API. No blanket equivalence claim from finite vectors.",
+  "jdkData": "jdk25 files are generated from observable JDK25 Character/Pattern behavior by JdkRegexFacts.java, not copied JDK implementation source.",
+  "jdkDataReport": {
+    "path": "build/gui-closer-jdk-data-02/report.json",
+    "sha256": "a61153ac78a2bcc7f2583f4481c718eba96ab7ff9a9173a6ee1bdd15c20addde"
+  },
+  "differentialReport": {
+    "path": "build/gui-closer-source-16/report.json",
+    "sha256": "12f2fc844b2087bd683b897c5a91341f8f261da658b8470f580d7d09f0dec91a",
+    "vectors": 45371
+  },
+  "files": {
+    "Cargo.toml": {
+      "sha256": "2cff4ad796b46055c52a27cf436aaf2c6f2be6705cfb9d481ee9f5d15b3c323f",
+      "origin": "locally changed registry",
+      "registrySha256": "bbba26ea336ba11eb9eb488a1fb1d4dd0cb42eaac79d72340d49dc7dc4a11a55"
+    },
+    "DIFFERENCES.md": {
+      "sha256": "74485e7155377e1ac63ba0754bc84a68b11dcc4a644064656baca40158a1d639",
+      "origin": "unchanged registry",
+      "registrySha256": "74485e7155377e1ac63ba0754bc84a68b11dcc4a644064656baca40158a1d639"
+    },
+    "FUZZING.md": {
+      "sha256": "93586871dda41c788dfec1d61d1cf1a5e68a38dc39fff61b4b3feeae720dbc5d",
+      "origin": "unchanged registry",
+      "registrySha256": "93586871dda41c788dfec1d61d1cf1a5e68a38dc39fff61b4b3feeae720dbc5d"
+    },
+    "jdk25/case.bin": {
+      "sha256": "01bad6e489f6bea23f854dfd7f5113e6a28950bb13e0c3259a6f7245555c211a",
+      "origin": "local addition"
+    },
+    "jdk25/characters.bin": {
+      "sha256": "d8ab88e9129c15e199903ea2b6f79e5efcfb98a6e2fe48064f4c1461666b079c",
+      "origin": "local addition"
+    },
+    "jdk25/manifest.rs": {
+      "sha256": "315d76c777e5abf52931e093fea152b61e4d8d6810c5107eb94d6950cc3057b5",
+      "origin": "local addition"
+    },
+    "jdk25/names-index.bin": {
+      "sha256": "b1a6036b7a5acd0406facde334c8c4b79962a68c90a08da6c310f0dabfa20b81",
+      "origin": "local addition"
+    },
+    "jdk25/names.bin": {
+      "sha256": "1faa3926cb7a377e0814a529de53e7f4c2c53fedf218e450b7e01d9e813edddb",
+      "origin": "local addition"
+    },
+    "jdk25/properties.bin": {
+      "sha256": "a5e3e1cbc3b69a09cdaa54f5315026a405871f589f377a47dfe4115f5710f9d1",
+      "origin": "local addition"
+    },
+    "LICENSE-APACHE": {
+      "sha256": "99da57a846a9a2a16ca0ef9814fe5049890e38966e9ff85aa91b4726117df83e",
+      "origin": "unchanged registry",
+      "registrySha256": "99da57a846a9a2a16ca0ef9814fe5049890e38966e9ff85aa91b4726117df83e"
+    },
+    "LICENSE-MIT": {
+      "sha256": "0c427c0ee10c81f62026ba8a73527ae52487d206792924b6aed96af1df29ebc8",
+      "origin": "unchanged registry",
+      "registrySha256": "0c427c0ee10c81f62026ba8a73527ae52487d206792924b6aed96af1df29ebc8"
+    },
+    "QUIRKS.md": {
+      "sha256": "d6acba7624f89a21d7d782ceff3d167cd54b59a4f8dddc4f5e83109884bc03ad",
+      "origin": "unchanged registry",
+      "registrySha256": "d6acba7624f89a21d7d782ceff3d167cd54b59a4f8dddc4f5e83109884bc03ad"
+    },
+    "README.GUI_CLOSER.md": {
+      "sha256": "5651c976e43865d993c90b3b49ee190013ec644ff4663051547f97251eb56a89",
+      "origin": "local addition"
+    },
+    "README.md": {
+      "sha256": "bc3f0006317bb178853fc9cd42caf8f10c5fea9fe70fc601980388019258e868",
+      "origin": "unchanged registry",
+      "registrySha256": "bc3f0006317bb178853fc9cd42caf8f10c5fea9fe70fc601980388019258e868"
+    },
+    "SPEC.md": {
+      "sha256": "f7e5bf3d47b24efd7714055724efd3392cce63a30f48c318d8650ecba9ab5dd1",
+      "origin": "unchanged registry",
+      "registrySha256": "f7e5bf3d47b24efd7714055724efd3392cce63a30f48c318d8650ecba9ab5dd1"
+    },
+    "src/engine.rs": {
+      "sha256": "f2537d938700da722216618452cbb22b8a8ae00256f00e22456da3c0a728ec77",
+      "origin": "locally changed registry",
+      "registrySha256": "1e94b75528c33aeeac51f61a2dbb4672327bab27925fee54b36242c7a7f220cd"
+    },
+    "src/gen.rs": {
+      "sha256": "c13719f3b505bc9f4a652a167e1c423e8c8a241b1d0a4e9ec3d33e929f05d8bd",
+      "origin": "unchanged registry",
+      "registrySha256": "c13719f3b505bc9f4a652a167e1c423e8c8a241b1d0a4e9ec3d33e929f05d8bd"
+    },
+    "src/gui_api.rs": {
+      "sha256": "d22a6257dd460c7ae1a1dffda2f2d84165da51083c0e193af6d049c00fc1ad3e",
+      "origin": "local addition"
+    },
+    "src/jdk_unicode.rs": {
+      "sha256": "75f756a82183312f3ec6b26806a436a62d9b110960ddf9959e7d802b34b61b42",
+      "origin": "local addition"
+    },
+    "src/lib.rs": {
+      "sha256": "7b18271087e2cec3a269646f8f92b89a22aaf41ddca613c0bdec33e01b95af5d",
+      "origin": "unchanged registry",
+      "registrySha256": "7b18271087e2cec3a269646f8f92b89a22aaf41ddca613c0bdec33e01b95af5d"
+    },
+    "src/parser.rs": {
+      "sha256": "766c8454a7713d52cbb241cb275752b09485e3a990a29ac32e6ada4cc581ed62",
+      "origin": "locally changed registry",
+      "registrySha256": "b26992cabae4f83ed17f9e7b77ed8bd20edbfa60de0d604412ae2aa96f0fa216"
+    },
+    "src/types.rs": {
+      "sha256": "1af5aebe7bdea48e657ca459973185ae34047057c0b8cd4a8027699292e721cc",
+      "origin": "locally changed registry",
+      "registrySha256": "11d6354d2ec9538123953130f84be4a829b9a6158e9104acb1ed21a1a6e5279b"
+    },
+    "src/unicode.rs": {
+      "sha256": "5234b59b0b89bb1edd2bd7d75b4996f3c9527ce9bf3ade64d547046f7e135926",
+      "origin": "unchanged registry",
+      "registrySha256": "5234b59b0b89bb1edd2bd7d75b4996f3c9527ce9bf3ade64d547046f7e135926"
+    }
+  }
+}

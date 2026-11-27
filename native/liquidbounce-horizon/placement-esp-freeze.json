@@ -1,0 +1,44 @@
+{
+  "modules": [
+    "ProphuntESP",
+    "VoidESP"
+  ],
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_placement_esp"
+      ],
+      "helper_names": []
+    },
+    "patchedFiles": 6,
+    "scope": "Production PlacementRenderer/BlockCuller, ProphuntESP, VoidESP, shared native search, both configs, runtime and native Game bridge compiled with actual WorldPrimitives API. Game/Host/registry/level providers are declarations. One focused Cargo smoke; native patch composed six files in memory; Chinese updaters on copies. Aggregate real native/support/render validation remains root-owned."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/placement_renderer.rs": "a98a6285144aeef047cea493a832bfdf0a7e0b87f672d35a7bcdf99a983e4be0",
+    "native/liquidbounce-behaviors/src/prophunt_esp.rs": "f4cedb69c36932ceaacddeb0eaaec529a125d8ccbf9ab0b3c2d162de36cab6b3",
+    "native/liquidbounce-behaviors/src/void_esp.rs": "32c252bbcabc607ab7bf993272fea5d87157aae13a25aa062af094928acb7b8c",
+    "native/liquidbounce-behaviors/src/void_search.rs": "5389842f33595334f3e1839a8d4374fcc4f6a8f3e79f9b7cb18dad67a3894915",
+    "native/liquidbounce-horizon/engine/src/config/placement_esp.rs": "1d389bd469d755b7378e4809a2ae273755f271507a4b9e564a630d4456bdbf64",
+    "native/liquidbounce-horizon/engine/src/placement_esp_runtime.rs": "b12adf74752c817c0df5a404cdc0ba7a05f5a5ef2a76bc7579f00df4b2abd2eb",
+    "native/liquidbounce-horizon/placement-esp-host.rs": "0ec85f51e05dd192bbd72aaf34e786e3e994a4edde2f7a68924864c994d1b5be",
+    "native/liquidbounce-horizon/placement-esp-game.rs": "fe2e6508a9d25d3a10911571c8f2e82626e7532f8312971428126b2899e6e83b",
+    "native/liquidbounce-horizon/placement-esp-patch.py": "c39c88d9b49d64cff74c5434cb069bea4b35aecf2ffcd0b56fce4cd36218c6b2",
+    "native/liquidbounce-horizon/placement-esp-native-fixture.rs": "de03501ea91a41cf7a85361a5a37e74690e7ce51a3ad13f8157ad19e6f6d5739",
+    "native/liquidbounce-horizon/placement-esp-smoke.rs": "341b31740215a2d13cb2495a733622c47c58d0def9d7dca50bab2dd8f50024ce",
+    "native/liquidbounce-horizon/test-placement-esp.py": "7a713c2e177615fa35923a31a806fa9791d43991a104b106b05b01784e1eb6d8",
+    "native/liquidbounce-horizon/integrate-placement-esp.py": "24661228a9756d6e0a7309a16b12061079f024b18928a22bbf5240d9eafb7abd",
+    "native/liquidbounce-horizon/update-placement-esp-locales.py": "24bd311d2725ab873416be7375d10dd2f0e23a94abe9ba3f95ff14d2b065ce83",
+    "native/liquidbounce-horizon/placement-esp-integration.md": "3c3d1fe9a3cbff57991fe111d4497f5db07b93860b0d4f0fb35ad68024e374dd",
+    "native/liquidbounce-horizon/generate-placement-esp-freeze.py": "1ee1630347f271ab57421b41a9d6d89816715cc8dc5c7eaa40de67f4eff6bec5",
+    "build/placement-esp-smoke-01/report.json": "5858dbe91790ddcc73ee5b7112fd5ca6506d5183187a041c824c14bb27a80309",
+    "build/placement-esp-smoke-01/test.log": "645b77fc3caba38d2caabb921bcb4c9ff037c773036ff1d3e80a640f6db7332f"
+  }
+}

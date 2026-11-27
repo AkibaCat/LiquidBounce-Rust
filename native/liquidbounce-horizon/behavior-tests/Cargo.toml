@@ -1,0 +1,17 @@
+[package]
+name = "liquidbounce-horizon-behavior-tests"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "../engine/src/behaviors.rs"
+
+[dependencies]
+liquidbounce-core = { path = "../../liquidbounce-core" }
+liquidbounce-behaviors = { path = "../../liquidbounce-behaviors" }
+
+[dev-dependencies]
+horizon-core = { path = "../../../upstream/Horizon/crates/horizon-core" }
+glam = "0.30"
+

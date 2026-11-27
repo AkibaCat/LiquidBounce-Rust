@@ -1,0 +1,38 @@
+{
+  "module": "no_clip",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [],
+      "helper_names": [
+        "client_no_clip_state",
+        "client_no_clip_flags",
+        "client_no_clip_velocity"
+      ]
+    },
+    "scope": "Exact owned behavior/config files with shared Tree/parser bodies; short behavior smoke; owned patch applied to current staged actual sources in memory; locale updater on copies. Runtime/native full Game compilation remains final aggregate validation."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/no_clip.rs": "98f7a3d9781d510fe56a2a3088931577f79eb49afa81d1d939b897017050e4f7",
+    "native/liquidbounce-horizon/engine/src/config/no_clip.rs": "6ba4f390c7d5ebd5a55e62246ea8e00c9471db61c2b75ef05755e9c76e496da6",
+    "native/liquidbounce-horizon/engine/src/no_clip_runtime.rs": "59c3968791416657b4a5ea7c3cd6cc7983083c3aa08e52e81c1f352dd69b622f",
+    "native/liquidbounce-horizon/no-clip-host.rs": "20195817cd288a6fdd97a472d1489f803b3bc739024c6a3f1e69b1eeefa0f7d5",
+    "native/liquidbounce-horizon/no-clip-patch.py": "230697aca2bef78d64c02f81053e957b7d994fce444b4c80bd5de054ed52990a",
+    "native/liquidbounce-horizon/no-clip-smoke.rs": "f4196d78cfe2330ae5d4650131d1572b18f0071bcc5544bd0bba3cc7d1b4054a",
+    "native/liquidbounce-horizon/test-sight-potion-clip.py": "2cc075fd5b70365b2c786c64fefe97e19ea8fc6c643ff6655ba404146007ea39",
+    "native/liquidbounce-horizon/update-sight-potion-clip-locales.py": "7003dc3e8d754fcb1f2658980b4841b66baef38c14dd1d6f162a8e5975114b1c",
+    "native/liquidbounce-horizon/sight-potion-clip-integration.md": "5000461302a3d95b9c8bfc301c1fe0865bf09f9acd0c5f2a47e685c96d005d3a",
+    "native/liquidbounce-horizon/engine/src/no_clip_packets.rs": "e532c33cd8538f4f419c3e4991a270c3243dbd1e48ba90357845eb34ce7a95a1",
+    "native/liquidbounce-horizon/no-clip-packets-integration.md": "42e79f3c0b6fcbc9388c5dcdfc19a3cc73b99e6ebea98ca711e416427a8e0e84",
+    "build/no-clip-smoke-02/report.json": "cb68300be02c3cd592e6b088fecc6fbf91f394851a888df6dc1ed50e2a9d7c2a",
+    "build/no-clip-smoke-02/test.log": "24769be28b3b154b3be36551acd50784e6711b3054c32add4a9cdc7e23c907d2"
+  },
+  "revision": 2
+}

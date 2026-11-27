@@ -1,0 +1,39 @@
+{
+  "module": "NewChunks",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_new_chunks"
+      ],
+      "helper_names": []
+    },
+    "patchedFiles": 4,
+    "scope": "Production NewChunks behavior/config/runtime/native Game bridge and actual WorldPrimitives API compiled. Protocol field declarations checked against pinned source; registry/fluid/Game/Host providers are declarations. One focused Cargo smoke, native patch composed in memory, copied Chinese dictionaries. Aggregate native and visual validation remain root-owned."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/new_chunks.rs": "44bd5a017dea29249eb0e9b5e3c7be48bed89bfc46c57f4997b89608709b2401",
+    "native/liquidbounce-horizon/engine/src/config/new_chunks.rs": "85e9eafe606a5217845d608017cbd8f58d2a5f43a160426ebd17d87491bc116b",
+    "native/liquidbounce-horizon/engine/src/new_chunks_runtime.rs": "69549464c64b64cd2e4899d7f4d2d4661b7a2752228ad33ffec9942817842396",
+    "native/liquidbounce-horizon/new-chunks-host.rs": "22c199ef546fb7b4e32f7805d4f8e361631dee77e4710902bfb667694058320b",
+    "native/liquidbounce-horizon/new-chunks-game.rs": "a89a624e825d1c09d92b28673c384d1f3d191b1365fae73b1fd0ba7c5fa1aee8",
+    "native/liquidbounce-horizon/new-chunks-patch.py": "3f8bf33c35ac44cd4caefe2b17be06c5bf08884bea73deb183928b49f61ae944",
+    "native/liquidbounce-horizon/new-chunks-smoke.rs": "bb197492ab0487ff15cb86a5f09842215c71735721122519d3b2af553f43e897",
+    "native/liquidbounce-horizon/new-chunks-native-fixture.rs": "3ae51a4168e9e53f73fdf12444302c25b6d29494144498afa95e60a6743a6852",
+    "native/liquidbounce-horizon/test-new-chunks.py": "0ec2d42c0eb3f464b83ce80830ebdbc900c3a03abfdb13add8dc2d2aff0f3563",
+    "native/liquidbounce-horizon/integrate-new-chunks.py": "13aeedf81678b3320b0c0e8b6e67c72f39c6aee5b934566cbc224bace6cce632",
+    "native/liquidbounce-horizon/update-new-chunks-locales.py": "88cb9fa2de43290e47c32e76a8cf9fcd84ae84966d898313fdcac01c998497e6",
+    "native/liquidbounce-horizon/new-chunks-integration.md": "18d520462a1efd60179b594deec91f16490bfa54d4dbef99396390afa38438b1",
+    "native/liquidbounce-horizon/generate-new-chunks-freeze.py": "3aa9e77040e582d3abb2c5f2cc017722bc7a9fc7c69333793723952d91741f64",
+    "build/new-chunks-smoke-01/report.json": "4d4b0cdba46177a6ee7a79f876d4bcb71f62b496139614ecff67765c48f61d7c",
+    "build/new-chunks-smoke-02/report.json": "60137a7f8c2751e77c94824bbc4e7edcad9dd768f78dae9f32a0fe29a0ee87a1",
+    "build/new-chunks-smoke-02/test.log": "745ccddbb0b13da41259cd91b11897bd78edc985bb26cfa3a6601bc7b0d50402"
+  }
+}

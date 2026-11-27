@@ -1,0 +1,12 @@
+[
+  {
+    "source": "upstream/LiquidBounce/src/main/resources/resources/liquidbounce/misc/triangle1.png",
+    "bytes": 6658,
+    "sha256": "486115158668ff44fbca3b4cb09c5dc38502c70568a81c5e1902bc87750f6722"
+  },
+  {
+    "source": "upstream/LiquidBounce/src/main/resources/resources/liquidbounce/misc/triangle2.png",
+    "bytes": 84606,
+    "sha256": "a2074507cad32027bb0301e7240912953b732cc8bcc0205d38fd00b00da01138"
+  }
+]

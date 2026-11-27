@@ -1,0 +1,56 @@
+{
+  "module": "ItemTags",
+  "sourceCommits": {
+    "LiquidBounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "Horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "status": "static-passed-focused-prepared-awaiting-root-batch",
+  "compiled": false,
+  "static": {
+    "transactionalSharedFiles": 7,
+    "completeRustSourcesParsed": 18,
+    "command": "python native/liquidbounce-horizon/test-item-tags.py --native",
+    "actualNativeHookDefinition": "game/native_hooks.rs::Game::native_client_item_tags",
+    "nativeHookCount": 1,
+    "modApiHelpers": [],
+    "sharedItemStackListQueue": true,
+    "chestStealerRendererConnected": true,
+    "chestStealerOriginalRearrange": false,
+    "locales": [
+      "zh_cn",
+      "zh_tw"
+    ],
+    "descriptionsPerLocale": 22,
+    "localeUpdaterIdempotent": true,
+    "sharedOrStagingWrites": false
+  },
+  "focusedTestsPrepared": {
+    "path": "build/item-tags-focused-01",
+    "actualBehaviorLayout": 3,
+    "actualConfigWithSharedParser": 2,
+    "composedNagaShader": 1,
+    "executed": false
+  },
+  "limits": [
+    "No Rust/Kotlin compiler, Cargo, Clippy, native game, GPU or full-suite test was run by this subtask.",
+    "Static composition and syntax parsing do not establish actual-game parity.",
+    "Original item reference hash-map order is process-specific for identical count/description sort ties; this implementation uses stable input order.",
+    "BedPlates producer is outside this handoff; shared queue has a custom item renderer interface ready for it."
+  ],
+  "ownedSha256": {
+    "native/liquidbounce-behaviors/src/item_tags.rs": "9d17fd795b3e2b5ab18ad0dad76ef3282c20b4d08926b22077d6506c980bbb36",
+    "native/liquidbounce-behaviors/src/item_tags_layout.rs": "3cb5aa0712eb0b60c3515c44382a6f17c9fbd781351633054bb051e1a3e60082",
+    "native/liquidbounce-horizon/engine/src/item_tags_runtime.rs": "28f4273f7dd7218e7a67f6576058bc2683095ee7f4ce3e63fd1e84be08d92bd2",
+    "native/liquidbounce-horizon/engine/src/config/item_tags.rs": "0ee41768f8e8a451e9e878a84cbb68d2ff595394b5a857c2e5ccb8350b02d68c",
+    "native/liquidbounce-horizon/item-tags-game.rs": "8df242880d2642cfb6e6d3325979b89696575def714f178bcdfbc45fc11bfc38",
+    "native/liquidbounce-horizon/item-stack-list-game.rs": "c677e672235495aa97abd869e9d20fa9dc770375eb757bcef2b42c4776789bf6",
+    "native/liquidbounce-horizon/item-tags-hud.rs": "250f44dc29c40b5bbebffccafa8d98f2726afb9b47f4ff88e162f394ba7bbe2c",
+    "native/liquidbounce-horizon/item-tags-shader.wgsl": "61049ca8ad25b89e8d9302c4ee65183298e84314ee1b302e8ef5ca56c6a4317a",
+    "native/liquidbounce-horizon/item-tags-patch.py": "a20882b250dc77eb97a095f9ae4ea8279ed8f56f2ef1f3e73540eb779e7f1915",
+    "native/liquidbounce-horizon/integrate-item-tags.py": "39e9d43b02b512e9109378c3aa889337a8c9e2248d976098f543f1f1bcea979e",
+    "native/liquidbounce-horizon/update-item-tags-locales.py": "86ad29e4f8ed52362b7bffe0ea28b7638baca4802b889af4e0bfe0a972287c62",
+    "native/liquidbounce-horizon/test-item-tags.py": "5707d23dce9834218d584c01f813d10ee36d55a70c6c0cf7658610ad469788fe",
+    "native/liquidbounce-horizon/test-item-tags-focused.py": "5e1dc3e11414fe538d6b8396d3c45a6599cb37f0460eb16992292a1a61a97253",
+    "native/liquidbounce-horizon/item-tags-integration.md": "773a0b660fe220292190ef2354a894741a56f1532507d192b0594098533eff37"
+  }
+}

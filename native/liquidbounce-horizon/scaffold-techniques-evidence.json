@@ -1,0 +1,32 @@
+{
+  "compiled": false,
+  "rustExecuted": false,
+  "completeNativeRustSourcesParsed": 9,
+  "preparedSmokeSourcesParsed": 2,
+  "sharedOrStagingWrites": false,
+  "checks": [
+    "eight frozen face factories and geometry domains",
+    "actual predicted-pose scaled eye height",
+    "actual RotationManager server rotation input and movement keys",
+    "Freeze FULL before Down offsets",
+    "line/position outline priority and source sandstone fallback",
+    "inclusive Expand loop and Float truncation",
+    "lazy target-height mutation and tower/down/ceiling precedence",
+    "Telly Reverse ties-even rounding and Reset",
+    "RequiresSight source fallthrough",
+    "actual-eye max-range world verification",
+    "Down/Expand planned result fallback with inside=false",
+    "real clipped inside preserved",
+    "Java Math rotation with widened float degree constant"
+  ],
+  "sha256": {
+    "native/liquidbounce-behaviors/src/scaffold_aim.rs": "e5e85732178a7212e0e2f98f34161aa99c24718e22e64ba59de8613a7a943821",
+    "native/liquidbounce-behaviors/src/scaffold_techniques.rs": "ba5a70a6b31da25a36b1e20626663c9b05581967a196b8da7e0dc01e799c84da",
+    "native/liquidbounce-behaviors/src/scaffold_lifecycle.rs": "9c1c345903e346dc2abe8be8f66e4c8ee4e172d765e6e45466858b112c73c30e",
+    "native/liquidbounce-horizon/scaffold-techniques-native.rs": "a114f0f7e5eca6b4f1f9816822f20d793b735da2d01f398e45d7c059bb991621",
+    "native/liquidbounce-horizon/scaffold-techniques-host.rs": "e13ad1ba39ab5bb752193b612d6c25189ce8afab7a1d305aa1ef90514d0c4ef0",
+    "native/liquidbounce-horizon/scaffold-techniques-patch.py": "dc09512fefd91f627d70a37f3b4c35442f7b04dd2ce8e246118515411836c045",
+    "native/liquidbounce-horizon/scaffold-aim-smoke.rs": "936971d81fb1178813c277b920d41c0c872a41a4726d455a12039c423ce79acf",
+    "native/liquidbounce-horizon/scaffold-techniques-smoke.rs": "e3afda0202fdd4c9de36563ca111b78ee7b1971bb6748a18d7b2d0d87af14979"
+  }
+}

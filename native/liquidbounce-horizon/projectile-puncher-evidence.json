@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-26",
+  "module": "ProjectilePuncher",
+  "source_commit": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "target_commit": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "focused_smoke": {
+    "status": "passed",
+    "command": "python native/liquidbounce-horizon/test-projectile-puncher.py",
+    "model_tests": 7,
+    "native_files_in_memory": 7,
+    "shared_steps": 31,
+    "shared_files": 10,
+    "own_descriptions": 43,
+    "shared_rotation_descriptions": "copied_and_checked"
+  },
+  "official_compile": "not_run_by_owner",
+  "differential": "not_run",
+  "runtime_limits": [
+    "No initialized native DeepLearningEngine: source unsupported-AI Interpolation fallback, settings retained",
+    "Authoritative resident jab supports Horizon built-in spears; custom non-spear piercing_weapon damage service unavailable",
+    "JVM/JOML floating-point and live native differential not run"
+  ],
+  "sha256": {
+    "native/liquidbounce-behaviors/src/combat_rotations.rs": "4a4c98622eac9b42552aa2ac21e61f7081e33ed1ad24e64afcb66af5d36369ee",
+    "native/liquidbounce-behaviors/src/projectile_puncher.rs": "4e2253cee609caf3e15361644d00024489d6541d9c4eb132ccee5a4df17850b9",
+    "native/liquidbounce-horizon/engine/src/projectile_puncher_runtime.rs": "a9420dbc323398aab738ba92df405f0d49c5115ea7b84a02fc984ff018974fb2",
+    "native/liquidbounce-horizon/engine/src/config/combat_rotations.rs": "ccefc3e60b23ba215c6e026dd91888e4c04c34d42d82946065e8441121f28e09",
+    "native/liquidbounce-horizon/engine/src/config/projectile_puncher.rs": "095c983cc0abeca926d9dd993c0cfd1c839ad68e34c25d36daf74982e9129af4",
+    "native/liquidbounce-horizon/projectile-puncher-native.rs": "53e1e83b148f96a48ac0cb1c454ccc2f8293d303bfa785db2af82836d6d0bfe8",
+    "native/liquidbounce-horizon/projectile-puncher-host.rs": "a1dd117d45b780c985a59dfdf01ea16fd9bfab3764e44231f3ad7b2dadf76ad8",
+    "native/liquidbounce-horizon/projectile-puncher-piercing.rs": "d5375c21b1d328aa7355147756e87df312362459e64b034a42126bba071cd2ad",
+    "native/liquidbounce-horizon/projectile-puncher-patch.py": "d38e20472f94c31141c301ca8db00dd65e980f9f4d80681c40061ecb50a797d2",
+    "native/liquidbounce-horizon/integrate-projectile-puncher.py": "6d9d44bff099b7644dc0a62e07908b706d208c4d8714146b034336eacf266bdf",
+    "scripts/update-projectile-puncher-localization.py": "3222be47b865930aff8c8313260974c19217d69f715659f65de4f554c1a86c4a",
+    "native/liquidbounce-horizon/projectile-puncher-smoke.rs": "d398ac1d3307d7654b925060c6453566e3381e88f05a75b16057465d2a3f6152",
+    "native/liquidbounce-horizon/test-projectile-puncher.py": "35ea0077e65d0602bdd101d36552e428f09239e3c802475ccb86b550504cd10a",
+    "native/liquidbounce-horizon/projectile-puncher-integration.md": "3cca4e298de00d708263537f6e20028fa8aa61453b3433eb8966e4ba0a54f9c6"
+  }
+}

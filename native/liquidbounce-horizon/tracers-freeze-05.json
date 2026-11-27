@@ -1,0 +1,69 @@
+{
+  "module": "Tracers",
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_tracers"
+      ],
+      "helper_names": []
+    },
+    "patchedFiles": 6,
+    "scope": "Production pure behavior, actual engine runtime/config/target decoder and independent renderer compiled. Shared actual Tree/parsers extracted; declaration-only actor/Host providers. One focused Cargo smoke for colors, spline, tick target cache, CombineMobs, config roundtrip and width. Native patch composed in memory, locales copied. Native Game compilation and actual game/GPU visual comparison remain aggregate; frozen Breadcrumbs shader GPU evidence is reused without claiming Tracers visual parity."
+  },
+  "finalNativeComposition": {
+    "passed": true,
+    "files": {
+      "crates/horizon-client/src/game/tracers.rs": "4312383b9a9be52b737144fe1e92bd1c8f63663195c1157bdc33b1c6a361a60f",
+      "crates/horizon-client-render/src/gfx/tracers.rs": "0611d59b7a9dcfc3a7234320c2504a2946e53a198839f76f4aa8b38c072e722a",
+      "crates/horizon-client/src/game.rs": "b0c6016d9a07607b1540f9e3a0cc221b1393a8def6b37d00eb10f0be6e38ae42",
+      "crates/horizon-client/src/game/native_hooks.rs": "6911b5c58b3a2e22c15b80a7171b4a90912afa5afd07e4caf1d724ddef0ed386",
+      "crates/horizon-client/src/game/world_primitives.rs": "a3e252cde2a792b21cd4064f55ab8cb3c27f3079ea395070d83ba39069332501",
+      "crates/horizon-client-render/src/gfx.rs": "77a9e135b7398e3d638774f4d7d6497a4a6ccc8dbb825cc0b8ba2f0fe75a73fa"
+    },
+    "metadata": {
+      "hook_names": [
+        "client_tracers"
+      ],
+      "helper_names": []
+    },
+    "scope": "Final native patch composition and exact one-time anchors only; no native build or game visual claims."
+  },
+  "separateAuthorizedTestFix": "targeting.rs TargetInfo initializer adds tag_color: None; production unchanged, cumulative testing deferred",
+  "files": {
+    "native/liquidbounce-behaviors/src/tracers.rs": "3b2ed05c7060b102976323db13299bc8991b71d1ff1d7f016781976e7ee7ea6a",
+    "native/liquidbounce-behaviors/src/tracers_curve.rs": "35cad6c46bedfbfad445958f410d459091c1400273e21f052b2d4702605a7cd8",
+    "native/liquidbounce-horizon/engine/src/config/tracers.rs": "9f37ae36d929ddc95a99a8be40e3b8fb3794e48c9fd74c354c608955977e1043",
+    "native/liquidbounce-horizon/engine/src/tracers_runtime.rs": "0a880daa80dfa4d90ed23f14f094a6c663534ea63b9b3282e3d2aada71ee042c",
+    "native/liquidbounce-horizon/tracers-game.rs": "55c9cf18c5cdcc1a53208812becb40507b8a5ac2d75df0c23f84556c58d938b4",
+    "native/liquidbounce-horizon/tracers-host.rs": "a98c21c0d3ee95ef97a065b93bc748c1074884e4ef3a5ea77f212bff03aa636b",
+    "native/liquidbounce-horizon/tracers-render.py": "eca0eb83e358141680d4c1b87769dfb9b0dbe023a1fe860bf14dd90aa8d31a6d",
+    "native/liquidbounce-horizon/tracers-patch.py": "39ca2328d77a36c9ab8f9e3f2de53221075b5cd51a9c70d7b584102d6a591f72",
+    "native/liquidbounce-horizon/tracers-smoke.rs": "a21d6cfae7feb1f80c373d48122def073c9a45efe3f356d9f08745e2dddf1ee3",
+    "native/liquidbounce-horizon/test-tracers.py": "6618a344981e96cb1d424cff9b549cc258ca645d4f04a141be0ee14c5d16fd80",
+    "native/liquidbounce-horizon/integrate-tracers.py": "0eaaa179c048827894f743dcae7c085a853aae9cc5717a887008db7a6e1d5729",
+    "native/liquidbounce-horizon/update-tracers-locales.py": "f155038296c19d99f81dd798a14909c88f369de11a6bc8cba4759084b0526cfa",
+    "native/liquidbounce-horizon/tracers-integration.md": "faadca5b747daec4aa5c7822a6562c6cb3982a1f548f5e9b4aa8b4eef6933b8b",
+    "native/liquidbounce-horizon/generate-tracers-freeze.py": "9fdeab7f286eba7b80ead3f7274c7c7634dc739d29d3c7cdaaf3e6c277fbcf23",
+    "build/tracers-smoke-02/report.json": "39c91c3d23b9e2048fd896845c1c227c63d78aac1bade456941f3e768e65167c",
+    "build/tracers-smoke-02/test.log": "0f1354db681145674948d257fea743bb9f3fc6a86a8b1bd505845a3c6f4f2e78",
+    "build/tracers-native-01/report.json": "d4a0b3bc1e5b4a33a86f06d2bdbb44b41e6fe03c127387b9ae4a082d807b4c12",
+    "native/liquidbounce-horizon/tracers-revision-02.md": "380da84db29141483f094eb435349e84cfbc609dfc863fb92c34f331cf45291d",
+    "native/liquidbounce-horizon/generate-tracers-freeze-02.py": "7d732d0f3f3a4d1af9278bccecbf5adbb6f20b3468528dd7c2b7e0b44b292fb9",
+    "native/liquidbounce-horizon/tracers-revision-03.md": "e310872fe24b0a28af1b700b589e58be94228349c368c24aff2d73ad5e6101f8",
+    "native/liquidbounce-horizon/generate-tracers-freeze-03.py": "26d5e8a215947a329e960537e390c040c24344752f70428e7111acaf1132dd7f",
+    "native/liquidbounce-horizon/tracers-revision-04.md": "4ccdbc79270a49432fd82c7e6625c9b333dcb49ab28d0c8ef4519cfb57c83fd5",
+    "native/liquidbounce-horizon/generate-tracers-freeze-04.py": "397a9147c2356ddff5e0131d4e8e5ca9086a01bc7db90b0a24a5a65b9deef355",
+    "native/liquidbounce-horizon/tracers-revision-05.md": "a5b1e9e5b39cd0aa6f8e15d8f4826ffb5885ad34df0747f71a4458ad589678c0",
+    "native/liquidbounce-horizon/generate-tracers-freeze-05.py": "cbd789bb9e1f3bc4a2017e302398d547a67baf3cc849b68e43968adacad87f88"
+  },
+  "revision": 5,
+  "revisionNote": "Align future focused fixture with actual SettingsPatch declaration; production remains revision04; no repeated smoke."
+}

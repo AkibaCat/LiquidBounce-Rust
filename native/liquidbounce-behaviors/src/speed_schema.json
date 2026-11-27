@@ -1,0 +1,1565 @@
+[
+  {
+    "name": "Mode",
+    "kind": "CHOICE",
+    "default": "LegitHop",
+    "modes": [
+      {
+        "name": "LegitHop",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "Custom",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "HorizontalModification",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "HorizontalAcceleration",
+                "kind": "FLOAT",
+                "default": 0,
+                "range": {
+                  "from": -0.1,
+                  "to": 0.2
+                }
+              },
+              {
+                "name": "HorizontalJumpOff",
+                "kind": "FLOAT",
+                "default": 0,
+                "range": {
+                  "from": -0.5,
+                  "to": 1
+                }
+              },
+              {
+                "name": "TicksToBoostOff",
+                "kind": "INT",
+                "default": 0,
+                "range": {
+                  "from": 0,
+                  "to": 20
+                }
+              }
+            ]
+          },
+          {
+            "name": "VerticalModification",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "JumpHeight",
+                "kind": "FLOAT",
+                "default": 0.42,
+                "range": {
+                  "from": 0,
+                  "to": 3
+                }
+              },
+              {
+                "name": "Pulldown",
+                "kind": "FLOAT",
+                "default": 0,
+                "range": {
+                  "from": 0,
+                  "to": 1
+                }
+              },
+              {
+                "name": "PullDownDuringFall",
+                "kind": "FLOAT",
+                "default": 0,
+                "range": {
+                  "from": 0,
+                  "to": 1
+                }
+              }
+            ]
+          },
+          {
+            "name": "TimerSpeed",
+            "kind": "FLOAT",
+            "default": 1,
+            "range": {
+              "from": 0.1,
+              "to": 10
+            }
+          },
+          {
+            "name": "Strafe",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "Strength",
+                "kind": "FLOAT",
+                "default": 1,
+                "range": {
+                  "from": 0.1,
+                  "to": 1
+                }
+              },
+              {
+                "name": "CustomSpeed",
+                "kind": "BOOLEAN",
+                "default": false
+              },
+              {
+                "name": "Speed",
+                "kind": "FLOAT",
+                "default": 1,
+                "range": {
+                  "from": 0.1,
+                  "to": 10
+                }
+              },
+              {
+                "name": "VelocityTimeout",
+                "kind": "INT",
+                "default": 0,
+                "range": {
+                  "from": 0,
+                  "to": 20
+                }
+              },
+              {
+                "name": "StrafeKnock",
+                "kind": "BOOLEAN",
+                "default": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "YPort",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Speed",
+            "kind": "FLOAT",
+            "default": 0.4,
+            "range": {
+              "from": 0.1,
+              "to": 1
+            }
+          }
+        ]
+      },
+      {
+        "name": "PiercingAttack",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "HoldTime",
+            "kind": "INT_RANGE",
+            "default": [
+              1,
+              1
+            ],
+            "range": {
+              "from": 1,
+              "to": 20
+            }
+          },
+          {
+            "name": "OnGround",
+            "kind": "BOOLEAN",
+            "default": true
+          },
+          {
+            "name": "IgnoreHunger",
+            "kind": "BOOLEAN",
+            "default": false
+          },
+          {
+            "name": "WaitForCooldown",
+            "kind": "BOOLEAN",
+            "default": true
+          },
+          {
+            "name": "MinimumDurability",
+            "kind": "INT",
+            "default": 1,
+            "range": {
+              "from": 0,
+              "to": 20
+            }
+          }
+        ]
+      },
+      {
+        "name": "Verus-b3882",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "HypixelBHop",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "HorizontalAcceleration",
+            "kind": "BOOLEAN",
+            "default": true
+          },
+          {
+            "name": "VerticalAcceleration",
+            "kind": "BOOLEAN",
+            "default": true
+          }
+        ]
+      },
+      {
+        "name": "HypixelLowHop",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Glide",
+            "kind": "BOOLEAN",
+            "default": false
+          }
+        ]
+      },
+      {
+        "name": "Spartan-4.0.4.3",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "Spartan-4.0.4.3-FastFall",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "CubeCraft-2024-06-30",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Speed",
+            "kind": "FLOAT",
+            "default": 0.5,
+            "range": {
+              "from": 0.1,
+              "to": 5
+            }
+          },
+          {
+            "name": "ReboostTicks",
+            "kind": "INT",
+            "default": 30,
+            "range": {
+              "from": 10,
+              "to": 50
+            }
+          }
+        ]
+      },
+      {
+        "name": "Vulcan-2.8.6",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "Vulcan-2.8.8",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "Vulcan-2.8.6-Ground",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "Grim-2.3.73",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "BoostSpeed",
+            "kind": "FLOAT",
+            "default": 0.08,
+            "range": {
+              "from": 0.01,
+              "to": 0.08
+            }
+          },
+          {
+            "name": "ShrinkBox",
+            "kind": "FLOAT",
+            "default": 0.5,
+            "range": {
+              "from": 0.1,
+              "to": 2
+            }
+          }
+        ]
+      },
+      {
+        "name": "NCP-2024-08-31",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "PullDown",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "MotionMultiplier",
+                "kind": "FLOAT",
+                "default": 1,
+                "range": {
+                  "from": 0.01,
+                  "to": 10
+                }
+              },
+              {
+                "name": "OnTick",
+                "kind": "INT",
+                "default": 5,
+                "range": {
+                  "from": 1,
+                  "to": 9
+                }
+              },
+              {
+                "name": "OnHurt",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "Boost",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "InitialBoostMultiplier",
+                "kind": "FLOAT",
+                "default": 1,
+                "range": {
+                  "from": 0.01,
+                  "to": 10
+                }
+              }
+            ]
+          },
+          {
+            "name": "Timer",
+            "kind": "BOOLEAN",
+            "default": true
+          },
+          {
+            "name": "DamageBoost",
+            "kind": "BOOLEAN",
+            "default": true
+          },
+          {
+            "name": "LowHop",
+            "kind": "BOOLEAN",
+            "default": true
+          },
+          {
+            "name": "AirStrafe",
+            "kind": "BOOLEAN",
+            "default": true
+          }
+        ]
+      },
+      {
+        "name": "Intave-14",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Strafe",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "Strength",
+                "kind": "FLOAT",
+                "default": 0.27,
+                "range": {
+                  "from": 0.01,
+                  "to": 0.27
+                }
+              }
+            ]
+          },
+          {
+            "name": "AirBoost",
+            "kind": "TOGGLEABLE",
+            "children": [
+              {
+                "name": "Enabled",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Intave-14-Fast",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Timer",
+            "kind": "BOOLEAN",
+            "default": true
+          }
+        ]
+      },
+      {
+        "name": "HylexLowHop",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "HylexGround",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "BlocksMC",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "RoundStrafeYaw",
+            "kind": "BOOLEAN",
+            "default": false
+          }
+        ]
+      },
+      {
+        "name": "Matrix-7",
+        "kind": "CONFIGURABLE",
+        "children": []
+      },
+      {
+        "name": "Rewound",
+        "kind": "CONFIGURABLE",
+        "children": [
+          {
+            "name": "Timer",
+            "kind": "BOOLEAN",
+            "default": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Not",
+    "kind": "MULTI_CHOOSE",
+    "default": [
+      "DuringScaffold"
+    ],
+    "options": [
+      "WhileUsingItem",
+      "DuringScaffold",
+      "WhileSneaking",
+      "IsFallFlying",
+      "IsInLiquid"
+    ],
+    "canBeNone": true
+  },
+  {
+    "name": "AvoidEdgeBump",
+    "kind": "BOOLEAN",
+    "default": true
+  },
+  {
+    "name": "OnlyInCombat",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "Mode",
+        "kind": "CHOICE",
+        "default": "LegitHop",
+        "modes": [
+          {
+            "name": "LegitHop",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Custom",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "HorizontalModification",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "HorizontalAcceleration",
+                    "kind": "FLOAT",
+                    "default": 0,
+                    "range": {
+                      "from": -0.1,
+                      "to": 0.2
+                    }
+                  },
+                  {
+                    "name": "HorizontalJumpOff",
+                    "kind": "FLOAT",
+                    "default": 0,
+                    "range": {
+                      "from": -0.5,
+                      "to": 1
+                    }
+                  },
+                  {
+                    "name": "TicksToBoostOff",
+                    "kind": "INT",
+                    "default": 0,
+                    "range": {
+                      "from": 0,
+                      "to": 20
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "VerticalModification",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "JumpHeight",
+                    "kind": "FLOAT",
+                    "default": 0.42,
+                    "range": {
+                      "from": 0,
+                      "to": 3
+                    }
+                  },
+                  {
+                    "name": "Pulldown",
+                    "kind": "FLOAT",
+                    "default": 0,
+                    "range": {
+                      "from": 0,
+                      "to": 1
+                    }
+                  },
+                  {
+                    "name": "PullDownDuringFall",
+                    "kind": "FLOAT",
+                    "default": 0,
+                    "range": {
+                      "from": 0,
+                      "to": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "TimerSpeed",
+                "kind": "FLOAT",
+                "default": 1,
+                "range": {
+                  "from": 0.1,
+                  "to": 10
+                }
+              },
+              {
+                "name": "Strafe",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "Strength",
+                    "kind": "FLOAT",
+                    "default": 1,
+                    "range": {
+                      "from": 0.1,
+                      "to": 1
+                    }
+                  },
+                  {
+                    "name": "CustomSpeed",
+                    "kind": "BOOLEAN",
+                    "default": false
+                  },
+                  {
+                    "name": "Speed",
+                    "kind": "FLOAT",
+                    "default": 1,
+                    "range": {
+                      "from": 0.1,
+                      "to": 10
+                    }
+                  },
+                  {
+                    "name": "VelocityTimeout",
+                    "kind": "INT",
+                    "default": 0,
+                    "range": {
+                      "from": 0,
+                      "to": 20
+                    }
+                  },
+                  {
+                    "name": "StrafeKnock",
+                    "kind": "BOOLEAN",
+                    "default": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "YPort",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Speed",
+                "kind": "FLOAT",
+                "default": 0.4,
+                "range": {
+                  "from": 0.1,
+                  "to": 1
+                }
+              }
+            ]
+          },
+          {
+            "name": "PiercingAttack",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "HoldTime",
+                "kind": "INT_RANGE",
+                "default": [
+                  1,
+                  1
+                ],
+                "range": {
+                  "from": 1,
+                  "to": 20
+                }
+              },
+              {
+                "name": "OnGround",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "IgnoreHunger",
+                "kind": "BOOLEAN",
+                "default": false
+              },
+              {
+                "name": "WaitForCooldown",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "MinimumDurability",
+                "kind": "INT",
+                "default": 1,
+                "range": {
+                  "from": 0,
+                  "to": 20
+                }
+              }
+            ]
+          },
+          {
+            "name": "Verus-b3882",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "HypixelBHop",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "HorizontalAcceleration",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "VerticalAcceleration",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "HypixelLowHop",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Glide",
+                "kind": "BOOLEAN",
+                "default": false
+              }
+            ]
+          },
+          {
+            "name": "Spartan-4.0.4.3",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Spartan-4.0.4.3-FastFall",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "CubeCraft-2024-06-30",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Speed",
+                "kind": "FLOAT",
+                "default": 0.5,
+                "range": {
+                  "from": 0.1,
+                  "to": 5
+                }
+              },
+              {
+                "name": "ReboostTicks",
+                "kind": "INT",
+                "default": 30,
+                "range": {
+                  "from": 10,
+                  "to": 50
+                }
+              }
+            ]
+          },
+          {
+            "name": "Vulcan-2.8.6",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Vulcan-2.8.8",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Vulcan-2.8.6-Ground",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Grim-2.3.73",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "BoostSpeed",
+                "kind": "FLOAT",
+                "default": 0.08,
+                "range": {
+                  "from": 0.01,
+                  "to": 0.08
+                }
+              },
+              {
+                "name": "ShrinkBox",
+                "kind": "FLOAT",
+                "default": 0.5,
+                "range": {
+                  "from": 0.1,
+                  "to": 2
+                }
+              }
+            ]
+          },
+          {
+            "name": "NCP-2024-08-31",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "PullDown",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "MotionMultiplier",
+                    "kind": "FLOAT",
+                    "default": 1,
+                    "range": {
+                      "from": 0.01,
+                      "to": 10
+                    }
+                  },
+                  {
+                    "name": "OnTick",
+                    "kind": "INT",
+                    "default": 5,
+                    "range": {
+                      "from": 1,
+                      "to": 9
+                    }
+                  },
+                  {
+                    "name": "OnHurt",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Boost",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "InitialBoostMultiplier",
+                    "kind": "FLOAT",
+                    "default": 1,
+                    "range": {
+                      "from": 0.01,
+                      "to": 10
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Timer",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "DamageBoost",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "LowHop",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "AirStrafe",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "Intave-14",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Strafe",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "Strength",
+                    "kind": "FLOAT",
+                    "default": 0.27,
+                    "range": {
+                      "from": 0.01,
+                      "to": 0.27
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "AirBoost",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Intave-14-Fast",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Timer",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "HylexLowHop",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "HylexGround",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "BlocksMC",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "RoundStrafeYaw",
+                "kind": "BOOLEAN",
+                "default": false
+              }
+            ]
+          },
+          {
+            "name": "Matrix-7",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Rewound",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Timer",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OnlyOnPotionEffect",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "PotionEffect",
+        "kind": "CHOICE",
+        "default": "Speed",
+        "modes": [
+          {
+            "name": "Speed",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "LevelRange",
+                "kind": "INT_RANGE",
+                "default": [
+                  1,
+                  2
+                ],
+                "range": {
+                  "from": 0,
+                  "to": 4
+                }
+              }
+            ]
+          },
+          {
+            "name": "Slowness",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "LevelRange",
+                "kind": "INT_RANGE",
+                "default": [
+                  1,
+                  2
+                ],
+                "range": {
+                  "from": 0,
+                  "to": 4
+                }
+              }
+            ]
+          },
+          {
+            "name": "Both",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "PotionEffectsBoostRange",
+                "kind": "FLOAT_RANGE",
+                "default": [
+                  1.15,
+                  1.35
+                ],
+                "range": {
+                  "from": 0.25,
+                  "to": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Mode",
+        "kind": "CHOICE",
+        "default": "LegitHop",
+        "modes": [
+          {
+            "name": "LegitHop",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Custom",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "HorizontalModification",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "HorizontalAcceleration",
+                    "kind": "FLOAT",
+                    "default": 0,
+                    "range": {
+                      "from": -0.1,
+                      "to": 0.2
+                    }
+                  },
+                  {
+                    "name": "HorizontalJumpOff",
+                    "kind": "FLOAT",
+                    "default": 0,
+                    "range": {
+                      "from": -0.5,
+                      "to": 1
+                    }
+                  },
+                  {
+                    "name": "TicksToBoostOff",
+                    "kind": "INT",
+                    "default": 0,
+                    "range": {
+                      "from": 0,
+                      "to": 20
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "VerticalModification",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "JumpHeight",
+                    "kind": "FLOAT",
+                    "default": 0.42,
+                    "range": {
+                      "from": 0,
+                      "to": 3
+                    }
+                  },
+                  {
+                    "name": "Pulldown",
+                    "kind": "FLOAT",
+                    "default": 0,
+                    "range": {
+                      "from": 0,
+                      "to": 1
+                    }
+                  },
+                  {
+                    "name": "PullDownDuringFall",
+                    "kind": "FLOAT",
+                    "default": 0,
+                    "range": {
+                      "from": 0,
+                      "to": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "TimerSpeed",
+                "kind": "FLOAT",
+                "default": 1,
+                "range": {
+                  "from": 0.1,
+                  "to": 10
+                }
+              },
+              {
+                "name": "Strafe",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "Strength",
+                    "kind": "FLOAT",
+                    "default": 1,
+                    "range": {
+                      "from": 0.1,
+                      "to": 1
+                    }
+                  },
+                  {
+                    "name": "CustomSpeed",
+                    "kind": "BOOLEAN",
+                    "default": false
+                  },
+                  {
+                    "name": "Speed",
+                    "kind": "FLOAT",
+                    "default": 1,
+                    "range": {
+                      "from": 0.1,
+                      "to": 10
+                    }
+                  },
+                  {
+                    "name": "VelocityTimeout",
+                    "kind": "INT",
+                    "default": 0,
+                    "range": {
+                      "from": 0,
+                      "to": 20
+                    }
+                  },
+                  {
+                    "name": "StrafeKnock",
+                    "kind": "BOOLEAN",
+                    "default": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "YPort",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Speed",
+                "kind": "FLOAT",
+                "default": 0.4,
+                "range": {
+                  "from": 0.1,
+                  "to": 1
+                }
+              }
+            ]
+          },
+          {
+            "name": "PiercingAttack",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "HoldTime",
+                "kind": "INT_RANGE",
+                "default": [
+                  1,
+                  1
+                ],
+                "range": {
+                  "from": 1,
+                  "to": 20
+                }
+              },
+              {
+                "name": "OnGround",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "IgnoreHunger",
+                "kind": "BOOLEAN",
+                "default": false
+              },
+              {
+                "name": "WaitForCooldown",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "MinimumDurability",
+                "kind": "INT",
+                "default": 1,
+                "range": {
+                  "from": 0,
+                  "to": 20
+                }
+              }
+            ]
+          },
+          {
+            "name": "Verus-b3882",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "HypixelBHop",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "HorizontalAcceleration",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "VerticalAcceleration",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "HypixelLowHop",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Glide",
+                "kind": "BOOLEAN",
+                "default": false
+              }
+            ]
+          },
+          {
+            "name": "Spartan-4.0.4.3",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Spartan-4.0.4.3-FastFall",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "CubeCraft-2024-06-30",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Speed",
+                "kind": "FLOAT",
+                "default": 0.5,
+                "range": {
+                  "from": 0.1,
+                  "to": 5
+                }
+              },
+              {
+                "name": "ReboostTicks",
+                "kind": "INT",
+                "default": 30,
+                "range": {
+                  "from": 10,
+                  "to": 50
+                }
+              }
+            ]
+          },
+          {
+            "name": "Vulcan-2.8.6",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Vulcan-2.8.8",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Vulcan-2.8.6-Ground",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Grim-2.3.73",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "BoostSpeed",
+                "kind": "FLOAT",
+                "default": 0.08,
+                "range": {
+                  "from": 0.01,
+                  "to": 0.08
+                }
+              },
+              {
+                "name": "ShrinkBox",
+                "kind": "FLOAT",
+                "default": 0.5,
+                "range": {
+                  "from": 0.1,
+                  "to": 2
+                }
+              }
+            ]
+          },
+          {
+            "name": "NCP-2024-08-31",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "PullDown",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "MotionMultiplier",
+                    "kind": "FLOAT",
+                    "default": 1,
+                    "range": {
+                      "from": 0.01,
+                      "to": 10
+                    }
+                  },
+                  {
+                    "name": "OnTick",
+                    "kind": "INT",
+                    "default": 5,
+                    "range": {
+                      "from": 1,
+                      "to": 9
+                    }
+                  },
+                  {
+                    "name": "OnHurt",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  }
+                ]
+              },
+              {
+                "name": "Boost",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "InitialBoostMultiplier",
+                    "kind": "FLOAT",
+                    "default": 1,
+                    "range": {
+                      "from": 0.01,
+                      "to": 10
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Timer",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "DamageBoost",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "LowHop",
+                "kind": "BOOLEAN",
+                "default": true
+              },
+              {
+                "name": "AirStrafe",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "Intave-14",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Strafe",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  },
+                  {
+                    "name": "Strength",
+                    "kind": "FLOAT",
+                    "default": 0.27,
+                    "range": {
+                      "from": 0.01,
+                      "to": 0.27
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "AirBoost",
+                "kind": "TOGGLEABLE",
+                "children": [
+                  {
+                    "name": "Enabled",
+                    "kind": "BOOLEAN",
+                    "default": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Intave-14-Fast",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Timer",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          },
+          {
+            "name": "HylexLowHop",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "HylexGround",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "BlocksMC",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "RoundStrafeYaw",
+                "kind": "BOOLEAN",
+                "default": false
+              }
+            ]
+          },
+          {
+            "name": "Matrix-7",
+            "kind": "CONFIGURABLE",
+            "children": []
+          },
+          {
+            "name": "Rewound",
+            "kind": "CONFIGURABLE",
+            "children": [
+              {
+                "name": "Timer",
+                "kind": "BOOLEAN",
+                "default": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "YawOffset",
+    "kind": "TOGGLEABLE",
+    "children": [
+      {
+        "name": "Enabled",
+        "kind": "BOOLEAN",
+        "default": false
+      },
+      {
+        "name": "YawOffsetMode",
+        "kind": "CHOOSE",
+        "default": "Air",
+        "options": [
+          "Ground",
+          "Air",
+          "Constant"
+        ]
+      },
+      {
+        "name": "Rotations",
+        "kind": "ROTATIONS",
+        "children": []
+      }
+    ]
+  }
+]

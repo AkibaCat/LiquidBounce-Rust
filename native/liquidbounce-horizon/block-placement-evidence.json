@@ -1,0 +1,34 @@
+{
+  "component": "Shared block placement target/context/verification kernel",
+  "date": "2026-11-26",
+  "liquidbounce_commit": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+  "horizon_commit": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+  "minecraft": "26.3",
+  "verification": {
+    "static_command": "python native/liquidbounce-horizon/test-block-placement.py --static-only",
+    "static_result": "passed",
+    "native_files_in_memory": 4,
+    "shared_edits_in_memory": 1,
+    "shared_files_in_memory": 1,
+    "shared_or_staging_writes": false,
+    "rustfmt_parse": "passed",
+    "focused_rust_harness": "prepared_not_run_batch_requested",
+    "prepared_test_count": 9,
+    "batch_command": "python native/liquidbounce-horizon/test-block-placement.py --model-only",
+    "official_compile": "not_run_by_owner",
+    "kotlin_differential": "not_run",
+    "native_looking_at": "Java Math atan2 with widened float Mth.RAD_TO_DEG; pure Host retains overridable fallback",
+    "inside_preservation": "Click retains actual BlockHit.inside in world/target-shape traces; planned Click is false; legacy Hit API delegates without changing its type"
+  },
+  "owned_files": {
+    "native/liquidbounce-horizon/block-placement-kernel.rs": "ced85a15e872c475de0100e3e8b759cb750d10df8c155bc635e7458e4da68252",
+    "native/liquidbounce-horizon/block-placement-native.rs": "b772ab472feb528cab25e77d9c6d3bf9d51995b62c07c7e395ba598ffda82c8d",
+    "native/liquidbounce-horizon/block-placement-context.rs": "597aea2864247b65b66a8609e3d2e4735a93bf674487182c6a9ad8204dead350",
+    "native/liquidbounce-horizon/block-placement-patch.py": "aec38ee8ddd5aacac84a8fbd2fb3942833933f63a2ae01e94b6d49841ebd6344",
+    "native/liquidbounce-horizon/integrate-block-placement.py": "a9e1f4dd561ae3584fb81d5d3bb2bae5eb6eb821f97c137c2fc32bfd4d704c7e",
+    "native/liquidbounce-horizon/block-placement-smoke.rs": "de5bf1f3e5ced92e0991f716726d313ac57fdd6244d2e230ef6846cee66b07e1",
+    "native/liquidbounce-horizon/test-block-placement.py": "5c1e542c654e0b198e882f4d9da82dda1744aa2aae57a4d8db1e8bb1339b1cfb",
+    "native/liquidbounce-horizon/block-placement-integration.md": "b861e9ec2d9db2969a96b4214cb800df4c6629862884e46417099cb431e9f208",
+    "native/liquidbounce-horizon/block-placement-mc26.3-facts.txt": "9f9346431665389e19160d6cce5c1d3b77ce23f4cbb83878ae75dab164493cbf"
+  }
+}

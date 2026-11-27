@@ -1,0 +1,70 @@
+{
+  "module": "Wings",
+  "modes": [
+    "Lines"
+  ],
+  "date": "2026-11-26",
+  "pinned": {
+    "liquidbounce": "ae0eb396c07f22383789b28d5912d714c6ca0a86",
+    "horizon": "9f42064c11efe7ef3e5ed2baad7ddc2a3b36eea0",
+    "horizonMixins": "5a64af938ec86b00d53d16a408aabc0038fb3e57"
+  },
+  "focused": {
+    "passed": true,
+    "compileExit": 0,
+    "patchError": null,
+    "metadata": {
+      "hook_names": [
+        "client_wings"
+      ],
+      "helper_names": []
+    },
+    "patchedFiles": 8,
+    "localeKeys": {
+      "zh_cn": 87,
+      "zh_tw": 87
+    },
+    "scope": "Production Wings mesh/all settings/runtime/native Game bridge/independent GPU renderer. Real WGPU Plain plus all nine source GLSL styles; scene depth cuts both plain and shader silhouettes, including vertical orientation. Native Game, registry and Host declaration providers. Patch composes in memory; copied dictionaries. LAN body state uses actual guest movement/swing/vehicle inputs and native player-model tickHeadTurn. Actual official native/engine aggregate and game visual parity remain root-owned."
+  },
+  "files": {
+    "native/liquidbounce-behaviors/src/wings.rs": "97d3f68c7dc608d162e792fcf2d59c95cce5cb2b7a1560190734ba8f91b62a30",
+    "native/liquidbounce-horizon/engine/src/config/wings.rs": "6e809779bdf5507311afdfb956283380faa683c70e657e44fe5646cbd119af2f",
+    "native/liquidbounce-horizon/engine/src/wings_runtime.rs": "e380b746a85ef7a1ff22e968315db3f045c0de4e9babaf514859d7db9dec177f",
+    "native/liquidbounce-horizon/wings-game.rs": "903064a371db5501cda7dc1800f9afee3e3f15aa7b5188312779f4e86139c23f",
+    "native/liquidbounce-horizon/wings-host.rs": "7cdfb03201805e0e1209e33148f5a054b8fca6e9c8798e6597bf24ecc9b29f7b",
+    "native/liquidbounce-horizon/wings-patch.py": "a9b7b2891bf97b22e3965048264a76a370ea48c948c7d336dcfb81b10f6b8ef7",
+    "native/liquidbounce-horizon/wings-render.py": "ae634e8dbc0e5fb1e2c0983e351ece7389d148a748aa5097d23cbc20f92c3eff",
+    "native/liquidbounce-horizon/wings.wgsl": "d9ca24930357f2180ac26800c3b7605e2621fa09f3d2dd13063e613ccee3603b",
+    "native/liquidbounce-horizon/wings-smoke.rs": "d9b2eeb46f2f38760d6d4f006b02e89a47b427d2e482748219ab727e6764b7c7",
+    "native/liquidbounce-horizon/wings-native-fixture.rs": "32f884a767d1f363eb9ed57a6b67de41be83df261132b67e3be81892acc240ec",
+    "native/liquidbounce-horizon/test-wings.py": "9d1b1d8ef9bed3a822a41353e42662ddcaca5d93ca70d7f56ca1d4bc8ff13040",
+    "native/liquidbounce-horizon/integrate-wings.py": "b4a7b2c31a0bf1c5fbde0285b4e7cf28f3c1aa48b4b8fdb11e091cad1a402e0d",
+    "native/liquidbounce-horizon/update-wings-locales.py": "f45d955c9d40fd964567bd24d024c83edb8aee586a61419bace7559a7ae46dd7",
+    "native/liquidbounce-horizon/wings-integration.md": "e37b3c22e1d250ddf198e2be0fdb8b6dc6a3de614277901f5867423a136de8e2",
+    "native/liquidbounce-horizon/generate-wings-freeze.py": "d9e4022a1a51fd296154a715f7c629829f93c19d08a1f151eb44c9a9b2ab3a31",
+    "native/liquidbounce-horizon/breadcrumbs-freeze-02.json": "516c32701fd41f4209a11be884b7f43628a3510ebcff195de47e0a139cad9b77",
+    "native/liquidbounce-horizon/breadcrumbs-render.rs": "7a1c73481bb7a45b1f294f73bcd4c841ae30cc9712c5f2c1f6a2a6d29e189f0d",
+    "native/liquidbounce-horizon/breadcrumbs.wgsl": "05648ea5857f6c34368c9fb07c4c1c289909f7de3ae01e9187538f7c77d24271",
+    "native/liquidbounce-horizon/hats-freeze-04.json": "b5019ab7547a277f95ec86a2fbc3113e52d5afbf7d34d5344c37bf7a8a8aac84",
+    "native/liquidbounce-behaviors/src/breadcrumbs.rs": "11c1c6d77a3c15bdcd25f5ab40afad2e95269197fe088b6470182993ba1a120a",
+    "native/liquidbounce-behaviors/vendor/minecraft-math/sine-table.bin": "cdfaec6870788e193dff3f1ddfa3ca7d3f1a897042d78365a1fe3a433be3627d",
+    "native/liquidbounce-horizon/engine/src/config/breadcrumbs.rs": "93119746473c14c2bf33bc8932d992cd76a21629d9bfc2a71834c92878357efd",
+    "native/liquidbounce-interop/src/localization.rs": "fd28c2a9d9fcf0aa83660aacb70681533193e10e7982287ff00e2054f8e2e142",
+    "build/wings-smoke-01/report.json": "89fcca7bc09a572e9cd3eb0749a3ac3618d051d831fcdacd1b7f80b115b79982",
+    "build/wings-smoke-01/test.log": "7be24ba259086ac52ed823dc5f3875d58ee6193c8ddd12696c72820df364a9c5",
+    "build/wings-smoke-02/report.json": "aad310ebe2f95faaf685e1dfaace71a7fbc9f20fc2467130bdca8972723bd097",
+    "build/wings-smoke-02/test.log": "8d4d59739b43f5004473203ed59ea87149b8c0d2289d49a039c96a905a4db074",
+    "build/wings-smoke-03/report.json": "51f93e130072d221d5760044dfcdd1da3f10150c0d410d42da75bb83e4ed8cce",
+    "build/wings-smoke-03/test.log": "38d8cbd88024cad00bb8c13dd4b19630cc48a45cb2e5e23447f729bee6a8f225",
+    "build/wings-smoke-03/Cargo.toml": "ff10d5e07d5a705eedfc855635748e439c912f9b2d68c9dde76db64b35f6e7ce",
+    "build/wings-smoke-03/config.rs": "65b51554db1eb3d70cf6f3f59ff0adcb5ef38d5dfe95a19b4aa4801d98cdfc81",
+    "build/wings-smoke-03/lib.rs": "e77bd6f2d8e9f3b7b501878c78884b23b0059f1207413956a7acc501b953fc53",
+    "build/wings-smoke-03/render.rs": "d18cfd96c19fa3411a062d894a64a67191dce68343b0d6baac8d28d22ce1f3d7",
+    "build/wings-smoke-03/localization.rs": "95620e949b66b381741d4a07ebda4f5e0e87b900c433a99c20029130f9376a1b",
+    "build/wings-smoke-03/localization/display_zh_cn.json": "e65b0eaab1baa1e7741acc151b13eaf7e8b8bc83c1b83956ec2d1b6d92298612",
+    "build/wings-smoke-03/localization/display_zh_tw.json": "9b762a99728baffc3c6d78c5eea8d69eabe31bbb4bae528abbfb49859a738cc2",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/wings/ModuleWings.kt": "a7d24183e2aa0a2a8844d67603574bb83a7fa0f0d76730bbe49e843d1c516410",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/wings/WingsMode.kt": "426e03a94e0f2f5249f9de44cf2978e5f08ff16837b3cfcbf391eda7d7def731",
+    "upstream/LiquidBounce/src/main/kotlin/net/ccbluex/liquidbounce/features/module/modules/render/wings/modes/WingsLines.kt": "8568b9da4f46a5687373316e89542a10672e664067a4a173fb5ee9808fbdd012"
+  }
+}
