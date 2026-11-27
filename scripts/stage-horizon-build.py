@@ -24,6 +24,14 @@ RENDER_API = "crates/horizon-client-render/src/gfx/native_render/generated.rs"
 GAME_HOOKS = "crates/horizon-client/src/game/native_hooks.rs"
 
 
+def build_source_input(relative: str) -> bool:
+    """Exclude downloaded research caches and discarded drafts from build inputs."""
+    path = PurePosixPath(relative)
+    return ("cef-source" not in path.parts and path.suffix != ".crate"
+            and ".draft." not in path.name
+            and not path.name.startswith(("tmp-", "tmp_")))
+
+
 def digest_bytes(content: bytes) -> str:
     return hashlib.sha256(content.replace(b"\r\n", b"\n")).hexdigest()
 
@@ -355,6 +363,8 @@ def main() -> None:
     native_source_files = {}
     for label, source, relative in sources:
         for name, data in packaging.read_package_source(source).items():
+            if not build_source_input(name):
+                continue
             if name == "Cargo.toml" or name.endswith((".rs", ".json")) or name.startswith(("resources/", "vendor/", "data/")):
                 native_source_files[(source / name).relative_to(PROJECT).as_posix()] = hashlib.sha256(data).hexdigest()
             if label == "engine" and name == "Cargo.toml":
@@ -393,6 +403,8 @@ def main() -> None:
     # Keep every patch generator and its source templates in the rebuild map.
     # They produce the game-side behavior code outside the native crates.
     for source in sorted([*OWNER.glob("*.py"), *OWNER.glob("*.rs")]):
+        if not build_source_input(source.relative_to(PROJECT).as_posix()):
+            continue
         native_source_files[source.relative_to(PROJECT).as_posix()] = hashlib.sha256(source.read_bytes()).hexdigest()
     native_source_digest = hashlib.sha256(json.dumps(native_source_files, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
     # All source copies are independent files. The upstream checkout, its lock
